@@ -1,0 +1,168 @@
+/* =====================================================
+   TEMA CLARO — sobre.html
+   ===================================================== */
+html.theme-light-sabia body,
+html.theme-light-sabia .sobre-wrapper,
+html.theme-light-sabia .main-application-area {
+    background-color: #F8F9FA;
+    color: #212529;
+}
+
+html.theme-light-sabia .sobre-texto,
+html.theme-light-sabia .contato-section,
+html.theme-light-sabia .feature-card {
+    background: #FFFFFF;
+    border-color: #DEE2E6;
+    color: #1363b3;
+}
+
+html.theme-light-sabia .sobre-texto p,
+html.theme-light-sabia .contato-section .contato-intro,
+html.theme-light-sabia .feature-card p {
+    color: #495057;
+}
+
+html.theme-light-sabia .form-group input,
+html.theme-light-sabia .form-group textarea {
+    background: #F8F9FA;
+    border-color: #DEE2E6;
+    color: #212529;
+}
+
+html.theme-light-sabia .theme-switcher-sabia {
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+html.theme-light-sabia .theme-icon {
+    color: #495057;
+}
+
+html.theme-light-sabia .theme-icon.active,
+html.theme-light-sabia .theme-icon:hover {
+    color: #007BFF;
+}
+
+html.theme-light-sabia .sobre-texto h2,
+html.theme-light-sabia .contato-section h2,
+html.theme-light-sabia .feature-card h3 {
+    color: #1a73e8;
+}
+
+html.theme-light-sabia .sobre-texto strong {
+    color: #FF8C00;  
+}
+
+html.theme-light-sabia .form-group label {
+    color: #1a1a1a; 
+}
+/* =====================================================
+   TEMA ESCURO — sobre.html
+   ===================================================== */
+html.theme-dark-sabia body,
+html.theme-dark-sabia .sobre-wrapper,
+html.theme-dark-sabia .main-application-area {
+    background-color: #121212;
+    color: #EAEAEA;
+}
+
+html.theme-dark-sabia .sobre-texto,
+html.theme-dark-sabia .contato-section,
+html.theme-dark-sabia .feature-card {
+    background: #1E1E1E;
+    border-color: #3A3A3A;
+    color: #EAEAEA;
+}
+
+html.theme-dark-sabia .sobre-texto p,
+html.theme-dark-sabia .contato-section .contato-intro,
+html.theme-dark-sabia .feature-card p {
+    color: #B0B0B0;
+}
+
+html.theme-dark-sabia .sobre-texto h2,
+html.theme-dark-sabia .contato-section h2,
+html.theme-dark-sabia .feature-card h3 {
+    color: #64B5F6;
+}
+
+html.theme-dark-sabia .form-group label {
+    color: #EAEAEA;
+}
+
+html.theme-dark-sabia .form-group input,
+html.theme-dark-sabia .form-group textarea {
+    background: #2C2C2C;
+    border-color: #3A3A3A;
+    color: #EAEAEA;
+}
+
+html.theme-dark-sabia .form-group input::placeholder,
+html.theme-dark-sabia .form-group textarea::placeholder {
+    color: #666;
+}
+
+html.theme-dark-sabia .site-header {
+    background-color: #1E1E1E;
+    border-bottom-color: #3A3A3A;
+}
+
+html.theme-dark-sabia .main-nav a {
+    color: #B0B0B0;
+}
+
+html.theme-dark-sabia .site-footer {
+    background-color: #1E1E1E;
+    border-top-color: #3A3A3A;
+    color: #B0B0B0;
+}
+
+html.theme-dark-sabia .theme-switcher-sabia {
+    background-color: #1E1E1E;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+html.theme-dark-sabia .theme-icon {
+    color: #B0B0B0;
+}
+
+html.theme-dark-sabia .theme-icon.active,
+html.theme-dark-sabia .theme-icon:hover {
+    color: #64B5F6;
+}
+
+/* =====================================================
+   BOTÃO SWITCHER — posição e layout fixos
+   ===================================================== */
+.theme-switcher-sabia {
+    position: fixed;
+    top: 90px;
+    right: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    z-index: 1001;
+    padding: 8px 12px;
+    border-radius: 20px;
+}
+
+.theme-icon {
+    font-size: 1.3em;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.theme-icon:hover {
+    transform: scale(1.15);
+}
+
+/* Hover e active laranja no tema escuro */
+html.theme-dark-sabia .main-nav a:hover {
+    color: #FF8C00;
+}
+
+html.theme-dark-sabia .main-nav a.active {
+    color: #FF8C00;
+    border-bottom: 2px solid #FF8C00;
+}

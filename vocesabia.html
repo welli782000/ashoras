@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Você Sabia? - ashoras</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="vocesabia-theme-light.css" id="theme-light-sabia">
+   <link rel="stylesheet" href="vocesabia-theme-dark.css" id="theme-dark-sabia" disabled>
+    <link rel="stylesheet" href="vocesabia.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .logo-img {
+            height: 40px; /* Ajuste esta altura conforme necessário para seu header */
+            width: auto;
+            display: block;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Nav — hover e active laranja */
+        .main-nav a {
+            transition: color 0.2s;
+        }
+        .main-nav a:hover {
+            color: #FF8C00;
+        }
+        .main-nav a.active {
+            color: #FF8C00;
+            font-weight: 700;
+            border-bottom: 2px solid #FF8C00;
+            padding-bottom: 2px;
+        }
+    </style>
+    <script>
+  document.documentElement.className = localStorage.getItem('sabiaTheme') || 'theme-light-sabia';
+</script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content-wrapper">
+           <div class="logo">
+            <a href="index.html">
+            <img src="ashoras-removebg-preview.png" alt="ashoras logo" class="logo-img">
+            </a>
+            </div>
+            <nav class="main-nav">
+                <a href="vocesabia.html" class="active">Você Sabia?</a>
+                <a href="sobre.html">Sobre</a>
+            </nav>
+        </div>
+    </header>
+<div class="theme-switcher-sabia">
+<span id="light-theme-btn" class="theme-icon active" title="Tema Claro"><i class="fas fa-sun"></i></span>
+<span id="dark-theme-btn" class="theme-icon" title="Tema Escuro"><i class="fas fa-moon"></i></span>
+</div>
+
+    <main class="main-application-area">
+        <div class="container-sabia">
+            <h1>Você Sabia? Curiosidades do Tempo <i class="fas fa-clock"></i></h1>
+
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Buscar curiosidades sobre o tempo..." onkeyup="buscarArtigos()">
+            </div>
+            <div class="search-results" id="searchResults"></div>
+
+            <div class="carousel-container">
+                <div class="carousel-track" id="carousel-track">
+                    <a href="artigos/artigo-dia-24h.html" class="card">
+                        <img src="img_voce/img1.jpg" alt="Curiosidade 1">
+                        <h3>Por que o dia tem 24 horas?</h3>
+                        <p>Descubra a origem egípcia da divisão do dia em 24 partes.</p>
+                    </a>
+                    <a href="artigos/artigo-fusos.html" class="card">
+                        <img src="img_voce/img2.jpg" alt="Curiosidade 2">
+                        <h3>Qual o país com mais fusos horários?</h3>
+                        <p>Spoiler: não é a Rússia! Saiba qual nação domina os fusos horários.</p>
+                    </a>
+                    <a href="artigos/artigo-relogio-pulso.html" class="card">
+                        <img src="img_voce/img3.png" alt="Curiosidade 3">
+                        <h3>Quem inventou o relógio de pulso?</h3>
+                        <p>Conheça a surpreendente história e a brasileira por trás desta invenção.</p>
+                    </a>
+                    <a href="artigos/artigo-atomico.html" class="card">
+                        <img src="img_voce/img4.png" alt="Curiosidade 4">
+                        <h3>Como funcionam os relógios atômicos?</h3>
+                        <p>Entenda a incrível precisão dos relógios que guiam a tecnologia moderna.</p>
+                    </a>
+                    <a href="artigos/artigo-horario-verao.html" class="card">
+                        <img src="img_voce/img5.png" alt="Curiosidade 5">
+                        <h3>O que é o horário de verão?</h3>
+                        <p>Saiba como funciona a prática de adiantar os relógios e por que é utilizada.</p>
+                    </a>
+                    <a href="artigos/artigo-fevereiro.html" class="card">
+                        <img src="img_voce/img6.png" alt="Curiosidade 6">
+                        <h3>Por que fevereiro tem menos dias?</h3>
+                        <p>Descubra a razão histórica por trás do mês mais curto do ano.</p>
+                    </a>
+                     </div>
+    <button id="carousel-prev" class="carousel-arrow">❮</button>
+    <button id="carousel-next" class="carousel-arrow">❯</button>
+    </div>
+                  
+                <div class="news-section">
+                <h2><i class="fas fa-bolt"></i> Notícia Rápida</h2>
+                <div class="news-box">
+                    <strong>Recorde de Precisão:</strong> Novos relógios atômicos de ítrio perdem apenas um segundo a cada 300 bilhões de anos, redefinindo a medição do tempo.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content-wrapper">
+            <p>&copy; 2025 AsHoras. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    
+    <script src="vocesabia.js"></script>
+<script src="sabia-theme-loader.js"></script> 
+</body>
+</html>

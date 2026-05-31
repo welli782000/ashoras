@@ -1,0 +1,184 @@
+/* Estilos para a página "Você Sabia?", usando variáveis de tema */
+
+body {
+    background-color: var(--sabia-fundo);
+}
+
+.container-sabia {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    color: var(--sabia-texto-principal);
+}
+
+.container-sabia h1 {
+    text-align: center;
+    color: var(--sabia-primaria);
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1.1em;
+    border-radius: 50px;
+    border: 2px solid var(--sabia-borda);
+    background-color: var(--sabia-superficie);
+    color: var(--sabia-texto-principal);
+}
+
+.search-results {
+    max-width: 700px;
+    margin: -20px auto 30px;
+    background-color: var(--sabia-superficie);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--sabia-sombra);
+}
+
+.search-results a {
+    display: block;
+    padding: 15px 20px;
+    color: var(--sabia-texto-principal);
+    text-decoration: none;
+    border-bottom: 1px solid var(--sabia-borda);
+}
+
+.search-results a:hover {
+    background-color: var(--sabia-superficie-secundaria);
+    color: var(--sabia-primaria);
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 40px auto;
+    overflow: hidden;
+    padding: 0 70px; /* Espaço para as setas laterais */
+}
+
+.carousel-track {
+    display: flex;
+    flex-wrap: nowrap;   /* impede quebra de linha */
+    gap: 0px;           /* espaço entre os cards */
+    padding: 10px 0;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+.card {
+   flex: 0 0 calc(33.333% - 14px); /* 3 cards com gap incluso */
+    min-width: 0;
+    scroll-snap-align: start;
+    margin: 0 5px;
+    background-color: var(--sabia-superficie);
+    border-radius: 12px;
+    box-shadow: var(--sabia-sombra);
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--sabia-texto-principal);
+    transform: scale(0.95); /* Efeito de "zoom out" */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+
+/* Remove a responsividade que quebra em menos cards */
+@media (max-width: 768px) {
+    .card {
+        flex: 0 0 calc(50% - 10px); /* Opcional: 2 cards em telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        flex: 0 0 100%; /* Opcional: 1 card em mobile */
+    }
+}
+.card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.card h3 {
+    color: var(--sabia-primaria);
+}
+
+.card p {
+    color: var(--sabia-texto-secundario);
+}
+
+.carousel-buttons button {
+    background-color: var(--sabia-primaria);
+    color: white;
+}
+.carousel-buttons button:hover {
+    background-color: var(--sabia-primaria-hover);
+}
+
+.news-box {
+    background-color: var(--sabia-superficie);
+    color: var(--sabia-texto-secundario);
+    box-shadow: var(--sabia-sombra);
+    border-left: 5px solid var(--sabia-primaria);
+}
+
+.theme-switcher-sabia {
+    position: fixed; top: 90px; right: 20px;
+    display: flex; gap: 10px; z-index: 1001;
+    background-color: var(--sabia-superficie); padding: 8px;
+    border-radius: 20px; box-shadow: var(--sabia-sombra);
+}
+.theme-icon {
+    font-size: 1.3em; cursor: pointer;
+    color: var(--sabia-texto-secundario);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.theme-icon:hover {
+    color: var(--sabia-primaria);
+    transform: scale(1.1);
+}
+.theme-icon.active {
+    color: var(--sabia-primaria);
+}
+
+
+/* ===== Estilo para setas do carrossel centralizadas ===== */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.4); /* fundo semi-transparente */
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    width: 40px; /* Largura fixa */
+    height: 40px; /* Altura fixa */
+    display: flex;
+     align-items: center;
+    justify-content: center;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+/* Efeito hover */
+.carousel-arrow:hover {
+    background: rgba(0, 0, 0, 0.7);
+    transform: translateY(-50%) scale(1.05); /* Apenas um leve zoom */
+}
+
+/* Posição das setas */
+#carousel-prev {
+    left: 10px;
+}
+
+#carousel-next {
+    right: 10px;
+}

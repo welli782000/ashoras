@@ -1,0 +1,32 @@
+[
+  {
+    "titulo": "Por que o dia tem 24 horas?",
+    "descricao": "Descubra a origem egípcia da divisão do dia em 24 partes e como isso moldou nossa rotina.",
+    "link": "artigos/artigo-dia-24h.html"
+  },
+  {
+    "titulo": "Qual o país com mais fusos horários?",
+    "descricao": "Spoiler: não é a Rússia! Saiba qual nação domina os fusos horários e por quê.",
+    "link": "artigos/artigo-fusos.html"
+  },
+  {
+    "titulo": "Quem inventou o relógio de pulso?",
+    "descricao": "Conheça a surpreendente história e a brasileira por trás do relógio de pulso.",
+    "link": "artigos/artigo-relogio-pulso.html"
+  },
+  {
+    "titulo": "Como funcionam os relógios atômicos?",
+    "descricao": "Entenda a incrível precisão dos relógios que guiam a tecnologia moderna.",
+    "link": "artigos/artigo-atomico.html"
+  },
+  {
+    "titulo": "O que é o horário de verão?",
+    "descricao": "Saiba como funciona a prática de adiantar os relógios e por que ela é utilizada.",
+    "link": "artigos/artigo-horario-verao.html"
+  },
+  {
+    "titulo": "Por que fevereiro tem menos dias?",
+    "descricao": "Descubra a razão histórica e astronômica por trás do mês mais curto do ano.",
+    "link": "artigos/artigo-fevereiro.html"
+  }
+]

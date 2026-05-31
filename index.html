@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ashoras - Relógio Multifuncional</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=schedule" />
+        <style>
+        .logo-img {
+            height: 40px; /* Ajuste esta altura conforme necessário para seu header */
+            width: auto;
+            display: block;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+
+</head>
+<body class="theme-dark">
+    <header class="site-header">
+        <div class="header-content-wrapper">
+            <div class="logo">
+            <a href="index.html">
+            <img src="ashoras-removebg-preview.png" alt="ashoras logo" class="logo-img">
+            </a>
+            </div>
+            <div id="header-clock" class="header-clock"></div>
+            <button id="config-toggle-btn" class="config-toggle-btn" aria-label="Abrir Configurações">
+                <i class="fas fa-cog"></i>
+            </button>
+        </div>
+    </header>
+
+    <div id="config-panel" class="config-panel">
+        <h4>Temas</h4>
+        <div class="theme-buttons">
+            <button data-theme="theme-dark" class="theme-btn active-theme"><i class="fa-solid fa-moon"></i> Dark</button>
+             <button data-theme="theme-google-pro" class="theme-btn"><i class="fa-regular fa-sun"></i> Claro</button> 
+        </div>
+        <hr>
+        <h4>Tela</h4>
+        <button id="fullscreen-btn" class="config-option-btn">
+            <i class="fas fa-expand"></i> Tela Cheia
+        </button>
+        <hr>
+        <h4>Protetor de Tela</h4>
+        <div class="wallpaper-selector">
+            <p>Papel de Parede:</p>
+            <div id="wallpaper-thumbnails" class="wallpaper-thumbnails-grid">
+            </div>
+        </div>
+        <button id="activate-screensaver-btn" class="config-option-btn">
+            <i class="fas fa-desktop"></i> Ativar Protetor de Tela
+        </button>
+        <button id="activate-clock-screensaver-btn" class="config-option-btn">
+            <i class="fa-regular fa-clock"></i> Relógio
+        </button>
+    </div>
+
+    <!-- CLOCK SCREENSAVER OVERLAY -->
+    <div id="clock-screensaver" style="display:none;">
+        <div class="cs-bg-selector">
+            <button class="cs-bg-btn active" data-bg="black" title="Preto">●</button>
+            <button class="cs-bg-btn" data-bg="pink" title="Pink">●</button>
+            <button class="cs-bg-btn" data-bg="egg" title="Amarelo Ovo">●</button>
+        </div>
+        <canvas id="cs-canvas"></canvas>
+        <div class="cs-exit-hint">ESC · Espaço · Enter para sair</div>
+    </div>
+
+    <main class="main-application-area">
+        <div class="container">
+            <nav class="sidebar">
+                <h2><i class="fa-solid fa-earth-americas" style="color: rgb(255, 140, 0);"></i></h2>
+                <ul>
+                    <li data-target="relogio" class="active"><a href="index.html"><i class="fa-solid fa-house"></i> Início</a></li>
+                    <li data-target="despertador"><a href="#"><i class="fa-regular fa-bell"></i> Despertador</a></li>
+                    <li data-target="cronometro"><a href="#"><i class="fa-solid fa-hourglass-start"></i> Cronômetro</a></li>
+                    <li data-target="temporizador"><a href="#"><i class="fa-solid fa-clock-rotate-left"></i> Temporizador</a></li>
+                    <li data-target="calendario"><a href="#"><i class="far fa-calendar"></i> Calendário</a></li>
+                    <li data-target="semana-do-ano"><a href="#"><i class="fa-solid fa-calendar-week"></i> Semana do Ano</a></li>
+                    <li data-target="pomodoro-timer"><a href="#"><i class="fa-solid fa-stopwatch-20"></i> Pomodoro</a></li>
+                    <li><a href="vocesabia.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-question-circle"></i> Você Sabia?</a></li>
+                    <li><a href="sobre.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-info-circle"></i> Sobre</a></li>
+                </ul>
+            </nav>
+            <main class="content">
+                <section id="relogio" class="tab-content active">
+                    <div class="top-converter-wrapper">
+    <h2 class="section-title-main">Conversor de fuso horário:</h2>
+    <p class="section-subtitle">Qual a diferença horária entre duas cidades ou países?</p>
+    
+    <div class="converter-inputs-grid">
+        <div class="input-box">
+            <label for="fuso-origem">(Cidade ou País)</label>
+            <input type="text" id="fuso-origem" placeholder="Ex: Brasil, São Paulo" value="Brasil, Brasília">
+        </div>
+        <div class="input-box">
+            <label for="fuso-destino">(Cidade ou País)</label>
+            <input type="text" id="fuso-destino" placeholder="Ex: França, Paris" value="França, Paris">
+        </div>
+    </div>
+    
+    <button id="btn-comparar-fuso" class="btn-primary-action">
+        <i class="fa-solid fa-right-left"></i> Comparar Horário
+    </button>
+    
+    <div id="fuso-comparacao-resultado" class="comparison-result-card" style="display: none;">
+        <div class="comparison-header">
+            <h3 id="res-titulo-comparacao">Comparação de Horário</h3>
+        </div>
+        <div class="comparison-display-grid">
+            <div class="city-time-block">
+    <h4 id="res-origem-nome">Brasília</h4>
+    <div id="res-origem-hora" class="time-big">00:00</div>
+    <div id="res-origem-data" class="date-sub">...</div> </div>
+            <div class="equal-sign">=</div>
+            <div class="city-time-block destination-block">
+                <h4 id="res-destino-nome">Destino</h4>
+                <div id="res-destino-hora" class="time-big">00:00</div>
+                <div id="res-destino-data" class="date-sub">--/--/----</div>
+            </div>
+        </div>
+        <div id="res-diferenca-faixa" class="info-yellow-strip"></div>
+    </div>
+</div>
+
+<div class="popular-converters-section">
+    <h3 class="section-title">Conversores populares</h3>
+    <ul class="popular-converters-list">
+        <li><a href="javascript:void(0)" onclick="carregarConversor('America/New_York', 'Europe/London', 'Nova York', 'Londres')">Diferença de horário entre Nova York e Londres</a></li>
+        <li><a href="javascript:void(0)" onclick="carregarConversor('America/Los_Angeles', 'Pacific/Honolulu', 'Califórnia', 'Havaí')">Diferença de horário entre a Califórnia e o Havaí</a></li>
+        <li><a href="javascript:void(0)" onclick="carregarConversor('America/Los_Angeles', 'Europe/London', 'Califórnia', 'Londres')">Diferença de horário entre Califórnia e Londres</a></li>
+        <li><a href="javascript:void(0)" onclick="carregarConversor('Europe/London', 'America/New_York', 'Reino Unido', 'EUA')">Diferença de horário entre o Reino Unido e os EUA</a></li>
+        <li><a href="javascript:void(0)" onclick="carregarConversor('America/Los_Angeles', 'Asia/Tokyo', 'Califórnia', 'Japão')">Diferença de horário entre a Califórnia e o Japão</a></li>
+        <li><a href="javascript:void(0)" onclick="carregarConversor('America/New_York', 'Europe/Paris', 'Nova York', 'Paris')">Diferença de horário entre Nova York e Paris</a></li>
+    </ul>
+</div>
+                    <div class="world-clocks-section">
+                        <h4>Horas pelo Mundo</h4><br>
+                        <div id="predefined-world-clocks" class="world-clocks-list"></div>
+                        <div class="search-world-clock">
+                            <div class="city-search-wrapper">
+                                <input type="text" id="city-search-input" placeholder="Cidade (ex: Paris, London)">
+                                <button id="city-search-clear-btn" title="Limpar pesquisa" style="display:none;">&#x2715;</button>
+                            </div>
+                            <button id="city-search-btn">Ver Hora</button>
+                            <div id="searched-city-result" class="world-clock-item"></div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="despertador" class="tab-content">
+                    <div class="display-container">
+                        <div id="data-atual-despertador" class="data-display"></div>
+                        <div id="hora-atual-despertador" class="hora-display">00:00:00</div>
+                        <button id="despertador-fullscreen-btn" class="module-fullscreen-btn" aria-label="Tela cheia do despertador"><i class="fas fa-expand"></i></button>
+                    </div>
+                    <div class="display-container status-alarme-container">
+                        <div id="despertador-status">Nenhum alarme definido</div>
+                    </div>
+                    <div class="inputs-despertador">
+                        <label for="desp-hora">Hora:</label>
+                        <input type="number" id="desp-hora" placeholder="HH" min="0" max="23">
+                        <span class="separador-tempo">:</span>
+                        <label for="desp-minuto">Minuto:</label>
+                        <input type="number" id="desp-minuto" placeholder="MM" min="0" max="59">
+                        <label for="desp-som" class="label-som">Som:</label>
+                        <select id="desp-som">
+                            <option value="https://www.soundjay.com/clock/sounds/clock-ticking-2.mp3">Relógio Ticando</option>
+                            <option value="https://www.soundjay.com/buttons/sounds/button-7.mp3">Bipe Curto</option>
+                            <option value="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3">Sino Digital</option>
+                            <option value="sons/Suave_e_Relaxante.mp3">Suave e Relaxante</option>
+                            <option value="sons/Sonho_Desperto.mp3">Sonho Desperto</option>
+                            <option value="sons/Brisa_do_Despertar.mp3">Brisa do Despertar</option>
+                            <option value="sons/Brilho_Matinal.mp3">Brilho Matinal</option>
+                            <option value="sons/Despertar_do_Amanhecer.mp3">Despertar do Amanhecer</option>
+                            <option value="sons/A_Fronteira_Digital_do_Sol.mp3" selected>A Fronteira Digital do Sol</option>
+                            <option value="sons/A_Emocionante_Jornada.mp3">A Emocionante Jornada</option>
+                            <option value="sons/O_Cactus_e_o_Olhar_para_Cima.mp3" selected>O Cactus e o Olhar para Cima</option>
+                            <option value="sons/O_Cactus_e_o_Deserto.mp3">O Cactus e o Deserto</option>
+                            <option value="sons/O_Vento_e_a_Chuva.mp3">O Vento e a Chuva</option>
+                            <option value="sons/felicidade_minha.mp3">Felicidade minha</option>
+                            <option value="sons/verao_sem_fim.mp3">Verão sem fim</option>
+                            <option value="sons/Contagia_o_dia.mp3">Contagia o dia</option>
+                            <option value="sons/Fluxo_do_dia.mp3">Fluxo do dia</option>
+
+
+                        </select>
+                        <button id="desp-preview-som-btn" class="preview-som-btn" aria-label="Ouvir som do alarme"><i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                    <div class="controles">
+                        <button id="despertador-definir">Definir Alarme</button>
+                        <button id="despertador-cancelar" style="display: none;">Cancelar Alarme</button>
+                    </div>
+                    <div id="alarme-tocando-popup" class="alarme-popup" style="display:none;">
+                        <h2>Alarme Tocando!</h2>
+                        <div id="alarme-tocando-hora">00:00</div>
+                        <button id="despertador-parar-som">Parar Som</button>
+                    </div>
+                </section>
+                <section id="cronometro" class="tab-content">
+                    <div class="display-container">
+                        <div class="hora-display" id="cronometro-display">00:00:00.000</div>
+                        <button id="cronometro-fullscreen-btn" class="module-fullscreen-btn" aria-label="Tela cheia do cronômetro"><i class="fas fa-expand"></i></button>
+                    </div>
+                    <div class="controles">
+                        <button id="cronometro-iniciar">Iniciar</button>
+                        <button id="cronometro-parar">Parar</button>
+                        <button id="cronometro-zerar">Zerar</button>
+                    </div>
+                </section>
+                <section id="temporizador" class="tab-content">
+                    <div class="display-container">
+                         <div class="hora-display" id="temporizador-display">00:00:00</div>
+                         <button id="temporizador-fullscreen-btn" class="module-fullscreen-btn" aria-label="Tela cheia do temporizador"><i class="fas fa-expand"></i></button>
+                    </div>
+                    <div class="inputs-temporizador">
+                        <label for="temp-horas">HH:</label><input type="number" id="temp-horas" placeholder="HH" min="0" max="23"><span class="separador-tempo">:</span><label for="temp-minutos">MM:</label><input type="number" id="temp-minutos" placeholder="MM" min="0" max="59"><span class="separador-tempo">:</span><label for="temp-segundos">SS:</label><input type="number" id="temp-segundos" placeholder="SS" min="0" max="59">
+                        <label for="temp-som-select" class="label-som">Som:</label>
+                        <select id="temp-som-select">
+                            <option value="sons/Suave_e_Relaxante.mp3">Suave e Relaxante</option>
+                            <option value="sons/Sonho_Desperto.mp3">Sonho Desperto</option>
+                            <option value="sons/Brisa_do_Despertar.mp3">Brisa do Despertar</option>
+                            <option value="sons/Brilho_Matinal.mp3">Brilho Matinal</option>
+                            <option value="sons/Despertar_do_Amanhecer.mp3">Despertar do Amanhecer</option>
+                            <option value="sons/A_Fronteira_Digital_do_Sol.mp3" selected>A Fronteira Digital do Sol</option>
+                            <option value="sons/A_Emocionante_Jornada.mp3">A Emocionante Jornada</option>
+                            <option value="sons/O_Cactus_e_o_Olhar_para_Cima.mp3">O Cactus e o Olhar para Cima</option>
+                            <option value="sons/O_Cactus_e_o_Deserto.mp3">O Cactus e o Deserto</option>
+                            <option value="sons/O_Vento_e_a_Chuva.mp3">O Vento e a Chuva</option>
+                            <option value="sons/felicidade_minha.mp3">Felicidade minha</option>
+                            <option value="sons/verao_sem_fim.mp3">Verão sem fim</option>
+                            <option value="sons/Contagia_o_dia.mp3">Contagia o dia</option>
+                            <option value="sons/Fluxo_do_dia.mp3">Fluxo do dia</option>
+                        </select>
+                        <button id="temp-preview-som-btn" class="preview-som-btn" aria-label="Ouvir som"><i class="fas fa-play"></i></button>
+                    </div>
+                    <div class="controles">
+                        <button id="temporizador-iniciar">Iniciar</button>
+                        <button id="temporizador-parar">Parar</button>
+                        <button id="temporizador-zerar">Zerar</button>
+                    </div>
+                    <div id="temporizador-tocando-popup" class="alarme-popup" style="display:none;">
+                        <h2>⏰ Temporizador Finalizado!</h2>
+                        <button id="temporizador-parar-som">Parar Som</button>
+                    </div>
+                </section>
+                <section id="calendario" class="tab-content">
+                    <!-- Painel de Informações do Calendário -->
+                    <div id="calendar-info-panel" class="calendar-info-panel">
+                        <div id="cal-info-today" class="cal-info-block cal-info-today-block">
+                            <div class="cal-info-icon"><i class="fas fa-calendar-day"></i></div>
+                            <div class="cal-info-content">
+                                <span class="cal-info-label">Hoje</span>
+                                <span id="cal-today-date" class="cal-info-value">--</span>
+                            </div>
+                        </div>
+                        <div id="cal-info-holiday" class="cal-info-block cal-info-holiday-block" style="display:none;">
+                            <div class="cal-info-icon"><i class="fas fa-star"></i></div>
+                            <div class="cal-info-content">
+                                <span class="cal-info-label">Feriado Hoje</span>
+                                <span id="cal-holiday-name" class="cal-info-value">--</span>
+                            </div>
+                        </div>
+                        <div id="cal-info-next-holiday" class="cal-info-block cal-info-next-block">
+                            <div class="cal-info-icon"><i class="fas fa-flag"></i></div>
+                            <div class="cal-info-content">
+                                <span class="cal-info-label">Próximo Feriado</span>
+                                <span id="cal-next-holiday-name" class="cal-info-value">--</span>
+                            </div>
+                        </div>
+                        <div id="cal-info-tip" class="cal-info-block cal-info-tip-block">
+                            <div class="cal-info-icon"><i class="fas fa-lightbulb"></i></div>
+                            <div class="cal-info-content">
+                                <span class="cal-info-label">Dica do Mês</span>
+                                <span id="cal-month-tip" class="cal-info-value">--</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="calendar-container" id="calendar-main-container">
+                        <div class="calendar-header">
+                            <button id="calendar-prev-month-btn" class="calendar-nav-btn" aria-label="Mês anterior"><i class="fas fa-chevron-left"></i></button>
+                            <h2 id="calendar-current-month-year"></h2>
+                            <div style="display:flex;align-items:center;gap:8px;">
+                                <button id="calendar-today-btn" class="calendar-nav-btn calendar-today-btn" title="Ir para hoje" aria-label="Ir para hoje"><i class="fas fa-dot-circle"></i></button>
+                                <button id="calendar-fullscreen-btn" class="calendar-nav-btn" title="Tela cheia" aria-label="Tela cheia do calendário"><i class="fas fa-expand"></i></button>
+                                <button id="calendar-next-month-btn" class="calendar-nav-btn" aria-label="Próximo mês"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                        <div class="calendar-weekdays">
+                            <div>Dom</div><div>Seg</div><div>Ter</div><div>Qua</div><div>Qui</div><div>Sex</div><div>Sáb</div>
+                        </div>
+                        <div id="calendar-dates-grid" class="calendar-dates-grid"></div>
+                        <div id="calendar-event-tooltip" class="calendar-event-tooltip"></div>
+
+                        <!-- Legenda -->
+                        <div class="calendar-legend">
+                            <span class="legend-item"><span class="legend-dot legend-today"></span> Hoje</span>
+                            <span class="legend-item"><span class="legend-dot legend-holiday"></span> Feriado Nacional</span>
+                        </div>
+                    </div>
+                </section>
+                <section id="semana-do-ano" class="tab-content">
+                    <div class="display-container main-display-container">
+                        <div id="data-atual-semana-tab" class="data-display"></div>
+                        <div id="hora-atual-semana-tab" class="hora-display">00:00:00</div>
+                    </div>
+                    <div class="week-of-year-content-tab">
+                        <div id="week-number-value-tab" class="week-number-highlight-tab">--</div>
+                        <div class="week-info-text-tab">
+                            <span class="week-label-tab">Semana do Ano</span>
+                            <span class="week-date-details-tab">Início: <span id="week-start-date-tab">dd/mm</span> - Fim: <span id="week-end-date-tab">dd/mm</span></span>
+                        </div>
+                        <div id="day-of-year-bar" class="day-of-year-bar">
+                            <span id="day-of-year-text" class="day-of-year-text">-- de --</span>
+                        </div>
+                    </div>
+                </section>
+                <section id="pomodoro-timer" class="tab-content">
+                    <div class="display-container main-display-container">
+                        <div id="data-atual-pomodoro-tab" class="data-display"></div>
+                        <div id="hora-atual-pomodoro-tab" class="hora-display">00:00:00</div>
+                    </div>
+                    <div class="pomodoro-content-wrapper">
+                        <div class="pomodoro-title-row">
+                            <h3 class="pomodoro-main-title">Temporizador Pomodoro</h3>
+                            <button id="pomodoro-info-btn" class="pomodoro-info-btn" aria-label="O que é Pomodoro?" title="O que é a Técnica Pomodoro?">?</button>
+                        </div>
+                        <div id="pomodoro-info-panel" class="pomodoro-info-panel" style="display:none;">
+                            <div class="pip-header">
+                                <span class="pip-icon">🍅</span>
+                                <strong class="pip-title">A Técnica Pomodoro</strong>
+                            </div>
+                            <p class="pip-text">Criada por <strong>Francesco Cirillo</strong> no final dos anos 1980, a técnica leva o nome do timer de cozinha em formato de tomate (<em>pomodoro</em> em italiano) que ele usava na universidade.</p>
+                            <div class="pip-steps">
+                                <div class="pip-step"><span class="pip-step-num">1</span><span>Foque por <strong>25 min</strong> em uma tarefa</span></div>
+                                <div class="pip-step"><span class="pip-step-num">2</span><span>Faça uma <strong>pausa curta</strong> de 3–5 min</span></div>
+                                <div class="pip-step"><span class="pip-step-num">3</span><span>Repita 4 vezes, depois uma <strong>pausa longa</strong> de 15 min</span></div>
+                            </div>
+                            <div class="pip-who">
+                                <span class="pip-who-tag"><i class="fas fa-user-graduate"></i> Estudantes</span>
+                                <span class="pip-who-tag"><i class="fas fa-laptop-code"></i> Desenvolvedores</span>
+                                <span class="pip-who-tag"><i class="fas fa-briefcase"></i> Profissionais</span>
+                                <span class="pip-who-tag"><i class="fas fa-pen"></i> Escritores</span>
+                            </div>
+                            <p class="pip-benefit">Comprovado para <strong>reduzir a procrastinação</strong>, melhorar o foco e evitar o esgotamento mental.</p>
+                        </div>
+                        <div id="pomodoro-status-display" class="pomodoro-status">Pronto para começar!</div>
+                        <div id="pomodoro-time-display" class="pomodoro-timer-display">25:00</div>
+                        <div class="pomodoro-controls">
+                            <button id="pomodoro-start-btn" class="pomodoro-btn pomodoro-btn-start">Iniciar</button>
+                            <button id="pomodoro-pause-btn" class="pomodoro-btn pomodoro-btn-pause" style="display:none;">Pausar</button>
+                            <button id="pomodoro-reset-btn" class="pomodoro-btn pomodoro-btn-reset">Resetar Ciclo</button>
+                        </div>
+                        <div class="pomodoro-info">
+                            <p>Pomodoros (neste ciclo): <span id="pomodoros-in-cycle-count">0</span> / 4</p>
+                            <p>Total de Pomodoros: <span id="pomodoro-total-completed-count">0</span></p>
+                            <p>Próxima Sessão: <span id="pomodoro-next-session-info">Trabalho</span></p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content-wrapper">
+            <p>&copy; 2025 ashoras. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <audio id="alarme-som" preload="auto" loop></audio>
+    <audio id="temporizador-som" preload="auto"></audio>
+    <audio id="alarme-preview-som" preload="auto"></audio>
+    
+    <div id="flip-clock-screensaver" class="screensaver-container" style="display: none;">
+        <div class="flip-clock-display-area">
+            <div class="flip-digit-group">
+                <span id="fcs-h1" class="digit">0</span><span id="fcs-h2" class="digit">0</span>
+            </div>
+            <span class="flip-separator">:</span>
+            <div class="flip-digit-group">
+                <span id="fcs-m1" class="digit">0</span><span id="fcs-m2" class="digit">0</span>
+            </div>
+        </div>
+        <div class="screensaver-exit-message">Mova o mouse ou pressione uma tecla para sair</div>
+        <div id="screensaver-date" class="screensaver-date"></div>
+    </div>
+
+    <!-- EmailJS — notificação silenciosa de buscas sem resultado -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

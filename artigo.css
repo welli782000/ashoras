@@ -1,0 +1,115 @@
+/* Estilos para as páginas de artigo */
+
+.artigo-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--cor-superficie);
+    border-radius: var(--radius-padrao);
+    box-shadow: var(--sombra-padrao);
+}
+
+.artigo-container h1 {
+    font-size: 2.8em;
+    color: var(--cor-primaria);
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.artigo-container .intro {
+    font-size: 1.2em;
+    color: var(--cor-texto-secundario);
+    text-align: center;
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+.artigo-secao {
+    margin-bottom: 40px;
+}
+
+.artigo-secao h2 {
+    font-size: 1.8em;
+    color: var(--cor-texto-principal);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--cor-borda-geral);
+}
+
+.artigo-secao p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    color: var(--cor-texto-secundario);
+}
+
+.artigo-secao p strong {
+    color: var(--cor-texto-principal);
+    font-weight: 600;
+}
+
+.artigo-imagem {
+    width: 100%;
+    border-radius: var(--radius-padrao-menor);
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.destaque {
+    background-color: var(--cor-superficie-secundaria);
+    padding: 15px;
+    border-radius: var(--radius-padrao-menor);
+    border-left: 4px solid var(--cor-primaria);
+    font-weight: 500;
+}
+
+.curiosidade, .conclusao {
+    padding: 20px;
+    border-radius: var(--radius-padrao);
+    background-color: var(--cor-superficie-secundaria);
+}
+
+.curiosidade h3, .conclusao h3 {
+    color: var(--cor-primaria);
+    margin-bottom: 10px;
+}
+
+/* Animações */
+.imagem-container {
+    overflow: hidden; /* Garante que a imagem não saia dos limites */
+}
+
+.anim-float {
+    animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.anim-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}
+/* Keyframe já existe no style.css, mas garantimos aqui */
+@keyframes fadeIn { 
+    from { opacity: 0; transform: translateY(20px); } 
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.anim-twinkle {
+    animation: twinkle 4s linear infinite;
+}
+@keyframes twinkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+}
+
+.anim-spin {
+    animation: spin 30s linear infinite;
+}
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}

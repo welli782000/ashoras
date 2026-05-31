@@ -1,0 +1,1105 @@
+/* Definição das Variáveis de Tema Globais (Fallback e Estrutura) */
+:root {
+    --radius-padrao: 8px;
+    --radius-padrao-menor: 6px;
+    --sombra-padrao: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --cor-texto-botao: #FFFFFF;
+    --transicao-padrao: all 0.3s ease-in-out;
+    --main-content-max-width: 1600px;
+    --site-horizontal-padding: 25px;
+}
+/* Estilos Base */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    display: flex; flex-direction: column; min-height: 100vh;
+    background-color: var(--cor-fundo-principal);
+    color: var(--cor-texto-principal);
+}
+/* --- Tema Escuro (Padrão e Base) --- */
+body, body.theme-dark {
+    --cor-fundo-principal: #161A1D; --cor-superficie: #1F2428; --cor-superficie-secundaria: #2A2F33;
+    --cor-display-fundo: #121517; --cor-texto-principal: #E1E6EA; --cor-texto-secundario: #B0B8BF;
+    --cor-primaria: #FF8C00; --cor-primaria-rgb: 255, 140, 0; --cor-primaria-hover: #E67E00;
+    --cor-secundaria: #00A99D; --cor-secundaria-hover: #008A7F; --cor-destaque-vermelho: #E74C3C;
+    --cor-destaque-vermelho-hover: #C0392B; --cor-input-fundo: #2A2F33; --cor-input-borda: #4B555E;
+    --cor-borda-geral: rgba(var(--cor-primaria-rgb), 0.25); --cor-header-footer-bg: #0E1114;
+    --cor-texto-config-painel: #E1E6EA; --cor-fundo-config-painel: #2d343a; --cor-botao-config-hover: #3E454B;
+}
+/* --- NOVO TEMA: Google System Pro (Frio e Fluido) --- */
+body.theme-google-pro {
+    /* Fundo geral: Cinza "Seasalt" muito claro, típico de dashboards modernos */
+    --cor-fundo-principal: #F8F9FA; 
+
+    /* Superfícies: Branco puro para cartões, criando o efeito de camadas (elevations) */
+    --cor-superficie: #FFFFFF; 
+    --cor-superficie-secundaria: #E8F0FE; /* Azul Google bem suave para áreas de seleção */
+    
+    /* Display: Fundo limpo para gráficos e relógios */
+    --cor-display-fundo: #FFFFFF;
+
+    /* Textos: Tons de cinza chumbo (Deep Slate) para alta legibilidade */
+    --cor-texto-principal: #202124;
+    --cor-texto-secundario: #5F6368;
+
+    /* Cor primária: O azul icônico de sistemas profissionais (Google Blue) */
+    --cor-primaria: #1A73E8;
+    --cor-primaria-rgb: 26, 115, 232;
+    --cor-primaria-hover: #1765CC;
+
+    /* Cor secundária: Um azul-acinzentado frio para botões de suporte */
+    --cor-secundaria: #4285F4;
+    --cor-secundaria-hover: #3B78DB;
+
+    /* Cor de destaque para alertas: Vermelho sistema equilibrado */
+    --cor-destaque-vermelho: #D93025;
+    --cor-destaque-vermelho-hover: #B2271E;
+    
+    /* Estilos dos campos de input: Bordas finas e fundo neutro */
+    --cor-input-fundo: #F1F3F4;
+    --cor-input-borda: #DADCE0;
+    
+    /* Borda geral: Muito sutil para não sobrecarregar o visual */
+    --cor-borda-geral: rgba(60, 64, 67, 0.1);
+
+    /* Header e Footer: Brancos com uma sombra leve para parecerem flutuar */
+    --cor-header-footer-bg: #FFFFFF;
+
+    /* Painel de Configuração */
+    --cor-texto-config-painel: #3C4043;
+    --cor-fundo-config-painel: #FFFFFF;
+    --cor-botao-config-hover: #F1F3F4;
+}
+
+/* Ajustes extras de fluidez para o tema Google Pro */
+body.theme-google-pro .config-panel {
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(60, 64, 67, 0.15);
+}
+
+body.theme-google-pro .theme-btn {
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+body.theme-google-pro .site-header {
+    border-bottom: 1px solid var(--cor-input-borda);
+    box-shadow: none; /* Estilo mais plano e moderno */
+}
+/* Estrutura Geral: Header, Main, Footer, Wrappers e Container */
+.site-header, .site-footer {
+    background-color: var(--cor-header-footer-bg);
+    color: var(--cor-texto-principal);
+    width: 100%;
+    /* Sombra suave que combina com o tema pink */
+    box-shadow: 0 2px 4px rgba(255, 10, 84, 0.05);
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.site-footer {
+    margin-top: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Estilo para o relógio no cabeçalho */
+.header-clock {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--cor-texto-secundario);
+    letter-spacing: 2px;
+    margin: 0 20px 0 auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.header-clock.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Opcional: Estilo para usar a cor de destaque nos inputs focados */
+input:focus, textarea:focus {
+    border-color: var(--cor-input-borda-foco) !important;
+    box-shadow: 0 0 5px var(--cor-input-borda-foco) !important;
+}
+
+/* Estrutura Geral: Header, Main, Footer, Wrappers e Container */
+.site-header, .site-footer {
+    background-color: var(--cor-header-footer-bg);
+    color: var(--cor-texto-principal);
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.site-footer {
+    margin-top: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Estilo para o relógio no cabeçalho */
+.header-clock {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--cor-texto-secundario);
+    letter-spacing: 2px;
+    margin: 0 20px 0 auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.header-clock.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Opcional: Estilo para usar a cor de destaque nos inputs focados */
+input:focus, textarea:focus {
+    border-color: var(--cor-input-borda-foco) !important;
+    box-shadow: 0 0 5px var(--cor-input-borda-foco) !important;
+}
+
+/* O restante do seu código CSS permanece o mesmo, pois ele apenas consome as variáveis acima. */
+
+/* Estrutura Geral: Header, Main, Footer, Wrappers e Container */
+.site-header, .site-footer {
+    background-color: var(--cor-header-footer-bg);
+    color: var(--cor-texto-principal);
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.site-footer {
+    margin-top: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Estilo para o relógio no cabeçalho */
+.header-clock {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--cor-texto-secundario);
+    letter-spacing: 2px;
+    margin: 0 20px 0 auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.header-clock.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Estilo para usar a cor de destaque nos inputs focados */
+input:focus, textarea:focus {
+    border-color: var(--cor-input-borda-foco) !important;
+    box-shadow: 0 0 5px var(--cor-input-borda-foco) !important;
+}
+
+/* Estrutura Geral: Header, Main, Footer, Wrappers e Container */
+/* (O restante do seu código CSS permanece o mesmo) */
+
+.site-header, .site-footer {
+    background-color: var(--cor-header-footer-bg);
+    color: var(--cor-texto-principal);
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.site-footer {
+    margin-top: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Estilo para o relógio no cabeçalho */
+.header-clock {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--cor-texto-secundario);
+    letter-spacing: 2px;
+    margin: 0 20px 0 auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.header-clock.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Opcional: Adicione um estilo para usar a cor de destaque nos inputs focados */
+input:focus, textarea:focus {
+    border-color: var(--cor-input-borda-foco) !important;
+    box-shadow: 0 0 5px var(--cor-input-borda-foco) !important;
+}
+
+/* Estrutura Geral: Header, Main, Footer, Wrappers e Container */
+/* (O restante do seu código CSS permanece o mesmo, pois ele utiliza as variáveis definidas acima) */
+
+.site-header, .site-footer { 
+    background-color: var(--cor-header-footer-bg); 
+    color: var(--cor-texto-principal); 
+    width: 100%; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sombra suave para o novo tema */
+    padding-top: 15px; 
+    padding-bottom: 15px; 
+}
+.site-header { 
+    position: sticky; 
+    top: 0; 
+    z-index: 1000; 
+}
+.site-footer { 
+    margin-top: auto; 
+    padding-top: 20px; 
+    padding-bottom: 20px; 
+}
+
+/* Estilo para o novo relógio no cabeçalho */
+.header-clock {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--cor-texto-secundario);
+    letter-spacing: 2px;
+    margin: 0 20px 0 auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.header-clock.visible {
+    opacity: 1;
+    visibility: visible;
+}
+.header-content-wrapper, .footer-content-wrapper, .container { max-width: var(--main-content-max-width); margin-left: auto; margin-right: auto; padding-left: var(--site-horizontal-padding); padding-right: var(--site-horizontal-padding); width: 100%; }
+.header-content-wrapper { display: flex; justify-content: space-between; align-items: center; }
+.footer-content-wrapper { text-align: center; }
+.logo { font-size: 1.8em; font-weight: bold; color: var(--cor-primaria); }
+.main-application-area { flex-grow: 1; width: 100%; padding-top: 25px; padding-bottom: 25px; }
+.container { display: flex; gap: 20px; }
+/* Sidebar */
+.sidebar { background-color: var(--cor-superficie-secundaria); padding: 20px; border-radius: var(--radius-padrao); width: 240px; flex-shrink: 0; box-shadow: var(--sombra-padrao); height: fit-content; position: sticky; top: 90px; }
+.sidebar h2 { color: var(--cor-texto-principal); margin-bottom: 20px; font-size: 1.5em; text-align: center; padding-bottom: 10px; border-bottom: 1px solid var(--cor-borda-geral); }
+.sidebar ul { list-style: none; }
+.sidebar ul li a { display: block; padding: 12px 15px; color: var(--cor-texto-secundario); text-decoration: none; border-radius: var(--radius-padrao-menor); transition: var(--transicao-padrao); margin-bottom: 5px; font-weight: 500; }
+.sidebar ul li a:hover { background-color: var(--cor-superficie); color: var(--cor-primaria); }
+.sidebar ul li.active a { background-color: var(--cor-primaria); color: var(--cor-texto-botao); font-weight: bold; }
+
+
+/* Área de Conteúdo Principal das Abas */
+.content { flex-grow: 1; padding: 20px; background-color: var(--cor-fundo-principal); border-radius: var(--radius-padrao); overflow-x: hidden; }
+.tab-content { display: none; animation: fadeIn 0.5s; }
+.tab-content.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+/* Displays de Hora e Data nas Abas */
+.display-container { text-align: center; margin-bottom: 20px; padding: 15px; background-color: var(--cor-display-fundo); border-radius: var(--radius-padrao); box-shadow: inset 0 0 10px rgba(0,0,0,0.2); position: relative; }
+.hora-display { font-size: 3em; font-weight: bold; color: var(--cor-texto-principal); letter-spacing: 2px; }
+.data-display { font-size: 1.1em; color: var(--cor-texto-secundario); margin-bottom: 5px; }
+/* Estilos para Componentes (Botões, Inputs, etc.) */
+button, .config-option-btn, .theme-btn, .pomodoro-btn { cursor: pointer; padding: 10px 15px; border: none; border-radius: var(--radius-padrao-menor); font-size: 1em; transition: var(--transicao-padrao); background-color: var(--cor-primaria); color: var(--cor-texto-botao); font-weight: 500; }
+button:hover, .config-option-btn:hover, .theme-btn:hover, .pomodoro-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+button:active, .config-option-btn:active, .theme-btn:active, .pomodoro-btn:active { transform: translateY(0px); opacity: 1; }
+input[type="number"], input[type="text"], select { padding: 10px; border-radius: var(--radius-padrao-menor); border: 1px solid var(--cor-input-borda); background-color: var(--cor-input-fundo); color: var(--cor-texto-principal); font-size: 1em; }
+input[type="number"]:focus, input[type="text"]:focus, select:focus { outline: none; border-color: var(--cor-primaria); box-shadow: 0 0 0 2px rgba(var(--cor-primaria-rgb), 0.25); }
+label { margin-bottom: 5px; display: inline-block; color: var(--cor-texto-secundario); }
+.controles { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+/* Painel de Configuração */
+.config-toggle-btn { background: none; border: none; font-size: 1.6em; color: var(--cor-texto-principal); padding: 5px 10px; cursor: pointer; }
+.config-toggle-btn:hover { color: var(--cor-primaria); }
+.config-panel { position: fixed; top: 0; width: 330px; right: -330px; height: 100%; background-color: var(--cor-fundo-config-painel); color: var(--cor-texto-config-painel); padding: 20px; box-shadow: -5px 0 15px rgba(0,0,0,0.25); transition: right 0.3s ease-in-out; z-index: 1001; overflow-y: auto; }
+.config-panel.active { right: 0; }
+.config-panel h4 { margin-top: 15px; margin-bottom: 10px; padding-bottom: 5px; border-bottom: 1px solid var(--cor-borda-geral); color: var(--cor-texto-principal); }
+.config-panel hr { border: 0; height: 1px; background-color: var(--cor-borda-geral); margin: 15px 0; opacity: 0.2; }
+.theme-buttons { display: flex; flex-direction: column; gap: 8px; }
+.theme-btn { width: 100%; text-align: left; background-color: var(--cor-superficie); color: var(--cor-texto-config-painel); }
+.theme-btn.active-theme { background-color: var(--cor-primaria); color: var(--cor-texto-botao); font-weight: bold; }
+.theme-btn:hover { background-color: var(--cor-botao-config-hover); }
+.config-option-btn { width: 100%; text-align: left; margin-bottom: 8px; background-color: var(--cor-superficie); color: var(--cor-texto-config-painel); }
+.config-option-btn:hover { background-color: var(--cor-botao-config-hover); }
+.config-option-group { margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between;}
+.config-option-group label { margin-right: 10px; color: var(--cor-texto-secundario); flex-grow: 1;}
+.config-option-group input[type="checkbox"] { transform: scale(1.1); }
+/* Relógios Mundiais */
+#relogio .world-clocks-section { margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--cor-borda-geral); width: 100%; box-sizing: border-box; }
+#relogio .world-clocks-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 15px; margin-bottom: 20px; }
+#relogio .world-clock-item { background-color: var(--cor-superficie); padding: 15px; border-radius: var(--radius-padrao-menor); text-align: center; box-shadow: var(--sombra-padrao); word-break: break-word; }
+#relogio .world-clock-item .city-name { font-weight: bold; display: block; margin-bottom: 5px; color: var(--cor-primaria); }
+#relogio .world-clock-item .city-time { font-size: 1.4em; color: var(--cor-texto-principal); }
+#relogio .search-world-clock { display: flex; gap: 10px; margin-bottom: 10px; flex-wrap: nowrap; align-items: center; }
+#relogio .search-world-clock input[type="text"] { flex-grow: 1; min-width: 100px; }
+#relogio .search-world-clock button { white-space: nowrap; flex-shrink: 0; background-color: var(--cor-secundaria); }
+#relogio .search-world-clock button:hover { background-color: var(--cor-secundaria-hover); }
+.city-search-wrapper { position: relative; flex-grow: 1; display: flex; align-items: center; }
+.city-search-wrapper input[type="text"] { width: 100%; padding-right: 32px; }
+#city-search-clear-btn { position: absolute; right: 8px; background: none !important; border: none !important; color: var(--cor-texto-secundario); font-size: 1rem; cursor: pointer; padding: 0 !important; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50% !important; transition: background 0.15s, color 0.15s; box-shadow: none !important; }
+#city-search-clear-btn:hover { background: var(--cor-destaque-vermelho) !important; color: #fff !important; }
+#searched-city-result.error-message { background: rgba(220,53,69,0.08); border: 1px solid var(--cor-destaque-vermelho); border-radius: var(--radius-padrao-menor); padding: 10px 14px; color: var(--cor-destaque-vermelho); font-style: normal; font-weight: 600; margin-top: 8px; text-align: center; }
+/* Despertador, Cronômetro, Temporizador */
+.inputs-despertador, .inputs-temporizador { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+.inputs-despertador label, .inputs-temporizador label { white-space: nowrap; }
+.inputs-despertador input[type="number"], .inputs-temporizador input[type="number"] { width: 70px; text-align: center; }
+.inputs-despertador select { min-width: 180px; }
+/* NOVO ESTILO PARA O BOTÃO DE PRÉ-VISUALIZAÇÃO */
+.preview-som-btn {
+    background-color: var(--cor-superficie-secundaria);
+    color: var(--cor-texto-secundario);
+    padding: 10px;
+    width: 42px; /* Largura igual à altura */
+    height: 42px;
+    flex-shrink: 0;
+    line-height: 1;
+}
+.preview-som-btn:hover {
+    background-color: var(--cor-botao-config-hover);
+    color: var(--cor-primaria);
+}
+.preview-som-btn i {
+    font-size: 1.1em;
+}
+.separador-tempo { font-size: 1.5em; color: var(--cor-texto-secundario); }
+.status-alarme-container { background-color: transparent; box-shadow: none; padding: 0; }
+#despertador-status { font-size: 1.2em; color: var(--cor-secundaria); font-weight: 500; min-height: 1.5em; }
+.alarme-popup { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: var(--cor-fundo-principal); padding: 30px; border-radius: var(--radius-padrao); box-shadow: 0 0 30px rgba(var(--cor-primaria-rgb), 0.5); z-index: 1002; text-align: center; border: 2px solid var(--cor-primaria); min-width: 300px; }
+.alarme-popup h2 { margin-bottom: 10px; color: var(--cor-primaria); }
+.alarme-popup #alarme-tocando-hora { font-size: 2em; margin-bottom: 20px; }
+#cronometro-display, #temporizador-display { font-size: 2.5em; }
+/* =========================================
+   CALENDÁRIO — Painel de Informações
+   ========================================= */
+
+/* Painel superior de cards informativos */
+.calendar-info-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.cal-info-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--cor-superficie);
+    border-radius: var(--radius-padrao);
+    padding: 14px 16px;
+    border-left: 4px solid var(--cor-primaria);
+    box-shadow: var(--sombra-padrao);
+    animation: calCardIn 0.4s ease both;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.cal-info-block:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(var(--cor-primaria-rgb), 0.18); }
+
+@keyframes calCardIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.cal-info-holiday-block { border-left-color: #f0a500; background: linear-gradient(135deg, var(--cor-superficie), rgba(240,165,0,0.07)); }
+.cal-info-next-block    { border-left-color: var(--cor-secundaria); }
+.cal-info-tip-block     { border-left-color: #7c5cfc; }
+
+.cal-info-icon {
+    font-size: 1.5em;
+    color: var(--cor-primaria);
+    min-width: 28px;
+    text-align: center;
+}
+.cal-info-holiday-block .cal-info-icon { color: #f0a500; }
+.cal-info-next-block    .cal-info-icon { color: var(--cor-secundaria); }
+.cal-info-tip-block     .cal-info-icon { color: #7c5cfc; }
+
+.cal-info-content { display: flex; flex-direction: column; min-width: 0; }
+.cal-info-label { font-size: 0.72em; text-transform: uppercase; letter-spacing: 0.06em; color: var(--cor-texto-secundario); font-weight: 600; margin-bottom: 2px; }
+.cal-info-value { font-size: 0.92em; font-weight: 600; color: var(--cor-texto-principal); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Pulso no card de feriado atual */
+.cal-info-holiday-block { position: relative; overflow: hidden; }
+.cal-info-holiday-block::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(240,165,0,0.08), transparent);
+    animation: calShimmer 2.5s infinite;
+}
+@keyframes calShimmer {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* =========================================
+   CALENDÁRIO — Container Principal
+   ========================================= */
+.calendar-container { background-color: var(--cor-superficie); padding: 20px; border-radius: var(--radius-padrao); box-shadow: var(--sombra-padrao); }
+.calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.calendar-header h2 { color: var(--cor-primaria); font-size: 1.5em; }
+.calendar-nav-btn { background: none; border: none; color: var(--cor-primaria); font-size: 1.3em; padding: 5px 8px; cursor: pointer; border-radius: var(--radius-padrao-menor); transition: var(--transicao-padrao); }
+.calendar-nav-btn:hover { color: var(--cor-primaria-hover); background-color: rgba(var(--cor-primaria-rgb), 0.1); }
+.calendar-today-btn { font-size: 1em !important; }
+.calendar-weekdays, .calendar-dates-grid { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; gap: 5px; }
+.calendar-weekdays div { font-weight: bold; padding: 8px 0; color: var(--cor-texto-secundario); }
+.calendar-dates-grid .date-cell { padding: 10px 5px; border-radius: var(--radius-padrao-menor); transition: var(--transicao-padrao); min-height: 40px; display: flex; align-items: center; justify-content: center; cursor: default; }
+.calendar-dates-grid .date-cell:hover:not(.not-current-month):not(.today):not(.event-holiday) { background-color: var(--cor-superficie-secundaria); color: var(--cor-primaria); }
+.calendar-dates-grid .not-current-month { opacity: 0.4; }
+.calendar-dates-grid .today { background-color: var(--cor-primaria); color: var(--cor-texto-botao); font-weight: bold; box-shadow: 0 0 0 3px rgba(var(--cor-primaria-rgb), 0.3); }
+.calendar-dates-grid .event-holiday { background-color: var(--cor-secundaria); color: var(--cor-texto-botao); font-weight: 600; }
+.calendar-dates-grid .today.event-holiday { background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria)); box-shadow: 0 0 0 3px rgba(var(--cor-primaria-rgb),0.35); }
+.calendar-dates-grid .event-important { border: 2px solid var(--cor-destaque-vermelho); color: var(--cor-destaque-vermelho); }
+.calendar-event-tooltip { position: fixed; background-color: var(--cor-header-footer-bg); color: var(--cor-texto-principal); padding: 6px 12px; border-radius: 6px; font-size: 0.85em; z-index: 9999; pointer-events: none; white-space: nowrap; box-shadow: 0 4px 16px rgba(0,0,0,0.3); border: 1px solid rgba(var(--cor-primaria-rgb),0.2); }
+
+/* Legenda */
+.calendar-legend { display: flex; gap: 16px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--cor-borda-geral); flex-wrap: wrap; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.8em; color: var(--cor-texto-secundario); }
+.legend-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.legend-today   { background-color: var(--cor-primaria); }
+.legend-holiday { background-color: var(--cor-secundaria); }
+
+/* =========================================
+   CALENDÁRIO — Modo Tela Cheia
+   ========================================= */
+#calendar-fullscreen-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    background-color: var(--cor-fundo-principal);
+    flex-direction: column;
+    overflow: hidden;
+}
+#calendar-fullscreen-overlay.active { display: flex; }
+
+.cal-fs-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 28px;
+    background-color: var(--cor-header-footer-bg);
+    border-bottom: 2px solid rgba(var(--cor-primaria-rgb), 0.3);
+    flex-shrink: 0;
+}
+.cal-fs-header h2 { font-size: 1.6em; color: var(--cor-primaria); margin: 0; }
+.cal-fs-header .cal-fs-nav { display: flex; align-items: center; gap: 10px; }
+.cal-fs-close-btn {
+    background: rgba(var(--cor-primaria-rgb), 0.15);
+    border: 1px solid rgba(var(--cor-primaria-rgb), 0.4);
+    color: var(--cor-primaria);
+    padding: 8px 16px;
+    border-radius: var(--radius-padrao-menor);
+    cursor: pointer;
+    font-size: 0.95em;
+    display: flex; align-items: center; gap: 6px;
+    transition: var(--transicao-padrao);
+}
+.cal-fs-close-btn:hover { background: rgba(var(--cor-primaria-rgb), 0.28); }
+
+.cal-fs-body {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Coluna lateral — informações no modo FS */
+.cal-fs-sidebar {
+    background-color: var(--cor-superficie);
+    border-right: 1px solid var(--cor-borda-geral);
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: auto;
+}
+.cal-fs-date-big {
+    text-align: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--cor-borda-geral);
+}
+.cal-fs-date-big .fs-day-num { font-size: 5em; font-weight: 800; color: var(--cor-primaria); line-height: 1; }
+.cal-fs-date-big .fs-weekday { font-size: 1.1em; color: var(--cor-texto-secundario); text-transform: capitalize; margin-top: 4px; }
+.cal-fs-date-big .fs-month-year { font-size: 0.9em; color: var(--cor-texto-secundario); opacity: 0.8; }
+
+.cal-fs-card {
+    background-color: var(--cor-superficie-secundaria);
+    border-radius: var(--radius-padrao);
+    padding: 14px;
+    border-left: 3px solid var(--cor-primaria);
+}
+.cal-fs-card.holiday-card  { border-left-color: #f0a500; }
+.cal-fs-card.tip-card      { border-left-color: #7c5cfc; }
+.cal-fs-card.next-card     { border-left-color: var(--cor-secundaria); }
+.cal-fs-card-title { font-size: 0.72em; text-transform: uppercase; letter-spacing: 0.06em; color: var(--cor-texto-secundario); margin-bottom: 6px; font-weight: 700; }
+.cal-fs-card-content { font-size: 0.95em; color: var(--cor-texto-principal); font-weight: 500; }
+
+/* Coluna principal — calendário grande no modo FS */
+.cal-fs-main {
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.cal-fs-main .calendar-weekdays div { font-size: 1em; padding: 12px 0; }
+.cal-fs-main .calendar-dates-grid { flex: 1; }
+.cal-fs-main .calendar-dates-grid .date-cell { min-height: 70px; font-size: 1.15em; align-items: flex-start; padding: 10px; position: relative; }
+
+/* Célula com feriado — número em cima, nome em baixo */
+.cal-fs-main .calendar-dates-grid .date-cell:has(.holiday-label) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 6px 4px;
+}
+
+.cal-fs-main .calendar-dates-grid .date-cell .holiday-label {
+    font-size: 0.58em;
+    display: block;
+    line-height: 1.2;
+    opacity: 0.9;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    text-align: center;
+    word-break: break-word;
+}
+.cal-fs-main .calendar-weekdays,
+.cal-fs-main .calendar-dates-grid { gap: 6px; }
+.cal-fs-main .calendar-dates-grid { display: grid; grid-template-columns: repeat(7,1fr); grid-template-rows: repeat(6,1fr); height: 100%; }
+/* Aba Semana do Ano */
+.week-of-year-content-tab { text-align: center; padding: 20px; background-color: var(--cor-superficie); border-radius: var(--radius-padrao); box-shadow: var(--sombra-padrao); }
+#week-number-value-tab { font-size: 4.5em; font-weight: bold; color: var(--cor-primaria); display: block; margin-bottom: 10px; line-height: 1.1; }
+.week-info-text-tab { font-size: 1.1em; color: var(--cor-texto-principal); }
+.week-label-tab { font-weight: 600; display: block; margin-bottom: 8px; font-size: 1.2em; }
+.week-date-details-tab { font-size: 1em; opacity: 0.85; display: block; }
+/* Aba Pomodoro */
+#pomodoro-timer .main-display-container { padding-bottom: 15px; margin-bottom: 20px; border-bottom: 1px solid var(--cor-borda-geral); }
+.pomodoro-content-wrapper { max-width: 500px; margin: 0 auto; padding: 20px; background-color: var(--cor-superficie); border-radius: var(--radius-padrao); box-shadow: var(--sombra-padrao); text-align: center; }
+.pomodoro-main-title { color: var(--cor-texto-principal); margin-bottom: 20px; font-size: 1.6em; }
+.pomodoro-status { font-size: 1.1em; color: var(--cor-primaria); margin-bottom: 10px; font-weight: 600; min-height: 1.5em; }
+.pomodoro-timer-display { font-size: 5em; font-weight: bold; color: var(--cor-texto-principal); margin-bottom: 25px; padding: 10px 0; background-color: var(--cor-display-fundo); border-radius: var(--radius-padrao-menor); }
+.pomodoro-controls { margin-bottom: 25px; display: flex; justify-content: center; gap: 15px; }
+.pomodoro-btn { min-width: 100px; }
+.pomodoro-btn-start { background-color: var(--cor-secundaria); } .pomodoro-btn-start:hover { background-color: var(--cor-secundaria-hover); }
+.pomodoro-btn-pause { background-color: var(--cor-primaria); } .pomodoro-btn-pause:hover { background-color: var(--cor-primaria-hover); }
+.pomodoro-btn-reset { background-color: var(--cor-destaque-vermelho); } .pomodoro-btn-reset:hover { background-color: var(--cor-destaque-vermelho-hover); }
+.pomodoro-info { font-size: 0.95em; color: var(--cor-texto-secundario); opacity: 0.9; line-height: 1.6; }
+.pomodoro-info p { margin-bottom: 5px; } .pomodoro-info span { font-weight: bold; color: var(--cor-primaria); }
+body.pomodoro-break-active #pomodoro-timer .pomodoro-timer-display { color: var(--cor-secundaria); }
+body.pomodoro-break-active #pomodoro-timer .pomodoro-status { color: var(--cor-secundaria); }
+
+/* --- ESTILOS DO PROTETOR DE TELA --- */
+.screensaver-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000; color: #fff; display: none; flex-direction: column; justify-content: flex-end; align-items: center; padding-bottom: 48px; z-index: 2000; background-size: cover; background-position: center; }
+.flip-clock-display-area { display: flex; align-items: center; font-family: 'Orbitron', sans-serif; }
+.flip-clock-display-area .digit-group { display: flex; }
+@keyframes blinkSeparator { 50% { opacity: 0; } }
+.screensaver-exit-message { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); font-size: 16px; color: rgba(255,255,255,0.7); background-color: rgba(0,0,0,0.6); padding: 5px 10px; border-radius: 5px; opacity: 0; transition: opacity 0.5s ease; }
+.screensaver-date { font-family: 'Orbitron', sans-serif; font-size: 1rem; color: rgba(255,255,255,0.75); margin-top: 8px; letter-spacing: 0.05em; text-align: center; }
+.wallpaper-selector { margin-top: 15px; padding: 10px; background-color: var(--cor-fundo-config-painel); border-radius: var(--radius-padrao); max-width: 260px; }
+.wallpaper-selector p { color: var(--cor-texto-config-painel); margin-bottom: 8px; font-weight: 500;}
+.wallpaper-thumbnails-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 8px; }
+.wallpaper-thumb { width: 100%; padding-bottom: 60%; background-size: cover; background-position: center; border-radius: 4px; cursor: pointer; border: 2px solid transparent; transition: var(--transicao-padrao); }
+.wallpaper-thumb:hover { border-color: var(--cor-primaria-hover); opacity: 0.8; }
+.wallpaper-thumb.active-wallpaper { border-color: var(--cor-primaria); box-shadow: 0 0 8px var(--cor-primaria); }
+.flip-clock-display-area .digit,
+.flip-clock-display-area .flip-separator { font-size: clamp(4vw, 6vw, 72px); font-weight: bold; color: var(--cor-primaria); }
+.flip-clock-display-area .digit { background-color: rgba(17, 17, 17, 0.6); padding: 15px 10px; margin: 0 5px; border-radius: 10px; min-width: 0.7em; text-align: center; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+.flip-clock-display-area .flip-separator { background: none; box-shadow: none; animation: blinkSeparator 1s infinite; }
+
+/* --- ESTILOS PARA O SLIDESHOW DE EVENTOS --- */
+.gallery-title 
+{ text-align: center; color: var(--cor-texto-principal); margin-bottom: 15px; font-size: 1.4em; font-weight: 600; }
+.event-slideshow-wrapper 
+{ margin-top: 0px; margin-bottom: 0px; padding: 0px; background-color: var(--cor-superficie); border-radius: var(--radius-padrao); box-shadow: var(--sombra-padrao); }
+.event-slideshow-container 
+{ position: relative; width: 100%; padding-top: 45%; overflow: hidden; border-radius: var(--radius-padrao-menor); }
+.event-slide 
+{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.4s ease-in-out; background-color: #333; }
+.event-slide.active-slide 
+{ opacity: 1; z-index: 10; }
+.event-slide .event-card-image-container
+ { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.event-slide img 
+{ width: 100%; height: 100%; object-fit: cover; }
+.event-slide .event-countdown-overlay
+ { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0) 100%); color: #fff; padding: 45px; text-align: center; font-size: 1.1em; font-weight: bold; display: flex; justify-content: center; gap: 20px; align-items: center; }
+.event-slide .event-countdown-overlay .countdown-item 
+{ display: flex; flex-direction: column; align-items: center; line-height: 1.1; }
+.event-slide .event-countdown-overlay .value 
+{ font-size: 2em; font-weight: bold; }
+.event-slide .event-countdown-overlay .unit-label
+{ font-size: 0.7em; opacity: 0.9; text-transform: uppercase; }
+.event-slide .event-countdown-overlay .expired-message
+{ font-size: 1.5em; font-style: italic; color: var(--cor-primaria); width: 100%; }
+.event-slide .event-card-info 
+{ position: absolute; top: 20px; left: 20px; right: 20px; text-align: left; background-color: rgba(0,0,0,0.5); padding: 10px; border-radius: var(--radius-padrao-menor); }
+.event-slide .event-title 
+{ font-size: 1.4em; color: #fff; margin: 0; font-weight: 600; }
+.slideshow-nav 
+{ position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(0, 0, 0, 0.4); color: white; border: none; padding: 10px 15px; border-radius: 50%; cursor: pointer; z-index: 20; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.slideshow-nav:hover 
+{ background-color: rgba(0, 0, 0, 0.7); transform: translateY(-50%) scale(1.1); }
+.slideshow-nav.prev 
+{ left: 15px; }
+.slideshow-nav.next 
+{ right: 15px; }
+.slideshow-dots-container
+ { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px; z-index: 20; }
+.slideshow-dot 
+{ width: 10px; height: 10px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.5); cursor: pointer; transition: background-color 0.3s; }
+.slideshow-dot:hover 
+{ background-color: rgba(255, 255, 255, 0.8); }
+.slideshow-dot.active-dot
+ { background-color: var(--cor-primaria); }
+
+/* --- ESTILOS DE TELA CHEIA (FULLSCREEN) - REFINADO --- */
+.module-fullscreen-btn { position: absolute; top: 12px; right: 12px; background-color: rgba(0, 0, 0, 0.2); color: rgba(255, 255, 255, 0.7); border: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; z-index: 25; display: flex; align-items: center; justify-content: center; font-size: 1em; opacity: 0; transition: all 0.3s ease; }
+.display-container:hover .module-fullscreen-btn,
+.event-slideshow-container:hover .module-fullscreen-btn { opacity: 1; }
+.module-fullscreen-btn:hover { background-color: rgba(0, 0, 0, 0.5); color: white; }
+
+/* MUDANÇA: Estilo geral para as seções em tela cheia */
+#despertador:fullscreen, #cronometro:fullscreen, #temporizador:fullscreen {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    background-color: var(--cor-fundo-principal); padding: 20px; gap: 25px;
+}
+#despertador:fullscreen .display-container, #cronometro:fullscreen .display-container, #temporizador:fullscreen .display-container {
+    background-color: transparent; box-shadow: none; margin: 0; padding: 0;
+}
+#despertador:fullscreen .hora-display, #cronometro:fullscreen .hora-display, #temporizador:fullscreen .hora-display {
+    font-size: clamp(80px, 15vw, 180px); font-weight: 700; line-height: 1;
+}
+#despertador:fullscreen .data-display { font-size: clamp(20px, 4vw, 35px); }
+
+/* MUDANÇA: Despertador em tela cheia */
+#despertador:fullscreen .inputs-despertador, #despertador:fullscreen .status-alarme-container {
+    display: flex; justify-content: center; align-items: center; gap: 15px;
+}
+#despertador:fullscreen .status-alarme-container { order: -1; }
+#despertador:fullscreen .inputs-despertador input, #despertador:fullscreen .inputs-despertador select {
+    font-size: 1.2em; padding: 12px;
+}
+#despertador:fullscreen .controles button { font-size: 1.2em; padding: 12px 24px; }
+
+/* MUDANÇA: Temporizador em tela cheia */
+#temporizador:fullscreen .inputs-temporizador {
+    display: flex; justify-content: center; align-items: center; gap: 15px;
+}
+#temporizador:fullscreen .inputs-temporizador input { font-size: 1.5em; width: 100px; padding: 10px; }
+#temporizador:fullscreen .inputs-temporizador label, #temporizador:fullscreen .inputs-temporizador .separador-tempo { font-size: 1.5em; }
+
+/* MUDANÇA: Controles do Cronômetro e Temporizador em tela cheia */
+#cronometro:fullscreen .controles button, #temporizador:fullscreen .controles button {
+    font-size: 1.5em; padding: 15px 30px;
+}
+
+/* Slideshow em tela cheia (mantido) */
+.event-slideshow-container:fullscreen .event-slide img { object-fit: contain; }
+
+/* --- Media Queries --- */
+@media (max-width: 992px) { .container { flex-direction: column; } .sidebar { width: 100%; margin-bottom: 20px; position: static; top: auto; } :root { --site-horizontal-padding: 20px; } }
+@media (max-width: 768px) { :root { --site-horizontal-padding: 15px; } .logo { font-size: 1.5em; } .hora-display { font-size: 2.5em; } .data-display { font-size: 1em; } #cronometro-display, #temporizador-display { font-size: 2em; } .config-panel { width: 280px; right: -280px; } .config-panel.active { right: 0; } #week-number-value-tab { font-size: 3.8em; } .week-info-text-tab, .week-label-tab { font-size: 1em; } #semana-do-ano .main-display-container { padding-bottom: 10px; margin-bottom: 15px; } .pomodoro-main-title { font-size: 1.4em; } .pomodoro-timer-display { font-size: 4em; } .pomodoro-btn { padding: 8px 15px; font-size: 0.95em; } .flip-clock-display-area .digit, .flip-clock-display-area .flip-separator { font-size: clamp(5vw, 7vw, 64px); } .screensaver-exit-message { font-size: 14px; } }
+@media (max-width: 480px) { :root { --site-horizontal-padding: 10px; } .logo { font-size: 1.3em; } .sidebar { padding: 15px; } .sidebar h2 { font-size: 1.3em; } .content { padding: 10px; } .hora-display { font-size: 2em; } .data-display { font-size: 0.9em; } #cronometro-display, #temporizador-display { font-size: 1.6em; } .config-panel { width: calc(100% - 20px); right: calc(-100% + 20px); max-width: 300px; } .config-panel.active { right: 0; } .inputs-despertador, .inputs-temporizador { flex-direction: column; align-items: stretch; gap: 8px; } .inputs-despertador > *, .inputs-temporizador > * { width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; } #week-number-value-tab { font-size: 3em; margin-bottom: 5px; } .week-info-text-tab, .week-label-tab { font-size: 0.9em; } .week-date-details-tab { font-size: 0.85em; } #semana-do-ano .main-display-container { padding-bottom: 8px; margin-bottom: 10px; } .pomodoro-content-wrapper { padding: 15px; } .pomodoro-main-title { font-size: 1.3em; margin-bottom: 15px; } .pomodoro-timer-display { font-size: 3.2em; margin-bottom: 20px; } .pomodoro-controls { flex-direction: column; gap: 10px; } .pomodoro-btn { width: 100%; } .pomodoro-info { font-size: 0.9em; } .flip-clock-display-area .digit, .flip-clock-display-area .flip-separator { font-size: clamp(6vw, 9vw, 56px); } } 
+
+/* Navegação do Cabeçalho para páginas secundárias */
+.main-nav {
+    display: flex;
+    gap: 25px;
+}
+.main-nav a {
+    color: var(--cor-texto-secundario);
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 500;
+    transition: color 0.3s;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+}
+.main-nav a:hover {
+    color: var(--cor-primaria);
+}
+.main-nav a.active {
+    color: var(--cor-primaria);
+    border-bottom-color: var(--cor-primaria);
+}
+.event-slide img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.event-info {
+    padding: 10px;
+}
+
+/* ESTILOS DO CONVERSOR DE FUSO */
+.top-converter-wrapper {
+    background: var(--cor-superficie);
+    padding: 20px;
+    border-radius: var(--radius-padrao);
+    margin-top: -20px;
+    margin-bottom: 25px;
+    border: 1px solid var(--cor-superficie-secundaria);
+}
+
+.converter-inputs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 10px;
+    border-radius: var(--radius-padrao-menor);
+    background: var(--cor-display-fundo);
+    color: var(--cor-texto-principal);
+    border: 1px solid var(--cor-superficie-secundaria);
+}
+
+.btn-primary-action {
+    background: #007bff; /* Ou a cor que você preferir */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--radius-padrao-menor);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.comparison-result-card {
+    margin-top: 20px;
+    padding: 15px;
+    background: var(--cor-display-fundo);
+    border-radius: var(--radius-padrao);
+}
+
+.comparison-display-grid {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.time-big {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.info-yellow-strip {
+    background: #c2e7ff;
+    color: #1a1a1a;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--radius-padrao-menor);
+    text-align: center;
+    margin-top: 16px;
+    display: block;
+}
+/* ================================================================= */
+/* RELÓGIO SCREENSAVER                                                 */
+/* ================================================================= */
+#clock-screensaver {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    transition: background 0.6s ease;
+    cursor: none;
+}
+#clock-screensaver.cs-bg-black { background: #0a0a0a; }
+#clock-screensaver.cs-bg-pink  { background: #1a0010; }
+#clock-screensaver.cs-bg-egg   { background: #1c1400; }
+
+#cs-canvas {
+    display: block;
+    max-width: 90vmin;
+    max-height: 90vmin;
+    width: 90vmin;
+    height: 90vmin;
+}
+
+.cs-bg-selector {
+    position: fixed;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 100000;
+    background: rgba(0,0,0,0.45);
+    padding: 8px 16px;
+    border-radius: 40px;
+    backdrop-filter: blur(6px);
+}
+#clock-screensaver:hover .cs-bg-selector,
+#clock-screensaver.cs-show-ui .cs-bg-selector { opacity: 1; }
+
+.cs-bg-btn {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.3);
+    cursor: pointer;
+    font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s, border-color 0.2s;
+    padding: 0;
+    line-height: 1;
+}
+.cs-bg-btn[data-bg="black"] { background: #111; color: #888; }
+.cs-bg-btn[data-bg="pink"]  { background: #e91e8c; color: #e91e8c; }
+.cs-bg-btn[data-bg="egg"]   { background: #f5c518; color: #f5c518; }
+.cs-bg-btn.active { border-color: #fff; transform: scale(1.18); }
+.cs-bg-btn:hover  { transform: scale(1.15); border-color: rgba(255,255,255,0.7); }
+
+.cs-exit-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.35);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    font-family: 'Segoe UI', sans-serif;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+#clock-screensaver:hover .cs-exit-hint,
+#clock-screensaver.cs-show-ui .cs-exit-hint { opacity: 1; }
+
+.fuso-diferenca-faixa {
+    background: #c2e7ff;
+    color: #1a1a1a;
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    margin-top: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* =========================================
+   CALENDÁRIO — Responsividade e ajustes
+   ========================================= */
+
+/* Tela cheia do calendário — responsivo mobile */
+@media (max-width: 768px) {
+    .calendar-info-panel {
+        grid-template-columns: 1fr 1fr;
+    }
+    .cal-fs-body {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }
+    .cal-fs-sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--cor-borda-geral);
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 12px;
+        gap: 8px;
+    }
+    .cal-fs-date-big { display: none; }
+    .cal-fs-card { flex: 1 1 calc(50% - 4px); min-width: 140px; }
+    .cal-fs-main { padding: 12px; }
+    .cal-fs-main .calendar-dates-grid .date-cell { min-height: 44px; font-size: 0.95em; }
+}
+
+@media (max-width: 480px) {
+    .calendar-info-panel { grid-template-columns: 1fr; }
+    .cal-info-block { padding: 10px 12px; }
+}
+
+/* Modo tela cheia do calendário — tema escuro */
+body.theme-dark #calendar-fullscreen-overlay {
+    background-color: var(--cor-fundo-principal);
+}
+
+/* Animação de entrada do overlay */
+#calendar-fullscreen-overlay.active {
+    animation: calFsIn 0.22s ease both;
+}
+@keyframes calFsIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+/* === Contador de dias do ano === */
+.day-of-year-bar {
+    margin-top: 14px;
+    text-align: center;
+}
+.day-of-year-text {
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: var(--cor-texto-secundario, #888);
+    opacity: 0.8;
+}
+
+/* === Pomodoro Info Panel === */
+.pomodoro-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.pomodoro-title-row .pomodoro-main-title {
+    margin-bottom: 0;
+}
+.pomodoro-info-btn {
+    width: 26px;
+    height: 26px;
+    min-width: unset;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 0.85rem;
+    font-weight: 700;
+    background: transparent;
+    border: 2px solid var(--cor-primaria);
+    color: var(--cor-primaria);
+    cursor: pointer;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s;
+}
+.pomodoro-info-btn:hover {
+    background: var(--cor-primaria);
+    color: #fff;
+    transform: none;
+    opacity: 1;
+}
+.pomodoro-info-panel {
+    background: var(--cor-display-fundo, rgba(0,0,0,0.06));
+    border: 1px solid var(--cor-borda-geral);
+    border-radius: var(--radius-padrao-menor);
+    padding: 16px 18px;
+    margin-bottom: 20px;
+    text-align: left;
+    animation: pipFadeIn 0.25s ease;
+}
+@keyframes pipFadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.pip-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+.pip-icon { font-size: 1.3rem; }
+.pip-title {
+    font-size: 1rem;
+    color: var(--cor-texto-principal);
+    letter-spacing: 0.02em;
+}
+.pip-text {
+    font-size: 0.85rem;
+    color: var(--cor-texto-secundario);
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+.pip-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 14px;
+}
+.pip-step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--cor-texto-secundario);
+}
+.pip-step-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--cor-primaria);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.pip-who {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 12px;
+}
+.pip-who-tag {
+    background: var(--cor-primaria);
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    opacity: 0.88;
+}
+.pip-benefit {
+    font-size: 0.82rem;
+    color: var(--cor-texto-secundario);
+    border-top: 1px solid var(--cor-borda-geral);
+    padding-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+}

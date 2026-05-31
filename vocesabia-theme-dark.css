@@ -1,0 +1,12 @@
+/* TEMA ESCURO PARA "VOCÊ SABIA?" */
+html.theme-dark-sabia {
+    --sabia-fundo: #121212;
+    --sabia-superficie: #1E1E1E;
+    --sabia-superficie-secundaria: #2C2C2C;
+    --sabia-texto-principal: #EAEAEA;
+    --sabia-texto-secundario: #B0B0B0;
+    --sabia-primaria: #64B5F6;
+    --sabia-primaria-hover: #90CAF9;
+    --sabia-borda: #3A3A3A;
+    --sabia-sombra: 0 4px 12px rgba(0, 0, 0, 0.2);
+}

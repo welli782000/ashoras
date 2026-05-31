@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre — AsHoras</title>
+    <meta name="description" content="Conheça o AsHoras — o app de horas, fusos horários e calendário feito para quem vive conectado ao tempo.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sobre-theme.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ── Logo ── */
+        .logo-img { height: 40px; width: auto; display: block; }
+        .logo { display: flex; align-items: center; }
+
+        /* ── Hero ── */
+        .sobre-hero {
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, rgba(var(--cor-primaria-rgb, 255,140,0), 0.7) 100%);
+            border-radius: var(--radius-padrao);
+            padding: 48px 36px;
+            text-align: center;
+            margin-bottom: 36px;
+            position: relative;
+            overflow: hidden;
+        }
+        .sobre-hero::before {
+            content: '⏰';
+            position: absolute;
+            font-size: 9rem;
+            opacity: 0.07;
+            top: -10px;
+            right: -10px;
+            line-height: 1;
+            pointer-events: none;
+        }
+        .sobre-hero h1 {
+            font-size: clamp(1.8em, 4vw, 2.8em);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+        .sobre-hero p {
+            font-size: clamp(1em, 2vw, 1.2em);
+            color: rgba(255,255,255,0.88);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ── Layout principal ── */
+        .sobre-wrapper {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 32px 20px 60px;
+        }
+
+        /* ── Cards de funcionalidades ── */
+        .sobre-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-bottom: 40px;
+        }
+        .feature-card {
+            background: var(--cor-superficie);
+            border: 1px solid var(--cor-borda-geral);
+            border-radius: var(--radius-padrao);
+            padding: 22px 20px;
+            text-align: center;
+            box-shadow: var(--sombra-padrao);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        .feature-card .feat-icon {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .feature-card h3 {
+            font-size: 1em;
+            font-weight: 700;
+            color: var(--cor-texto-principal);
+            margin-bottom: 6px;
+        }
+        .feature-card p {
+            font-size: 0.85em;
+            color: var(--cor-texto-secundario);
+            line-height: 1.5;
+        }
+
+        /* ── Seção sobre o projeto ── */
+        .sobre-texto {
+            background: var(--cor-superficie);
+            border: 1px solid var(--cor-borda-geral);
+            border-radius: var(--radius-padrao);
+            padding: 32px 28px;
+            margin-bottom: 36px;
+            box-shadow: var(--sombra-padrao);
+        }
+        .sobre-texto h2 {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: var(--cor-primaria);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .sobre-texto p {
+            font-size: 0.97em;
+            color: var(--cor-texto-secundario);
+            line-height: 1.8;
+            margin-bottom: 14px;
+        }
+        .sobre-texto p:last-child { margin-bottom: 0; }
+        .sobre-texto strong { color: var(--cor-texto-principal); }
+
+        /* ── Formulário de contato ── */
+        .contato-section {
+            background: var(--cor-superficie);
+            border: 1px solid var(--cor-borda-geral);
+            border-radius: var(--radius-padrao);
+            padding: 32px 28px;
+            box-shadow: var(--sombra-padrao);
+        }
+        .contato-section h2 {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: var(--cor-primaria);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .contato-section .contato-intro {
+            font-size: 0.92em;
+            color: var(--cor-texto-secundario);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.88em;
+            font-weight: 600;
+            color: var(--cor-texto-principal);
+            margin-bottom: 6px;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1px solid var(--cor-borda-geral);
+            border-radius: var(--radius-padrao-menor);
+            background: var(--cor-superficie-secundaria);
+            color: var(--cor-texto-principal);
+            font-size: 0.95em;
+            font-family: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--cor-primaria);
+            box-shadow: 0 0 0 3px rgba(255,140,0,0.15);
+        }
+        .form-group textarea { min-height: 120px; }
+
+        .btn-enviar {
+            background: var(--cor-primaria);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-padrao-menor);
+            padding: 12px 28px;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-enviar:hover { background: var(--cor-primaria-hover, #e07800); transform: translateY(-1px); }
+        .btn-enviar:active { transform: translateY(0); }
+        .btn-enviar:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+        /* Feedback de envio */
+        .form-feedback {
+            margin-top: 16px;
+            padding: 12px 16px;
+            border-radius: var(--radius-padrao-menor);
+            font-size: 0.92em;
+            font-weight: 600;
+            display: none;
+        }
+        .form-feedback.sucesso {
+            background: rgba(0,169,100,0.1);
+            border: 1px solid #00a964;
+            color: #00a964;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .form-feedback.erro {
+            background: rgba(220,53,69,0.1);
+            border: 1px solid #dc3545;
+            color: #dc3545;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ── Nav link ativo ── */
+        .main-nav a.active { color: var(--cor-primaria); font-weight: 700; }
+
+        /* ── Responsivo ── */
+        @media (max-width: 600px) {
+            .sobre-hero { padding: 32px 20px; }
+            .sobre-texto, .contato-section { padding: 24px 18px; }
+        }
+
+        /* Nav — hover e active laranja */
+        .main-nav a {
+            transition: color 0.2s;
+        }
+        .main-nav a:hover {
+            color: #FF8C00;
+        }
+        .main-nav a.active {
+            color: #FF8C00;
+            font-weight: 700;
+            border-bottom: 2px solid #FF8C00;
+            padding-bottom: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER igual ao projeto -->
+    <header class="site-header">
+        <div class="header-content-wrapper">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="ashoras-removebg-preview.png" alt="ashoras logo" class="logo-img">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <a href="vocesabia.html">Você Sabia?</a>
+                <a href="sobre.html" class="active">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Switcher de tema -->
+    <div class="theme-switcher-sabia">
+        <span id="light-theme-btn" class="theme-icon active" title="Tema Claro"><i class="fas fa-sun"></i></span>
+        <span id="dark-theme-btn" class="theme-icon" title="Tema Escuro"><i class="fas fa-moon"></i></span>
+    </div>
+
+    <main class="main-application-area">
+        <div class="sobre-wrapper">
+
+            <!-- Sobre o projeto -->
+            <div class="sobre-texto">
+                <h2><i class="fas fa-info-circle"></i> Nosso Projeto</h2>
+                <p>
+                    O <strong>AsHoras</strong> foi criado para unir produtividade, organização e bem-estar digital em um único lugar. A proposta é oferecer ferramentas inteligentes e práticas que ajudam no dia a dia, seja para estudar, trabalhar, manter o foco ou simplesmente criar um ambiente mais agradável e leve durante o uso do computador.
+                </p>
+                <p>
+                    Aqui você encontra recursos desenvolvidos para facilitar sua rotina, como técnicas de produtividade utilizando o método Pomodoro, despertadores personalizados, calendários completos, controle de semanas do ano, relógios digitais interativos e artigos sobre essas tecnologias e histótria.
+                </p>
+                <p>
+                    Além da produtividade, o site também oferece experiências visuais modernas e relaxantes. Entre elas estão papéis de parede interativos, temas claros e escuros, relógios em tela cheia, screensavers personalizados e ambientes digitais que ajudam a transformar sua área de trabalho em um espaço mais confortável, elegante e funcional. Nosso objetivo é proporcionar uma plataforma simples, intuitiva e inteligente.
+                </p>
+            </div>
+
+            <!-- Formulário de contato -->
+            <div class="contato-section">
+                <h2><i class="fas fa-envelope"></i> Fale Conosco</h2>
+                <p class="contato-intro">
+                    Tem alguma dúvida, sugestão ou encontrou algum problema? Preencha o formulário abaixo e entraremos em contato o mais breve possível.
+                </p>
+
+                <form id="contato-form" novalidate>
+                    <div class="form-group">
+                        <label for="contato-nome">Nome <span style="color:var(--cor-primaria)">*</span></label>
+                        <input type="text" id="contato-nome" placeholder="Seu nome completo" required maxlength="80">
+                    </div>
+                    <div class="form-group">
+                        <label for="contato-email">E-mail <span style="color:var(--cor-primaria)">*</span></label>
+                        <input type="email" id="contato-email" placeholder="seuemail@exemplo.com" required maxlength="100">
+                    </div>
+                    <div class="form-group">
+                        <label for="contato-mensagem">Mensagem <span style="color:var(--cor-primaria)">*</span></label>
+                        <textarea id="contato-mensagem" placeholder="Escreva sua mensagem aqui..." required maxlength="1000"></textarea>
+                    </div>
+                    <button type="submit" class="btn-enviar" id="btn-enviar">
+                        <i class="fas fa-paper-plane"></i>
+                        <span id="btn-enviar-texto">Enviar Mensagem</span>
+                    </button>
+                    <div class="form-feedback" id="form-feedback"></div>
+                </form>
+            </div>
+
+            <!-- Funcionalidades -->
+            <div class="sobre-features">
+                <div class="feature-card">
+                    <span class="feat-icon">🕐</span>
+                    <h3>Relógio em Tempo Real</h3>
+                    <p>Hora exata com segundos, no seu fuso horário local.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feat-icon">🌍</span>
+                    <h3>Conversor de Fusos</h3>
+                    <p>Compare horários entre qualquer cidade ou país do mundo.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feat-icon">📅</span>
+                    <h3>Calendário Inteligente</h3>
+                    <p>Feriados nacionais, dicas mensais e modo tela cheia.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feat-icon">⏰</span>
+                    <h3>Despertador</h3>
+                    <p>Configure alarmes diretamente no navegador.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feat-icon">⏱️</span>
+                    <h3>Cronômetro & Timer</h3>
+                    <p>Precisão para suas atividades do dia a dia.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feat-icon">🍅</span>
+                    <h3>Técnica Pomodoro</h3>
+                    <p>Foco e produtividade com ciclos de trabalho e pausa.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER igual ao projeto -->
+    <footer class="site-footer">
+        <div class="footer-content-wrapper">
+            <p>&copy; 2025 ashoras. Todos os direitos reservados. |
+                <a href="sobre.html" style="color:var(--cor-primaria);text-decoration:none;">Sobre</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- EmailJS + Formulário -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="sobre_form.js"></script>
+
+    <!-- Lógica do formulário — separada, não mexe em nada do projeto -->
+
+
+    <script>
+    // Tema do sobre.html — lógica própria via classe no <html>
+    (function() {
+        // Aplica imediatamente antes de renderizar (evita flash)
+        var t = localStorage.getItem('sabiaTheme') || 'theme-light-sabia';
+        document.documentElement.className = t;
+    })();
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var lightBtn = document.getElementById('light-theme-btn');
+        var darkBtn  = document.getElementById('dark-theme-btn');
+
+        function aplicarTema(nome) {
+            document.documentElement.className = nome;
+            localStorage.setItem('sabiaTheme', nome);
+            var isLight = nome === 'theme-light-sabia';
+            if (lightBtn) lightBtn.classList.toggle('active',  isLight);
+            if (darkBtn)  darkBtn.classList.toggle('active',  !isLight);
+        }
+
+        if (lightBtn) lightBtn.addEventListener('click', function() { aplicarTema('theme-light-sabia'); });
+        if (darkBtn)  darkBtn.addEventListener('click',  function() { aplicarTema('theme-dark-sabia'); });
+
+        // Aplica o tema salvo e marca ícone correto
+        var temaSalvo = localStorage.getItem('sabiaTheme') || 'theme-light-sabia';
+        aplicarTema(temaSalvo);
+    });
+    </script>
+</body>
+</html>

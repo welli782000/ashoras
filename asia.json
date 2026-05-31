@@ -1,0 +1,112 @@
+{
+  "tokyo": "Asia/Tokyo",
+  "osaka": "Asia/Tokyo",
+  "kyoto": "Asia/Tokyo",
+  "yokohama": "Asia/Tokyo",
+  "nagoya": "Asia/Tokyo",
+  
+  "seoul": "Asia/Seoul",
+  "busan": "Asia/Seoul",
+  "incheon": "Asia/Seoul",
+  
+  "beijing": "Asia/Shanghai",
+  "shanghai": "Asia/Shanghai",
+  "guangzhou": "Asia/Shanghai",
+  "shenzhen": "Asia/Shanghai",
+  "hong kong": "Asia/Hong_Kong",
+  "macau": "Asia/Macau",
+  
+  "taipei": "Asia/Taipei",
+  
+  "ulaanbaatar": "Asia/Ulaanbaatar",
+  
+  "pyongyang": "Asia/Pyongyang",
+  
+  "bangkok": "Asia/Bangkok",
+  "chiang mai": "Asia/Bangkok",
+  "phuket": "Asia/Bangkok",
+  
+  "hanoi": "Asia/Bangkok",
+  "ho chi minh city": "Asia/Bangkok",
+  
+  "phnom penh": "Asia/Bangkok",
+  "siem reap": "Asia/Bangkok",
+  
+  "vientiane": "Asia/Bangkok",
+  
+  "yangon": "Asia/Yangon",
+  
+  "kuala lumpur": "Asia/Kuala_Lumpur",
+  "penang": "Asia/Kuala_Lumpur",
+  
+  "singapore": "Asia/Singapore",
+  
+  "jakarta": "Asia/Jakarta",
+  "bali": "Asia/Makassar",
+  "surabaya": "Asia/Jakarta",
+  
+  "manila": "Asia/Manila",
+  "cebu": "Asia/Manila",
+  
+  "bandar seri begawan": "Asia/Brunei",
+  
+  "dili": "Asia/Dili",
+  
+  "kolkata": "Asia/Kolkata",
+  "mumbai": "Asia/Kolkata",
+  "delhi": "Asia/Kolkata",
+  "bangalore": "Asia/Kolkata",
+  "chennai": "Asia/Kolkata",
+  
+  "islamabad": "Asia/Karachi",
+  "karachi": "Asia/Karachi",
+  "lahore": "Asia/Karachi",
+  
+  "dhaka": "Asia/Dhaka",
+  
+  "kathmandu": "Asia/Kathmandu",
+  
+  "thimphu": "Asia/Thimphu",
+  
+  "colombo": "Asia/Colombo",
+  
+  "male": "Indian/Maldives",
+  
+  "kabul": "Asia/Kabul",
+  
+  "tehran": "Asia/Tehran",
+  "mashhad": "Asia/Tehran",
+  
+  "dubai": "Asia/Dubai",
+  "abu dhabi": "Asia/Dubai",
+  
+  "muscat": "Asia/Muscat",
+  
+  "doha": "Asia/Qatar",
+  
+  "manama": "Asia/Bahrain",
+  
+  "kuwait city": "Asia/Kuwait",
+  
+  "riyadh": "Asia/Riyadh",
+  "jeddah": "Asia/Riyadh",
+  "mecca": "Asia/Riyadh",
+  
+  "sanaa": "Asia/Aden",
+  
+  "baghdad": "Asia/Baghdad",
+  
+  "amman": "Asia/Amman",
+  
+  "jerusalem": "Asia/Jerusalem",
+  "tel aviv": "Asia/Jerusalem",
+  
+  "beirut": "Asia/Beirut",
+  
+  "damascus": "Asia/Damascus",
+  
+  "nicosia": "Asia/Nicosia",
+  
+  "ankara": "Europe/Istanbul",
+  "istanbul": "Europe/Istanbul"
+}
