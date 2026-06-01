@@ -17,6 +17,44 @@
             display: flex;
             align-items: center;
         }
+
+        /* ── Banner de Cookies ── */
+        #cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 99999;
+            background: var(--cor-superficie);
+            border-top: 2px solid var(--cor-primaria);
+            box-shadow: 0 -4px 24px rgba(0,0,0,0.15);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            animation: cookieFadeIn 0.4s ease-out;
+        }
+        @keyframes cookieFadeIn {
+            from { transform: translateY(100%); opacity: 0; }
+            to   { transform: translateY(0);    opacity: 1; }
+        }
+        #cookie-banner.hidden { display: none; }
+        .cookie-text { flex: 1; font-size: 0.9em; color: var(--cor-texto-secundario); line-height: 1.5; min-width: 260px; }
+        .cookie-text strong { color: var(--cor-texto-principal); }
+        .cookie-text a { color: var(--cor-primaria); text-decoration: none; font-weight: 600; }
+        .cookie-text a:hover { text-decoration: underline; }
+        .cookie-buttons { display: flex; gap: 10px; flex-shrink: 0; }
+        .cookie-btn-aceitar { background: var(--cor-primaria); color: #fff; border: none; border-radius: var(--radius-padrao-menor); padding: 10px 22px; font-size: 0.9em; font-weight: 700; cursor: pointer; transition: background 0.2s, transform 0.1s; }
+        .cookie-btn-aceitar:hover { background: var(--cor-primaria-hover, #e07800); transform: translateY(-1px); }
+        .cookie-btn-recusar { background: transparent; color: var(--cor-texto-secundario); border: 1px solid var(--cor-borda-geral); border-radius: var(--radius-padrao-menor); padding: 10px 18px; font-size: 0.9em; cursor: pointer; transition: all 0.2s; }
+        .cookie-btn-recusar:hover { border-color: var(--cor-texto-secundario); color: var(--cor-texto-principal); }
+        @media (max-width: 600px) {
+            #cookie-banner { flex-direction: column; align-items: flex-start; padding: 14px 16px; }
+            .cookie-buttons { width: 100%; }
+            .cookie-btn-aceitar, .cookie-btn-recusar { flex: 1; text-align: center; }
+        }
     </style>
 
 </head>
@@ -373,6 +411,8 @@
     <footer class="site-footer">
         <div class="footer-content-wrapper">
             <p>&copy; 2025 ashoras. Todos os direitos reservados.</p>
+            <a href="sobre.html" style="color:var(--cor-primaria);text-decoration:none;">Sobre</a> |
+                <a href="privacidade.html" style="color:var(--cor-primaria);text-decoration:none;">Privacidade</a>
         </div>
     </footer>
 
@@ -397,5 +437,40 @@
     <!-- EmailJS — notificação silenciosa de buscas sem resultado -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script.js"></script>
+
+    <!-- Banner de Cookies -->
+    <div id="cookie-banner" class="hidden">
+        <div class="cookie-text">
+            <strong>🍪 Usamos cookies</strong> para melhorar sua experiência e exibir anúncios relevantes.
+            Ao continuar navegando, você concorda com nossa
+            <a href="privacidade.html">Política de Privacidade</a>.
+        </div>
+        <div class="cookie-buttons">
+            <button class="cookie-btn-recusar" onclick="recusarCookies()">Recusar</button>
+            <button class="cookie-btn-aceitar" onclick="aceitarCookies()">Aceitar</button>
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        var consent = localStorage.getItem('cookieConsent');
+        if (!consent) {
+            setTimeout(function() {
+                var banner = document.getElementById('cookie-banner');
+                if (banner) banner.classList.remove('hidden');
+            }, 1000);
+        }
+    })();
+    function aceitarCookies() {
+        localStorage.setItem('cookieConsent', 'accepted');
+        var banner = document.getElementById('cookie-banner');
+        if (banner) banner.classList.add('hidden');
+    }
+    function recusarCookies() {
+        localStorage.setItem('cookieConsent', 'refused');
+        var banner = document.getElementById('cookie-banner');
+        if (banner) banner.classList.add('hidden');
+    }
+    </script>
 </body>
 </html>
