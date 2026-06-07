@@ -1,27 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <title>AsHoras</title>
   <!-- Fundo branco arredondado -->
   <rect width="32" height="32" rx="7" ry="7" fill="#FFFFFF"/>
-
   <!-- Aro externo laranja -->
   <circle cx="16" cy="16" r="12.5" fill="none" stroke="#FF6B00" stroke-width="2.2"/>
-
   <!-- Face interna branca -->
   <circle cx="16" cy="16" r="11" fill="#FFFFFF"/>
-
   <!-- Marcações das 4 horas principais -->
   <rect x="15.3" y="5.2" width="1.4" height="2.6" rx="0.7" fill="#FF6B00"/>
   <rect x="24.2" y="15.3" width="2.6" height="1.4" rx="0.7" fill="#FF6B00"/>
   <rect x="15.3" y="24.2" width="1.4" height="2.6" rx="0.7" fill="#FF6B00"/>
   <rect x="5.2" y="15.3" width="2.6" height="1.4" rx="0.7" fill="#FF6B00"/>
-
-  <!-- Ponteiro das horas (~10h) - mais largo e longo -->
-  <line x1="16" y1="16" x2="11.0" y2="10.8"
-        stroke="#FF6B00" stroke-width="3" stroke-linecap="round"/>
-
-  <!-- Ponteiro dos minutos (~12) - mais largo e longo -->
-  <line x1="16" y1="16" x2="16" y2="7.5"
-        stroke="#FF6B00" stroke-width="2.2" stroke-linecap="round"/>
-
+  <!-- Ponteiro das horas (~10h) -->
+  <line x1="16" y1="16" x2="11.0" y2="10.8" stroke="#FF6B00" stroke-width="3" stroke-linecap="round"/>
+  <!-- Ponteiro dos minutos (~12) -->
+  <line x1="16" y1="16" x2="16" y2="7.5" stroke="#FF6B00" stroke-width="2.2" stroke-linecap="round"/>
   <!-- Centro -->
   <circle cx="16" cy="16" r="1.8" fill="#FF6B00"/>
   <circle cx="16" cy="16" r="0.7" fill="#FFFFFF"/>
