@@ -1,0 +1,143 @@
+/* ── Weather Widget – AsHoras (sidebar, linha única) ─────────── */
+
+.weather-widget {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    padding: 6px 10px;
+    border-radius: 10px;
+    background: rgba(255, 107, 0, 0.08);
+    border: 1px solid rgba(255, 107, 0, 0.2);
+    cursor: pointer;
+    transition: background 0.25s, border-color 0.25s;
+    user-select: none;
+    box-sizing: border-box;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.weather-widget:hover {
+    background: rgba(255, 107, 0, 0.16);
+    border-color: rgba(255, 107, 0, 0.45);
+}
+
+/* Emoji do clima */
+.weather-icon {
+    font-size: 1.05em;
+    flex-shrink: 0;
+}
+
+/* Temperatura */
+.weather-temp {
+    font-size: 0.88em;
+    font-weight: 700;
+    color: var(--cor-primaria, #FF6B00);
+    flex-shrink: 0;
+}
+
+/* Separador visual entre temp e desc */
+.weather-temp::after {
+    content: "·";
+    margin-left: 5px;
+    color: var(--cor-texto-secundario, #aaa);
+    font-weight: 400;
+}
+
+/* Descrição */
+.weather-desc {
+    font-size: 0.80em;
+    color: var(--cor-texto-secundario, #aaa);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+/* Cidade */
+.weather-city {
+    font-size: 0.78em;
+    color: var(--cor-texto-secundario, #aaa);
+    opacity: 0.75;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 2;
+    min-width: 0;
+}
+
+.weather-city:not(:empty)::before {
+    content: "📍";
+    font-size: 0.82em;
+    margin-right: 1px;
+}
+
+/* Erro */
+.weather-widget.weather-error { border-color: rgba(255,80,80,0.3); }
+.weather-widget.weather-error .weather-desc { color: #ff6b6b; }
+
+/* Loading */
+@keyframes weatherPulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.35; }
+}
+.weather-widget.weather-loading .weather-icon,
+.weather-widget.weather-loading .weather-temp,
+.weather-widget.weather-loading .weather-desc {
+    animation: weatherPulse 1.2s ease-in-out infinite;
+}
+
+/* Tema claro */
+.theme-google-pro .weather-widget { background: rgba(255,107,0,0.06); border-color: rgba(255,107,0,0.25); }
+.theme-google-pro .weather-widget:hover { background: rgba(255,107,0,0.13); }
+
+/* Linha divisória abaixo do widget */
+.weather-divider {
+    border: none;
+    border-top: 1px solid rgba(255, 107, 0, 0.25);
+    margin: 0 0 8px 0;
+    width: 100%;
+}
+
+/* ── Estado sem localização: ícone 📍 laranja ── */
+.weather-no-location {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    animation: pingLocation 2.2s ease-in-out infinite;
+}
+
+.weather-cloud-svg {
+    width: 38px;
+    height: 28px;
+    transition: transform 0.2s, filter 0.2s;
+    filter: drop-shadow(0 0 3px rgba(255, 107, 0, 0.4));
+}
+
+.weather-no-location:hover .weather-cloud-svg {
+    transform: scale(1.18);
+    filter: drop-shadow(0 0 7px rgba(255, 107, 0, 0.85));
+}
+
+@keyframes pingLocation {
+    0%, 100% { opacity: 1;    transform: scale(1);    }
+    50%       { opacity: 0.7; transform: scale(1.08); }
+}
+
+/* Quando sem localização, widget fica menor e centralizado */
+.weather-widget.weather-no-loc {
+    justify-content: center;
+    align-items: center;
+    padding: 6px 10px;
+    background: rgba(255, 107, 0, 0.05);
+}
+
+.weather-no-location {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
