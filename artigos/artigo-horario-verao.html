@@ -4,25 +4,182 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>O que é o horário de verão? — AsHoras</title>
-<meta name="description" content="Saiba o que é o horário de verão, quem inventou, onde é usado e por que o Brasil suspendeu em 2019.">
-<meta name="keywords" content="horário de verão, o que é horário de verão, horário de verão brasil, Benjamin Franklin, economia de energia">
+    <meta name="description" content="Entenda o que é o horário de verão, quem teve a ideia, por onde ele passou na história e por que o Brasil suspendeu a prática em 2019.">
+    <meta name="keywords" content="horário de verão, o que é horário de verão, horário de verão brasil, Benjamin Franklin, William Willett, economia de energia">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../artigo.css"> 
+    <link rel="stylesheet" href="../artigo.css">
+    <link rel="stylesheet" href="../artigo-theme.css">
+    <link rel="stylesheet" href="../vocesabia-theme-light.css" id="theme-light-sabia">
+    <link rel="stylesheet" href="../vocesabia-theme-dark.css" id="theme-dark-sabia" disabled>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3173930318511411" crossorigin="anonymous"></script>
-     
-     <style>
-        .logo-img {
-            height: 40px; /* Ajuste esta altura conforme necessário para seu header */
-            width: auto;
-            display: block;
-        }
-        .logo {
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3173930318511411" crossorigin="anonymous"></script>
+
+    <style>
+        .logo-img { height: 40px; width: auto; display: block; }
+        .logo { display: flex; align-items: center; }
+
+        /* ── Meta info ── */
+        .artigo-meta {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 0 0 28px 0;
+            padding: 12px 16px;
+            background: rgba(255,140,0,0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255,140,0,0.15);
+        }
+        .artigo-meta span { font-size: 0.82em; color: #aaa; display: flex; align-items: center; gap: 5px; }
+        .artigo-meta i { color: #FF8C00; }
+
+        /* ── Índice ── */
+        .artigo-indice {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,140,0,0.2);
+            border-left: 4px solid #FF8C00;
+            border-radius: 0 10px 10px 0;
+            padding: 18px 22px;
+            margin: 0 0 32px 0;
+        }
+        .artigo-indice h4 { font-size: 0.88em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #FF8C00; margin-bottom: 10px; }
+        .artigo-indice ol { padding-left: 18px; margin: 0; }
+        .artigo-indice ol li { font-size: 0.88em; color: #bbb; margin-bottom: 5px; line-height: 1.5; }
+        .artigo-indice ol li a { color: inherit; text-decoration: none; transition: color 0.15s; }
+        .artigo-indice ol li a:hover { color: #FF8C00; }
+
+        /* ── Dado destaque ── */
+        .dado-destaque {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            border: 1px solid rgba(255,140,0,0.3);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin: 20px 0;
+        }
+        .dado-destaque-num { font-size: 2em; font-weight: 800; color: #FF8C00; line-height: 1.1; flex-shrink: 0; text-align: center; }
+        .dado-destaque-txt { font-size: 0.9em; line-height: 1.6; }
+
+        /* ── Linha do tempo ── */
+        .timeline { margin: 20px 0; display: flex; flex-direction: column; }
+        .timeline-item { display: flex; gap: 16px; position: relative; padding-bottom: 22px; }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 40px; }
+        .timeline-dot { width: 36px; height: 36px; background: #FF8C00; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.8em; font-weight: 700; flex-shrink: 0; z-index: 1; }
+        .timeline-linha { width: 2px; flex: 1; background: rgba(255,140,0,0.2); margin-top: 4px; }
+        .timeline-item:last-child .timeline-linha { display: none; }
+        .timeline-content { padding-top: 6px; border-radius: 8px; padding: 10px 14px; }
+        .timeline-ano { font-size: 0.75em; font-weight: 700; color: #FF8C00; margin-bottom: 3px; }
+        .timeline-content p { font-size: 0.88em; line-height: 1.6; margin: 0; }
+
+        /* ── Grid de países ── */
+        .paises-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin: 20px 0;
+        }
+        .pais-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 12px 10px;
+            text-align: center;
+            transition: border-color 0.15s;
+        }
+        .pais-card:hover { border-color: rgba(255,140,0,0.5); }
+        .pais-card .pc-emoji { font-size: 1.6em; margin-bottom: 4px; }
+        .pais-card .pc-nome { font-size: 0.78em; font-weight: 700; margin-bottom: 2px; }
+        .pais-card .pc-status { font-size: 0.68em; line-height: 1.3; }
+        .pais-card.usa-sim { border-color: rgba(39,174,96,0.5); }
+        .pais-card.usa-nao { border-color: rgba(231,76,60,0.4); }
+
+        /* ── Bloco alerta / info ── */
+        .bloco-alerta {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            border: 1px solid rgba(41,128,185,0.35);
+            border-left: 4px solid #2980b9;
+            border-radius: 0 10px 10px 0;
+            padding: 16px 18px;
+            margin: 20px 0;
+        }
+        .bloco-alerta i { color: #2980b9; font-size: 1.3em; flex-shrink: 0; margin-top: 2px; }
+        .bloco-alerta-txt { font-size: 0.88em; line-height: 1.6; }
+
+        /* ── Curiosidade visual ── */
+        .curiosidade-visual {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin: 20px 0;
+        }
+        .curiosidade-visual .cv-emoji { font-size: 2.5em; flex-shrink: 0; }
+        .curiosidade-visual .cv-txt { font-size: 0.88em; color: #ddd; line-height: 1.6; }
+        .curiosidade-visual .cv-txt strong { color: #fff; }
+
+        /* ── Linha de cronologia Brasil ── */
+        .br-cronologia {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .br-periodo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        .br-periodo.ativo { border-color: rgba(39,174,96,0.4); }
+        .br-periodo.suspenso { border-color: rgba(231,76,60,0.4); }
+        .bp-icone { font-size: 1.2em; flex-shrink: 0; width: 28px; text-align: center; }
+        .bp-txt { font-size: 0.87em; line-height: 1.5; }
+
+        /* ── FAQ ── */
+        .faq-item { border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+        .faq-pergunta { padding: 14px 18px; font-size: 0.9em; font-weight: 600; color: #fff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); user-select: none; }
+        .faq-pergunta:hover { background: rgba(255,140,0,0.06); }
+        .faq-pergunta i { color: #FF8C00; font-size: 0.85em; transition: transform 0.2s; }
+        .faq-resposta { display: none; padding: 0 18px 14px; font-size: 0.87em; color: #ccc; line-height: 1.6; background: rgba(255,255,255,0.03); }
+        .faq-resposta.aberta { display: block; }
+        .faq-item.aberto .faq-pergunta i { transform: rotate(180deg); }
+
+        /* ── Referências ── */
+        .referencias {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin-top: 28px;
+        }
+        .referencias h4 { font-size: 0.85em; font-weight: 700; color: #FF8C00; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+        .referencias ul { padding-left: 18px; margin: 0; }
+        .referencias ul li { font-size: 0.8em; color: #aaa; margin-bottom: 6px; line-height: 1.5; }
+        .referencias ul li a { color: #FF8C00; text-decoration: none; }
+        .referencias ul li a:hover { text-decoration: underline; }
+
+        /* ── Navegação ── */
+        .artigo-nav { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+        .artigo-nav a { flex: 1; min-width: 200px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,140,0,0.2); border-radius: 10px; padding: 14px 18px; text-decoration: none; color: #fff; font-size: 0.87em; transition: border-color 0.15s, background 0.15s; display: flex; align-items: center; gap: 10px; }
+        .artigo-nav a:hover { border-color: #FF8C00; background: rgba(255,140,0,0.06); }
+        .artigo-nav a i { color: #FF8C00; font-size: 1.1em; flex-shrink: 0; }
+        .artigo-nav a span { font-size: 0.78em; color: #aaa; display: block; }
+
+        @media (max-width: 540px) {
+            .paises-grid { grid-template-columns: repeat(2, 1fr); }
+            .curiosidade-visual { flex-direction: column; text-align: center; }
         }
     </style>
+
     <script>
       (function() {
         try {
@@ -40,9 +197,9 @@
     <header class="site-header">
         <div class="header-content-wrapper">
             <div class="logo">
-            <a href="../index.html">
-            <img src="../ashoras-removebg-preview.png" alt="ashoras logo" class="logo-img">
-            </a>
+                <a href="../index.html">
+                    <img src="../ashoras-removebg-preview.png" alt="AsHoras logo" class="logo-img">
+                </a>
             </div>
             <nav class="main-nav">
                 <a href="../vocesabia.html" class="active">Você Sabia?</a>
@@ -52,61 +209,334 @@
         </div>
     </header>
 
+    <div class="theme-switcher-sabia">
+        <span id="light-theme-btn" class="theme-icon active" title="Tema Claro"><i class="fas fa-sun"></i></span>
+        <span id="dark-theme-btn" class="theme-icon" title="Tema Escuro"><i class="fas fa-moon"></i></span>
+    </div>
+
     <main class="main-application-area">
         <article class="artigo-container">
-            <h1>☀️ O que é o horário de verão?</h1>
+
+            <h1>O que é o horário de verão?</h1>
+
+            <!-- Meta info -->
+            <div class="artigo-meta">
+                <span><i class="fas fa-clock"></i> Leitura: 6 minutos</span>
+                <span><i class="fas fa-tag"></i> Categoria: História & Ciência</span>
+                <span><i class="fas fa-calendar-alt"></i> Atualizado em 2025</span>
+                <span><i class="fas fa-graduation-cap"></i> Nível: Iniciante</span>
+            </div>
+
             <p class="intro">
-                Quando chega o horário de verão, muita gente comemora o “dia mais longo” e outras torcem o nariz por ter que acordar uma hora mais cedo. Mas afinal, por que ele existe e quem teve essa ideia?
+                Duas vezes por ano, milhões de pessoas em dezenas de países ajustam os relógios em uma hora — e por décadas, os brasileiros fizeram parte desse grupo. Mas de onde veio essa ideia de "criar" mais luz do dia ajustando o relógio? A resposta envolve uma piada do século XVIII, uma guerra mundial, um inglês obstinado e uma decisão brasileira que dividiu opiniões até hoje.
             </p>
 
-            <section class="artigo-secao">
-                <h2>🌞 1. A ideia nasceu para economizar energia</h2>
+            <!-- Índice -->
+            <div class="artigo-indice">
+                <h4><i class="fas fa-list"></i> &nbsp;Neste artigo</h4>
+                <ol>
+                    <li><a href="#ideia">A ideia: usar melhor a luz do dia</a></li>
+                    <li><a href="#franklin">Benjamin Franklin e a piada que pegou fama</a></li>
+                    <li><a href="#willett">William Willett, o verdadeiro pioneiro</a></li>
+                    <li><a href="#alemanha">1916: a Alemanha em guerra muda o relógio</a></li>
+                    <li><a href="#mundo">Onde o horário de verão é usado hoje</a></li>
+                    <li><a href="#brasil">A história do horário de verão no Brasil</a></li>
+                    <li><a href="#faq">Perguntas frequentes</a></li>
+                </ol>
+            </div>
+
+            <!-- 1. A ideia -->
+            <section class="artigo-secao" id="ideia">
+                <h2>1. A ideia: usar melhor a luz do dia</h2>
                 <div class="imagem-container anim-float">
                     <img src="../img_artigos/artigo-horario-verao/verao.png" alt="Relógio marcando mudança de horário" class="artigo-imagem">
                 </div>
                 <p>
-                    O horário de verão foi criado para <strong>aproveitar melhor a luz natural do sol</strong>. Quando os dias ficam mais longos no verão, adiantar o relógio em uma hora permite que as pessoas usem menos luz elétrica no fim da tarde. 
+                    O princípio do horário de verão é simples: durante o verão, o sol nasce mais cedo e se põe mais tarde. Ao adiantar os relógios em uma hora, as atividades do dia "se deslocam" para coincidir melhor com a luz natural — as pessoas terminam o expediente e ainda têm claridade no fim da tarde, em vez de precisar de luz artificial.
                 </p>
                 <p>
-                    A ideia é simples: se o sol nasce mais cedo, por que não aproveitar essa luz por mais tempo?
+                    A lógica nasceu ligada à economia de energia: menos horas de luz elétrica usada à noite significava menos consumo nas casas e indústrias. Foi exatamente esse argumento — e não o conforto — que convenceu os primeiros governos a adotar a medida, como veremos a seguir.
                 </p>
+
+                <div class="dado-destaque">
+                    <div class="dado-destaque-num">+70<br><span style="font-size:0.5em;font-weight:400">países</span></div>
+                    <div class="dado-destaque-txt">
+                        É o número aproximado de países que ainda adotam o horário de verão atualmente, concentrados majoritariamente na <strong>Europa, América do Norte e parte do Oriente Médio</strong>. A grande maioria dos países da Ásia, África e América do Sul abandonou a prática.
+                    </div>
+                </div>
             </section>
 
-            <section class="artigo-secao">
-                <h2>💡 2. Quem inventou o horário de verão?</h2>
+            <!-- 2. Franklin -->
+            <section class="artigo-secao" id="franklin">
+                <h2>2. Benjamin Franklin e a piada que pegou fama</h2>
                 <div class="imagem-container anim-fade-in">
                     <img src="../img_artigos/artigo-horario-verao/benjamin.png" alt="Retrato de Benjamin Franklin" class="artigo-imagem">
                 </div>
                 <p>
-                    O conceito surgiu no século XVIII com <strong>Benjamin Franklin</strong>, que sugeriu que as pessoas poderiam acordar mais cedo para economizar velas! 😄  
-                    Mas a implementação oficial só aconteceu em 1916, na <strong>Alemanha</strong>, durante a Primeira Guerra Mundial, como forma de economizar energia. Outros países, incluindo o Brasil, adotaram a prática anos depois.
+                    A menção mais antiga à ideia de "economizar luz do dia" vem de <strong>Benjamin Franklin</strong>, em uma carta satírica enviada ao jornal <em>Journal de Paris</em> em <strong>1784</strong>. Nela, Franklin sugeria — em tom de brincadeira — que os parisienses economizariam uma fortuna em velas se simplesmente acordassem mais cedo no verão para aproveitar o sol da manhã.
+                </p>
+                <p>
+                    O detalhe que poucos conhecem: Franklin não propôs mudar os relógios. Ele sugeriu mudar o <em>hábito</em> das pessoas — uma ironia sobre a vida noturna parisiense, não um projeto de política pública. A reforma de horários como conhecemos hoje só viria mais de um século depois, e por outras mãos.
                 </p>
             </section>
 
-            <section class="artigo-secao">
-                <h2>🌎 3. Onde ele é aplicado?</h2>
+            <!-- 3. Willett -->
+            <section class="artigo-secao" id="willett">
+                <h2>3. William Willett, o verdadeiro pioneiro</h2>
+                <p>
+                    O verdadeiro idealizador do horário de verão moderno foi o construtor britânico <strong>William Willett</strong>. Incomodado por terminar suas partidas de golfe no escuro, ele passou a defender publicamente, a partir de <strong>1907</strong>, que os relógios britânicos fossem adiantados durante o verão. Willett chegou a gastar parte de sua própria fortuna divulgando a ideia e conquistou apoiadores influentes, incluindo um jovem <strong>Winston Churchill</strong>.
+                </p>
+                <p>
+                    Apesar do esforço, o Parlamento britânico rejeitou o projeto em 1908 e 1909, em meio a piadas e oposição do setor agrícola. Willett morreu em 1915, de gripe, sem nunca ver sua ideia se tornar realidade — a guerra mudaria isso poucos meses depois.
+                </p>
+
+                <div class="curiosidade-visual">
+                    <div class="cv-emoji">🎵</div>
+                    <div class="cv-txt">
+                        <strong>Curiosidade musical:</strong> William Willett é tataravô de Chris Martin, vocalista da banda Coldplay. Há quem veja na canção "Clocks" uma referência simbólica à obsessão do ancestral pelos relógios — embora isso nunca tenha sido confirmado pela banda.
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Alemanha 1916 -->
+            <section class="artigo-secao" id="alemanha">
+                <h2>4. 1916: a Alemanha em guerra muda o relógio</h2>
+                <p>
+                    A implementação oficial só aconteceu durante a <strong>Primeira Guerra Mundial</strong>. Em <strong>30 de abril de 1916</strong>, a Alemanha e a Áustria-Hungria se tornaram os primeiros países do mundo a adotar o horário de verão — o chamado <em>Sommerzeit</em> — como forma de economizar carvão usado na geração de energia durante o conflito. O Reino Unido seguiu o exemplo alemão poucas semanas depois, em 21 de maio de 1916, e os Estados Unidos adotaram a medida em 1918.
+                </p>
+                <p>
+                    A ironia histórica não passou despercebida: a ideia que o inglês Willett tentou emplacar por anos só foi adotada no Reino Unido depois que o país inimigo, a Alemanha, mostrou o caminho durante a guerra.
+                </p>
+
+                <div class="bloco-alerta">
+                    <i class="fas fa-info-circle"></i>
+                    <div class="bloco-alerta-txt">
+                        <strong>Por que parou depois da guerra?</strong> Assim que a Primeira Guerra terminou, vários países revogaram a medida — especialmente por pressão dos agricultores, que perdiam horas de luz pela manhã para cuidar dos animais e colheitas. O horário de verão voltaria com força total durante a <strong>Segunda Guerra Mundial</strong>, sendo usado de forma permanente em alguns países, como nos EUA, sob o nome de <em>"War Time"</em>.
+                    </div>
+                </div>
+
+                <div class="timeline" style="margin-top:24px">
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">1</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">1784</div>
+                            <p>Benjamin Franklin escreve sua carta satírica sobre economizar velas acordando mais cedo no verão.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">2</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">1907</div>
+                            <p><strong>William Willett</strong> começa sua campanha pelo "British Summer Time" no Reino Unido.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">3</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">30 abr. 1916</div>
+                            <p><strong>Alemanha e Áustria-Hungria</strong> implementam o primeiro horário de verão oficial do mundo, para economizar carvão na guerra.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">4</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">1918</div>
+                            <p>Estados Unidos adotam o horário de verão nacionalmente pela primeira vez — e o revogam logo no ano seguinte.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">5</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">1939–1945</div>
+                            <p>O horário de verão retorna com força durante a <strong>Segunda Guerra Mundial</strong>, com o Reino Unido chegando a usar o "Double Summer Time".</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">6</div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">1966</div>
+                            <p>Os EUA padronizam datas de início e fim com o <em>Uniform Time Act</em>, ainda em vigor (com ajustes) até hoje.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Onde é usado hoje -->
+            <section class="artigo-secao" id="mundo">
+                <h2>5. Onde o horário de verão é usado hoje</h2>
                 <div class="imagem-container anim-twinkle">
                     <img src="../img_artigos/artigo-horario-verao/mapa-verao.png" alt="Mapa com países que usam horário de verão" class="artigo-imagem">
                 </div>
                 <p>
-                    Nem todos os países usam o horário de verão. Ele funciona melhor em regiões afastadas da linha do Equador, onde há maior variação na duração dos dias ao longo do ano.  
-                    Países como os Estados Unidos, Austrália e partes da Europa ainda utilizam, enquanto outros, como o Brasil, decidiram suspender por causa do baixo impacto na economia de energia.
+                    O horário de verão funciona melhor em países afastados da linha do Equador, onde a diferença na duração dos dias entre o verão e o inverno é grande. É por isso que ele permanece popular na Europa e em parte da América do Norte, mas faz pouco sentido perto do Equador — onde os dias têm duração praticamente igual o ano inteiro.
                 </p>
+
+                <div class="paises-grid">
+                    <div class="pais-card usa-sim">
+                        <div class="pc-emoji">🇩🇪</div>
+                        <div class="pc-nome">Alemanha</div>
+                        <div class="pc-status">Ainda usa</div>
+                    </div>
+                    <div class="pais-card usa-sim">
+                        <div class="pc-emoji">🇬🇧</div>
+                        <div class="pc-nome">Reino Unido</div>
+                        <div class="pc-status">Ainda usa</div>
+                    </div>
+                    <div class="pais-card usa-sim">
+                        <div class="pc-emoji">🇺🇸</div>
+                        <div class="pc-nome">Estados Unidos</div>
+                        <div class="pc-status">Maioria dos estados</div>
+                    </div>
+                    <div class="pais-card usa-sim">
+                        <div class="pc-emoji">🇦🇺</div>
+                        <div class="pc-nome">Austrália</div>
+                        <div class="pc-status">Parte do país</div>
+                    </div>
+                    <div class="pais-card usa-nao">
+                        <div class="pc-emoji">🇧🇷</div>
+                        <div class="pc-nome">Brasil</div>
+                        <div class="pc-status">Suspenso em 2019</div>
+                    </div>
+                    <div class="pais-card usa-nao">
+                        <div class="pc-emoji">🇯🇵</div>
+                        <div class="pc-nome">Japão</div>
+                        <div class="pc-status">Nunca adotou</div>
+                    </div>
+                </div>
+
+                <div class="curiosidade-visual">
+                    <div class="cv-emoji">🗺️</div>
+                    <div class="cv-txt">
+                        <strong>Exceção dentro do próprio país:</strong> nos Estados Unidos, o Havaí e a maior parte do Arizona optaram por não seguir o horário de verão, mesmo com o resto do país aderindo — uma decisão estadual permitida pela legislação americana.
+                    </div>
+                </div>
             </section>
 
+            <!-- 6. Brasil -->
+            <section class="artigo-secao" id="brasil">
+                <h2>6. A história do horário de verão no Brasil</h2>
+                <p>
+                    No Brasil, o horário de verão foi instituído pela primeira vez pelo presidente <strong>Getúlio Vargas</strong>, através do Decreto nº 20.466. Os relógios avançaram em <strong>3 de outubro de 1931</strong> e a medida vigorou até 31 de março de 1932 — quase seis meses. Vargas justificou a decisão citando economia para o tesouro público e redução do uso de luz artificial.
+                </p>
+                <p>
+                    Depois desse primeiro experimento, o horário de verão brasileiro teve uma trajetória bastante irregular: foi revogado e reimplantado várias vezes ao longo do século XX, com diferentes durações e nem sempre cobrindo todos os estados. Só a partir de <strong>1985</strong> — em meio ao racionamento de energia causado pelo baixo nível dos reservatórios das hidrelétricas — é que o horário de verão passou a ser adotado de forma mais consistente, ano após ano.
+                </p>
+
+                <div class="br-cronologia">
+                    <div class="br-periodo ativo">
+                        <div class="bp-icone">✅</div>
+                        <div class="bp-txt"><strong>1931–1932:</strong> primeira aplicação, no governo de Getúlio Vargas. Durou quase 6 meses.</div>
+                    </div>
+                    <div class="br-periodo suspenso">
+                        <div class="bp-icone">⛔</div>
+                        <div class="bp-txt"><strong>1933–1948:</strong> medida revogada. Só retomada em 1949, com Eurico Gaspar Dutra.</div>
+                    </div>
+                    <div class="br-periodo ativo">
+                        <div class="bp-icone">✅</div>
+                        <div class="bp-txt"><strong>1949–1968:</strong> aplicações intermitentes, incluindo os governos de Vargas (de volta), Jânio Quadros e João Goulart.</div>
+                    </div>
+                    <div class="br-periodo ativo">
+                        <div class="bp-icone">✅</div>
+                        <div class="bp-txt"><strong>1985–2019:</strong> período de adoção contínua, anual, iniciado por causa do racionamento de energia hidrelétrica.</div>
+                    </div>
+                    <div class="br-periodo suspenso">
+                        <div class="bp-icone">⛔</div>
+                        <div class="bp-txt"><strong>2019–hoje:</strong> extinto pelo governo Jair Bolsonaro, com base em estudo do Ministério de Minas e Energia.</div>
+                    </div>
+                </div>
+
+                <div class="bloco-alerta">
+                    <i class="fas fa-info-circle"></i>
+                    <div class="bloco-alerta-txt">
+                        <strong>Por que o Brasil parou?</strong> O Ministério de Minas e Energia concluiu que o consumo de energia dos brasileiros havia mudado: o pico passou a ocorrer pela <strong>manhã</strong>, e não mais ao final do dia como décadas atrás. Isso reduziu drasticamente o benefício do horário de verão na conta de luz, tornando a medida pouco eficaz para seu objetivo original.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Curiosidade extra -->
             <section class="artigo-secao curiosidade">
-                <h3>🚀 Curiosidade Extra:</h3>
+                <h3>🚀 Curiosidade Extra</h3>
                 <p>
-                    No Brasil, o horário de verão foi aplicado pela primeira vez em <strong>1931</strong>, no governo de Getúlio Vargas, e durou até <strong>2019</strong>, quando foi suspenso. Ainda hoje, há debates sobre sua possível volta!
+                    Apesar de o horário de verão ter sido extinto em 2019, o debate sobre sua volta nunca desapareceu de todo no Brasil. Em anos de crise hídrica, entidades do setor elétrico e do comércio voltaram a defender o retorno da medida — não mais como economia de energia elétrica em si, mas como forma de aproveitar melhor a geração solar e eólica, que produzem mais durante o dia e poderiam suprir a demanda da hora do "retorno para casa" se o relógio fosse adiantado.
                 </p>
             </section>
 
+            <!-- FAQ -->
+            <section class="artigo-secao" id="faq">
+                <h3>7. Perguntas frequentes ❓</h3>
+
+                <div class="faq-item">
+                    <div class="faq-pergunta">Benjamin Franklin realmente inventou o horário de verão? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">Não exatamente. Franklin apenas escreveu uma carta satírica em 1784 sugerindo que os parisienses economizariam velas acordando mais cedo — ele não propôs mudar os relógios. A ideia de efetivamente adiantar o horário oficial veio mais de um século depois, com o britânico William Willett, e só foi implementada pela primeira vez pela Alemanha em 1916.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta">O horário de verão realmente economiza energia? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">Hoje, esse benefício é bem mais discutível do que era há um século. Estudos recentes em vários países, incluindo o Brasil, mostram que o padrão de consumo de eletricidade mudou — com picos pela manhã em vez do fim da tarde — o que reduz ou até elimina o ganho energético que justificou a criação da medida originalmente.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta">Por que países próximos da linha do Equador não usam horário de verão? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">Porque perto do Equador a duração do dia varia muito pouco entre verão e inverno — em alguns lugares, menos de uma hora ao longo do ano todo. Sem essa variação sazonal de luz natural, adiantar o relógio simplesmente não traz benefício prático, por isso a maioria dos países tropicais, incluindo grande parte da América do Sul e da África, nunca adotou a prática de forma duradoura.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta">O horário de verão pode voltar ao Brasil? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">É uma possibilidade que ressurge periodicamente no debate público, especialmente em anos de crise hídrica. Mas, até o momento, sucessivos governos brasileiros mantiveram a decisão de 2019, considerando que o impacto na economia de energia elétrica seria pequeno frente ao consumo atual do país.</div>
+                </div>
+            </section>
+
+            <!-- Conclusão -->
             <section class="artigo-secao conclusao">
-                <h3>🎉 Conclusão:</h3>
+                <h3>Conclusão</h3>
                 <p>
-                    O horário de verão surgiu como uma forma inteligente de aproveitar melhor a luz do sol e economizar energia. Mesmo que hoje seu impacto seja menor, ele continua sendo uma curiosa lembrança de como o ser humano adapta o tempo ao seu favor!
+                    O horário de verão nasceu de uma piada de Franklin, ganhou forma com a obstinação de Willett e só se tornou realidade graças à urgência de uma guerra mundial. No Brasil, sua história foi marcada por idas e vindas que refletem as mudanças no próprio consumo de energia do país, até sua suspensão em 2019. Mesmo fora de uso por aqui, o horário de verão continua sendo um exemplo fascinante de como sociedades inteiras podem decidir, coletivamente, "negociar" com o relógio em busca de melhor aproveitar a luz do sol.
                 </p>
             </section>
+
+            <!-- Referências -->
+            <div class="referencias">
+                <h4><i class="fas fa-book"></i> Fontes e referências</h4>
+                <ul>
+                    <li><a href="https://en.wikipedia.org/wiki/Daylight_saving_time" target="_blank" rel="noopener noreferrer">Wikipedia — Daylight Saving Time</a></li>
+                    <li><a href="https://www.gov.br/mme/pt-br/assuntos/secretarias/secretaria-nacional-energia-eletrica/horario-de-verao" target="_blank" rel="noopener noreferrer">Ministério de Minas e Energia — Horário de Verão no Brasil</a></li>
+                    <li><a href="https://www.cnnbrasil.com.br/nacional/criado-ha-90-anos-horario-de-verao-foi-suspenso-outras-vezes-e-ja-durou-6-meses/" target="_blank" rel="noopener noreferrer">CNN Brasil — 90 anos do horário de verão brasileiro</a></li>
+                    <li><a href="https://www.webexhibits.org/daylightsaving/c.html" target="_blank" rel="noopener noreferrer">WebExhibits — History of Daylight Saving Time</a></li>
+                    <li>Prerau, David. <em>Seize the Daylight: The Curious and Contentious Story of Daylight Saving Time</em>. Thunder's Mouth Press, 2005.</li>
+                </ul>
+            </div>
+
+            <!-- Navegação -->
+            <div class="artigo-nav">
+                <a href="artigo-fusos.html">
+                    <i class="fas fa-arrow-left"></i>
+                    <div>
+                        <span>Artigo anterior</span>
+                        Por que existem tantos fusos horários?
+                    </div>
+                </a>
+                <a href="artigo-fevereiro.html">
+                    <div style="text-align:right;flex:1">
+                        <span>Leia também</span>
+                        Por que fevereiro tem menos dias?
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
 
         </article>
     </main>
@@ -115,8 +545,27 @@
         <div class="footer-content-wrapper">
             <p>&copy; 2025 AsHoras. Todos os direitos reservados.</p>
             <a href="../sobre.html" style="color:var(--cor-primaria);text-decoration:none;">Sobre</a> |
-                <a href="../privacidade.html" style="color:var(--cor-primaria);text-decoration:none;">Privacidade</a>
+            <a href="../privacidade.html" style="color:var(--cor-primaria);text-decoration:none;">Privacidade</a>
         </div>
     </footer>
+
+    <script>
+    document.querySelectorAll('.faq-pergunta').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var item = btn.closest('.faq-item');
+            var resp = item.querySelector('.faq-resposta');
+            var aberto = item.classList.contains('aberto');
+            document.querySelectorAll('.faq-item').forEach(function(i) {
+                i.classList.remove('aberto');
+                i.querySelector('.faq-resposta').classList.remove('aberta');
+            });
+            if (!aberto) {
+                item.classList.add('aberto');
+                resp.classList.add('aberta');
+            }
+        });
+    });
+    </script>
+    <script src="../sabia-theme-loader.js"></script>
 </body>
 </html>

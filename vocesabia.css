@@ -124,7 +124,7 @@ body {
     background-color: var(--sabia-superficie);
     color: var(--sabia-texto-secundario);
     box-shadow: var(--sabia-sombra);
-    border-left: 5px solid var(--sabia-primaria);
+    border-left: none;
 }
 
 .theme-switcher-sabia {

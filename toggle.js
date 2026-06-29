@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",function(){document.querySelectorAll(".secao-info-btn").forEach(function(e){e.addEventListener("click",function(){var t=e.getAttribute("data-painel"),n=document.getElementById(t);if(n){var o="none"!==n.style.display;n.style.display=o?"none":"block",e.classList.toggle("ativo",!o)}})})});

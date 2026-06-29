@@ -4,25 +4,188 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quem inventou o relógio de pulso? — AsHoras</title>
-<meta name="description" content="Do luxo da realeza aos campos de batalha — conheça a história do relógio de pulso, de Patek Philippe a Santos-Dumont!">
-<meta name="keywords" content="quem inventou o relógio de pulso, história do relógio, Patek Philippe, Santos Dumont, Cartier, relógio militar">
+    <meta name="description" content="Do luxo da realeza aos campos de batalha — conheça a história do relógio de pulso, de Breguet a Patek Philippe, do Cartier Santos a Santos-Dumont.">
+    <meta name="keywords" content="quem inventou o relógio de pulso, história do relógio, Patek Philippe, Santos Dumont, Cartier, Breguet, relógio militar">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../artigo.css"> 
+    <link rel="stylesheet" href="../artigo.css">
+    <link rel="stylesheet" href="../artigo-theme.css">
+    <link rel="stylesheet" href="../vocesabia-theme-light.css" id="theme-light-sabia">
+    <link rel="stylesheet" href="../vocesabia-theme-dark.css" id="theme-dark-sabia" disabled>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3173930318511411" crossorigin="anonymous"></script>
-     
-     <style>
-        .logo-img {
-            height: 40px; /* Ajuste esta altura conforme necessário para seu header */
-            width: auto;
-            display: block;
-        }
-        .logo {
+
+    <style>
+        .logo-img { height: 40px; width: auto; display: block; }
+        .logo { display: flex; align-items: center; }
+
+        /* ── Meta info ── */
+        .artigo-meta {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 0 0 28px 0;
+            padding: 12px 16px;
+            background: rgba(255,140,0,0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255,140,0,0.15);
+        }
+        .artigo-meta span { font-size: 0.82em; color: #aaa; display: flex; align-items: center; gap: 5px; }
+        .artigo-meta i { color: #FF8C00; }
+
+        /* ── Índice ── */
+        .artigo-indice {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,140,0,0.2);
+            border-left: 4px solid #FF8C00;
+            border-radius: 0 10px 10px 0;
+            padding: 18px 22px;
+            margin: 0 0 32px 0;
+        }
+        .artigo-indice h4 { font-size: 0.88em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #FF8C00; margin-bottom: 10px; }
+        .artigo-indice ol { padding-left: 18px; margin: 0; }
+        .artigo-indice ol li { font-size: 0.88em; color: #bbb; margin-bottom: 5px; line-height: 1.5; }
+        .artigo-indice ol li a { color: inherit; text-decoration: none; transition: color 0.15s; }
+        .artigo-indice ol li a:hover { color: #FF8C00; }
+
+        /* ── Dado destaque (fundo/texto controlados por artigo-theme.css) ── */
+        .dado-destaque {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: rgba(255,140,0,0.06);
+            border: 1px solid rgba(255,140,0,0.3);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin: 20px 0;
+        }
+        .dado-destaque-num { font-size: 1.8em; font-weight: 800; color: #FF8C00; line-height: 1.1; flex-shrink: 0; text-align: center; }
+        .dado-destaque-txt { font-size: 0.9em; color: #ddd; line-height: 1.6; }
+        .dado-destaque-txt strong { color: #fff; }
+
+        /* ── Linha do tempo (fundo/texto controlados por artigo-theme.css) ── */
+        .timeline { margin: 20px 0; display: flex; flex-direction: column; }
+        .timeline-item { display: flex; gap: 16px; position: relative; padding-bottom: 22px; }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 40px; }
+        .timeline-dot { width: 36px; height: 36px; background: #FF8C00; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.78em; font-weight: 700; flex-shrink: 0; z-index: 1; }
+        .timeline-linha { width: 2px; flex: 1; background: rgba(255,140,0,0.2); margin-top: 4px; }
+        .timeline-item:last-child .timeline-linha { display: none; }
+        .timeline-content { padding-top: 6px; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 14px; }
+        .timeline-ano { font-size: 0.75em; font-weight: 700; color: #FF8C00; margin-bottom: 3px; }
+        .timeline-content p { font-size: 0.88em; color: #ccc; line-height: 1.6; margin: 0; }
+        .timeline-content p strong { color: #fff; }
+
+        /* ── Grid de marcas/modelos (fundo/texto controlados por artigo-theme.css) ── */
+        .marcas-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .marca-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 14px 16px;
+            transition: border-color 0.15s;
+        }
+        .marca-card:hover { border-color: rgba(255,140,0,0.5); }
+        .marca-card .mc-icone { font-size: 1.5em; margin-bottom: 6px; }
+        .marca-card .mc-nome { font-size: 0.85em; font-weight: 700; color: #fff; margin-bottom: 4px; }
+        .marca-card .mc-ano { font-size: 0.7em; font-weight: 700; color: #FF8C00; margin-bottom: 6px; display: block; }
+        .marca-card .mc-desc { font-size: 0.78em; color: #ccc; line-height: 1.5; }
+
+        /* ── Bloco alerta / info (fundo/texto controlados por artigo-theme.css; cor de destaque própria fixa) ── */
+        .bloco-alerta {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            background: rgba(41,128,185,0.06);
+            border: 1px solid rgba(41,128,185,0.35);
+            border-left: 4px solid #2980b9;
+            border-radius: 0 10px 10px 0;
+            padding: 16px 18px;
+            margin: 20px 0;
+        }
+        .bloco-alerta i { color: #2980b9; font-size: 1.3em; flex-shrink: 0; margin-top: 2px; }
+        .bloco-alerta-txt { font-size: 0.88em; color: #ddd; line-height: 1.6; }
+        .bloco-alerta-txt strong { color: #fff; }
+
+        /* ── Curiosidade visual (fundo/texto controlados por artigo-theme.css) ── */
+        .curiosidade-visual {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin: 20px 0;
+        }
+        .curiosidade-visual .cv-emoji { font-size: 2.5em; flex-shrink: 0; }
+        .curiosidade-visual .cv-txt { font-size: 0.88em; color: #ffffff; line-height: 1.6; }
+        .curiosidade-visual .cv-txt strong { color: #FF8C00; }
+
+        /* ── Controvérsia (fundo/texto controlados por artigo-theme.css) ── */
+        .controversia-box {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .controversia-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.03);
+        }
+        .controversia-item.contestado { border-color: rgba(231,76,60,0.4); }
+        .controversia-item.oficial { border-color: rgba(39,174,96,0.4); }
+        .ci-icone { font-size: 1.2em; flex-shrink: 0; width: 28px; text-align: center; }
+        .ci-txt { font-size: 0.87em; color: #ddd; line-height: 1.5; }
+        .ci-txt strong { color: #fff; }
+
+        /* ── FAQ (fundo ESCURO translúcido → texto CLARO fixo) ── */
+        .faq-item { border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+        .faq-pergunta { padding: 14px 18px; font-size: 0.9em; font-weight: 600; color: #fff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); user-select: none; }
+        .faq-pergunta:hover { background: rgba(255,140,0,0.06); }
+        .faq-pergunta i { color: #FF8C00; font-size: 0.85em; transition: transform 0.2s; }
+        .faq-resposta { display: none; padding: 0 18px 14px; font-size: 0.87em; color: #ccc; line-height: 1.6; background: rgba(255,255,255,0.03); }
+        .faq-resposta.aberta { display: block; }
+        .faq-item.aberto .faq-pergunta i { transform: rotate(180deg); }
+
+        /* ── Referências (fundo ESCURO translúcido → texto CLARO fixo) ── */
+        .referencias {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin-top: 28px;
+        }
+        .referencias h4 { font-size: 0.85em; font-weight: 700; color: #FF8C00; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+        .referencias ul { padding-left: 18px; margin: 0; }
+        .referencias ul li { font-size: 0.8em; color: #aaa; margin-bottom: 6px; line-height: 1.5; }
+        .referencias ul li a { color: #FF8C00; text-decoration: none; }
+        .referencias ul li a:hover { text-decoration: underline; }
+
+        /* ── Navegação ── */
+        .artigo-nav { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+        .artigo-nav a { flex: 1; min-width: 200px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,140,0,0.2); border-radius: 10px; padding: 14px 18px; text-decoration: none; color: #fff; font-size: 0.87em; transition: border-color 0.15s, background 0.15s; display: flex; align-items: center; gap: 10px; }
+        .artigo-nav a:hover { border-color: #FF8C00; background: rgba(255,140,0,0.06); }
+        .artigo-nav a i { color: #FF8C00; font-size: 1.1em; flex-shrink: 0; }
+        .artigo-nav a span { font-size: 0.78em; color: #aaa; display: block; }
+
+        @media (max-width: 540px) {
+            .marcas-grid { grid-template-columns: 1fr; }
+            .curiosidade-visual { flex-direction: column; text-align: center; }
         }
     </style>
+
     <script>
       (function() {
         try {
@@ -39,10 +202,10 @@
 <body>
     <header class="site-header">
         <div class="header-content-wrapper">
-           <div class="logo">
-            <a href="../index.html">
-            <img src="../ashoras-removebg-preview.png" alt="ashoras logo" class="logo-img">
-            </a>
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../ashoras-removebg-preview.png" alt="AsHoras logo" class="logo-img">
+                </a>
             </div>
             <nav class="main-nav">
                 <a href="../vocesabia.html" class="active">Você Sabia?</a>
@@ -52,57 +215,287 @@
         </div>
     </header>
 
+    <div class="theme-switcher-sabia">
+        <span id="light-theme-btn" class="theme-icon active" title="Tema Claro"><i class="fas fa-sun"></i></span>
+        <span id="dark-theme-btn" class="theme-icon" title="Tema Escuro"><i class="fas fa-moon"></i></span>
+    </div>
+
     <main class="main-application-area">
         <article class="artigo-container">
-            <h1>⌚ Quem inventou o relógio de pulso?</h1>
+
+            <h1>Quem inventou o relógio de pulso?</h1>
+
+            <!-- Meta info -->
+            <div class="artigo-meta">
+                <span><i class="fas fa-clock"></i> Leitura: 7 minutos</span>
+                <span><i class="fas fa-tag"></i> Categoria: História & Relojoaria</span>
+                <span><i class="fas fa-calendar-alt"></i> Atualizado em 2025</span>
+                <span><i class="fas fa-graduation-cap"></i> Nível: Iniciante</span>
+            </div>
+
             <p class="intro">
-                Hoje parece impossível viver sem ele, mas o relógio de pulso tem uma história curiosa que mistura moda, tecnologia e até guerra! Vamos descobrir quem realmente foi o criador dessa invenção.
+                Hoje parece impossível viver sem ele, mas o relógio de pulso percorreu um caminho e tanto até chegar aos nossos braços: nasceu como joia da realeza, foi rejeitado pelos homens por décadas, sobreviveu a uma guerra mundial e só então se tornou o objeto prático e universal que conhecemos. E o nome de um brasileiro está no meio dessa história.
             </p>
 
-            <section class="artigo-secao">
-                <h2>💎 1. O começo elegante: uma joia para a realeza</h2>
+            <!-- Índice -->
+            <div class="artigo-indice">
+                <h4><i class="fas fa-list"></i> &nbsp;Neste artigo</h4>
+                <ol>
+                    <li><a href="#breguet">O relógio "perdido" de Breguet, 1810</a></li>
+                    <li><a href="#patek">1868: Patek Philippe e a Condessa Koscowicz</a></li>
+                    <li><a href="#santos-dumont">Santos-Dumont, Cartier e o relógio que mudou tudo</a></li>
+                    <li><a href="#guerra">Dos salões para os campos de batalha</a></li>
+                    <li><a href="#marcas">Marcas e modelos que fizeram história</a></li>
+                    <li><a href="#faq">Perguntas frequentes</a></li>
+                </ol>
+            </div>
+
+            <!-- 1. Breguet -->
+            <section class="artigo-secao" id="breguet">
+                <h2>1. O relógio "perdido" de Breguet, 1810</h2>
+                <p>
+                    Antes de qualquer marca suíça famosa, o relojoeiro francês <strong>Abraham-Louis Breguet</strong> já havia criado o que muitos historiadores consideram o primeiro relógio de pulso do mundo. Por volta de <strong>1810</strong>, Breguet foi encomendado pela <strong>Rainha Carolina Murat</strong> de Nápoles — irmã de Napoleão Bonaparte — a fazer um relógio que pudesse ser usado preso ao pulso, e não guardado no bolso.
+                </p>
+                <p>
+                    O problema é que essa peça nunca foi encontrada. Não há um exemplar físico, fotografia ou desenho técnico que comprove sua existência além dos registros de encomenda — por isso, embora seja citada como o "primeiro" relógio de pulso, ela é tratada com cautela pelos historiadores da relojoaria. É justamente essa lacuna que abre espaço para a Patek Philippe reivindicar o título quase 60 anos depois.
+                </p>
+
+                <div class="controversia-box">
+                    <div class="controversia-item contestado">
+                        <div class="ci-icone">❓</div>
+                        <div class="ci-txt"><strong>Breguet, 1810:</strong> primeiro relógio de pulso "documentado", mas a peça em si nunca foi localizada — sem provas físicas.</div>
+                    </div>
+                    <div class="controversia-item oficial">
+                        <div class="ci-icone">✅</div>
+                        <div class="ci-txt"><strong>Patek Philippe, 1868:</strong> primeiro relógio de pulso com existência comprovada e amplamente documentada — por isso é o mais citado como "o" inventor.</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Patek Philippe -->
+            <section class="artigo-secao" id="patek">
+                <h2>2. 1868: Patek Philippe e a Condessa Koscowicz</h2>
                 <div class="imagem-container anim-float">
                     <img src="../img_artigos/artigo-relogio/um-presente-para-realeza.png" alt="Relógio de pulso antigo da Patek Philippe" class="artigo-imagem">
                 </div>
                 <p>
-                    O primeiro registro de um relógio de pulso foi feito em 1868 pela marca suíça <strong>Patek Philippe</strong>. Ele foi criado especialmente para a Condessa Koscowicz, da Hungria, como uma peça de joalheria. Ou seja, inicialmente o relógio de pulso era visto como um <em>acessório feminino</em> de luxo, e não como algo prático para o dia a dia.
+                    O registro mais sólido e mundialmente aceito é de <strong>1868</strong>, quando a relojoaria suíça <strong>Patek Philippe</strong> — fundada por Antoine Norbert de Patek e o relojoeiro francês Jean-Adrien Philippe — criou um relógio de pulso para a <strong>Condessa Koscowicz</strong>, da Hungria. Era uma peça de joalheria refinada, decorada e pensada como acessório de moda, não como instrumento prático de medição do tempo.
                 </p>
-            </section>
-
-            <section class="artigo-secao">
-                <h2>⚔️ 2. Dos salões para os campos de batalha</h2>
-                <div class="imagem-container anim-fade-in">
-                    <img src="../img_artigos/artigo-relogio/relogio-pulso.png" alt="Soldados usando relógios de pulso" class="artigo-imagem">
-                </div>
                 <p>
-                    No fim do século XIX e início do XX, militares perceberam que tirar o relógio do bolso durante combates era nada prático. Assim, começaram a adaptar relógios de bolso para o pulso, com pulseiras de couro. Essa mudança ajudava muito na coordenação de ataques e estratégias.
+                    Por décadas depois disso, relógio de pulso era sinônimo de <em>acessório feminino</em>. Os homens continuavam fiéis ao relógio de bolso, considerado mais sério e elegante para o universo masculino da época — usar um relógio no pulso chegava a ser motivo de piada entre eles.
                 </p>
-                <p class="destaque">👉 Foi nas guerras que o relógio de pulso ganhou fama entre os homens!</p>
+
+                <div class="dado-destaque">
+                    <div class="dado-destaque-num">1868</div>
+                    <div class="dado-destaque-txt">
+                        Ano em que a <strong>Patek Philippe</strong> produziu o relógio de pulso considerado o marco oficial da invenção — quase <strong>60 anos depois</strong> da peça (não comprovada) atribuída a Breguet.
+                    </div>
+                </div>
             </section>
 
-            <section class="artigo-secao">
-                <h2>🏭 3. A virada comercial</h2>
-                <div class="imagem-container anim-twinkle">
+            <!-- 3. Santos-Dumont -->
+            <section class="artigo-secao" id="santos-dumont">
+                <h2>3. Santos-Dumont, Cartier e o relógio que mudou tudo</h2>
+                <div class="imagem-container anim-fade-in">
                     <img src="../img_artigos/artigo-relogio/relogio-aviador.png" alt="Relógio de aviador" class="artigo-imagem">
                 </div>
                 <p>
-                    No início do século XX, marcas como <strong>Rolex</strong> e <strong>Cartier</strong> começaram a produzir modelos pensados para homens. Um exemplo famoso foi o Cartier Santos, criado em 1904 para o aviador brasileiro Alberto Santos-Dumont, que precisava de um relógio prático durante seus voos.
+                    A virada masculina do relógio de pulso tem nome, sobrenome e nacionalidade brasileira: <strong>Alberto Santos-Dumont</strong>. No início do século XX, o "pai da aviação" enfrentava um problema prático nos seus voos — não dava para soltar os comandos da aeronave para tirar o relógio de bolso e cronometrar o tempo de voo.
                 </p>
+                <p>
+                    Santos-Dumont levou a queixa ao amigo joalheiro <strong>Louis Cartier</strong>, que — com a ajuda do mestre relojoeiro Edmond Jaeger — desenvolveu um modelo de caixa quadrada com pulseira de couro, apresentado em <strong>março de 1904</strong>. O design, com parafusos visíveis no bezel inspirados na estrutura da Torre Eiffel, rompia com a tradição dos relógios redondos e se tornou a base da coleção <strong>Cartier Santos</strong>, comercializada a partir de 1911 e vendida até hoje, mais de um século depois.
+                </p>
+
+                <div class="curiosidade-visual">
+                    <div class="cv-emoji">🇧🇷</div>
+                    <div class="cv-txt">
+                        <strong>Estilo também era marca de Santos-Dumont:</strong> em Paris, no início do século XX, o brasileiro era tão admirado por seu estilo pessoal quanto por suas conquistas na aviação — chegava a desenhar as próprias roupas, confeccionadas no ateliê de Amélie Matisse, esposa do pintor Henri Matisse.
+                    </div>
+                </div>
             </section>
 
+            <!-- 4. Guerra -->
+            <section class="artigo-secao" id="guerra">
+                <h2>4. Dos salões para os campos de batalha</h2>
+                <p>
+                    Mesmo com o exemplo de Santos-Dumont, o relógio de pulso masculino ainda era visto com desconfiança pela maioria dos homens — "coisa de mulher", diziam. O que finalmente mudou esse cenário foi a <strong>Primeira Guerra Mundial</strong> (1914–1918). Em combate, soldados e oficiais precisavam sincronizar ataques com precisão de minutos, e tirar o relógio do bolso em pleno tiroteio era simplesmente inviável.
+                </p>
+                <p>
+                    Relógios de bolso passaram a ser adaptados com alças de couro improvisadas para serem usados no pulso — os chamados <em>"trench watches"</em> (relógios de trincheira). Terminada a guerra, milhões de homens que serviram nas forças armadas voltaram para casa já acostumados ao relógio de pulso, e o que era estigma virou símbolo de praticidade, masculinidade e modernidade.
+                </p>
+
+                <div class="bloco-alerta">
+                    <i class="fas fa-info-circle"></i>
+                    <div class="bloco-alerta-txt">
+                        <strong>A virada definitiva:</strong> antes da Primeira Guerra Mundial, o relógio de pulso era visto como acessório feminino. Depois da guerra, tornou-se item indispensável para qualquer homem — uma das mudanças de hábito mais rápidas e completas da história da moda masculina.
+                    </div>
+                </div>
+
+                <div class="timeline" style="margin-top:24px">
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">1</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">~1810</div>
+                            <p><strong>Breguet</strong> cria um relógio de pulso para a Rainha Carolina Murat — peça nunca encontrada, hoje tratada como lenda histórica.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">2</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">1868</div>
+                            <p><strong>Patek Philippe</strong> cria o relógio de pulso da Condessa Koscowicz — o marco aceito como origem oficial do relógio de pulso.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">3</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">Mar. 1904</div>
+                            <p><strong>Cartier</strong> cria o relógio de pulso para <strong>Santos-Dumont</strong> — base da futura linha Cartier Santos.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">4</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">1911</div>
+                            <p>O modelo <strong>Cartier Santos</strong> começa a ser comercializado para o público em geral.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">5</div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">1914–1918</div>
+                            <p>A <strong>Primeira Guerra Mundial</strong> populariza definitivamente o relógio de pulso entre os homens, com os "trench watches" usados nas trincheiras.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Marcas -->
+            <section class="artigo-secao" id="marcas">
+                <h2>5. Marcas e modelos que fizeram história</h2>
+                <div class="imagem-container anim-twinkle">
+                    <img src="../img_artigos/artigo-relogio/relogio-pulso.png" alt="Soldados usando relógios de pulso" class="artigo-imagem">
+                </div>
+                <p>
+                    Depois da virada masculina pós-guerra, marcas suíças e francesas correram para criar modelos voltados a esse novo público. Algumas peças se tornaram tão icônicas que continuam sendo vendidas — quase sem mudanças de design — mais de um século depois.
+                </p>
+
+                <div class="marcas-grid">
+                    <div class="marca-card">
+                        <div class="mc-icone">💍</div>
+                        <div class="mc-nome">Patek Philippe</div>
+                        <span class="mc-ano">1868</span>
+                        <div class="mc-desc">Primeiro relógio de pulso documentado, criado como joia para a Condessa Koscowicz.</div>
+                    </div>
+                    <div class="marca-card">
+                        <div class="mc-icone">✈️</div>
+                        <div class="mc-nome">Cartier Santos</div>
+                        <span class="mc-ano">1904</span>
+                        <div class="mc-desc">Criado para Santos-Dumont; caixa quadrada inspirada na Torre Eiffel, vendido até hoje.</div>
+                    </div>
+                    <div class="marca-card">
+                        <div class="mc-icone">🪖</div>
+                        <div class="mc-nome">Trench Watch</div>
+                        <span class="mc-ano">1914–1918</span>
+                        <div class="mc-desc">Relógios de bolso adaptados com alças de couro para uso em combate na 1ª Guerra.</div>
+                    </div>
+                    <div class="marca-card">
+                        <div class="mc-icone">⌚</div>
+                        <div class="mc-nome">Rolex Oyster</div>
+                        <span class="mc-ano">1926</span>
+                        <div class="mc-desc">Primeiro relógio de pulso à prova d'água do mundo, consolidando o uso prático e esportivo.</div>
+                    </div>
+                </div>
+
+                <div class="curiosidade-visual">
+                    <div class="cv-emoji">💰</div>
+                    <div class="cv-txt">
+                        <strong>O relógio mais caro já vendido:</strong> em novembro de 2016, um relógio de pulso da Patek Philippe foi arrematado em leilão por mais de <strong>10 milhões de euros</strong> — o maior valor já pago por um relógio de pulso, mais de 150 anos depois da peça original ter sido criada como simples acessório de moda.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Curiosidade extra -->
             <section class="artigo-secao curiosidade">
-                <h3>🚀 Curiosidade Extra:</h3>
+                <h3>🚀 Curiosidade Extra</h3>
                 <p>
-                    Até a Primeira Guerra Mundial, muitos homens achavam que relógios de pulso eram “coisa de mulher”. Depois da guerra, virou símbolo de praticidade e estilo masculino.
+                    A história do relógio de pulso e a da aviação se cruzam mais de uma vez: o mesmo Santos-Dumont que pediu o relógio a Cartier em 1904 realizaria, dois anos depois, em 1906, o primeiro voo público de um avião mais pesado que o ar na Europa, a bordo do 14-Bis. O relógio que cronometrava seus testes acabou se tornando tão lembrado quanto o próprio avião.
                 </p>
             </section>
 
+            <!-- FAQ -->
+            <section class="artigo-secao" id="faq">
+                <h3>6. Perguntas frequentes ❓</h3>
+
+                <div class="faq-item">
+                    <div class="faq-pergunta">Quem inventou mesmo o relógio de pulso: Breguet, Patek Philippe ou Cartier? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">Não há um único "inventor" indiscutível. Breguet teria feito o primeiro exemplar por volta de 1810, mas a peça nunca foi localizada. A Patek Philippe criou, em 1868, o primeiro relógio de pulso com existência comprovada — por isso é a mais citada como origem oficial. Já a Cartier, em 1904, não inventou o relógio de pulso em si, mas criou o primeiro modelo pensado especificamente para uso masculino prático, abrindo caminho para sua popularização entre os homens.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta">Santos-Dumont inventou o relógio de pulso? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">Não tecnicamente — o relógio de pulso já existia desde 1868 com a Patek Philippe. O que Santos-Dumont fez foi encomendar a Cartier, em 1904, o primeiro relógio de pulso desenhado especificamente para um homem e para uso prático (no caso, a aviação), o que deu origem à icônica linha Cartier Santos e ajudou a popularizar o acessório entre o público masculino.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta">Por que os homens demoraram tanto a aceitar o relógio de pulso? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">Porque, durante décadas após 1868, o relógio de pulso foi associado quase exclusivamente à moda feminina. O relógio de bolso era visto como mais sério, discreto e "apropriado" para os homens da época. Essa percepção só mudou com a necessidade prática imposta pela Primeira Guerra Mundial, quando soldados passaram a usar relógios de pulso em combate por pura necessidade operacional.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta">O relógio Cartier Santos ainda é vendido hoje? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">Sim. A coleção Cartier Santos, inspirada diretamente no relógio criado para Santos-Dumont em 1904, continua sendo produzida e vendida até hoje, mais de 120 anos depois — um dos exemplos mais longevos de continuidade de design na história da relojoaria.</div>
+                </div>
+            </section>
+
+            <!-- Conclusão -->
             <section class="artigo-secao conclusao">
-                <h3>🎉 Conclusão:</h3>
+                <h3>Conclusão</h3>
                 <p>
-                    O relógio de pulso foi inventado como uma joia pela Patek Philippe, mas ganhou fama mundial graças aos militares e aviadores que precisavam de praticidade. Hoje, ele é muito mais do que um marcador de tempo: virou moda, tradição e até tecnologia de ponta com os smartwatches!
+                    O relógio de pulso nasceu como joia para rainhas e condessas, passou décadas sendo evitado pelos homens e só se tornou universal depois de provar seu valor nas trincheiras de uma guerra mundial. No meio dessa trajetória está a história de um brasileiro, Santos-Dumont, cuja necessidade prática nos céus ajudou a moldar um dos acessórios mais usados no mundo até hoje — muito antes dos smartwatches reinventarem tudo de novo.
                 </p>
             </section>
+
+            <!-- Referências -->
+            <div class="referencias">
+                <h4><i class="fas fa-book"></i> Fontes e referências</h4>
+                <ul>
+                    <li><a href="https://pt.wikipedia.org/wiki/Rel%C3%B3gio_de_pulso" target="_blank" rel="noopener noreferrer">Wikipédia — Relógio de pulso</a></li>
+                    <li><a href="https://revistaminerva.pt/historia-da-patek-philippe-um-legado-de-tradicao-e-inovacao-na-relojoaria/" target="_blank" rel="noopener noreferrer">Revista Minerva Universitária — História da Patek Philippe</a></li>
+                    <li><a href="https://italianwatchspotter.com/cartier-santos-dumont-history/?lang=en" target="_blank" rel="noopener noreferrer">Italian Watch Spotter — Cartier Santos-Dumont History</a></li>
+                    <li>Medeiros, Alexandre. <em>Santos Dumont e a Física do Cotidiano</em>. Editora Livraria da Física, 2006.</li>
+                    <li>Hoffman, Paul. <em>Wings of Madness: Alberto Santos-Dumont and the Invention of Flight</em>. Hyperion, 2003.</li>
+                </ul>
+            </div>
+
+            <!-- Navegação -->
+            <div class="artigo-nav">
+                <a href="artigo-dia-24h.html">
+                    <i class="fas fa-arrow-left"></i>
+                    <div>
+                        <span>Artigo anterior</span>
+                        Por que o dia tem 24 horas?
+                    </div>
+                </a>
+                <a href="artigo-horario-verao.html">
+                    <div style="text-align:right;flex:1">
+                        <span>Leia também</span>
+                        O que é o horário de verão?
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
 
         </article>
     </main>
@@ -111,8 +504,28 @@
         <div class="footer-content-wrapper">
             <p>&copy; 2025 AsHoras. Todos os direitos reservados.</p>
             <a href="../sobre.html" style="color:var(--cor-primaria);text-decoration:none;">Sobre</a> |
-                <a href="../privacidade.html" style="color:var(--cor-primaria);text-decoration:none;">Privacidade</a>
+            <a href="../privacidade.html" style="color:var(--cor-primaria);text-decoration:none;">Privacidade</a>
         </div>
     </footer>
+
+    <script src="../sabia-theme-loader.js"></script>
+
+    <script>
+    document.querySelectorAll('.faq-pergunta').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var item = btn.closest('.faq-item');
+            var resp = item.querySelector('.faq-resposta');
+            var aberto = item.classList.contains('aberto');
+            document.querySelectorAll('.faq-item').forEach(function(i) {
+                i.classList.remove('aberto');
+                i.querySelector('.faq-resposta').classList.remove('aberta');
+            });
+            if (!aberto) {
+                item.classList.add('aberto');
+                resp.classList.add('aberta');
+            }
+        });
+    });
+    </script>
 </body>
 </html>

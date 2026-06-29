@@ -10,6 +10,7 @@
     <meta name="keywords" content="relógio online, fusos horários, calendário online, alarme, cronômetro, pomodoro, horas do mundo, screensaver relógio, wallpapers relógio, papel de parede relógio">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="weather-widget.css">
+    <link rel="stylesheet" href="agenda.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=schedule" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -62,6 +63,131 @@
             #cookie-banner { flex-direction: column; align-items: flex-start; padding: 14px 16px; }
             .cookie-buttons { width: 100%; }
             .cookie-btn-aceitar, .cookie-btn-recusar { flex: 1; text-align: center; }
+        }
+
+        /* ── Painel de apresentação do AsHoras ── */
+        .ashoras-intro-panel {
+            background: var(--cor-superficie);
+            border: 1px solid var(--cor-borda-geral);
+            border-left: 4px solid var(--cor-primaria);
+            border-radius: var(--radius-padrao, 8px);
+            padding: 18px 20px;
+            margin-bottom: 20px;
+        }
+        .aip-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .aip-icon { font-size: 1.4em; }
+        .aip-title { font-size: 1.1em; color: var(--cor-texto-principal); }
+        .aip-text { font-size: 0.92em; color: var(--cor-texto-secundario); line-height: 1.6; margin-bottom: 14px; }
+        .aip-text strong { color: var(--cor-texto-principal); }
+        .aip-tools-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+        .aip-tool-tag {
+            background: rgba(255,107,0,0.1);
+            color: var(--cor-primaria);
+            border: 1px solid rgba(255,107,0,0.25);
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 0.82em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .aip-benefit { font-size: 0.88em; color: var(--cor-texto-secundario); line-height: 1.5; margin: 0; }
+        .aip-benefit strong { color: var(--cor-texto-principal); }
+
+        /* ── Painéis informativos das ferramentas ── */
+        .pip-info-wrapper {
+            background: var(--cor-superficie);
+            border: 1px solid var(--cor-borda-geral);
+            border-left: 4px solid var(--cor-primaria);
+            border-radius: var(--radius-padrao, 8px);
+            padding: 16px 18px;
+            margin-bottom: 18px;
+        }
+        .pip-info-wrapper .pip-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+        .pip-info-wrapper .pip-icon { font-size: 1.3em; }
+        .pip-info-wrapper .pip-title { font-size: 1.05em; color: var(--cor-texto-principal); }
+        .pip-info-wrapper .pip-text { font-size: 0.91em; color: var(--cor-texto-secundario); line-height: 1.6; margin-bottom: 12px; }
+        .pip-info-wrapper .pip-text strong { color: var(--cor-texto-principal); }
+        .pip-info-wrapper .pip-steps { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+        .pip-info-wrapper .pip-step { display: flex; align-items: flex-start; gap: 10px; font-size: 0.88em; color: var(--cor-texto-secundario); }
+        .pip-info-wrapper .pip-step strong { color: var(--cor-texto-principal); }
+        .pip-info-wrapper .pip-step-num {
+            background: var(--cor-primaria);
+            color: #fff;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78em;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .pip-info-wrapper .pip-who { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        .pip-info-wrapper .pip-who-tag {
+            background: rgba(255,107,0,0.1);
+            color: var(--cor-primaria);
+            border: 1px solid rgba(255,107,0,0.25);
+            border-radius: 20px;
+            padding: 3px 10px;
+            font-size: 0.8em;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .pip-info-wrapper .pip-benefit {
+            font-size: 0.86em;
+            color: var(--cor-texto-secundario);
+            line-height: 1.5;
+            margin: 0;
+            padding-top: 8px;
+            border-top: 1px solid var(--cor-borda-geral);
+        }
+        .pip-info-wrapper .pip-benefit strong { color: var(--cor-texto-principal); }
+
+        /* Barra de título com botão ? para seções */
+        .secao-info-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 6px 2px;
+        }
+        .secao-info-titulo {
+            font-size: 0.9em;
+            font-weight: 600;
+            color: var(--cor-texto-secundario);
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .secao-info-btn {
+            background: none;
+            border: 1.5px solid var(--cor-borda-geral);
+            color: var(--cor-texto-secundario);
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            font-size: 0.82em;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color 0.15s, color 0.15s, background 0.15s;
+            flex-shrink: 0;
+        }
+        .secao-info-btn:hover,
+        .secao-info-btn.ativo {
+            border-color: var(--cor-primaria);
+            color: var(--cor-primaria);
+            background: rgba(255,107,0,0.08);
+        }
+        .secao-info-bar--inicio {
+            margin-bottom: 18px;
+            padding: 10px 4px;
+            border-bottom: 1px solid var(--cor-borda-geral);
         }
     </style>
 
@@ -150,11 +276,34 @@
                     <li data-target="calendario"><a href="#"><i class="far fa-calendar"></i> Calendário</a></li>
                     <li data-target="semana-do-ano"><a href="#"><i class="fa-solid fa-calendar-week"></i> Semana do Ano</a></li>
                     <li data-target="pomodoro-timer"><a href="#"><i class="fa-solid fa-stopwatch-20"></i> Pomodoro</a></li>
+                    <li data-target="agenda-diaria"><a href="#"><i class="fa-solid fa-book-open" style="color:var(--ag-branco,#27ae60);"></i> Agenda Diária</a></li>
                     <li><a href="vocesabia.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-question-circle"></i> Você Sabia?</a></li>
                     </ul>
             </nav>
             <main class="content">
                 <section id="relogio" class="tab-content active">
+                    <div class="secao-info-bar secao-info-bar--inicio">
+                        <span class="secao-info-titulo"><i class="fa-solid fa-house"></i> Bem-vindo ao AsHoras</span>
+                        <button class="secao-info-btn" data-painel="info-relogio" aria-label="Sobre o AsHoras" title="Saiba mais sobre o AsHoras">?</button>
+                    </div>
+                    <div id="info-relogio" class="pomodoro-info-panel" style="display:none;">
+                        <div class="pip-header">
+                            <span class="pip-icon">⏱️</span>
+                            <strong class="pip-title">Bem-vindo ao AsHoras</strong>
+                        </div>
+                        <p class="pip-text">O <strong>AsHoras</strong> é um conjunto de ferramentas de tempo gratuitas, diretas e sem complicação. Tudo o que você precisa para gerenciar seu dia — relógio, alarme, cronômetro, calendário e sua agenda diária para toda semana e muito mais — reunido em um só lugar, acessível de qualquer dispositivo, sem precisar instalar nada.</p>
+                        <div class="pip-who">
+                            <span class="pip-who-tag"><i class="fas fa-globe"></i> Fusos Horários</span>
+                            <span class="pip-who-tag"><i class="fa-regular fa-bell"></i> Despertador</span>
+                            <span class="pip-who-tag"><i class="fa-solid fa-hourglass-start"></i> Cronômetro</span>
+                            <span class="pip-who-tag"><i class="fa-solid fa-clock-rotate-left"></i> Temporizador</span>
+                            <span class="pip-who-tag"><i class="far fa-calendar"></i> Calendário</span>
+                            <span class="pip-who-tag"><i class="fa-solid fa-stopwatch-20"></i> Pomodoro</span>
+                            <span class="pip-who-tag"><i class="fa-solid fa-book-open"></i> Agenda Diária</span>
+                            <span class="pip-who-tag"><i class="fa-regular fa-image"></i> Wallpapers</span>
+                            </div>
+                        <p class="pip-benefit">Ideal para <strong>estudantes</strong>, <strong>trabalhadores remotos</strong> e qualquer pessoa que precisa coordenar horários entre países. Use também a <strong>Seção Interativa</strong> — menu <i class="fas fa-cog"></i> — para ativar o <strong>protetor de tela</strong> ou escolher um <strong>papel de parede</strong> temático.</p>
+                    </div>
                     <div class="top-converter-wrapper">
     <h2 class="section-title-main">Conversor de fuso horário:</h2>
     <p class="section-subtitle">Qual a diferença horária entre duas cidades ou países?</p>
@@ -220,6 +369,23 @@
                 </section>
                 
                 <section id="despertador" class="tab-content">
+                    <div class="secao-info-bar">
+                        <span class="secao-info-titulo"><i class="fa-regular fa-bell"></i> Despertador Online</span>
+                        <button class="secao-info-btn" data-painel="info-despertador" aria-label="Como usar o despertador" title="Como usar o Despertador">?</button>
+                    </div>
+                    <div id="info-despertador" class="pomodoro-info-panel" style="display:none;">
+                        <div class="pip-header">
+                            <span class="pip-icon">🔔</span>
+                            <strong class="pip-title">Despertador Online</strong>
+                        </div>
+                        <p class="pip-text">Configure um alarme para tocar diretamente no seu navegador, sem precisar de aplicativo. Escolha o horário, selecione um som e deixe a aba aberta — o alarme dispara no momento certo, mesmo que você esteja em outra aba.</p>
+                        <div class="pip-steps">
+                            <div class="pip-step"><span class="pip-step-num">1</span><span>Digite a <strong>hora e o minuto</strong> desejados</span></div>
+                            <div class="pip-step"><span class="pip-step-num">2</span><span>Escolha um <strong>som de alarme</strong> e ouça uma prévia</span></div>
+                            <div class="pip-step"><span class="pip-step-num">3</span><span>Clique em <strong>Definir Alarme</strong> e aguarde</span></div>
+                        </div>
+                        <p class="pip-benefit">💡 Mantenha o volume do dispositivo ligado e evite colocar o navegador em modo silencioso.</p>
+                    </div>
                     <div class="display-container">
                         <div id="data-atual-despertador" class="data-display"></div>
                         <div id="hora-atual-despertador" class="hora-display">00:00:00</div>
@@ -270,6 +436,23 @@
                     </div>
                 </section>
                 <section id="cronometro" class="tab-content">
+                    <div class="secao-info-bar">
+                        <span class="secao-info-titulo"><i class="fa-solid fa-hourglass-start"></i> Cronômetro Online</span>
+                        <button class="secao-info-btn" data-painel="info-cronometro" aria-label="Como usar o cronômetro" title="Como usar o Cronômetro">?</button>
+                    </div>
+                    <div id="info-cronometro" class="pomodoro-info-panel" style="display:none;">
+                        <div class="pip-header">
+                            <span class="pip-icon">⏱️</span>
+                            <strong class="pip-title">Cronômetro Online</strong>
+                        </div>
+                        <p class="pip-text">Meça o tempo com precisão de milissegundos diretamente no navegador. Útil para treinos físicos, experiências, provas ou qualquer situação onde contar o tempo com exatidão faz diferença.</p>
+                        <div class="pip-steps">
+                            <div class="pip-step"><span class="pip-step-num">1</span><span>Clique em <strong>Iniciar</strong> para começar a contagem</span></div>
+                            <div class="pip-step"><span class="pip-step-num">2</span><span>Use <strong>Parar</strong> para pausar e retomar quando quiser</span></div>
+                            <div class="pip-step"><span class="pip-step-num">3</span><span>Clique em <strong>Zerar</strong> para reiniciar do zero</span></div>
+                        </div>
+                        <p class="pip-benefit">💡 Use o botão de tela cheia para visualizar o cronômetro à distância — ideal para atividades físicas.</p>
+                    </div>
                     <div class="display-container">
                         <div class="hora-display" id="cronometro-display">00:00:00.000</div>
                         <button id="cronometro-fullscreen-btn" class="module-fullscreen-btn" aria-label="Tela cheia do cronômetro"><i class="fas fa-expand"></i></button>
@@ -281,6 +464,23 @@
                     </div>
                 </section>
                 <section id="temporizador" class="tab-content">
+                    <div class="secao-info-bar">
+                        <span class="secao-info-titulo"><i class="fa-solid fa-clock-rotate-left"></i> Temporizador Online</span>
+                        <button class="secao-info-btn" data-painel="info-temporizador" aria-label="Como usar o temporizador" title="Como usar o Temporizador">?</button>
+                    </div>
+                    <div id="info-temporizador" class="pomodoro-info-panel" style="display:none;">
+                        <div class="pip-header">
+                            <span class="pip-icon">⌛</span>
+                            <strong class="pip-title">Temporizador Online</strong>
+                        </div>
+                        <p class="pip-text">Defina uma contagem regressiva para qualquer atividade com tempo limitado: cozinhar, estudar, apresentações, pausas ou exercícios. Ao zerar, um som avisa você automaticamente.</p>
+                        <div class="pip-steps">
+                            <div class="pip-step"><span class="pip-step-num">1</span><span>Informe as <strong>horas, minutos e segundos</strong> desejados</span></div>
+                            <div class="pip-step"><span class="pip-step-num">2</span><span>Escolha o <strong>som de aviso</strong> ao fim da contagem</span></div>
+                            <div class="pip-step"><span class="pip-step-num">3</span><span>Clique em <strong>Iniciar</strong> e aguarde o aviso sonoro</span></div>
+                        </div>
+                        <p class="pip-benefit">💡 Combine com o <strong>Pomodoro</strong> para sessões de foco de 25 minutos com pausas programadas.</p>
+                    </div>
                     <div class="display-container">
                          <div class="hora-display" id="temporizador-display">00:00:00</div>
                          <button id="temporizador-fullscreen-btn" class="module-fullscreen-btn" aria-label="Tela cheia do temporizador"><i class="fas fa-expand"></i></button>
@@ -317,6 +517,23 @@
                     </div>
                 </section>
                 <section id="calendario" class="tab-content">
+                    <div class="secao-info-bar">
+                        <span class="secao-info-titulo"><i class="far fa-calendar"></i> Calendário com Feriados Nacionais</span>
+                        <button class="secao-info-btn" data-painel="info-calendario" aria-label="Como usar o calendário" title="Como usar o Calendário">?</button>
+                    </div>
+                    <div id="info-calendario" class="pomodoro-info-panel" style="display:none;">
+                        <div class="pip-header">
+                            <span class="pip-icon">📅</span>
+                            <strong class="pip-title">Calendário com Feriados Nacionais</strong>
+                        </div>
+                        <p class="pip-text">Consulte o calendário mensal com marcação automática dos <strong>feriados nacionais brasileiros</strong>. Navegue entre os meses, veja a data de hoje em destaque e confira quando é o próximo feriado sem precisar pesquisar em outro lugar.</p>
+                        <div class="pip-who">
+                            <span class="pip-who-tag"><i class="fas fa-briefcase"></i> Planejamento profissional</span>
+                            <span class="pip-who-tag"><i class="fas fa-plane"></i> Viagens e folgas</span>
+                            <span class="pip-who-tag"><i class="fas fa-graduation-cap"></i> Calendário escolar</span>
+                        </div>
+                        <p class="pip-benefit">💡 Clique em qualquer feriado marcado no calendário para ver o nome do feriado.</p>
+                    </div>
                     <!-- Painel de Informações do Calendário -->
                     <div id="calendar-info-panel" class="calendar-info-panel">
                         <div id="cal-info-today" class="cal-info-block cal-info-today-block">
@@ -373,6 +590,23 @@
                     </div>
                 </section>
                 <section id="semana-do-ano" class="tab-content">
+                    <div class="secao-info-bar">
+                        <span class="secao-info-titulo"><i class="far fa-calendar-alt"></i> Semana do Ano</span>
+                        <button class="secao-info-btn" data-painel="info-semana" aria-label="O que é semana do ano" title="Saiba mais sobre Semana do Ano">?</button>
+                    </div>
+                    <div id="info-semana" class="pomodoro-info-panel" style="display:none;">
+                        <div class="pip-header">
+                            <span class="pip-icon">📆</span>
+                            <strong class="pip-title">Semana do Ano</strong>
+                        </div>
+                        <p class="pip-text">Descubra em qual semana do ano estamos hoje e quantos dias já passaram desde 1º de janeiro. Esse dado é muito usado em <strong>planejamento empresarial</strong>, <strong>logística</strong> e projetos que seguem o padrão ISO 8601 de numeração de semanas.</p>
+                        <div class="pip-steps">
+                            <div class="pip-step"><span class="pip-step-num">📌</span><span>O ano tem <strong>52 ou 53 semanas</strong>, dependendo de como o calendário cai</span></div>
+                            <div class="pip-step"><span class="pip-step-num">📌</span><span>A semana começa no <strong>domingo</strong> no padrão brasileiro</span></div>
+                            <div class="pip-step"><span class="pip-step-num">📌</span><span>A barra de progresso mostra o quanto do ano já transcorreu</span></div>
+                        </div>
+                        <p class="pip-benefit">💡 Empresas usam o número da semana para agendar entregas, reuniões e metas mensais com mais precisão.</p>
+                    </div>
                     <div class="display-container main-display-container">
                         <div id="data-atual-semana-tab" class="data-display"></div>
                         <div id="hora-atual-semana-tab" class="hora-display">00:00:00</div>
@@ -431,6 +665,118 @@
                         </div>
                     </div>
                 </section>
+
+                <section id="agenda-diaria" class="tab-content">
+                    <div class="agenda-container">
+
+                        <!-- Cabeçalho -->
+                        <div class="agenda-header">
+                            <div class="agenda-header-icon">
+                                <i class="fas fa-clipboard-list"></i>
+                            </div>
+                            <div class="agenda-header-txt">
+                                <strong>Agenda Diária</strong>
+                                <span>Suas tarefas da semana — reset automático toda segunda-feira</span>
+                            </div>
+                            <span class="agenda-semana-badge" id="agenda-semana-badge">Semana --</span>
+                            <button id="agenda-info-btn" class="pomodoro-info-btn" aria-label="Como funciona a Agenda?" title="Como funciona a Agenda Diária?">?</button>
+                        </div>
+
+                        <!-- Painel de info (oculto por padrão) -->
+                        <div id="agenda-info-panel" class="pomodoro-info-panel" style="display:none;">
+                            <div class="pip-header">
+                                <span class="pip-icon">📋</span>
+                                <strong class="pip-title">Como funciona a Agenda Diária</strong>
+                            </div>
+                            <p class="pip-text">A Agenda Diária salva suas tarefas diretamente na <strong>memória do navegador</strong>. Tudo fica guardado no seu dispositivo.</p>
+                            <div class="pip-steps">
+                                <div class="pip-step"><span class="pip-step-num">📌</span><span>As tarefas <strong>persistem a semana toda</strong> — feche e abra o navegador à vontade</span></div>
+                                <div class="pip-step"><span class="pip-step-num">📌</span><span>Toda <strong>segunda-feira</strong> a agenda é limpa automaticamente para a nova semana e uma mensagem de confirmação vai ativar. Se desejar importar as mensagens em abertas da sexta - feira<strong>, se sim essas mensagem serão importadas para segunda - se não começa a semana com tudo zerado </strong></span></div>
+                                <div class="pip-step"><span class="pip-step-num">📌</span><span>Se trocar de <strong>navegador ou dispositivo</strong>, as tarefas não acompanham — ficam salvas apenas aqui,</span></div>
+                                </div>
+                            <div class="pip-who">
+                                <span class="pip-who-tag"><i class="fas fa-user-graduate"></i> Estudantes</span>
+                                <span class="pip-who-tag"><i class="fas fa-laptop-code"></i> Desenvolvedores</span>
+                                <span class="pip-who-tag"><i class="fas fa-briefcase"></i> Profissionais</span>
+                            </div>
+                            <p class="pip-benefit">💡 Use junto com o <strong>Pomodoro</strong> para organizar suas tarefas e controlar o tempo de cada uma.</p>
+                        </div>
+
+                        <!-- Navegação dos dias -->
+                        <div class="agenda-dias-nav">
+                            <div class="agenda-dia-btn" data-dia="seg">
+                                <span class="dia-nome">Seg</span>
+                                <span class="dia-num">--/--</span>
+                                <span class="dia-count">0</span>
+                            </div>
+                            <div class="agenda-dia-btn" data-dia="ter">
+                                <span class="dia-nome">Ter</span>
+                                <span class="dia-num">--/--</span>
+                                <span class="dia-count">0</span>
+                            </div>
+                            <div class="agenda-dia-btn" data-dia="qua">
+                                <span class="dia-nome">Qua</span>
+                                <span class="dia-num">--/--</span>
+                                <span class="dia-count">0</span>
+                            </div>
+                            <div class="agenda-dia-btn" data-dia="qui">
+                                <span class="dia-nome">Qui</span>
+                                <span class="dia-num">--/--</span>
+                                <span class="dia-count">0</span>
+                            </div>
+                            <div class="agenda-dia-btn" data-dia="sex">
+                                <span class="dia-nome">Sex</span>
+                                <span class="dia-num">--/--</span>
+                                <span class="dia-count">0</span>
+                            </div>
+                        </div>
+
+                        <!-- Corpo: input + lista -->
+                        <div class="agenda-body">
+                            <div class="agenda-input-row">
+                                <input type="text" id="agenda-nova-tarefa" placeholder="Adicionar nova tarefa para este dia..." maxlength="200" autocomplete="off" />
+                                <button id="agenda-btn-add" class="agenda-btn-add">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Adicionar</span>
+                                </button>
+                            </div>
+                            <div class="agenda-lista" id="agenda-lista">
+                                <!-- tarefas renderizadas pelo JS -->
+                            </div>
+                        </div>
+
+                        <!-- Rodapé com progresso -->
+                        <div class="agenda-footer">
+                            <span class="agenda-progresso-txt" id="agenda-progresso-txt">0 de 0 concluídas</span>
+                            <div class="agenda-progresso-bar">
+                                <div class="agenda-progresso-fill" id="agenda-progresso-fill"></div>
+                            </div>
+                            <span class="agenda-reset-info">
+                                <i class="fas fa-sync-alt"></i> limpa na segunda
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <!-- Modal: perguntar se importa tarefas abertas de sexta para a segunda -->
+                    <div id="agenda-reset-modal" class="agenda-reset-modal">
+                        <div class="agenda-reset-modal-box">
+                            <div class="agenda-reset-modal-icon">
+                                <i class="fas fa-clipboard-question"></i>
+                            </div>
+                            <h4>Nova semana começou!</h4>
+                            <p>
+                                Você tem <strong id="agenda-reset-modal-qtd">tarefas não concluídas na sexta</strong>.
+                                Quer trazê-las para a segunda-feira?
+                            </p>
+                            <div class="agenda-reset-modal-botoes">
+                                <button id="agenda-reset-importar-nao">Não, começar limpa</button>
+                                <button id="agenda-reset-importar-sim">Sim, importar</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
             </main>
         </div>
     </main>
@@ -464,6 +810,7 @@
     <!-- EmailJS — notificação silenciosa de buscas sem resultado -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script.js"></script>
+    <script src="agenda.js"></script>
 
     <!-- Banner de Cookies -->
     <div id="cookie-banner" class="hidden">
@@ -478,27 +825,8 @@
         </div>
     </div>
 
-    <script>
-    (function() {
-        var consent = localStorage.getItem('cookieConsent');
-        if (!consent) {
-            setTimeout(function() {
-                var banner = document.getElementById('cookie-banner');
-                if (banner) banner.classList.remove('hidden');
-            }, 1000);
-        }
-    })();
-    function aceitarCookies() {
-        localStorage.setItem('cookieConsent', 'accepted');
-        var banner = document.getElementById('cookie-banner');
-        if (banner) banner.classList.add('hidden');
-    }
-    function recusarCookies() {
-        localStorage.setItem('cookieConsent', 'refused');
-        var banner = document.getElementById('cookie-banner');
-        if (banner) banner.classList.add('hidden');
-    }
-    </script>
+    <script src="agen.local.js"></script>
     <script src="weather-widget.js"></script>
-</body>
+    <script src="toggle.js"></script>
+    </body>
 </html>

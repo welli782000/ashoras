@@ -281,7 +281,7 @@
                     O <strong>AsHoras</strong> foi criado para unir produtividade, organização e bem-estar digital em um único lugar. A proposta é oferecer ferramentas inteligentes e práticas que ajudam no dia a dia, seja para estudar, trabalhar, manter o foco ou simplesmente criar um ambiente mais agradável e leve durante o uso do computador.
                 </p>
                 <p>
-                    Aqui você encontra recursos desenvolvidos para facilitar sua rotina, como técnicas de produtividade utilizando o método Pomodoro, despertadores personalizados, calendários completos, controle de semanas do ano, relógios digitais interativos e artigos sobre essas tecnologias e histótria.
+                    Aqui você encontra recursos desenvolvidos para facilitar sua rotina, como técnicas de produtividade utilizando o método Pomodoro, despertadores personalizados, calendários completos, permite que você tenha uma agenda diária para seus trabalhos, assim como papeis de parede (wallpapers) de plataforma que mantemos assinaturas premium em base de imagem, os papeis de parede serve para da ao nosso site uma experiência de alegria. Controle de semanas do ano, relógios digitais interativos e artigos sobre essas tecnologias e histótria.
                 </p>
                 <p>
                     Além da produtividade, o site também oferece experiências visuais modernas e relaxantes. Entre elas estão papéis de parede interativos, temas claros e escuros, relógios em tela cheia, screensavers personalizados e ambientes digitais que ajudam a transformar sua área de trabalho em um espaço mais confortável, elegante e funcional. Nosso objetivo é proporcionar uma plataforma simples, intuitiva e inteligente.
@@ -370,33 +370,6 @@
     <!-- Lógica do formulário — separada, não mexe em nada do projeto -->
 
 
-    <script>
-    // Tema do sobre.html — lógica própria via classe no <html>
-    (function() {
-        // Aplica imediatamente antes de renderizar (evita flash)
-        var t = localStorage.getItem('sabiaTheme') || 'theme-light-sabia';
-        document.documentElement.className = t;
-    })();
-
-    document.addEventListener('DOMContentLoaded', function() {
-        var lightBtn = document.getElementById('light-theme-btn');
-        var darkBtn  = document.getElementById('dark-theme-btn');
-
-        function aplicarTema(nome) {
-            document.documentElement.className = nome;
-            localStorage.setItem('sabiaTheme', nome);
-            var isLight = nome === 'theme-light-sabia';
-            if (lightBtn) lightBtn.classList.toggle('active',  isLight);
-            if (darkBtn)  darkBtn.classList.toggle('active',  !isLight);
-        }
-
-        if (lightBtn) lightBtn.addEventListener('click', function() { aplicarTema('theme-light-sabia'); });
-        if (darkBtn)  darkBtn.addEventListener('click',  function() { aplicarTema('theme-dark-sabia'); });
-
-        // Aplica o tema salvo e marca ícone correto
-        var temaSalvo = localStorage.getItem('sabiaTheme') || 'theme-light-sabia';
-        aplicarTema(temaSalvo);
-    });
-    </script>
+    <script src="sob.tema.js"></script>
 </body>
 </html>

@@ -4,23 +4,191 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Por que fevereiro tem menos dias? — AsHoras</title>
-<meta name="description" content="Entenda por que fevereiro tem 28 dias enquanto os outros têm 30 ou 31. A culpa é dos romanos e da vaidade dos imperadores!">
-<meta name="keywords" content="por que fevereiro tem menos dias, calendário romano, ano bissexto, história do calendário">
+    <meta name="description" content="Entenda por que fevereiro tem 28 dias enquanto os outros têm 30 ou 31. A culpa é dos romanos, da vaidade dos imperadores e da matemática do universo!">
+    <meta name="keywords" content="por que fevereiro tem menos dias, calendário romano, ano bissexto, história do calendário, Numa Pompílio, Júlio César, calendário gregoriano">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../artigo.css"> 
+    <link rel="stylesheet" href="../artigo.css">
+    <link rel="stylesheet" href="../artigo-theme.css">
+    <link rel="stylesheet" href="../vocesabia-theme-light.css" id="theme-light-sabia">
+    <link rel="stylesheet" href="../vocesabia-theme-dark.css" id="theme-dark-sabia" disabled>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3173930318511411" crossorigin="anonymous"></script>
-     
-     <style>
-        .logo-img {
-            height: 40px; /* Ajuste esta altura conforme necessário para seu header */
-            width: auto;
-            display: block;
-        }
-        .logo {
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3173930318511411" crossorigin="anonymous"></script>
+
+    <style>
+        .logo-img { height: 40px; width: auto; display: block; }
+        .logo { display: flex; align-items: center; }
+
+        /* ── Meta info ── */
+        .artigo-meta {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 0 0 28px 0;
+            padding: 12px 16px;
+            background: rgba(255,140,0,0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255,140,0,0.15);
+        }
+        .artigo-meta span { font-size: 0.82em; color: #aaa; display: flex; align-items: center; gap: 5px; }
+        .artigo-meta i { color: #FF8C00; }
+
+        /* ── Índice ── */
+        .artigo-indice {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,140,0,0.2);
+            border-left: 4px solid #FF8C00;
+            border-radius: 0 10px 10px 0;
+            padding: 18px 22px;
+            margin: 0 0 32px 0;
+        }
+        .artigo-indice h4 { font-size: 0.88em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #FF8C00; margin-bottom: 10px; }
+        .artigo-indice ol { padding-left: 18px; margin: 0; }
+        .artigo-indice ol li { font-size: 0.88em; color: #bbb; margin-bottom: 5px; line-height: 1.5; }
+        .artigo-indice ol li a { color: inherit; text-decoration: none; transition: color 0.15s; }
+        .artigo-indice ol li a:hover { color: #FF8C00; }
+
+        /* ── Dado destaque ── */
+        .dado-destaque {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: rgba(255,140,0,0.06);
+            border: 1px solid rgba(255,140,0,0.3);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin: 20px 0;
+        }
+        .dado-destaque-num { font-size: 2em; font-weight: 800; color: #FF8C00; line-height: 1.1; flex-shrink: 0; text-align: center; }
+        .dado-destaque-txt { font-size: 0.9em; color: #ddd; line-height: 1.6; }
+        .dado-destaque-txt strong { color: #fff; }
+
+        /* ── Linha do tempo ── */
+        .timeline { margin: 20px 0; display: flex; flex-direction: column; }
+        .timeline-item { display: flex; gap: 16px; position: relative; padding-bottom: 22px; }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 40px; }
+        .timeline-dot { width: 36px; height: 36px; background: #FF8C00; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.8em; font-weight: 700; flex-shrink: 0; z-index: 1; }
+        .timeline-linha { width: 2px; flex: 1; background: rgba(255,140,0,0.2); margin-top: 4px; }
+        .timeline-item:last-child .timeline-linha { display: none; }
+        .timeline-content { padding-top: 6px; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 14px; }
+        .timeline-ano { font-size: 0.75em; font-weight: 700; color: #FF8C00; margin-bottom: 3px; }
+        .timeline-content p { font-size: 0.88em; color: #ffffff !important; line-height: 1.6; margin: 0; }
+        .timeline-content p strong { color: #ffffff !important; }
+
+        /* ── Grid de meses ── */
+        .meses-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin: 20px 0;
+        }
+        .mes-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            padding: 10px 8px;
+            text-align: center;
+            transition: border-color 0.15s;
+        }
+        .mes-card:hover { border-color: rgba(255,140,0,0.5); }
+        .mes-card.fevereiro { border-color: #FF8C00; background: rgba(255,140,0,0.08); }
+        .mes-card .mc-nome { font-size: 0.75em; font-weight: 700; color: #fff; margin-bottom: 4px; }
+        .mes-card.fevereiro .mc-nome { color: #FF8C00 !important; }
+        .mes-card .mc-dias { font-size: 1.3em; font-weight: 800; color: #fff; }
+        .mes-card.fevereiro .mc-dias { color: #FF8C00 !important; }
+        .mes-card .mc-origem { font-size: 0.65em; color: #aaa; margin-top: 3px; line-height: 1.3; }
+
+        /* ── Bloco alerta / info ── */
+        .bloco-alerta {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            background: rgba(41,128,185,0.08);
+            border: 1px solid rgba(41,128,185,0.35);
+            border-left: 4px solid #2980b9;
+            border-radius: 0 10px 10px 0;
+            padding: 16px 18px;
+            margin: 20px 0;
+        }
+        .bloco-alerta i { color: #2980b9; font-size: 1.3em; flex-shrink: 0; margin-top: 2px; }
+        .bloco-alerta-txt { font-size: 0.88em; color: #ddd; line-height: 1.6; }
+        .bloco-alerta-txt strong { color: #fff; }
+
+        /* ── Curiosidade visual ── */
+        .curiosidade-visual {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin: 20px 0;
+        }
+        .curiosidade-visual .cv-emoji { font-size: 2.5em; flex-shrink: 0; }
+        .curiosidade-visual .cv-txt { font-size: 0.88em; color: #ddd; line-height: 1.6; }
+        .curiosidade-visual .cv-txt strong { color: #fff; }
+
+        /* ── Regra bissexto ── */
+        .bissexto-regras {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .bissexto-regra {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.03);
+        }
+        .bissexto-regra.sim { border-color: rgba(39,174,96,0.4); }
+        .bissexto-regra.nao { border-color: rgba(231,76,60,0.4); }
+        .bissexto-regra.excecao { border-color: rgba(255,140,0,0.4); }
+        .br-icone { font-size: 1.2em; flex-shrink: 0; width: 28px; text-align: center; }
+        .br-txt { font-size: 0.87em; color: #ddd; line-height: 1.5; }
+        .br-txt strong { color: #fff; }
+
+        /* ── FAQ ── */
+        .faq-item { border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+        .faq-pergunta { padding: 14px 18px; font-size: 0.9em; font-weight: 600; color: #fff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); user-select: none; }
+        .faq-pergunta:hover { background: rgba(255,140,0,0.06); }
+        .faq-pergunta i { color: #FF8C00; font-size: 0.85em; transition: transform 0.2s; }
+        .faq-resposta { display: none; padding: 0 18px 14px; font-size: 0.87em; color: #ccc; line-height: 1.6; background: rgba(255,255,255,0.03); }
+        .faq-resposta.aberta { display: block; }
+        .faq-item.aberto .faq-pergunta i { transform: rotate(180deg); }
+
+        /* ── Referências ── */
+        .referencias {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin-top: 28px;
+        }
+        .referencias h4 { font-size: 0.85em; font-weight: 700; color: #FF8C00; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+        .referencias ul { padding-left: 18px; margin: 0; }
+        .referencias ul li { font-size: 0.8em; color: #aaa; margin-bottom: 6px; line-height: 1.5; }
+        .referencias ul li a { color: #FF8C00; text-decoration: none; }
+        .referencias ul li a:hover { text-decoration: underline; }
+
+        /* ── Navegação ── */
+        .artigo-nav { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+        .artigo-nav a { flex: 1; min-width: 200px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,140,0,0.2); border-radius: 10px; padding: 14px 18px; text-decoration: none; color: #fff; font-size: 0.87em; transition: border-color 0.15s, background 0.15s; display: flex; align-items: center; gap: 10px; }
+        .artigo-nav a:hover { border-color: #FF8C00; background: rgba(255,140,0,0.06); }
+        .artigo-nav a i { color: #FF8C00; font-size: 1.1em; flex-shrink: 0; }
+        .artigo-nav a span { font-size: 0.78em; color: #aaa; display: block; }
+
+        /* Tema claro/escuro deste artigo agora vem do artigo-theme.css (compartilhado) */
+
+        @media (max-width: 540px) {
+            .meses-grid { grid-template-columns: repeat(3, 1fr); }
+            .curiosidade-visual { flex-direction: column; text-align: center; }
         }
     </style>
 
@@ -41,9 +209,9 @@
     <header class="site-header">
         <div class="header-content-wrapper">
             <div class="logo">
-            <a href="../index.html">
-            <img src="../ashoras-removebg-preview.png" alt="ashoras logo" class="logo-img">
-            </a>
+                <a href="../index.html">
+                    <img src="../ashoras-removebg-preview.png" alt="AsHoras logo" class="logo-img">
+                </a>
             </div>
             <nav class="main-nav">
                 <a href="../vocesabia.html" class="active">Você Sabia?</a>
@@ -52,85 +220,369 @@
             </nav>
         </div>
     </header>
+    <div class="theme-switcher-sabia">
+        <span id="light-theme-btn" class="theme-icon active" title="Tema Claro"><i class="fas fa-sun"></i></span>
+        <span id="dark-theme-btn" class="theme-icon" title="Tema Escuro"><i class="fas fa-moon"></i></span>
+    </div>
 
     <main class="main-application-area">
         <article class="artigo-container">
-            <h1>📅 Por que fevereiro tem menos dias?</h1>
+
+            <h1>Por que fevereiro tem menos dias?</h1>
+
+            <!-- Meta info -->
+            <div class="artigo-meta">
+                <span><i class="fas fa-clock"></i> Leitura: 6 minutos</span>
+                <span><i class="fas fa-tag"></i> Categoria: História & Ciência</span>
+                <span><i class="fas fa-calendar-alt"></i> Atualizado em 2025</span>
+                <span><i class="fas fa-graduation-cap"></i> Nível: Iniciante</span>
+            </div>
+
             <p class="intro">
-                Já reparou que fevereiro é o único mês que parece “injustiçado” no calendário? 😄  
-                Enquanto todos os outros têm 30 ou 31 dias, ele ficou com 28 (ou 29 de vez em quando).  
-                Mas por que isso aconteceu? Vamos viajar no tempo pra descobrir!
+                Fevereiro é o único mês do calendário que parece ter sido "esquecido" na hora de distribuir os dias. Enquanto todos os outros têm 30 ou 31, ele ficou com apenas 28 — ou 29, a cada quatro anos. Essa aparente injustiça tem uma história de mais de 2.700 anos, cheia de vaidade imperial, matemática astronômica e decisões políticas que moldaram o calendário que usamos até hoje.
             </p>
 
-            <section class="artigo-secao">
-                <h2>🏺 1. Tudo começou com os romanos</h2>
+            <!-- Índice -->
+            <div class="artigo-indice">
+                <h4><i class="fas fa-list"></i> &nbsp;Neste artigo</h4>
+                <ol>
+                    <li><a href="#calendario-original">O calendário romano original: só 10 meses</a></li>
+                    <li><a href="#numa">Numa Pompílio e a chegada de fevereiro</a></li>
+                    <li><a href="#imperadores">A vaidade de César e Augusto</a></li>
+                    <li><a href="#meses-hoje">Como ficou a distribuição dos dias hoje</a></li>
+                    <li><a href="#bissexto">O ano bissexto: a matemática do universo</a></li>
+                    <li><a href="#gregoriano">A reforma gregoriana de 1582</a></li>
+                    <li><a href="#faq">Perguntas frequentes</a></li>
+                </ol>
+            </div>
+
+            <!-- 1. Calendário original -->
+            <section class="artigo-secao" id="calendario-original">
+                <h2>1. O calendário romano original: só 10 meses</h2>
                 <div class="imagem-container anim-float">
-                    <img src="../img_artigos/artigo-fevereiro/romano.png" alt="Estátua romana representando Júlio César" class="artigo-imagem">
+                    <img src="../img_artigos/artigo-fevereiro/romano.png" alt="Estátua romana representando o período imperial" class="artigo-imagem">
                 </div>
                 <p>
-                    No início, o calendário romano era bem confuso! Ele tinha apenas 10 meses e começava em março.  
-                    Sim, o ano começava na primavera do hemisfério norte! 😅  
-                    Janeiro e fevereiro nem existiam, e o ano terminava em dezembro — daí o nome (deca = dez).
+                    O calendário que usamos hoje é herdeiro direto do calendário romano — mas o original era bem diferente. Atribuído ao lendário fundador de Roma, <strong>Rômulo</strong>, por volta do século VIII a.C., esse calendário primitivo tinha apenas <strong>10 meses</strong> e um total de 304 dias. O ano começava em <strong>março</strong> (a primavera do hemisfério norte, época de plantio e guerras) e terminava em dezembro.
                 </p>
+                <p>
+                    Por isso os nomes dos meses de setembro a dezembro fazem sentido em latim: <em>septem</em> (7), <em>octo</em> (8), <em>novem</em> (9) e <em>decem</em> (10) — eles eram literalmente o 7º, 8º, 9º e 10º meses. Hoje são o 9º, 10º, 11º e 12º, porque dois meses foram inseridos antes deles.
+                </p>
+
+                <div class="dado-destaque">
+                    <div class="dado-destaque-num">304<br><span style="font-size:0.5em;font-weight:400">dias</span></div>
+                    <div class="dado-destaque-txt">
+                        Era o total de dias do calendário romano original de Rômulo — <strong>61 dias a menos</strong> que o ano solar. Os meses de inverno simplesmente não existiam: eram um período sem nome, fora do calendário, onde "o tempo simplesmente passava" até a primavera chegar.
+                    </div>
+                </div>
             </section>
 
-            <section class="artigo-secao">
-                <h2>🗓️ 2. A chegada de fevereiro</h2>
+            <!-- 2. Numa Pompílio -->
+            <section class="artigo-secao" id="numa">
+                <h2>2. Numa Pompílio e a chegada de fevereiro</h2>
                 <div class="imagem-container anim-fade-in">
                     <img src="../img_artigos/artigo-fevereiro/calendario-romano.png" alt="Antigo calendário romano" class="artigo-imagem">
                 </div>
                 <p>
-                    Por volta do século VII a.C., o rei <strong>Numa Pompílio</strong> decidiu alinhar o calendário com as fases da Lua.  
-                    Ele adicionou <strong>janeiro</strong> e <strong>fevereiro</strong> no final do ano, para completar 12 meses.  
-                    Mas como o ciclo lunar dura cerca de 354 dias, ele precisou ajustar os meses com 29 e 31 dias.
+                    Por volta de <strong>713 a.C.</strong>, o segundo rei de Roma, <strong>Numa Pompílio</strong>, decidiu resolver o problema dos dias "perdidos" no inverno. Ele reformou o calendário para alinhálo ao ciclo lunar — aproximadamente 354 dias — e adicionou dois novos meses ao final do ano: <strong>januarius</strong> (janeiro, em homenagem a Janus, deus das passagens e transições) e <strong>februarius</strong> (fevereiro, do latim <em>februare</em>, que significa "purificar").
                 </p>
-                <p class="destaque">👉 Sobraram alguns dias — e quem ficou com menos foi fevereiro, com 28!</p>
+                <p>
+                    Fevereiro era o último mês do ano romano e era dedicado a rituais de purificação e cerimônias em homenagem aos mortos — a festa <em>Parentalia</em> e os rituais <em>Februa</em>. Era um mês de encerramento, limpeza espiritual e preparação para o novo ano que começava em março.
+                </p>
+
+                <div class="bloco-alerta">
+                    <i class="fas fa-info-circle"></i>
+                    <div class="bloco-alerta-txt">
+                        <strong>Por que fevereiro ficou com 28?</strong> Os romanos tinham uma superstição com números pares — acreditavam que eram de mau agouro. Por isso, Numa Pompílio fez todos os meses com números ímpares (29 ou 31 dias). Mas 12 meses com números ímpares somam 354 dias, que é um número par. Para resolver a conta, um mês precisava ter número par — e fevereiro, por ser o último e o mês dos rituais fúnebres, foi o escolhido a ficar com <strong>28 dias</strong>.
+                    </div>
+                </div>
             </section>
 
-            <section class="artigo-secao">
-                <h2>👑 3. O ego dos imperadores atrapalhou o calendário</h2>
+            <!-- 3. Imperadores -->
+            <section class="artigo-secao" id="imperadores">
+                <h2>3. A vaidade de César e Augusto</h2>
                 <div class="imagem-container anim-twinkle">
                     <img src="../img_artigos/artigo-fevereiro/julio-augusto.png" alt="Júlio César e Augusto em estátuas" class="artigo-imagem">
                 </div>
                 <p>
-                    Depois, o imperador <strong>Júlio César</strong> reformou tudo e criou o calendário juliano (o que usamos até hoje, com ajustes).  
-                    O mês <strong>julho</strong> ganhou 31 dias em homenagem a ele.  
-                    Mais tarde, <strong>Augusto</strong> também quis o mesmo privilégio — e agosto também ficou com 31 dias.
+                    Em <strong>46 a.C.</strong>, <strong>Júlio César</strong> contratou o astrônomo egípcio Sosígenes de Alexandria para criar um novo calendário baseado no ciclo solar — não mais lunar. O resultado foi o <strong>calendário juliano</strong>, com 365 dias e um dia extra a cada quatro anos. Nessa reforma, o mês de <em>Quintilis</em> (que era o 5º mês quando o ano começava em março) foi renomeado para <strong>Iulius</strong> — julho — em honra ao próprio César. E ficou com <strong>31 dias</strong>.
                 </p>
                 <p>
-                    Para equilibrar o total de dias do ano, adivinha quem perdeu mais um dia?  
-                    Isso mesmo: o pobre <strong>fevereiro</strong>! 😅
+                    Após o assassinato de César, seu sobrinho-neto e sucessor <strong>Augusto</strong> também quis seu lugar no calendário. O mês de <em>Sextilis</em> foi renomeado para <strong>Augustus</strong> — agosto. Mas havia um problema: julho tinha 31 dias, e agosto tinha apenas 30. Para que seu mês não fosse "inferior" ao de seu antecessor, Augusto adicionou um dia a agosto — tirando esse dia de quem?
                 </p>
+
+                <div class="curiosidade-visual">
+                    <div class="cv-emoji">😤</div>
+                    <div class="cv-txt">
+                        <strong>De fevereiro, claro.</strong> Agosto passou de 30 para 31 dias — e fevereiro caiu de 29 para 28 dias. Mas agora julho, agosto e setembro ficavam com 31 dias seguidos, o que parecia estranho. Para equilibrar, setembro e novembro foram reduzidos para 30 dias, e outubro e dezembro subiram para 31. O resultado dessa reorganização é exatamente a distribuição irregular de dias que temos hoje.
+                    </div>
+                </div>
             </section>
 
-            <section class="artigo-secao">
-                <h2>🔄 4. E o ano bissexto?</h2>
+            <!-- 4. Meses hoje -->
+            <section class="artigo-secao" id="meses-hoje">
+                <h2>4. Como ficou a distribuição dos dias hoje</h2>
+                <p>Veja como os 12 meses estão distribuídos e a origem de cada nome:</p>
+
+                <div class="meses-grid">
+                    <div class="mes-card">
+                        <div class="mc-nome">Janeiro</div>
+                        <div class="mc-dias">31</div>
+                        <div class="mc-origem">Janus — deus das passagens</div>
+                    </div>
+                    <div class="mes-card fevereiro">
+                        <div class="mc-nome">Fevereiro ⭐</div>
+                        <div class="mc-dias">28/29</div>
+                        <div class="mc-origem">Februare — purificar</div>
+                    </div>
+                    <div class="mes-card">
+                        <div class="mc-nome">Março</div>
+                        <div class="mc-dias">31</div>
+                        <div class="mc-origem">Mars — deus da guerra</div>
+                    </div>
+                    <div class="mes-card">
+                        <div class="mc-nome">Abril</div>
+                        <div class="mc-dias">30</div>
+                        <div class="mc-origem">Aperire — abrir (flores)</div>
+                    </div>
+                    <div class="mes-card">
+                        <div class="mc-nome">Maio</div>
+                        <div class="mc-dias">31</div>
+                        <div class="mc-origem">Maia — deusa da fertilidade</div>
+                    </div>
+                    <div class="mes-card">
+                        <div class="mc-nome">Junho</div>
+                        <div class="mc-dias">30</div>
+                        <div class="mc-origem">Juno — deusa do casamento</div>
+                    </div>
+                    <div class="mes-card">
+                        <div class="mc-nome">Julho</div>
+                        <div class="mc-dias">31</div>
+                        <div class="mc-origem">Julius Caesar — imperador</div>
+                    </div>
+                    <div class="mes-card">
+                        <div class="mc-nome">Agosto</div>
+                        <div class="mc-dias">31</div>
+                        <div class="mc-origem">Augustus — imperador</div>
+                    </div>
+                    <div class="mes-card">
+                        <div class="mc-nome">Setembro</div>
+                        <div class="mc-dias">30</div>
+                        <div class="mc-origem">Septem — sete (era o 7º)</div>
+                    </div>
+                    <div class="mes-card">
+                        <div class="mc-nome">Outubro</div>
+                        <div class="mc-dias">31</div>
+                        <div class="mc-origem">Octo — oito (era o 8º)</div>
+                    </div>
+                    <div class="mes-card">
+                        <div class="mc-nome">Novembro</div>
+                        <div class="mc-dias">30</div>
+                        <div class="mc-origem">Novem — nove (era o 9º)</div>
+                    </div>
+                    <div class="mes-card">
+                        <div class="mc-nome">Dezembro</div>
+                        <div class="mc-dias">31</div>
+                        <div class="mc-origem">Decem — dez (era o 10º)</div>
+                    </div>
+                </div>
+
+                <div class="dado-destaque">
+                    <div class="dado-destaque-num">365</div>
+                    <div class="dado-destaque-txt">
+                        <strong>dias no total:</strong> 7 meses com 31 dias (217 dias) + 4 meses com 30 dias (120 dias) + fevereiro com 28 dias = 365. No ano bissexto, fevereiro tem 29, totalizando 366 dias.
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Ano bissexto -->
+            <section class="artigo-secao" id="bissexto">
+                <h2>5. O ano bissexto: a matemática do universo</h2>
                 <div class="imagem-container anim-fade-in">
                     <img src="../img_artigos/artigo-fevereiro/bissesto.png" alt="Calendário com 29 de fevereiro marcado" class="artigo-imagem">
                 </div>
                 <p>
-                    Como a Terra leva cerca de <strong>365,25 dias</strong> para dar uma volta completa ao redor do Sol,  
-                    a cada quatro anos sobra quase um dia.  
-                    Por isso, foi criado o <strong>ano bissexto</strong>: fevereiro ganha um dia extra e passa a ter 29!
+                    A Terra leva exatamente <strong>365 dias, 5 horas, 48 minutos e 46 segundos</strong> para completar uma volta ao redor do Sol — o chamado <strong>ano tropical</strong>. Isso significa que um ano civil de 365 dias fica cerca de <strong>6 horas mais curto</strong> que o ano astronômico. Essas horas se acumulam: em 4 anos, somam quase um dia inteiro (23h 15min, para ser preciso).
                 </p>
+                <p>
+                    Para compensar, o calendário juliano de Júlio César introduziu o conceito de <strong>ano bissexto</strong>: a cada quatro anos, fevereiro ganha um dia extra — o famoso <strong>29 de fevereiro</strong>. O nome "bissexto" vem do latim <em>bis sextus</em>, que significa "dois sextos": no calendário romano, o dia extra era inserido antes do sexto dia antes das Calendas de Março (o equivalente ao 24 de fevereiro), criando um dia duplicado chamado "bis sextus dies".
+                </p>
+
+                <p>Mas a regra do "a cada 4 anos" não é tão simples assim. O calendário gregoriano, adotado em 1582, usa três regras em cascata:</p>
+
+                <div class="bissexto-regras">
+                    <div class="bissexto-regra sim">
+                        <div class="br-icone">✅</div>
+                        <div class="br-txt"><strong>Regra 1:</strong> O ano é bissexto se for divisível por 4. Ex: 2024 ÷ 4 = 506 → <strong>bissexto</strong>.</div>
+                    </div>
+                    <div class="bissexto-regra nao">
+                        <div class="br-icone">❌</div>
+                        <div class="br-txt"><strong>Regra 2 (exceção):</strong> Se o ano também for divisível por 100, <em>não</em> é bissexto. Ex: 1900 ÷ 100 = 19 → <strong>não foi bissexto</strong>.</div>
+                    </div>
+                    <div class="bissexto-regra excecao">
+                        <div class="br-icone">⚠️</div>
+                        <div class="br-txt"><strong>Regra 3 (exceção da exceção):</strong> Se o ano for divisível por 400, <em>é</em> bissexto mesmo assim. Ex: 2000 ÷ 400 = 5 → <strong>foi bissexto</strong>. Por isso 2000 teve 29 de fevereiro, mas 1900 não teve.</div>
+                    </div>
+                </div>
+
+                <div class="curiosidade-visual">
+                    <div class="cv-emoji">👶</div>
+                    <div class="cv-txt">
+                        <strong>Nascidos em 29 de fevereiro</strong> são chamados de "bissextos" ou <em>leaplings</em> em inglês. Estima-se que existam cerca de <strong>5 milhões de pessoas</strong> no mundo com essa data de aniversário. Estatisticamente, a chance de nascer em 29 de fevereiro é de apenas <strong>1 em 1.461</strong> (o equivalente a um nascimento por cada ciclo de 4 anos).
+                    </div>
+                </div>
             </section>
 
+            <!-- 6. Reforma gregoriana -->
+            <section class="artigo-secao" id="gregoriano">
+                <h2>6. A reforma gregoriana de 1582</h2>
+                <p>
+                    O calendário juliano funcionou bem por séculos, mas tinha um pequeno problema: o ano juliano (365,25 dias) é ligeiramente mais longo que o ano solar real (365,2422 dias). Essa diferença de apenas <strong>11 minutos e 14 segundos por ano</strong> parece insignificante, mas ao longo de 1.300 anos acumulou <strong>10 dias inteiros</strong> de erro.
+                </p>
+                <p>
+                    Em 1582, o Papa <strong>Gregório XIII</strong> encomendou uma reforma ao astrônomo calabrês <strong>Luigi Lilio</strong>. A solução foi elegante: além das regras dos anos secular (divisíveis por 100 e 400), o papa ordenou que <strong>10 dias fossem simplesmente apagados</strong> do calendário. Quem dormiu na noite de 4 de outubro de 1582 acordou na manhã de 15 de outubro — sem passar pelos dias 5 a 14.
+                </p>
+
+                <div class="bloco-alerta">
+                    <i class="fas fa-globe"></i>
+                    <div class="bloco-alerta-txt">
+                        <strong>Nem todos adotaram ao mesmo tempo.</strong> A França, Espanha, Portugal e Itália adotaram o calendário gregoriano em outubro de 1582. A Inglaterra e suas colônias (incluindo o que viria a ser os EUA) só adotaram em 1752 — quando precisaram "pular" 11 dias. A Rússia resistiu até 1918, após a Revolução Bolchevique, quando precisou corrigir 13 dias. Por isso eventos históricos russos anteriores a 1918 têm "duas datas" — a juliano e a gregoriana.
+                    </div>
+                </div>
+
+                <!-- Linha do tempo -->
+                <div class="timeline" style="margin-top:24px">
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">1</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">~753 a.C.</div>
+                            <p>Calendário de <strong>Rômulo</strong>: 10 meses, 304 dias. O ano começa em março. Inverno não existe no calendário.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">2</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">~713 a.C.</div>
+                            <p><strong>Numa Pompílio</strong> adiciona janeiro e fevereiro. O calendário passa a ter 12 meses e 355 dias. Fevereiro fica com 28 dias por superstição com números pares.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">3</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">46 a.C.</div>
+                            <p><strong>Júlio César</strong> e Sosígenes criam o calendário juliano: 365 dias com ano bissexto a cada 4 anos. Julho ganha 31 dias em honra ao imperador.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">4</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">~8 a.C.</div>
+                            <p><strong>Augusto</strong> renomeia Sextilis para agosto e adiciona um dia ao mês — retirado de fevereiro. Fevereiro cai para 28 dias definitivamente.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">5</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">1582 d.C.</div>
+                            <p><strong>Papa Gregório XIII</strong> institui o calendário gregoriano: corrige 10 dias acumulados de erro e refina a regra do ano bissexto com as exceções dos anos seculares (100 e 400).</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">6</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">Hoje</div>
+                            <p>O calendário gregoriano é o <strong>padrão internacional</strong> usado por praticamente todos os países. Fevereiro continua com 28 dias (ou 29 nos anos bissextos) — exatamente como Augusto decidiu há mais de 2.000 anos.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. FAQ -->
+            <section class="artigo-secao" id="faq">
+                <h3>7. Perguntas frequentes ❓</h3>
+
+                <div class="faq-item">
+                    <div class="faq-pergunta">Janeiro realmente era o 11º mês do ano? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">Sim! No calendário original de Rômulo, o ano começava em março. Janeiro e fevereiro eram os últimos dois meses do ano, adicionados por Numa Pompílio. Só em 153 a.C. Roma oficializou janeiro como o primeiro mês do ano civil, quando os cônsules romanos passaram a tomar posse em 1º de janeiro. Antes disso, o "Ano Novo" romano era comemorado em março.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta">O próximo 29 de fevereiro vai ser em qual ano? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">O calendário bissexto segue um ciclo previsível: 2024 foi bissexto, o próximo será 2028, depois 2032, 2036 e assim por diante — sempre de 4 em 4 anos, com exceção dos anos seculares não divisíveis por 400 (como 2100, 2200 e 2300, que não serão bissextos). O ano 2400 será bissexto.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta">Outros calendários também têm um "fevereiro"? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">Outros calendários lidam com o problema da fração de dia de forma diferente. O calendário hebraico adiciona um mês inteiro a cada 2 ou 3 anos (chamado Adar II) em vez de um dia. O calendário islâmico simplesmente não corrige — é um calendário lunar puro de 354 dias, por isso o Ramadã vai "andando" pelo ano solar e pode cair em qualquer estação. O calendário etíope tem 13 meses, sendo o último (Pagumê) com apenas 5 ou 6 dias.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta">O calendário gregoriano é perfeito? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">Quase, mas não completamente. O calendário gregoriano tem um erro acumulado de 1 dia a cada 3.236 anos — muito melhor que o juliano (1 dia a cada 128 anos), mas ainda não perfeito. Cientistas já propuseram calendários mais precisos, como o Calendário Revisado Juliano (usado por algumas igrejas ortodoxas), que só errará 1 dia em 43.500 anos. Mas dado o custo de mudar toda a infraestrutura global, o gregoriano deve permanecer como padrão por muito tempo.</div>
+                </div>
+            </section>
+
+            <!-- Curiosidade extra -->
             <section class="artigo-secao curiosidade">
-                <h3>🚀 Curiosidade Extra:</h3>
+                <h3>🌟 Curiosidade Extra</h3>
                 <p>
-                    Em alguns países antigos, fevereiro era considerado um mês “azarado” e dedicado a cerimônias de purificação.  
-                    Inclusive, o nome vem do latim <em>februare</em>, que significa “purificar”.
+                    Em vários países europeus durante a Idade Média, o ano novo não era em 1º de janeiro — cada região tinha sua própria data. A Inglaterra usava <strong>25 de março</strong> (Dia da Anunciação) como início do ano até 1752. Portugal usava <strong>1º de janeiro</strong> desde 1422 — uma das primeiras nações a fazê-lo. Por isso documentos históricos medievais europeus exigem cuidado: uma carta datada de "fevereiro de 1600" na Inglaterra pode corresponder a "fevereiro de 1601" no calendário moderno, pois o ano inglês só começava em março.
                 </p>
             </section>
 
+            <!-- Conclusão -->
             <section class="artigo-secao conclusao">
-                <h3>🎉 Conclusão:</h3>
+                <h3>Conclusão</h3>
                 <p>
-                    Fevereiro tem menos dias por causa de decisões tomadas há mais de 2.000 anos!  
-                    Entre ajustes astronômicos e vaidades imperiais, o mês acabou ficando mais curto —  
-                    mas ganhou um charme especial com o famoso <strong>29 de fevereiro</strong> a cada quatro anos!
+                    Fevereiro tem 28 dias por uma combinação de superstição romana com números pares, do ego de dois imperadores que queriam meses tão grandiosos quanto julho, e de mais de 2.700 anos de reformas calendáricas tentando encaixar a matemática imperfeita do universo em um sistema prático para a vida humana. Da cada vez que você olha para o calendário e vê fevereiro encurtado, está enxergando a sombra de Rômulo, Numa, César, Augusto e Gregório XIII — todos deixando sua marca no simples ato de contar os dias.
                 </p>
             </section>
+
+            <!-- Referências -->
+            <div class="referencias">
+                <h4><i class="fas fa-book"></i> Fontes e referências</h4>
+                <ul>
+                    <li>Duncan, David Ewing. <em>Calendar: Humanity's Epic Struggle to Determine a True and Accurate Year</em>. Avon Books, 1998.</li>
+                    <li>Richards, E.G. <em>Mapping Time: The Calendar and its History</em>. Oxford University Press, 1998.</li>
+                    <li><a href="https://www.britannica.com/science/calendar" target="_blank" rel="noopener noreferrer">Encyclopaedia Britannica — "Calendar"</a></li>
+                    <li><a href="https://www.skyatnightmagazine.com/space-science/why-does-february-have-28-days" target="_blank" rel="noopener noreferrer">History.com — Why Does February Have 28 Days?</a></li>
+                    <li><a href="https://www.timeanddate.com/date/leapyear.html" target="_blank" rel="noopener noreferrer">TimeAndDate.com — Leap Year Rules Explained</a></li>
+                    <li>Steel, Duncan. <em>Marking Time: The Epic Quest to Invent the Perfect Calendar</em>. Wiley, 2000.</li>
+                </ul>
+            </div>
+
+            <!-- Navegação -->
+            <div class="artigo-nav">
+                <a href="artigo-horario-verao.html">
+                    <i class="fas fa-arrow-left"></i>
+                    <div>
+                        <span>Artigo anterior</span>
+                        O que é o horário de verão?
+                    </div>
+                </a>
+                <a href="artigo-dia-24h.html">
+                    <div style="text-align:right;flex:1">
+                        <span>Leia também</span>
+                        Por que o dia tem 24 horas?
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
 
         </article>
     </main>
@@ -139,8 +591,27 @@
         <div class="footer-content-wrapper">
             <p>&copy; 2025 AsHoras. Todos os direitos reservados.</p>
             <a href="../sobre.html" style="color:var(--cor-primaria);text-decoration:none;">Sobre</a> |
-                <a href="../privacidade.html" style="color:var(--cor-primaria);text-decoration:none;">Privacidade</a>
+            <a href="../privacidade.html" style="color:var(--cor-primaria);text-decoration:none;">Privacidade</a>
         </div>
     </footer>
+
+    <script>
+    document.querySelectorAll('.faq-pergunta').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var item = btn.closest('.faq-item');
+            var resp = item.querySelector('.faq-resposta');
+            var aberto = item.classList.contains('aberto');
+            document.querySelectorAll('.faq-item').forEach(function(i) {
+                i.classList.remove('aberto');
+                i.querySelector('.faq-resposta').classList.remove('aberta');
+            });
+            if (!aberto) {
+                item.classList.add('aberto');
+                resp.classList.add('aberta');
+            }
+        });
+    });
+    </script>
+    <script src="../sabia-theme-loader.js"></script>
 </body>
 </html>
