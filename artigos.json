@@ -28,5 +28,25 @@
     "titulo": "Por que fevereiro tem menos dias?",
     "descricao": "Descubra a razão histórica e astronômica por trás do mês mais curto do ano.",
     "link": "artigos/artigo-fevereiro.html"
+  },
+  {
+    "titulo": "Smartwatch",
+    "descricao": "O relógio conectado que virou assistente de saúde no seu pulso.",
+    "link": "produtos/relogio-smartwatch.html"
+  },
+  {
+    "titulo": "Relógio Mecânico",
+    "descricao": "Engrenagens, molas e séculos de precisão sem usar nenhuma bateria.",
+    "link": "produtos/relogio-mecanico.html"
+  },
+  {
+    "titulo": "Relógio de Quartzo",
+    "descricao": "O cristal que vibra 32.768 vezes por segundo e revolucionou a relojoaria.",
+    "link": "produtos/relogio-quartzo.html"
+  },
+  {
+    "titulo": "Relógio Digital",
+    "descricao": "Visor numérico, robustez e aquele clássico charme retrô dos anos 80.",
+    "link": "produtos/relogio-digital.html"
   }
 ]
