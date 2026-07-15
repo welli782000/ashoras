@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartwatch: o relógio que virou computador de pulso | AsHoras</title>
+    <meta name="description" content="Entenda o que é um smartwatch, como ele monitora sua saúde, prós e contras e curiosidades sobre a evolução do relógio inteligente.">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../vocesabia-theme-light.css" id="theme-light-sabia">
+    <link rel="stylesheet" href="../vocesabia-theme-dark.css" id="theme-dark-sabia" disabled>
+    <link rel="stylesheet" href="../vocesabia.css">
+    <link rel="stylesheet" href="../produtos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        .logo-img { height: 40px; width: auto; display: block; }
+        .logo { display: flex; align-items: center; }
+        .main-nav a { transition: color 0.2s; }
+        .main-nav a:hover { color: #FF8C00; }
+        .theme-switcher-sabia {
+            position: fixed; top: 90px; right: 20px;
+            display: flex; gap: 10px; z-index: 1001;
+            background-color: var(--sabia-superficie); padding: 8px;
+            border-radius: 20px; box-shadow: var(--sabia-sombra);
+        }
+        .theme-icon { font-size: 1.3em; cursor: pointer; color: var(--sabia-texto-secundario); transition: color 0.3s ease, transform 0.3s ease; }
+        .theme-icon:hover { color: var(--sabia-primaria); transform: scale(1.1); }
+        .theme-icon.active { color: var(--sabia-primaria); }
+    </style>
+    <script>
+        document.documentElement.className = localStorage.getItem('sabiaTheme') || 'theme-light-sabia';
+    </script>
+</head>
+<body class="produto-page" style="--produto-cor:#2f6fed;">
+    <header class="site-header">
+        <div class="header-content-wrapper">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../ashoras-removebg-preview.png" alt="ashoras logo" class="logo-img">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <a href="../vocesabia.html" class="active">Você Sabia?</a>
+                <a href="../sobre.html">Sobre</a>
+                <a href="../privacidade.html">Privacidade</a>
+            </nav>
+        </div>
+    </header>
+    <div class="theme-switcher-sabia">
+        <span id="light-theme-btn" class="theme-icon active" title="Tema Claro"><i class="fas fa-sun"></i></span>
+        <span id="dark-theme-btn" class="theme-icon" title="Tema Escuro"><i class="fas fa-moon"></i></span>
+    </div>
+
+    <main class="main-application-area">
+        <div class="produto-container">
+            <a href="../vocesabia.html" class="produto-voltar"><i class="fas fa-arrow-left"></i> Voltar para Você Sabia?</a>
+
+            <section class="produto-hero">
+                <div class="produto-hero-icone produto-hero-icone-foto"><img src="../img_produtos/relogio-smartwatch-card.jpg" alt="Smartwatch" loading="lazy"></div>
+                <div class="produto-hero-texto">
+                    <span class="produto-badge">Tipo de Relógio</span>
+                    <h1>Smartwatch: o relógio que virou computador de pulso</h1>
+                    <p>Nascido da fusão entre relojoaria e tecnologia mobile, o smartwatch trocou engrenagens por sensores e transformou o pulso em um painel de controle da sua saúde e das suas notificações.</p>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-circle-info"></i> O que é um smartwatch?</h2>
+                <p class="produto-lead">
+                    Um <strong>smartwatch</strong> é um relógio de pulso com processador, tela e conexão sem fio próprios,
+                    capaz de rodar aplicativos, se conectar ao smartphone e coletar dados do corpo em tempo real. Diferente
+                    dos relógios tradicionais, ele não mede apenas o tempo — mede passos, batimentos, sono e muito mais,
+                    entregando essas informações em gráficos direto no pulso.
+                </p>
+                <div class="produto-features">
+                    <div class="produto-feature">
+                        <i class="fas fa-wifi"></i>
+                        <div><strong>Conectividade</strong><span>Sincroniza com o celular via Bluetooth e recebe notificações em tempo real.</span></div>
+                    </div>
+                    <div class="produto-feature">
+                        <i class="fas fa-heart-pulse"></i>
+                        <div><strong>Monitoramento de saúde</strong><span>Sensores acompanham frequência cardíaca, sono e níveis de atividade.</span></div>
+                    </div>
+                    <div class="produto-feature">
+                        <i class="fas fa-battery-half"></i>
+                        <div><strong>Autonomia variável</strong><span>De 1 dia a 2 semanas de bateria, dependendo do modelo e uso da tela.</span></div>
+                    </div>
+                    <div class="produto-feature">
+                        <i class="fas fa-mobile-screen-button"></i>
+                        <div><strong>Apps e assistente</strong><span>Roda aplicativos próprios e responde a comandos de voz.</span></div>
+                    </div>
+                    <div class="produto-feature">
+                        <i class="fas fa-phone-volume"></i>
+                        <div><strong>Chamadas telefônicas</strong><span>Atende e faz ligações pelo pulso via Bluetooth (com o celular por perto) ou, em modelos com eSIM/LTE, mesmo sem o celular ao lado.</span></div>
+                    </div>
+                    <div class="produto-feature">
+                        <i class="fas fa-location-crosshairs"></i>
+                        <div><strong>GPS integrado</strong><span>Mapeia rotas de corrida ou pedalada mesmo sem o celular por perto.</span></div>
+                    </div>
+                    <div class="produto-feature">
+                        <i class="fas fa-water"></i>
+                        <div><strong>Resistência à água</strong><span>Certificações como 5ATM ou IP68 permitem nadar e suar sem preocupação.</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-layer-group"></i> Tipos de smartwatch</h2>
+                <p class="produto-lead">Nem todo smartwatch é igual — cada perfil de uso tem um tipo mais indicado, e conhecer as diferenças ajuda a escolher melhor.</p>
+                <div class="produto-mini-grid">
+                    <div class="produto-mini-card">
+                        <i class="fas fa-person-running"></i>
+                        <strong>Esportivo / Fitness</strong>
+                        <span>GPS preciso, bateria robusta e sensores voltados para treinos e provas longas.</span>
+                    </div>
+                    <div class="produto-mini-card">
+                        <i class="fas fa-clock"></i>
+                        <strong>Híbrido</strong>
+                        <span>Visual de relógio analógico tradicional, com sensores discretos escondidos por dentro.</span>
+                    </div>
+                    <div class="produto-mini-card">
+                        <i class="fas fa-crown"></i>
+                        <strong>Premium / Luxo</strong>
+                        <span>Materiais nobres, mostradores personalizáveis e integração completa com o smartphone.</span>
+                    </div>
+                    <div class="produto-mini-card">
+                        <i class="fas fa-child-reaching"></i>
+                        <strong>Infantil</strong>
+                        <span>Foco em localização em tempo real, chamadas simples e controle parental.</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-chart-simple"></i> O que um smartwatch monitora</h2>
+                <div class="infografico infografico-radial">
+                    <div class="radial-hub"><i class="fas fa-heart-pulse"></i> Sensores de um smartwatch</div>
+                    <div class="radial-item">
+                        <i class="fas fa-heart-pulse"></i>
+                        <strong>Batimentos</strong>
+                        <span>Leitura contínua da frequência cardíaca ao longo do dia.</span>
+                    </div>
+                    <div class="radial-item">
+                        <i class="fas fa-shoe-prints"></i>
+                        <strong>Passos e calorias</strong>
+                        <span>Acelerômetro conta passos, distância e gasto calórico.</span>
+                    </div>
+                    <div class="radial-item">
+                        <i class="fas fa-moon"></i>
+                        <strong>Qualidade do sono</strong>
+                        <span>Identifica fases de sono leve, profundo e REM.</span>
+                    </div>
+                    <div class="radial-item">
+                        <i class="fas fa-lungs"></i>
+                        <strong>Oxigenação (SpO2)</strong>
+                        <span>Mede o nível de oxigênio no sangue por luz infravermelha.</span>
+                    </div>
+                    <div class="radial-item">
+                        <i class="fas fa-face-frown"></i>
+                        <strong>Estresse</strong>
+                        <span>Cruza dados de batimentos para estimar níveis de estresse.</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-shield-halved"></i> Certificações que você vai encontrar</h2>
+                <div class="produto-checklist">
+                    <div class="produto-checklist-item">
+                        <i class="fas fa-water"></i>
+                        <div><strong>5ATM</strong><span>Resiste à natação em piscina e mar, mas não a mergulhos com equipamento ou água muito quente.</span></div>
+                    </div>
+                    <div class="produto-checklist-item">
+                        <i class="fas fa-droplet"></i>
+                        <div><strong>IP68</strong><span>Protegido contra poeira e submersão temporária em água doce, geralmente até 1,5m por 30 minutos.</span></div>
+                    </div>
+                    <div class="produto-checklist-item">
+                        <i class="fas fa-medal"></i>
+                        <div><strong>MIL-STD-810H</strong><span>Norma militar americana que testa resistência a quedas, vibração, poeira e temperaturas extremas.</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-list-check"></i> Como escolher o smartwatch ideal</h2>
+                <div class="produto-checklist">
+                    <div class="produto-checklist-item">
+                        <i class="fas fa-mobile"></i>
+                        <div><strong>Compatibilidade</strong><span>Confira se ele funciona bem com o sistema do seu celular (Android ou iOS) antes de comprar.</span></div>
+                    </div>
+                    <div class="produto-checklist-item">
+                        <i class="fas fa-battery-full"></i>
+                        <div><strong>Autonomia real</strong><span>Modelos com tela sempre ativa gastam bateria muito mais rápido que os de tela sob demanda.</span></div>
+                    </div>
+                    <div class="produto-checklist-item">
+                        <i class="fas fa-stethoscope"></i>
+                        <div><strong>Sensores que você vai usar</strong><span>Não pague por oxímetro, ECG ou GPS avançado se o seu uso é apenas notificações e passos.</span></div>
+                    </div>
+                    <div class="produto-checklist-item">
+                        <i class="fas fa-ruler"></i>
+                        <div><strong>Tamanho e peso</strong><span>Caixas grandes ficam ótimas em pulsos largos, mas podem incomodar pulsos finos no dia a dia.</span></div>
+                    </div>
+                    <div class="produto-checklist-item">
+                        <i class="fas fa-water"></i>
+                        <div><strong>Resistência adequada ao uso</strong><span>Quem nada precisa de 5ATM; quem só treina na academia pode dispensar essa exigência.</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-scale-balanced"></i> Prós e contras</h2>
+                <div class="produto-proscontras">
+                    <div class="proscontras-col pros">
+                        <h4><i class="fas fa-circle-check"></i> Vantagens</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Acompanha saúde e atividade física em tempo real</li>
+                            <li><i class="fas fa-check"></i> Recebe notificações sem precisar tirar o celular do bolso</li>
+                            <li><i class="fas fa-check"></i> Atualiza funções via software, sem trocar de aparelho</li>
+                        </ul>
+                    </div>
+                    <div class="proscontras-col contras">
+                        <h4><i class="fas fa-circle-xmark"></i> Desvantagens</h4>
+                        <ul>
+                            <li><i class="fas fa-xmark"></i> Precisa ser recarregado com frequência</li>
+                            <li><i class="fas fa-xmark"></i> Fica obsoleto mais rápido que um relógio tradicional</li>
+                            <li><i class="fas fa-xmark"></i> Depende do smartphone para boa parte das funções</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <div class="produto-curiosidade">
+                    <i class="fas fa-lightbulb"></i>
+                    <div>
+                        <strong>Você sabia?</strong>
+                        <p>A ideia de um relógio "inteligente" é mais antiga do que parece: já em 1984 a Seiko lançou o Data 2000, capaz de armazenar anotações. Mas foi só com o avanço dos sensores e das baterias, décadas depois, que o smartwatch se tornou o companheiro de saúde que conhecemos hoje.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-cube"></i> Visão 3D: seu smartwatch por dentro</h2>
+                <div class="infografico-imagem">
+                    <img src="../img_produtos/relogio-smartwatch-3d.jpg" alt="Infográfico 3D mostrando os componentes internos de um smartwatch: pulseira, cristal de safira, tela OLED touch, módulo de tela, caixa de alumínio, placa-mãe, bateria, sensores, motor háptico e base traseira" loading="lazy">
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-timeline"></i> Evolução do smartwatch</h2>
+                <div class="infografico infografico-timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-ano">1972</div>
+                        <h4>Pulsar</h4>
+                        <p>Primeiro relógio digital eletrônico do mundo, abrindo caminho para telas em relógios de pulso.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-ano">1984</div>
+                        <h4>Seiko Data 2000</h4>
+                        <p>Um dos primeiros relógios capazes de armazenar anotações e dados simples.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-ano">1994</div>
+                        <h4>Timex Datalink</h4>
+                        <p>Sincronizava compromissos direto da tela do computador usando pulsos de luz.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-ano">2013</div>
+                        <h4>Explosão dos apps</h4>
+                        <p>Modelos com notificações, apps de terceiros e app stores próprias chegam ao mercado.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-ano">Hoje</div>
+                        <h4>Saúde preventiva</h4>
+                        <p>ECG, oxímetro e monitoramento avançado de sono viram foco central dos lançamentos.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-battery-three-quarters"></i> Autonomia por perfil de uso</h2>
+                <div class="infografico infografico-comparativo">
+                    <div class="comp-linha">
+                        <div class="comp-label"><span>Tela sempre ativa</span><span>Autonomia menor</span></div>
+                        <div class="comp-track"><div class="comp-fill cor-alt" style="width:30%"></div></div>
+                    </div>
+                    <div class="comp-linha">
+                        <div class="comp-label"><span>Uso misto (notificações + treinos)</span><span>Autonomia média</span></div>
+                        <div class="comp-track"><div class="comp-fill cor-produto" style="width:65%"></div></div>
+                    </div>
+                    <div class="comp-linha">
+                        <div class="comp-label"><span>Modo economia de energia</span><span>Autonomia maior</span></div>
+                        <div class="comp-track"><div class="comp-fill cor-produto" style="width:92%"></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-circle-question"></i> Perguntas frequentes</h2>
+                <div class="produto-faq">
+                    <div class="produto-faq-item">
+                        <h4><i class="fas fa-circle-question"></i> Smartwatch substitui o celular?</h4>
+                        <p>Não totalmente. Ele complementa o smartphone, mostrando notificações e coletando dados de saúde, mas a maioria depende da conexão com o celular para funções completas.</p>
+                    </div>
+                    <div class="produto-faq-item">
+                        <h4><i class="fas fa-circle-question"></i> Preciso trocar a pulseira original?</h4>
+                        <p>Não é obrigatório, mas muitos modelos aceitam pulseiras intercambiáveis, o que ajuda a adaptar o relógio para treino, trabalho ou ocasiões formais.</p>
+                    </div>
+                    <div class="produto-faq-item">
+                        <h4><i class="fas fa-circle-question"></i> Smartwatch funciona sem internet?</h4>
+                        <p>Funções básicas como hora, cronômetro e sensores de saúde continuam ativas offline. Notificações e sincronização de apps precisam de conexão.</p>
+                    </div>
+                    <div class="produto-faq-item">
+                        <h4><i class="fas fa-circle-question"></i> Vale a pena para quem não pratica esportes?</h4>
+                        <p>Sim — recursos como notificações, lembretes de movimento e monitoramento básico de sono já fazem diferença no dia a dia, mesmo sem rotina esportiva.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-book"></i> Referências e leituras complementares</h2>
+                <p class="produto-lead">Este conteúdo foi baseado em fontes públicas sobre a história e o funcionamento dos smartwatches. Para se aprofundar, vale a leitura:</p>
+                <div class="produto-referencias">
+                    <a href="https://vositone.com/smartwatches-evolution-history.html" target="_blank" rel="noopener noreferrer" class="produto-referencia-item">
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                        <div>
+                            <strong>Evolution of Smartwatches: From Early Concepts to Modern Tech</strong>
+                            <span>Linha do tempo detalhada desde os relógios digitais dos anos 1970 até os recursos de saúde atuais.</span>
+                            <small>vositone.com</small>
+                        </div>
+                    </a>
+                    <a href="https://angelwatchco.com/blogs/news/the-history-and-evolution-of-the-smartwatch" target="_blank" rel="noopener noreferrer" class="produto-referencia-item">
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                        <div>
+                            <strong>The History and Evolution of the Smartwatch</strong>
+                            <span>Conta a origem dos primeiros relógios com armazenamento de dados e do primeiro "relógio-telefone", da Samsung, em 1999.</span>
+                            <small>angelwatchco.com</small>
+                        </div>
+                    </a>
+                    <a href="https://vertu.com/lifestyle/can-i-use-a-smartwatch-without-a-smartphone" target="_blank" rel="noopener noreferrer" class="produto-referencia-item">
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                        <div>
+                            <strong>Can I Use a Smartwatch Without a Smartphone?</strong>
+                            <span>Guia comparando modelos autônomos (com eSIM/LTE) e modelos que dependem do celular por perto.</span>
+                            <small>vertu.com</small>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-shapes"></i> Outros tipos de relógio</h2>
+                <div class="produto-relacionados-grid">
+                    <a href="relogio-mecanico.html" class="produto-card" style="--produto-cor:#b8860b;">
+                        <div class="produto-card-icon produto-card-icon-foto"><img src="../img_produtos/relogio-mecanico-card.jpg" alt="Mecânico" loading="lazy"></div>
+                        <h3>Mecânico</h3>
+                        <p>Engrenagens, molas e séculos de precisão sem usar nenhuma bateria.</p>
+                        <span class="produto-card-saiba">Saiba mais <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="relogio-quartzo.html" class="produto-card" style="--produto-cor:#8e44ad;">
+                        <div class="produto-card-icon produto-card-icon-foto"><img src="../img_produtos/relogio-quartzo-card.jpg" alt="Quartzo" loading="lazy"></div>
+                        <h3>Quartzo</h3>
+                        <p>O cristal que vibra 32.768 vezes por segundo e revolucionou a relojoaria.</p>
+                        <span class="produto-card-saiba">Saiba mais <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="relogio-digital.html" class="produto-card" style="--produto-cor:#16a085;">
+                        <div class="produto-card-icon produto-card-icon-foto"><img src="../img_produtos/relogio-digital-card.jpg" alt="Digital" loading="lazy"></div>
+                        <h3>Digital</h3>
+                        <p>Visor numérico, robustez e aquele clássico charme retrô dos anos 80.</p>
+                        <span class="produto-card-saiba">Saiba mais <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content-wrapper">
+            <p>&copy; 2025 AsHoras. Todos os direitos reservados.</p>
+            <a href="../sobre.html" style="color:var(--cor-primaria);text-decoration:none;">Sobre</a> |
+            <a href="../privacidade.html" style="color:var(--cor-primaria);text-decoration:none;">Privacidade</a>
+        </div>
+    </footer>
+
+    <style>
+        .infografico-imagem img { cursor: zoom-in; }
+        .img-lightbox-overlay {
+            display: none;
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 3000;
+            padding: 30px;
+            overflow: auto;
+        }
+        .img-lightbox-overlay.aberto { display: flex; }
+        .img-lightbox-overlay::before,
+        .img-lightbox-overlay::after {
+            content: '';
+            margin: auto;
+        }
+        .img-lightbox-overlay img {
+            max-width: 95vw;
+            max-height: 88vh;
+            cursor: zoom-in;
+            transition: max-width .25s ease, max-height .25s ease, width .25s ease;
+            border-radius: 8px;
+            display: block;
+            margin: auto;
+        }
+        .img-lightbox-overlay img.zoom {
+            max-width: none;
+            max-height: none;
+            width: 220%;
+            cursor: zoom-out;
+        }
+        .img-lightbox-fechar {
+            position: fixed; top: 18px; right: 20px;
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            color: #fff; font-size: 1.3em;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 3001;
+            border: none;
+        }
+        .img-lightbox-fechar:hover { background: rgba(255,255,255,0.28); }
+        .img-lightbox-dica {
+            position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+            color: #fff; font-size: 0.85em; opacity: 0.75;
+            z-index: 3001; text-align: center;
+            background: rgba(0,0,0,0.4); padding: 6px 16px; border-radius: 20px;
+        }
+    </style>
+
+    <div class="img-lightbox-overlay" id="imgLightbox">
+        <button class="img-lightbox-fechar" id="imgLightboxFechar" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
+        <img src="" alt="" id="imgLightboxImg">
+        <div class="img-lightbox-dica">Toque na imagem para ampliar ainda mais</div>
+    </div>
+
+    <script>
+        (function() {
+            var overlay = document.getElementById('imgLightbox');
+            var overlayImg = document.getElementById('imgLightboxImg');
+            var fechar = document.getElementById('imgLightboxFechar');
+            document.querySelectorAll('.infografico-imagem img').forEach(function(img) {
+                img.addEventListener('click', function() {
+                    overlayImg.src = img.currentSrc || img.src;
+                    overlayImg.alt = img.alt;
+                    overlayImg.classList.remove('zoom');
+                    overlay.classList.add('aberto');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            overlayImg.addEventListener('click', function() {
+                overlayImg.classList.toggle('zoom');
+                if (overlayImg.classList.contains('zoom')) {
+                    requestAnimationFrame(function() {
+                        overlay.scrollLeft = (overlay.scrollWidth - overlay.clientWidth) / 2;
+                        overlay.scrollTop = (overlay.scrollHeight - overlay.clientHeight) / 2;
+                    });
+                }
+            });
+            function fecharLightbox() {
+                overlay.classList.remove('aberto');
+                overlayImg.classList.remove('zoom');
+                document.body.style.overflow = '';
+            }
+            fechar.addEventListener('click', fecharLightbox);
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) fecharLightbox();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') fecharLightbox();
+            });
+        })();
+    </script>
+
+    <script src="../sabia-theme-loader.js"></script>
+</body>
+</html>

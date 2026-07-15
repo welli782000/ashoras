@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="weather-widget.css">
     <link rel="stylesheet" href="agenda.css">
+    <link rel="stylesheet" href="seu-tempo.css">
+    <link rel="stylesheet" href="semana-do-ano.css">
+    <link rel="stylesheet" href="wallpaper-orientation.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=schedule" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -277,6 +280,7 @@
                     <li data-target="semana-do-ano"><a href="#"><i class="fa-solid fa-calendar-week"></i> Semana do Ano</a></li>
                     <li data-target="pomodoro-timer"><a href="#"><i class="fa-solid fa-stopwatch-20"></i> Pomodoro</a></li>
                     <li data-target="agenda-diaria"><a href="#"><i class="fa-solid fa-book-open" style="color:var(--ag-branco,#27ae60);"></i> Agenda Diária</a></li>
+                    <li data-target="seu-tempo"><a href="#"><i class="fa-solid fa-hourglass-half" style="color:currentColor;"></i> Seu Tempo</a></li>
                     <li><a href="vocesabia.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-question-circle"></i> Você Sabia?</a></li>
                     </ul>
             </nav>
@@ -402,22 +406,22 @@
                         <input type="number" id="desp-minuto" placeholder="MM" min="0" max="59">
                         <label for="desp-som" class="label-som">Som:</label>
                         <select id="desp-som">
-                            <option value="https://www.soundjay.com/clock/sounds/clock-ticking-2.mp3">Relógio Ticando</option>
-                            <option value="https://www.soundjay.com/buttons/sounds/button-7.mp3">Bipe Curto</option>
-                            <option value="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3">Sino Digital</option>
-                            <option value="sons/Suave_e_Relaxante.mp3">Suave e Relaxante</option>
-                            <option value="sons/Sonho_Desperto.mp3">Sonho Desperto</option>
-                            <option value="sons/Brisa_do_Despertar.mp3">Brisa do Despertar</option>
-                            <option value="sons/Brilho_Matinal.mp3">Brilho Matinal</option>
-                            <option value="sons/Despertar_do_Amanhecer.mp3">Despertar do Amanhecer</option>
-                            <option value="sons/A_Fronteira_Digital_do_Sol.mp3" selected>A Fronteira Digital do Sol</option>
-                            <option value="sons/A_Emocionante_Jornada.mp3">A Emocionante Jornada</option>
-                            <option value="sons/O_Cactus_e_o_Olhar_para_Cima.mp3" selected>O Cactus e o Olhar para Cima</option>
-                            <option value="sons/O_Cactus_e_o_Deserto.mp3">O Cactus e o Deserto</option>
-                            <option value="sons/O_Vento_e_a_Chuva.mp3">O Vento e a Chuva</option>
-                            <option value="sons/felicidade_minha.mp3">Felicidade minha</option>
+                            <option value="https://www.soundjay.com/clock/sounds/clock-ticking-2.mp3">Relógio ticando</option>
+                            <option value="https://www.soundjay.com/buttons/sounds/button-7.mp3">Bipe curto</option>
+                            <option value="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3">Sino digital</option>
+                            <option value="sons/Suave_e_Relaxante.mp3">Suave e relaxante</option>
+                            <option value="sons/Sonho_Desperto.mp3">Sonho desperto</option>
+                            <option value="sons/Brisa_do_Despertar.mp3">Brisa do despertar</option>
+                            <option value="sons/Brilho_Matinal.mp3">Brilho matinal</option>
+                            <option value="sons/Despertar_do_Amanhecer.mp3">Despertar do amanhecer</option>
+                            <option value="sons/A_Fronteira_Digital_do_Sol.mp3" selected>A fronteira digital do sol</option>
+                            <option value="sons/A_Emocionante_Jornada.mp3">A emocionante jornada</option>
+                            <option value="sons/O_Cactus_e_o_Olhar_para_Cima.mp3" selected>O cactus e o olhar para cima</option>
+                            <option value="sons/O_Cactus_e_o_Deserto.mp3">O cactus e o deserto</option>
+                            <option value="sons/O_Vento_e_a_Chuva.mp3">O vento e a chuva</option>
+                            <option value="sons/felicidade_minha.mp3">Minha felicidade</option>
                             <option value="sons/verao_sem_fim.mp3">Verão sem fim</option>
-                            <option value="sons/Contagia_o_dia.mp3">Contagia o dia</option>
+                            <option value="sons/Contagia_o_dia.mp3">Dia contagiante</option>
                             <option value="sons/Fluxo_do_dia.mp3">Fluxo do dia</option>
 
 
@@ -489,19 +493,19 @@
                         <label for="temp-horas">HH:</label><input type="number" id="temp-horas" placeholder="HH" min="0" max="23"><span class="separador-tempo">:</span><label for="temp-minutos">MM:</label><input type="number" id="temp-minutos" placeholder="MM" min="0" max="59"><span class="separador-tempo">:</span><label for="temp-segundos">SS:</label><input type="number" id="temp-segundos" placeholder="SS" min="0" max="59">
                         <label for="temp-som-select" class="label-som">Som:</label>
                         <select id="temp-som-select">
-                            <option value="sons/Suave_e_Relaxante.mp3">Suave e Relaxante</option>
-                            <option value="sons/Sonho_Desperto.mp3">Sonho Desperto</option>
-                            <option value="sons/Brisa_do_Despertar.mp3">Brisa do Despertar</option>
-                            <option value="sons/Brilho_Matinal.mp3">Brilho Matinal</option>
-                            <option value="sons/Despertar_do_Amanhecer.mp3">Despertar do Amanhecer</option>
-                            <option value="sons/A_Fronteira_Digital_do_Sol.mp3" selected>A Fronteira Digital do Sol</option>
-                            <option value="sons/A_Emocionante_Jornada.mp3">A Emocionante Jornada</option>
-                            <option value="sons/O_Cactus_e_o_Olhar_para_Cima.mp3">O Cactus e o Olhar para Cima</option>
-                            <option value="sons/O_Cactus_e_o_Deserto.mp3">O Cactus e o Deserto</option>
-                            <option value="sons/O_Vento_e_a_Chuva.mp3">O Vento e a Chuva</option>
-                            <option value="sons/felicidade_minha.mp3">Felicidade minha</option>
+                            <option value="sons/Suave_e_Relaxante.mp3">Suave e relaxante</option>
+                            <option value="sons/Sonho_Desperto.mp3">Sonho desperto</option>
+                            <option value="sons/Brisa_do_Despertar.mp3">Brisa do despertar</option>
+                            <option value="sons/Brilho_Matinal.mp3">Brilho matinal</option>
+                            <option value="sons/Despertar_do_Amanhecer.mp3">Despertar do amanhecer</option>
+                            <option value="sons/A_Fronteira_Digital_do_Sol.mp3" selected>A fronteira digital do sol</option>
+                            <option value="sons/A_Emocionante_Jornada.mp3">A jornada emocionante</option>
+                            <option value="sons/O_Cactus_e_o_Olhar_para_Cima.mp3">O cactus e o olhar para cima</option>
+                            <option value="sons/O_Cactus_e_o_Deserto.mp3">O cactus e o deserto</option>
+                            <option value="sons/O_Vento_e_a_Chuva.mp3">O vento e a chuva</option>
+                            <option value="sons/felicidade_minha.mp3">Minha felicidade</option>
                             <option value="sons/verao_sem_fim.mp3">Verão sem fim</option>
-                            <option value="sons/Contagia_o_dia.mp3">Contagia o dia</option>
+                            <option value="sons/Contagia_o_dia.mp3">Dia contagiante</option>
                             <option value="sons/Fluxo_do_dia.mp3">Fluxo do dia</option>
                         </select>
                         <button id="temp-preview-som-btn" class="preview-som-btn" aria-label="Ouvir som"><i class="fas fa-play"></i></button>
@@ -611,7 +615,7 @@
                         <div id="data-atual-semana-tab" class="data-display"></div>
                         <div id="hora-atual-semana-tab" class="hora-display">00:00:00</div>
                     </div>
-                    <div class="week-of-year-content-tab">
+    <div class="week-of-year-content-tab">
                         <div id="week-number-value-tab" class="week-number-highlight-tab">--</div>
                         <div class="week-info-text-tab">
                             <span class="week-label-tab">Semana do Ano</span>
@@ -691,7 +695,7 @@
                             <p class="pip-text">A Agenda Diária salva suas tarefas diretamente na <strong>memória do navegador</strong>. Tudo fica guardado no seu dispositivo.</p>
                             <div class="pip-steps">
                                 <div class="pip-step"><span class="pip-step-num">📌</span><span>As tarefas <strong>persistem a semana toda</strong> — feche e abra o navegador à vontade</span></div>
-                                <div class="pip-step"><span class="pip-step-num">📌</span><span>Toda <strong>segunda-feira</strong> a agenda é limpa automaticamente para a nova semana e uma mensagem de confirmação vai ativar. Se desejar importar as mensagens em abertas da sexta - feira<strong>, se sim essas mensagem serão importadas para segunda - se não começa a semana com tudo zerado </strong></span></div>
+                                <div class="pip-step"><span class="pip-step-num">📌</span><span>Toda <strong>segunda-feira</strong> a agenda é limpa automaticamente para a nova semana e uma mensagem de confirmação vai ativar. Se desejar importar as mensagens em abertas da sexta - feira<strong>, se sim essas mensagem serão importadas para segunda - se não começa a semana com tudo zerado, importe as tarefas abertas do dia anterior para o dia atual </strong></span></div>
                                 <div class="pip-step"><span class="pip-step-num">📌</span><span>Se trocar de <strong>navegador ou dispositivo</strong>, as tarefas não acompanham — ficam salvas apenas aqui,</span></div>
                                 </div>
                             <div class="pip-who">
@@ -726,6 +730,16 @@
                             </div>
                             <div class="agenda-dia-btn" data-dia="sex">
                                 <span class="dia-nome">Sex</span>
+                                <span class="dia-num">--/--</span>
+                                <span class="dia-count">0</span>
+                            </div>
+                            <div class="agenda-dia-btn" data-dia="sab">
+                                <span class="dia-nome">Sáb</span>
+                                <span class="dia-num">--/--</span>
+                                <span class="dia-count">0</span>
+                            </div>
+                            <div class="agenda-dia-btn" data-dia="dom">
+                                <span class="dia-nome">Dom</span>
                                 <span class="dia-num">--/--</span>
                                 <span class="dia-count">0</span>
                             </div>
@@ -775,6 +789,167 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Modal: perguntar se importa tarefas em aberto do dia anterior para o dia atual -->
+                    <div id="agenda-import-modal" class="agenda-reset-modal">
+                        <div class="agenda-reset-modal-box">
+                            <div class="agenda-reset-modal-icon">
+                                <i class="fas fa-clipboard-question"></i>
+                            </div>
+                            <h4>Tarefas em aberto do dia anterior</h4>
+                            <p>
+                                Você tem <strong id="agenda-import-modal-qtd">tarefas em aberto</strong> de
+                                <strong id="agenda-import-modal-de">--</strong>.
+                                Quer trazê-las para <strong id="agenda-import-modal-para">--</strong>?
+                            </p>
+                            <div class="agenda-reset-modal-botoes">
+                                <button id="agenda-import-nao">Não, deixar como está</button>
+                                <button id="agenda-import-sim">Sim, importar</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ================================================================
+                     SEU TEMPO — "Descubra como você utilizou o tempo da sua vida"
+                     Wizard: Boas-vindas -> Dados básicos -> Fases da vida -> Dashboard
+                     ================================================================ -->
+                <section id="seu-tempo" class="tab-content">
+                    <div class="st-container">
+
+                        <div class="st-header">
+                            <span class="st-header-icon">⏳</span>
+                            <div class="st-header-txt">
+                                <strong>Seu Tempo</strong>
+                                <span>Descubra como você utilizou o tempo da sua vida</span>
+                            </div>
+                            <button class="secao-info-btn" data-painel="info-seu-tempo" aria-label="Como funciona o Seu Tempo" title="Como funciona o Seu Tempo">?</button>
+                        </div>
+                        <div id="info-seu-tempo" class="pomodoro-info-panel" style="display:none;">
+                            <div class="pip-header">
+                                <span class="pip-icon">⏳</span>
+                                <strong class="pip-title">Como funciona o Seu Tempo</strong>
+                            </div>
+                            <p class="pip-text">O <strong>Seu Tempo</strong> transforma sua idade em um retrato de como as horas do seu dia se tornaram os anos da sua vida. Você informa a média de horas por dia de cada atividade, fase por fase (Infância, Adolescência, Adulto e Velhice). Para <strong>Estudos</strong>, <strong>Trabalho</strong> e <strong>Exercícios</strong>, você também conta por quantos anos daquela fase realmente praticou a atividade — o restante dos anos, sem essa atividade, é somado automaticamente ao <strong>Tempo Livre</strong>, para que nenhum período da sua vida fique sem representação.</p>
+                            <div class="pip-who">
+                                <span class="pip-who-tag"><i class="fas fa-baby"></i> Infância</span>
+                                <span class="pip-who-tag"><i class="fas fa-child-reaching"></i> Adolescência</span>
+                                <span class="pip-who-tag"><i class="fas fa-briefcase"></i> Adulto</span>
+                                <span class="pip-who-tag"><i class="fas fa-person-cane"></i> Velhice</span>
+                            </div>
+                        </div>
+
+                        <!-- TELA 1: Boas-vindas -->
+                        <div id="st-tela-boasvindas" class="st-tela ativa">
+                            <div class="st-boasvindas">
+                                <span class="st-emoji-gigante">⏳</span>
+                                <h1>AsHoras</h1>
+                                <p>Descubra como você utilizou o tempo da sua vida.</p>
+                                <button id="st-btn-comecar" class="st-btn-primario">Começar</button>
+                            </div>
+                        </div>
+
+                        <!-- TELA 2: Dados iniciais -->
+                        <div id="st-tela-dados" class="st-tela">
+                            <div class="st-card">
+                                <h3>👤 Seus dados</h3>
+                                <p class="st-card-sub">Apenas a idade é obrigatória — os demais campos são opcionais.</p>
+                                <div class="st-grid-form">
+                                    <div class="st-campo">
+                                        <label for="st-nome">Nome (opcional)</label>
+                                        <input type="text" id="st-nome" maxlength="40" placeholder="Como podemos te chamar?">
+                                    </div>
+                                    <div class="st-campo">
+                                        <label for="st-idade">Idade atual *</label>
+                                        <input type="number" id="st-idade" min="1" max="110" placeholder="Ex: 38">
+                                    </div>
+                                    <div class="st-campo">
+                                        <label for="st-sexo">Sexo (opcional)</label>
+                                        <select id="st-sexo">
+                                            <option value="">Prefiro não informar</option>
+                                            <option value="feminino">Feminino</option>
+                                            <option value="masculino">Masculino</option>
+                                            <option value="outro">Outro</option>
+                                        </select>
+                                    </div>
+                                    <div class="st-campo">
+                                        <label for="st-pais">País (opcional)</label>
+                                        <input type="text" id="st-pais" maxlength="40" placeholder="Ex: Brasil">
+                                    </div>
+                                </div>
+                                <p id="st-idade-aviso" style="display:none; color:#e74c3c; font-size:.85em; margin-top:10px;">Informe uma idade válida (1 a 110 anos).</p>
+                                <div class="st-acoes-form">
+                                    <button id="st-btn-dados-voltar" class="st-btn-secundario">Voltar</button>
+                                    <button id="st-btn-dados-continuar" class="st-btn-primario">Continuar</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TELA 3: Fases da vida -->
+                        <div id="st-tela-fases" class="st-tela">
+                            <div class="st-card">
+                                <h3>📊 Suas fases de vida</h3>
+                                <p class="st-card-sub">Ajuste a média diária de horas de cada atividade em cada fase já vivida. Já preenchemos valores médios sugeridos — sinta-se à vontade para editar.</p>
+                                <div id="st-fases-lista" class="st-fases-lista"></div>
+                                <div class="st-acoes-form">
+                                    <button id="st-btn-fases-voltar" class="st-btn-secundario">Voltar</button>
+                                    <button id="st-btn-calcular" class="st-btn-primario">✨ Calcular minha vida</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TELA 4: Dashboard / Relatório -->
+                        <div id="st-tela-dashboard" class="st-tela">
+                            <div class="st-dashboard">
+
+                                <p id="st-frase-vida" class="st-frase-vida"></p>
+
+                                <div class="st-resumo-grid">
+                                    <div class="st-resumo-card"><span id="st-resumo-dias" class="st-resumo-valor">0</span><span class="st-resumo-label">Dias vividos</span></div>
+                                    <div class="st-resumo-card"><span id="st-resumo-horas" class="st-resumo-valor">0</span><span class="st-resumo-label">Horas vividas</span></div>
+                                    <div class="st-resumo-card"><span id="st-resumo-minutos" class="st-resumo-valor">0</span><span class="st-resumo-label">Minutos vividos</span></div>
+                                    <div class="st-resumo-card"><span id="st-resumo-segundos" class="st-resumo-valor">0</span><span class="st-resumo-label">Segundos vividos</span></div>
+                                </div>
+
+                                <div class="st-card">
+                                    <h3>🧭 Linha do tempo</h3>
+                                    <p class="st-card-sub">Clique em uma fase para ver os detalhes mais abaixo.</p>
+                                    <div id="st-timeline" class="st-timeline"></div>
+                                </div>
+
+                                <div class="st-graficos-grid">
+                                    <div class="st-grafico-card">
+                                        <h4>🥧 Distribuição da vida</h4>
+                                        <canvas id="st-grafico-pizza"></canvas>
+                                    </div>
+                                    <div class="st-grafico-card">
+                                        <h4>📊 Comparativo entre atividades</h4>
+                                        <canvas id="st-grafico-barras"></canvas>
+                                    </div>
+                                    <div class="st-grafico-card">
+                                        <h4>🪜 Horas vividas por fase</h4>
+                                        <canvas id="st-grafico-fases"></canvas>
+                                    </div>
+                                </div>
+
+                                <div class="st-card">
+                                    <h3>🃏 Cada atividade, em detalhes</h3>
+                                    <div id="st-atividades-cards" class="st-atividades-cards"></div>
+                                </div>
+
+                                <div class="st-card">
+                                    <h3>📊 Como você está em cada rotina</h3>
+                                    <p class="st-card-sub">Comparativo entre suas médias reais e os benchmarks mundiais de saúde (OMS) — apenas para rotinas com horas informadas.</p>
+                                    <div id="st-conquistas"></div>
+                                </div>
+
+                                <div class="st-reiniciar-wrap">
+                                    <button id="st-btn-reiniciar" class="st-btn-secundario"><i class="fas fa-rotate-left"></i> Refazer com outros dados</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </section>
 
             </main>
@@ -809,8 +984,13 @@
 
     <!-- EmailJS — notificação silenciosa de buscas sem resultado -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
     <script src="script.js"></script>
+    <script src="wallpaper-orientation.js"></script>
     <script src="agenda.js"></script>
+    <script src="seu-tempo.js"></script>
+    <script src="semana-do-ano.js"></script>
 
     <!-- Banner de Cookies -->
     <div id="cookie-banner" class="hidden">

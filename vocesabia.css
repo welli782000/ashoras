@@ -182,3 +182,114 @@ body {
 #carousel-next {
     right: 10px;
 }
+
+/* ═══════════════════════════════════════════════
+   Seção "Relógios em Destaque" — cards pequenos
+   (entre o carrossel de curiosidades e a notícia rápida)
+   ═══════════════════════════════════════════════ */
+
+.produtos-destaque {
+    margin: 44px auto 40px;
+}
+
+.produtos-destaque-titulo {
+    margin: 0 0 20px 0;
+    padding: 0 4px;
+}
+.produtos-destaque-titulo h2 {
+    font-size: 1.15em;
+    font-weight: 700;
+    color: var(--sabia-texto-principal);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+.produtos-destaque-titulo h2 i { color: var(--sabia-primaria); }
+.produtos-destaque-titulo p {
+    font-size: 0.88em;
+    color: var(--sabia-texto-secundario);
+    margin: 0;
+}
+
+.produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.produto-card {
+    display: block;
+    background-color: var(--sabia-superficie);
+    border-radius: 12px;
+    box-shadow: var(--sabia-sombra);
+    padding: 20px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.produto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.14);
+}
+
+.produto-card-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35em;
+    color: #fff;
+    margin-bottom: 16px;
+    background: var(--produto-cor, #FF8C00);
+}
+
+/* Variante com foto real (ocupa a largura do card, proporcional à foto) */
+.produto-card-icon-foto {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    border-radius: 14px;
+    overflow: hidden;
+    background: none;
+}
+.produto-card-icon-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.produto-card h3 {
+    font-size: 1.02em;
+    font-weight: 700;
+    color: var(--sabia-texto-principal);
+    margin: 0 0 8px;
+}
+
+.produto-card p {
+    font-size: 0.85em;
+    line-height: 1.5;
+    color: var(--sabia-texto-secundario);
+    margin: 0 0 12px;
+}
+
+.produto-card-saiba {
+    font-size: 0.8em;
+    font-weight: 700;
+    color: var(--produto-cor, #FF8C00);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+.produto-card:hover .produto-card-saiba { gap: 8px; }
+.produto-card-saiba i { transition: transform 0.2s; font-size: 0.85em; }
+
+@media (max-width: 900px) {
+    .produtos-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+    .produtos-grid { grid-template-columns: 1fr; }
+}

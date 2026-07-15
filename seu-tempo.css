@@ -1,0 +1,335 @@
+/* ============================================================
+   SEU TEMPO — estilos da rotina "Como você usou sua vida"
+   Usa as mesmas variáveis de tema do AsHoras (--cor-primaria,
+   --cor-superficie, --cor-texto-principal, etc.) para herdar
+   automaticamente o Modo Claro / Modo Escuro do site.
+   ============================================================ */
+
+#seu-tempo .st-container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    animation: stFadeIn .5s ease-out;
+}
+
+@keyframes stFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Cabeçalho padrão (igual às outras seções) ---------- */
+.st-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--cor-superficie);
+    border: 1px solid var(--cor-borda-geral);
+    border-left: 4px solid var(--cor-primaria);
+    border-radius: var(--radius-padrao, 8px);
+    padding: 16px 20px;
+}
+.st-header-icon { font-size: 1.6em; }
+.st-header-txt { display: flex; flex-direction: column; }
+.st-header-txt strong { font-size: 1.1em; color: var(--cor-texto-principal); }
+.st-header-txt span { font-size: .85em; color: var(--cor-texto-secundario); }
+#seu-tempo .st-header .secao-info-btn { margin-left: auto; }
+
+/* ---------- Telas (wizard) ---------- */
+.st-tela { display: none; }
+.st-tela.ativa { display: block; animation: stFadeIn .4s ease-out; }
+
+/* Tela de boas-vindas */
+.st-boasvindas {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, rgba(255,107,0,.08), rgba(79,168,232,.08));
+    border-radius: var(--radius-padrao, 8px);
+    border: 1px solid var(--cor-borda-geral);
+}
+.st-boasvindas .st-emoji-gigante { font-size: 3.2em; display: block; margin-bottom: 10px; }
+.st-boasvindas h1 {
+    font-size: 2em;
+    margin: 0 0 6px;
+    background: linear-gradient(90deg, var(--cor-primaria), #4fa8e8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.st-boasvindas p { color: var(--cor-texto-secundario); margin: 0 0 26px; font-size: 1.02em; }
+
+.st-btn-primario {
+    background: var(--cor-primaria);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-padrao-menor, 6px);
+    padding: 13px 30px;
+    font-size: 1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .15s, box-shadow .15s, background .2s;
+    box-shadow: 0 4px 14px rgba(255,107,0,.25);
+}
+.st-btn-primario:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255,107,0,.32); }
+.st-btn-secundario {
+    background: transparent;
+    color: var(--cor-texto-secundario);
+    border: 1px solid var(--cor-borda-geral);
+    border-radius: var(--radius-padrao-menor, 6px);
+    padding: 12px 24px;
+    font-size: .95em;
+    cursor: pointer;
+    transition: all .2s;
+}
+.st-btn-secundario:hover { border-color: var(--cor-primaria); color: var(--cor-primaria); }
+
+/* ---------- Cartões de formulário ---------- */
+.st-card {
+    background: var(--cor-superficie);
+    border: 1px solid var(--cor-borda-geral);
+    border-radius: var(--radius-padrao, 8px);
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.04);
+}
+.st-card h3 { margin: 0 0 4px; color: var(--cor-texto-principal); display: flex; align-items: center; gap: 8px; }
+.st-card .st-card-sub { font-size: .85em; color: var(--cor-texto-secundario); margin: 0 0 16px; }
+
+.st-grid-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+.st-campo { display: flex; flex-direction: column; gap: 6px; }
+.st-campo label { font-size: .85em; color: var(--cor-texto-secundario); font-weight: 600; }
+.st-campo input, .st-campo select {
+    background: var(--cor-fundo, #f5f5f7);
+    border: 1px solid var(--cor-borda-geral);
+    border-radius: var(--radius-padrao-menor, 6px);
+    padding: 10px 12px;
+    font-size: .95em;
+    color: var(--cor-texto-principal);
+}
+.st-campo input:focus, .st-campo select:focus { outline: 2px solid var(--cor-primaria); outline-offset: 1px; }
+
+/* ---------- Fases (cartões por etapa da vida) ---------- */
+.st-fases-lista { display: flex; flex-direction: column; gap: 16px; }
+.st-fase-card { border: 1px solid var(--cor-borda-geral); border-radius: var(--radius-padrao, 8px); overflow: hidden; }
+.st-fase-cabecalho {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 18px;
+    background: rgba(255,107,0,.06);
+    cursor: pointer;
+    user-select: none;
+}
+.st-fase-cabecalho .st-fase-emoji { font-size: 1.5em; }
+.st-fase-cabecalho strong { color: var(--cor-texto-principal); }
+.st-fase-cabecalho span.st-fase-periodo { color: var(--cor-texto-secundario); font-size: .82em; margin-left: auto; }
+.st-fase-cabecalho .st-fase-chevron { transition: transform .25s; color: var(--cor-primaria); }
+.st-fase-card.aberta .st-fase-chevron { transform: rotate(180deg); }
+
+.st-fase-corpo {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .35s ease;
+    padding: 0 18px;
+}
+.st-fase-card.aberta .st-fase-corpo { max-height: 1400px; padding: 16px 18px 20px; }
+
+.st-atividades-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+.st-atividade-input { display: flex; flex-direction: column; gap: 4px; }
+.st-atividade-input label { font-size: .8em; color: var(--cor-texto-secundario); display: flex; align-items: center; gap: 5px; }
+.st-atividade-input input {
+    background: var(--cor-fundo, #f5f5f7);
+    border: 1px solid var(--cor-borda-geral);
+    border-radius: var(--radius-padrao-menor, 6px);
+    padding: 8px 10px;
+    font-size: .9em;
+    color: var(--cor-texto-principal);
+}
+.st-atividade-input.st-livre-auto input { opacity: .7; font-style: italic; }
+.st-fase-restante { font-size: .78em; color: var(--cor-texto-secundario); margin-top: 10px; }
+.st-fase-restante strong { color: var(--cor-primaria); }
+.st-fase-anos-extra { color: var(--cor-primaria); font-weight: 600; }
+
+/* Campo extra de "anos praticados" (Estudos, Trabalho, Exercícios) */
+.st-atividade-input.st-atividade-parcial { gap: 5px; }
+.st-atividade-anos-label {
+    font-size: .72em;
+    color: var(--cor-texto-secundario);
+    opacity: .85;
+    margin-top: 2px;
+}
+.st-atividade-anos-input {
+    background: var(--cor-fundo, #f5f5f7);
+    border: 1px dashed var(--cor-borda-geral);
+    border-radius: var(--radius-padrao-menor, 6px);
+    padding: 7px 10px;
+    font-size: .88em;
+    color: var(--cor-texto-principal);
+}
+.st-atividade-anos-input:focus { outline: 2px solid var(--cor-primaria); outline-offset: 1px; }
+
+/* Cor por par de perguntas: liga visualmente "horas/dia" com "anos praticados"
+   da mesma atividade. Cada atividade parcial tem sua própria cor. */
+.st-atividade-parcial {
+    padding: 10px 12px;
+    border-radius: var(--radius-padrao-menor, 6px);
+    border-left: 3px solid transparent;
+}
+.st-atividade-parcial--trabalhar  { border-left-color: #4fa8e8; background: rgba(79,168,232,.07); }
+.st-atividade-parcial--estudar    { border-left-color: #9b59b6; background: rgba(155,89,182,.07); }
+.st-atividade-parcial--exercicios { border-left-color: #27ae60; background: rgba(39,174,96,.07); }
+
+.st-atividade-parcial--trabalhar label,
+.st-atividade-parcial--trabalhar .st-atividade-anos-label  { color: #4fa8e8; }
+.st-atividade-parcial--estudar label,
+.st-atividade-parcial--estudar .st-atividade-anos-label    { color: #9b59b6; }
+.st-atividade-parcial--exercicios label,
+.st-atividade-parcial--exercicios .st-atividade-anos-label { color: #27ae60; }
+
+.st-atividade-parcial--trabalhar input,
+.st-atividade-parcial--trabalhar .st-atividade-anos-input  { border-color: rgba(79,168,232,.45); }
+.st-atividade-parcial--estudar input,
+.st-atividade-parcial--estudar .st-atividade-anos-input    { border-color: rgba(155,89,182,.45); }
+.st-atividade-parcial--exercicios input,
+.st-atividade-parcial--exercicios .st-atividade-anos-input { border-color: rgba(39,174,96,.45); }
+
+.st-atividade-parcial--trabalhar input:focus,
+.st-atividade-parcial--trabalhar .st-atividade-anos-input:focus  { outline-color: #4fa8e8; }
+.st-atividade-parcial--estudar input:focus,
+.st-atividade-parcial--estudar .st-atividade-anos-input:focus    { outline-color: #9b59b6; }
+.st-atividade-parcial--exercicios input:focus,
+.st-atividade-parcial--exercicios .st-atividade-anos-input:focus { outline-color: #27ae60; }
+
+.st-acoes-form { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+
+/* ---------- Dashboard ---------- */
+.st-dashboard { display: flex; flex-direction: column; gap: 22px; }
+
+.st-resumo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+.st-resumo-card {
+    background: var(--cor-superficie);
+    border: 1px solid var(--cor-borda-geral);
+    border-radius: var(--radius-padrao, 8px);
+    padding: 16px;
+    text-align: center;
+}
+.st-resumo-card .st-resumo-valor { font-size: 1.5em; font-weight: 800; color: var(--cor-primaria); display: block; }
+.st-resumo-card .st-resumo-label { font-size: .78em; color: var(--cor-texto-secundario); }
+
+/* Frase de abertura do relatório */
+.st-frase-vida {
+    background: linear-gradient(135deg, rgba(255,107,0,.1), rgba(79,168,232,.08));
+    border-radius: var(--radius-padrao, 8px);
+    padding: 22px;
+    text-align: center;
+    font-size: 1.1em;
+    color: var(--cor-texto-principal);
+    border: 1px solid var(--cor-borda-geral);
+}
+.st-frase-vida strong { color: var(--cor-primaria); }
+
+/* Linha do tempo */
+.st-timeline { display: flex; align-items: center; justify-content: space-between; padding: 18px 10px; position: relative; }
+.st-timeline::before {
+    content: ""; position: absolute; left: 5%; right: 5%; top: 50%; height: 3px;
+    background: var(--cor-borda-geral); z-index: 0;
+}
+.st-timeline-ponto {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    cursor: pointer; background: var(--cor-superficie); padding: 4px 10px; border-radius: 20px;
+    transition: transform .2s;
+}
+.st-timeline-ponto:hover { transform: translateY(-3px); }
+.st-timeline-ponto .st-tl-emoji { font-size: 1.6em; }
+.st-timeline-ponto span.st-tl-label { font-size: .78em; color: var(--cor-texto-secundario); }
+.st-timeline-ponto.st-tl-bloqueado { opacity: .35; cursor: default; }
+
+/* Gráficos */
+.st-graficos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+.st-grafico-card { background: var(--cor-superficie); border: 1px solid var(--cor-borda-geral); border-radius: var(--radius-padrao, 8px); padding: 16px; }
+.st-grafico-card h4 { margin: 0 0 12px; color: var(--cor-texto-principal); font-size: .95em; }
+.st-grafico-card canvas { max-height: 280px; }
+
+/* Frases comparativas */
+.st-comparacoes { display: flex; flex-direction: column; gap: 10px; }
+.st-comparacao-linha { display: flex; align-items: center; gap: 12px; }
+.st-comparacao-linha .st-comp-emoji { font-size: 1.3em; width: 28px; text-align: center; }
+.st-comparacao-linha .st-comp-texto { flex: 0 0 220px; font-size: .9em; color: var(--cor-texto-principal); }
+.st-comparacao-linha .st-comp-barra-wrap { flex: 1; background: var(--cor-fundo, #eee); border-radius: 20px; height: 12px; overflow: hidden; }
+.st-comparacao-linha .st-comp-barra {
+    height: 100%; border-radius: 20px; width: 0%;
+    background: linear-gradient(90deg, var(--cor-primaria), #ff9a4d);
+    transition: width 1.1s cubic-bezier(.22,1,.36,1);
+}
+.st-comparacao-linha .st-comp-pct { width: 46px; text-align: right; font-size: .82em; font-weight: 700; color: var(--cor-primaria); }
+
+/* Cartões individuais por atividade */
+.st-atividades-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.st-atv-card {
+    background: var(--cor-superficie); border: 1px solid var(--cor-borda-geral); border-radius: var(--radius-padrao, 8px);
+    padding: 18px; display: flex; flex-direction: column; gap: 10px;
+    transition: transform .2s, box-shadow .2s;
+}
+.st-atv-card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,.08); }
+.st-atv-card-topo { display: flex; align-items: center; gap: 10px; }
+.st-atv-card-topo .st-atv-emoji { font-size: 1.9em; }
+.st-atv-card-topo strong { color: var(--cor-texto-principal); font-size: 1.05em; }
+.st-atv-card-pct { margin-left: auto; font-weight: 800; color: var(--cor-primaria); }
+.st-atv-card-numeros { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; text-align: center; }
+.st-atv-card-numeros div span { display: block; font-weight: 700; color: var(--cor-texto-principal); font-size: .95em; }
+.st-atv-card-numeros div small { color: var(--cor-texto-secundario); font-size: .68em; text-transform: uppercase; }
+.st-atv-card-barra { background: var(--cor-fundo, #eee); border-radius: 20px; height: 10px; overflow: hidden; }
+.st-atv-card-barra-fill { height: 100%; width: 0%; border-radius: 20px; background: linear-gradient(90deg, var(--cor-primaria), #ff9a4d); transition: width 1.2s cubic-bezier(.22,1,.36,1); }
+.st-atv-card-msg { font-size: .85em; color: var(--cor-texto-secundario); line-height: 1.5; }
+.st-atv-card-curiosidade { font-size: .8em; color: var(--cor-primaria); background: rgba(255,107,0,.08); border-radius: var(--radius-padrao-menor, 6px); padding: 8px 10px; }
+
+/* Bloco especial: recomendação de exercício por faixa etária (regra da OMS) */
+.st-atv-card-exercicio-wrap { display: flex; flex-direction: column; gap: 8px; }
+.st-atv-card-exercicio { margin: 0; font-size: .8em; line-height: 1.5; border-radius: var(--radius-padrao-menor, 6px); padding: 9px 10px; }
+.st-atv-card-exercicio--abaixo { background: rgba(231,76,60,.1); color: #c0392b; }
+.st-atv-card-exercicio--ok { background: rgba(39,174,96,.1); color: #1e8449; }
+
+/* Conquistas */
+.st-conquistas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+.st-medalha {
+    background: var(--cor-superficie); border: 1px solid var(--cor-borda-geral); border-radius: var(--radius-padrao, 8px);
+    padding: 16px; text-align: center; opacity: .35; filter: grayscale(1); transition: all .3s;
+}
+.st-medalha.st-desbloqueada { opacity: 1; filter: none; box-shadow: 0 4px 16px rgba(255,107,0,.18); }
+.st-medalha .st-medalha-emoji { font-size: 2em; display: block; margin-bottom: 6px; }
+.st-medalha strong { font-size: .85em; color: var(--cor-texto-principal); display: block; }
+.st-medalha small { color: var(--cor-texto-secundario); font-size: .7em; }
+
+/* Confete simples (emoji caindo) */
+.st-confete {
+    position: fixed; top: -40px; font-size: 1.4em; pointer-events: none; z-index: 99999;
+    animation: stCair linear forwards;
+}
+@keyframes stCair {
+    to { transform: translateY(110vh) rotate(360deg); opacity: .2; }
+}
+
+/* Botão reiniciar */
+.st-reiniciar-wrap { display: flex; justify-content: center; padding: 10px 0 20px; }
+
+@media (max-width: 600px) {
+    .st-comparacao-linha .st-comp-texto { flex-basis: 140px; font-size: .82em; }
+    .st-atv-card-numeros { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- Status por rotina ---------- */
+.st-status-lista { display: flex; flex-direction: column; gap: 8px; }
+.st-status-linha {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 14px;
+    background: var(--cor-fundo, #f5f5f7);
+    border-radius: var(--radius-padrao-menor, 6px);
+    flex-wrap: wrap;
+}
+.st-status-emoji { font-size: 1.3em; flex-shrink: 0; }
+.st-status-nome  { font-weight: 700; font-size: .9em; color: var(--cor-texto-principal); min-width: 160px; }
+.st-status-chip  {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: .78em; font-weight: 700;
+    padding: 3px 10px; border-radius: 20px; flex-shrink: 0;
+}
+.st-status-ok   { background: rgba(0,184,148,.12); color: #00b894; }
+.st-status-ruim { background: rgba(233,168,0,.12);  color: #d4870a; }
+.st-status-msg  { font-size: .82em; color: var(--cor-texto-secundario); }
