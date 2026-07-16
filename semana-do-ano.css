@@ -1,0 +1,147 @@
+/* ============================================================
+   SEMANA DO ANO — navegação entre semanas + barra do ano
+   Complementa o style.css existente sem sobrescrever nada.
+   ============================================================ */
+
+/* ---------- Wrapper de navegação (seta ← número → seta) ---------- */
+.sda-nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 6px 0 4px;
+}
+
+.sda-btn-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--cor-primaria, #FF6B00);
+    background: transparent;
+    color: var(--cor-primaria, #FF6B00);
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background .18s, color .18s, transform .15s, box-shadow .18s;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    flex-shrink: 0;
+}
+.sda-btn-nav:hover {
+    background: var(--cor-primaria, #FF6B00);
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 4px 16px rgba(255,107,0,.32);
+}
+.sda-btn-nav:active { transform: scale(.96); }
+
+/* badge "ATUAL" que aparece quando está na semana de hoje */
+.sda-badge-atual {
+    display: inline-block;
+    font-size: .65em;
+    font-weight: 700;
+    background: var(--cor-primaria, #FF6B00);
+    color: #fff;
+    border-radius: 20px;
+    padding: 2px 10px;
+    margin-top: 4px;
+    letter-spacing: .04em;
+    transition: opacity .3s;
+}
+.sda-badge-atual.oculto { opacity: 0; }
+
+/* ---------- Barra de progresso do ANO ---------- */
+.sda-ano-barra-container {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 18px;
+    padding: 14px 20px;
+    background: var(--cor-superficie, #fff);
+    border: 1px solid var(--cor-borda-geral, #e0e0e0);
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.05);
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
+}
+
+.sda-ano-label {
+    font-size: .88em;
+    font-weight: 700;
+    color: var(--cor-texto-principal, #222);
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 72px;
+}
+
+.sda-ano-track {
+    flex: 1;
+    position: relative;
+    height: 14px;
+    background: var(--cor-fundo, #eee);
+    border-radius: 20px;
+    overflow: visible;
+    min-width: 140px;
+}
+
+.sda-ano-fill {
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(90deg, var(--cor-primaria, #FF6B00), #ff9a4d);
+    transition: width .8s cubic-bezier(.22,1,.36,1);
+    position: relative;
+}
+
+/* bolinha no final da barra */
+.sda-ano-fill::after {
+    content: '';
+    position: absolute;
+    right: -7px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--cor-primaria, #FF6B00);
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px var(--cor-primaria, #FF6B00), 0 2px 8px rgba(255,107,0,.4);
+}
+
+.sda-ano-pct {
+    font-size: .8em;
+    font-weight: 700;
+    color: var(--cor-primaria, #FF6B00);
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 38px;
+    text-align: right;
+}
+
+.sda-ano-icon {
+    font-size: 1.4em;
+    flex-shrink: 0;
+    color: var(--cor-primaria, #FF6B00);
+    line-height: 1;
+}
+
+/* texto "Dia X de 365" centralizado acima da barra */
+.sda-dia-label {
+    text-align: center;
+    font-size: .82em;
+    color: var(--cor-texto-secundario, #888);
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+/* semana navegada diferente da atual → destaque sutil */
+.sda-modo-navegacao .week-number-highlight-tab {
+    color: #0984e3 !important;
+}
+
+@media (max-width: 480px) {
+    .sda-ano-barra-container { gap: 10px; padding: 12px 14px; }
+    .sda-btn-nav { width: 38px; height: 38px; font-size: 1em; }
+}

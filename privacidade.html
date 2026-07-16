@@ -311,33 +311,7 @@
         </div>
     </footer>
 
-    <script>
-    // Tema — mesmo padrão do sobre.html
-    (function() {
-        var t = localStorage.getItem('sabiaTheme') || 'theme-light-sabia';
-        document.documentElement.className = t;
-    })();
-
-    document.addEventListener('DOMContentLoaded', function() {
-        var lightBtn = document.getElementById('light-theme-btn');
-        var darkBtn  = document.getElementById('dark-theme-btn');
-
-        function aplicarTema(nome) {
-            document.documentElement.className = nome;
-            localStorage.setItem('sabiaTheme', nome);
-            var isLight = nome === 'theme-light-sabia';
-            if (lightBtn) lightBtn.classList.toggle('active',  isLight);
-            if (darkBtn)  darkBtn.classList.toggle('active',  !isLight);
-        }
-
-        if (lightBtn) lightBtn.addEventListener('click', function() { aplicarTema('theme-light-sabia'); });
-        if (darkBtn)  darkBtn.addEventListener('click',  function() { aplicarTema('theme-dark-sabia'); });
-
-        // Aplica o tema salvo e marca ícone correto
-        var temaSalvo = localStorage.getItem('sabiaTheme') || 'theme-light-sabia';
-        aplicarTema(temaSalvo);
-    });
-    </script>
+    <script src="privac.js"></script>
 
 </body>
 </html>

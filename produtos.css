@@ -1,0 +1,538 @@
+/* ═══════════════════════════════════════════════
+   produtos.css — Páginas de detalhe "Tipos de Relógio"
+   Usa as mesmas variáveis de tema de vocesabia.css (--sabia-*)
+   Cada página define --produto-cor no <body> para dar identidade própria.
+   ═══════════════════════════════════════════════ */
+
+body.produto-page { background-color: var(--sabia-fundo); }
+
+.produto-container {
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 20px 20px 60px;
+    color: var(--sabia-texto-principal);
+}
+
+/* ── Trilha (voltar) ── */
+.produto-voltar {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.85em;
+    font-weight: 600;
+    color: var(--sabia-texto-secundario);
+    text-decoration: none;
+    margin-bottom: 18px;
+    transition: color 0.2s;
+}
+.produto-voltar:hover { color: var(--produto-cor); }
+
+/* ── Hero ── */
+.produto-hero {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--produto-cor) 14%, transparent) 0%, color-mix(in srgb, var(--produto-cor) 3%, transparent) 100%);
+    border: 1px solid color-mix(in srgb, var(--produto-cor) 25%, transparent);
+    border-radius: 18px;
+    padding: 36px;
+    margin-bottom: 36px;
+}
+.produto-hero-icone {
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 26px;
+    background: var(--produto-cor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.6em;
+    color: #fff;
+    box-shadow: 0 10px 24px color-mix(in srgb, var(--produto-cor) 45%, transparent);
+}
+
+/* Variante com foto real (maior, sem fundo colorido) */
+.produto-hero-icone-foto {
+    width: 150px;
+    height: 150px;
+    border-radius: 30px;
+    overflow: hidden;
+    background: none;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+}
+.produto-hero-icone-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.produto-hero-texto .produto-badge {
+    display: inline-block;
+    font-size: 0.72em;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--produto-cor);
+    background: color-mix(in srgb, var(--produto-cor) 15%, transparent);
+    border-radius: 20px;
+    padding: 4px 12px;
+    margin-bottom: 10px;
+}
+.produto-hero-texto h1 {
+    font-size: 1.8em;
+    font-weight: 800;
+    margin: 0 0 8px;
+    color: var(--sabia-texto-principal);
+}
+.produto-hero-texto p {
+    font-size: 0.97em;
+    line-height: 1.6;
+    color: var(--sabia-texto-secundario);
+    margin: 0;
+}
+
+/* ── Seções gerais ── */
+.produto-secao { margin-bottom: 40px; }
+.produto-secao-titulo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--sabia-texto-principal);
+    margin-bottom: 16px;
+}
+.produto-secao-titulo i {
+    color: var(--produto-cor);
+    font-size: 0.9em;
+}
+.produto-lead {
+    font-size: 1em;
+    line-height: 1.8;
+    color: var(--sabia-texto-secundario);
+}
+.produto-lead strong { color: var(--sabia-texto-principal); }
+
+/* ── Lista de características ── */
+.produto-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+}
+.produto-feature {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: var(--sabia-superficie);
+    border-radius: 10px;
+    padding: 14px;
+    box-shadow: var(--sabia-sombra);
+}
+.produto-feature i {
+    color: var(--produto-cor);
+    font-size: 1.1em;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+.produto-feature strong { display: block; font-size: 0.9em; color: var(--sabia-texto-principal); margin-bottom: 3px; }
+.produto-feature span { font-size: 0.82em; color: var(--sabia-texto-secundario); line-height: 1.4; }
+
+/* ═══════════════════════════════════════════
+   INFOGRÁFICOS
+   ═══════════════════════════════════════════ */
+.infografico {
+    background: var(--sabia-superficie);
+    border-radius: 16px;
+    box-shadow: var(--sabia-sombra);
+    padding: 30px 26px;
+}
+
+/* ── Variante: Timeline horizontal ── */
+.infografico-timeline {
+    display: flex;
+    overflow-x: auto;
+    gap: 0;
+    padding-top: 10px;
+    scrollbar-width: thin;
+}
+.timeline-item {
+    flex: 0 0 200px;
+    position: relative;
+    padding: 30px 14px 0;
+    text-align: center;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: color-mix(in srgb, var(--produto-cor) 30%, transparent);
+}
+.timeline-item:first-child::before { left: 50%; }
+.timeline-item:last-child::before { right: 50%; }
+.timeline-dot {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--produto-cor);
+    border: 3px solid var(--sabia-superficie);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--produto-cor) 40%, transparent);
+}
+.timeline-ano { font-weight: 800; color: var(--produto-cor); font-size: 1.05em; margin-bottom: 4px; }
+.timeline-item h4 { font-size: 0.88em; margin: 0 0 6px; color: var(--sabia-texto-principal); }
+.timeline-item p { font-size: 0.78em; color: var(--sabia-texto-secundario); line-height: 1.5; margin: 0; }
+
+/* ── Variante: Radial (hub-and-spoke) ── */
+.infografico-radial {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    align-items: stretch;
+}
+.radial-hub {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: color-mix(in srgb, var(--produto-cor) 12%, transparent);
+    border: 1px dashed color-mix(in srgb, var(--produto-cor) 40%, transparent);
+    border-radius: 12px;
+    padding: 12px;
+    font-weight: 700;
+    color: var(--produto-cor);
+    margin-bottom: 4px;
+}
+.radial-item {
+    background: var(--sabia-superficie-secundaria, color-mix(in srgb, var(--produto-cor) 6%, transparent));
+    border: 1px solid color-mix(in srgb, var(--produto-cor) 20%, transparent);
+    border-radius: 12px;
+    padding: 16px 12px;
+    text-align: center;
+}
+.radial-item i {
+    display: block;
+    font-size: 1.6em;
+    color: var(--produto-cor);
+    margin-bottom: 10px;
+}
+.radial-item strong { display: block; font-size: 0.85em; color: var(--sabia-texto-principal); margin-bottom: 4px; }
+.radial-item span { font-size: 0.76em; color: var(--sabia-texto-secundario); line-height: 1.4; }
+
+/* ── Variante: Comparativo (barras) ── */
+.infografico-comparativo .comp-linha {
+    margin-bottom: 20px;
+}
+.infografico-comparativo .comp-linha:last-child { margin-bottom: 0; }
+.comp-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85em;
+    margin-bottom: 6px;
+    color: var(--sabia-texto-principal);
+}
+.comp-label span:last-child { color: var(--sabia-texto-secundario); font-size: 0.9em; }
+.comp-track {
+    height: 10px;
+    border-radius: 6px;
+    background: color-mix(in srgb, var(--sabia-texto-secundario) 18%, transparent);
+    overflow: hidden;
+    display: flex;
+}
+.comp-fill {
+    height: 100%;
+    border-radius: 6px 0 0 6px;
+}
+.comp-fill.cor-produto { background: var(--produto-cor); }
+.comp-fill.cor-alt { background: color-mix(in srgb, var(--sabia-texto-secundario) 45%, transparent); }
+
+/* ── Variante: Partes (diagrama numerado) ── */
+.infografico-partes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+.parte-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+}
+.parte-num {
+    flex-shrink: 0;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--produto-cor);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.9em;
+    display: flex; align-items: center; justify-content: center;
+}
+.parte-item h4 { font-size: 0.9em; margin: 0 0 4px; color: var(--sabia-texto-principal); }
+.parte-item p { font-size: 0.8em; color: var(--sabia-texto-secundario); margin: 0; line-height: 1.5; }
+
+/* ── Prós e Contras ── */
+.produto-proscontras {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+.proscontras-col {
+    background: var(--sabia-superficie);
+    border-radius: 12px;
+    box-shadow: var(--sabia-sombra);
+    padding: 18px 20px;
+}
+.proscontras-col h4 {
+    font-size: 0.92em;
+    margin: 0 0 12px;
+    display: flex; align-items: center; gap: 8px;
+}
+.proscontras-col.pros h4 { color: #27ae60; }
+.proscontras-col.contras h4 { color: #e74c3c; }
+.proscontras-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.proscontras-col li { display: flex; gap: 9px; font-size: 0.85em; color: var(--sabia-texto-secundario); line-height: 1.4; }
+.proscontras-col.pros li i { color: #27ae60; margin-top: 3px; flex-shrink: 0; }
+.proscontras-col.contras li i { color: #e74c3c; margin-top: 3px; flex-shrink: 0; }
+
+/* ── Curiosidade (callout) ── */
+.produto-curiosidade {
+    background: color-mix(in srgb, var(--produto-cor) 10%, transparent);
+    border-left: 4px solid var(--produto-cor);
+    border-radius: 0 12px 12px 0;
+    padding: 18px 22px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+}
+.produto-curiosidade i { color: var(--produto-cor); font-size: 1.3em; margin-top: 2px; }
+.produto-curiosidade strong { color: var(--sabia-texto-principal); }
+.produto-curiosidade p { margin: 4px 0 0; font-size: 0.88em; color: var(--sabia-texto-secundario); line-height: 1.6; }
+
+/* ── Relacionados: reaproveita .produto-card de vocesabia.css ── */
+.produto-relacionados-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+/* ═══════════════════════════════════════════
+   MINI-GRID (categorias, tipos, etc.)
+   ═══════════════════════════════════════════ */
+.produto-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+}
+.produto-mini-card {
+    background: var(--sabia-superficie);
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: var(--sabia-sombra);
+    text-align: left;
+}
+.produto-mini-card i {
+    color: var(--produto-cor);
+    font-size: 1.5em;
+    margin-bottom: 12px;
+    display: block;
+}
+.produto-mini-card strong {
+    display: block;
+    font-size: 0.92em;
+    color: var(--sabia-texto-principal);
+    margin-bottom: 5px;
+}
+.produto-mini-card span {
+    font-size: 0.82em;
+    color: var(--sabia-texto-secundario);
+    line-height: 1.55;
+}
+
+/* ═══════════════════════════════════════════
+   CHECKLIST (guia de compra, certificações)
+   ═══════════════════════════════════════════ */
+.produto-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 18px;
+}
+.produto-checklist-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: var(--sabia-superficie);
+    border-radius: 10px;
+    padding: 14px 18px;
+    box-shadow: var(--sabia-sombra);
+}
+.produto-checklist-item i {
+    color: var(--produto-cor);
+    font-size: 1.1em;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+.produto-checklist-item strong { display: block; font-size: 0.9em; color: var(--sabia-texto-principal); margin-bottom: 3px; }
+.produto-checklist-item span { font-size: 0.82em; color: var(--sabia-texto-secundario); line-height: 1.55; }
+
+/* ═══════════════════════════════════════════
+   FAQ
+   ═══════════════════════════════════════════ */
+.produto-faq {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 18px;
+}
+.produto-faq-item {
+    background: var(--sabia-superficie);
+    border-radius: 10px;
+    padding: 16px 20px;
+    box-shadow: var(--sabia-sombra);
+}
+.produto-faq-item h4 {
+    font-size: 0.92em;
+    margin: 0 0 8px;
+    color: var(--sabia-texto-principal);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+.produto-faq-item h4 i { color: var(--produto-cor); margin-top: 2px; flex-shrink: 0; }
+.produto-faq-item p {
+    font-size: 0.85em;
+    color: var(--sabia-texto-secundario);
+    margin: 0;
+    line-height: 1.65;
+    padding-left: 24px;
+}
+
+/* ═══════════════════════════════════════════
+   INFOGRÁFICO ISOMÉTRICO 3D
+   ═══════════════════════════════════════════ */
+.infografico-isometrico {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.infografico-isometrico svg {
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+    overflow: visible;
+}
+
+/* Infográfico como imagem estática (foto/render) */
+.infografico-imagem {
+    text-align: center;
+}
+.infografico-imagem img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    border-radius: 14px;
+    box-shadow: var(--sabia-sombra);
+}
+
+.iso-card-icon {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 14px;
+}
+
+text.iso-value {
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 800;
+    fill: var(--sabia-texto-principal);
+}
+text.iso-label {
+    font-family: inherit;
+    font-size: 10.5px;
+    fill: var(--sabia-texto-secundario);
+}
+
+/* Cartões flutuantes: leve flutuação contínua para sensação "viva" */
+.iso-card-group {
+    animation: isoFloat 4.5s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+@keyframes isoFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+}
+
+/* Pulso do "batimento" na tela do relógio */
+.iso-pulse {
+    animation: isoPulseFade 2.4s ease-in-out infinite;
+    transform-origin: center;
+}
+@keyframes isoPulseFade {
+    0%, 100% { opacity: 0.55; }
+    50%      { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .iso-card-group, .iso-pulse { animation: none; }
+}
+
+/* ═══════════════════════════════════════════
+   REFERÊNCIAS E LEITURAS
+   ═══════════════════════════════════════════ */
+.produto-referencias {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 18px;
+}
+.produto-referencia-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: var(--sabia-superficie);
+    border-radius: 10px;
+    padding: 14px 18px;
+    box-shadow: var(--sabia-sombra);
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.produto-referencia-item:hover {
+    transform: translateX(4px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+.produto-referencia-item i {
+    color: var(--produto-cor);
+    font-size: 1.1em;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+.produto-referencia-item strong { display: block; font-size: 0.88em; color: var(--sabia-texto-principal); margin-bottom: 3px; }
+.produto-referencia-item span { font-size: 0.8em; color: var(--sabia-texto-secundario); line-height: 1.5; }
+.produto-referencia-item small { display: block; font-size: 0.72em; color: var(--produto-cor); margin-top: 4px; word-break: break-all; }
+
+/* ── Responsivo ── */
+@media (max-width: 700px) {
+    .produto-hero { flex-direction: column; text-align: center; padding: 28px 22px; }
+    .produto-proscontras { grid-template-columns: 1fr; }
+    .produto-relacionados-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+    .produto-relacionados-grid { grid-template-columns: 1fr; }
+    .produto-hero-icone { width: 78px; height: 78px; font-size: 2em; border-radius: 20px; }
+    .produto-hero-icone-foto { width: 108px; height: 108px; border-radius: 22px; }
+    .produto-hero-texto h1 { font-size: 1.4em; }
+}

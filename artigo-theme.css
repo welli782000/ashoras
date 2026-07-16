@@ -1,0 +1,363 @@
+/* ============================================================
+   ARTIGO-THEME.CSS
+   Tema claro/escuro reutilizável para as páginas de artigo
+   da seção "Você Sabia?" do AsHoras.
+
+   Este arquivo deve ser referenciado em TODOS os artigos
+   (artigos/*.html), depois de "artigo.css":
+
+   <link rel="stylesheet" href="../artigo-theme.css">
+
+   Ele NÃO substitui o sabia-theme-loader.js (continua sendo
+   ele quem detecta clique nos botões, salva no localStorage
+   e aplica a classe theme-light-sabia / theme-dark-sabia no
+   <html>). Este CSS só garante que, qualquer que seja a
+   classe aplicada, todas as seções do artigo respondam com
+   o contraste correto — incluindo o próprio botão.
+   ============================================================ */
+
+
+/* ────────────────────────────────────────────────────────────
+   0. FUNDO GERAL DA PÁGINA (body)
+   O style.css do site só muda o fundo do <body> quando uma
+   classe (theme-dark / theme-google-pro) é aplicada NELE.
+   O sabia-theme-loader.js, porém, aplica a classe no <html>
+   (theme-light-sabia / theme-dark-sabia), então o <body> das
+   páginas de artigo nunca recebia o tema correto e ficava
+   sempre preso no fundo escuro padrão. Esta regra resolve
+   isso fazendo o body herdar as variáveis --sabia-*.
+   ──────────────────────────────────────────────────────────── */
+html.theme-light-sabia body,
+html.theme-dark-sabia body {
+    background-color: var(--sabia-fundo);
+    color: var(--sabia-texto-principal);
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   0.5 CONTAINER PRINCIPAL DO ARTIGO (.artigo-container)
+   O artigo.css usa var(--cor-superficie) / var(--cor-texto-
+   secundario) — variáveis do tema ANTIGO do site, que só
+   mudam quando uma classe é aplicada no <body> (não no
+   <html>). Como o sabia-theme-loader.js nunca toca o <body>,
+   o container do artigo (título, intro, meta) ficava sempre
+   escuro. Sobrescrevemos aqui com as variáveis --sabia-*.
+   ──────────────────────────────────────────────────────────── */
+html.theme-light-sabia .artigo-container,
+html.theme-dark-sabia .artigo-container {
+    background-color: var(--sabia-superficie) !important;
+}
+html.theme-light-sabia .artigo-container .intro,
+html.theme-dark-sabia .artigo-container .intro {
+    color: var(--sabia-texto-secundario) !important;
+}
+html.theme-light-sabia .artigo-meta,
+html.theme-dark-sabia .artigo-meta {
+    background-color: var(--sabia-superficie-secundaria) !important;
+    border-color: var(--sabia-borda) !important;
+}
+html.theme-light-sabia .artigo-meta span,
+html.theme-dark-sabia .artigo-meta span {
+    color: var(--sabia-texto-secundario) !important;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   0.6 TÍTULO, TEXTO DO CORPO E BLOCOS "CURIOSIDADE"/"CONCLUSÃO"
+   Mesmo problema: .artigo-secao p/h2 e .curiosidade/.conclusao
+   usam variáveis do tema antigo (--cor-texto-principal,
+   --cor-texto-secundario, --cor-superficie-secundaria), que só
+   mudam com classe no <body> — nunca aplicada aqui. Cobrimos
+   com as variáveis --sabia-* corretas.
+   ──────────────────────────────────────────────────────────── */
+html.theme-light-sabia .artigo-container h1 {
+    color: var(--sabia-primaria) !important;
+}
+html.theme-dark-sabia .artigo-container h1 {
+    color: var(--sabia-primaria) !important;
+}
+
+html.theme-light-sabia .artigo-secao h2,
+html.theme-dark-sabia .artigo-secao h2 {
+    color: var(--sabia-texto-principal) !important;
+}
+html.theme-light-sabia .artigo-secao p,
+html.theme-dark-sabia .artigo-secao p {
+    color: var(--sabia-texto-secundario) !important;
+}
+html.theme-light-sabia .artigo-secao p strong,
+html.theme-dark-sabia .artigo-secao p strong {
+    color: var(--sabia-texto-principal) !important;
+}
+
+html.theme-light-sabia .curiosidade,
+html.theme-light-sabia .conclusao,
+html.theme-dark-sabia .curiosidade,
+html.theme-dark-sabia .conclusao {
+    background-color: var(--sabia-superficie-secundaria) !important;
+}
+html.theme-light-sabia .curiosidade h3,
+html.theme-light-sabia .conclusao h3,
+html.theme-dark-sabia .curiosidade h3,
+html.theme-dark-sabia .conclusao h3 {
+    color: var(--sabia-primaria) !important;
+}
+html.theme-light-sabia .curiosidade p,
+html.theme-light-sabia .conclusao p,
+html.theme-dark-sabia .curiosidade p,
+html.theme-dark-sabia .conclusao p {
+    color: var(--sabia-texto-secundario) !important;
+}
+
+html.theme-light-sabia .destaque,
+html.theme-dark-sabia .destaque {
+    background-color: var(--sabia-superficie-secundaria) !important;
+}
+html.theme-light-sabia .artigo-secao p.destaque,
+html.theme-dark-sabia .artigo-secao p.destaque {
+    color: var(--sabia-texto-secundario) !important;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   1.5 GRADES DE COMPARATIVO E DE USOS (.comparativo-item / .uso-card)
+   Usadas em artigos como o "Como funcionam os relógios atômicos".
+   No artigo.css usam var(--cor-superficie) / cores fixas que
+   não respondem ao tema sabia.
+   ──────────────────────────────────────────────────────────── */
+html.theme-light-sabia .comparativo-item,
+html.theme-dark-sabia .comparativo-item,
+html.theme-light-sabia .uso-card,
+html.theme-dark-sabia .uso-card {
+    background-color: var(--sabia-superficie-secundaria) !important;
+    border-color: var(--sabia-borda) !important;
+}
+html.theme-light-sabia .comparativo-item h4,
+html.theme-dark-sabia .comparativo-item h4,
+html.theme-light-sabia .uso-card h4,
+html.theme-dark-sabia .uso-card h4 {
+    color: var(--sabia-texto-principal) !important;
+}
+html.theme-light-sabia .comparativo-item p,
+html.theme-dark-sabia .comparativo-item p,
+html.theme-light-sabia .uso-card p,
+html.theme-dark-sabia .uso-card p {
+    color: var(--sabia-texto-secundario) !important;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   1. BOTÃO DE TEMA (sol / lua)
+   Mesma regra usada no vocesabia.css, para manter o padrão
+   visual idêntico em toda a aplicação: sol à esquerda,
+   lua à direita (ordem que já vem certa no HTML).
+   ──────────────────────────────────────────────────────────── */
+.theme-switcher-sabia {
+    position: fixed;
+    top: 90px;
+    right: 20px;
+    display: flex;
+    flex-direction: row;     /* garante a ordem do HTML: sol -> lua */
+    gap: 10px;
+    z-index: 1001;
+    background-color: var(--sabia-superficie, #1E1E1E);
+    padding: 8px;
+    border-radius: 20px;
+    box-shadow: var(--sabia-sombra, 0 4px 12px rgba(0,0,0,0.2));
+}
+.theme-icon {
+    font-size: 1.3em;
+    cursor: pointer;
+    color: var(--sabia-texto-secundario, #B0B0B0);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.theme-icon:hover {
+    color: var(--sabia-primaria, #64B5F6);
+    transform: scale(1.1);
+}
+.theme-icon.active {
+    color: var(--sabia-primaria, #64B5F6);
+}
+
+@media (max-width: 540px) {
+    .theme-switcher-sabia {
+        top: 70px;
+        right: 12px;
+    }
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   2. TEMA CLARO — html.theme-light-sabia
+   Cobre todos os blocos do artigo que usam cor fixa no CSS
+   inline de cada página (.artigo-meta, .artigo-indice,
+   .dado-destaque, .timeline, .civ-card, .curiosidade-visual,
+   .faq, .referencias, .artigo-nav).
+   ──────────────────────────────────────────────────────────── */
+html.theme-light-sabia .artigo-indice { background: #f8f9fa !important; }
+html.theme-light-sabia .artigo-indice ol li { color: #555 !important; }
+html.theme-light-sabia .artigo-indice ol li a { color: #555 !important; }
+
+html.theme-light-sabia .dado-destaque { background: rgba(255,140,0,0.06) !important; border-color: rgba(255,140,0,0.25) !important; }
+html.theme-light-sabia .dado-destaque-txt { color: #333 !important; }
+html.theme-light-sabia .dado-destaque-txt strong { color: #111 !important; }
+
+html.theme-light-sabia .timeline-content p { background: #ffffff !important; color: #111111 !important; }
+html.theme-light-sabia .timeline-content p strong { color: #000 !important; }
+
+html.theme-light-sabia .civ-card { background: #fff !important; border-color: rgba(255,140,0,0.2) !important; }
+html.theme-light-sabia .civ-card h4 { color: #111 !important; }
+html.theme-light-sabia .civ-card p { color: #444 !important; }
+
+html.theme-light-sabia .curiosidade-visual { background: #fff !important; border-color: #e0e0e0 !important; }
+html.theme-light-sabia .curiosidade-visual .cv-txt { color: #333 !important; }
+html.theme-light-sabia .curiosidade-visual .cv-txt strong { color: #111 !important; }
+
+html.theme-light-sabia .faq-item { border-color: #e0e0e0 !important; }
+html.theme-light-sabia .faq-pergunta { background: #f8f9fa !important; color: #111 !important; }
+html.theme-light-sabia .faq-resposta { background: #f8f9fa !important; color: #444 !important; }
+
+html.theme-light-sabia .referencias { background: #f8f9fa !important; border-color: #e0e0e0 !important; }
+html.theme-light-sabia .referencias h4 { color: #cc7000 !important; }
+html.theme-light-sabia .referencias ul li { color: #555 !important; }
+html.theme-light-sabia .referencias ul li a { color: #cc7000 !important; }
+
+html.theme-light-sabia .artigo-nav a { background: #fff !important; color: #111 !important; border-color: rgba(255,140,0,0.25) !important; }
+html.theme-light-sabia .artigo-nav a span { color: #777 !important; }
+
+html.theme-light-sabia .bloco-alerta-txt { color: #333 !important; }
+html.theme-light-sabia .bloco-alerta-txt strong { color: #111 !important; }
+
+html.theme-light-sabia .ranking-item { background: #fff !important; border-color: #e0e0e0 !important; }
+html.theme-light-sabia .ranking-item.primeiro { background: rgba(255,215,0,0.06) !important; border-color: rgba(255,215,0,0.5) !important; }
+html.theme-light-sabia .ranking-item.segundo { background: rgba(192,192,192,0.06) !important; border-color: rgba(150,150,150,0.4) !important; }
+html.theme-light-sabia .ranking-info h4 { color: #111 !important; }
+html.theme-light-sabia .ranking-info p { color: #555 !important; }
+html.theme-light-sabia .ranking-fusos span { color: #777 !important; }
+
+html.theme-light-sabia .territorio-card { background: #fff !important; border-color: #e0e0e0 !important; }
+html.theme-light-sabia .territorio-card .tc-nome { color: #111 !important; }
+html.theme-light-sabia .territorio-card .tc-loc { color: #666 !important; }
+
+html.theme-light-sabia .fq-card { background: #fff !important; border-color: #e0e0e0 !important; }
+html.theme-light-sabia .fq-card .fq-pais { color: #111 !important; }
+html.theme-light-sabia .fq-card .fq-detalhe { color: #555 !important; }
+
+html.theme-light-sabia .mes-card { background: #fff !important; border-color: #e0e0e0 !important; }
+html.theme-light-sabia .mes-card.fevereiro { background: #fff8ef !important; border-color: #FF8C00 !important; }
+html.theme-light-sabia .mes-card .mc-nome { color: #111 !important; }
+html.theme-light-sabia .mes-card .mc-dias { color: #111 !important; }
+html.theme-light-sabia .mes-card .mc-origem { color: #555 !important; }
+html.theme-light-sabia .mes-card.fevereiro .mc-nome,
+html.theme-light-sabia .mes-card.fevereiro .mc-dias { color: #FF8C00 !important; }
+
+html.theme-light-sabia .bissexto-regra { background: #fff !important; border-color: #e0e0e0 !important; }
+html.theme-light-sabia .bissexto-regra.sim { border-color: rgba(39,174,96,0.4) !important; }
+html.theme-light-sabia .bissexto-regra.nao { border-color: rgba(231,76,60,0.4) !important; }
+html.theme-light-sabia .bissexto-regra.excecao { border-color: rgba(255,140,0,0.4) !important; }
+html.theme-light-sabia .br-txt { color: #333 !important; }
+html.theme-light-sabia .br-txt strong { color: #111 !important; }
+
+/* ── artigo-horario-verao: dado-destaque, timeline-content, pais-card, bloco-alerta, br-periodo ── */
+html.theme-light-sabia .dado-destaque { background: rgba(255,140,0,0.06) !important; border-color: rgba(255,140,0,0.25) !important; }
+html.theme-light-sabia .dado-destaque-txt { color: #333 !important; }
+html.theme-light-sabia .dado-destaque-txt strong { color: #111 !important; }
+
+html.theme-light-sabia .timeline-content { background: #f4f4f4 !important; }
+html.theme-light-sabia .timeline-content p { color: #333 !important; }
+html.theme-light-sabia .timeline-content p strong { color: #111 !important; }
+
+html.theme-light-sabia .pais-card { background: #fff !important; border-color: #e0e0e0 !important; }
+html.theme-light-sabia .pais-card.usa-sim { border-color: rgba(39,174,96,0.5) !important; }
+html.theme-light-sabia .pais-card.usa-nao { border-color: rgba(231,76,60,0.4) !important; }
+html.theme-light-sabia .pais-card .pc-nome { color: #111 !important; }
+html.theme-light-sabia .pais-card .pc-status { color: #555 !important; }
+
+html.theme-light-sabia .br-periodo { background: #fff !important; border-color: #e0e0e0 !important; }
+html.theme-light-sabia .br-periodo.ativo { border-color: rgba(39,174,96,0.4) !important; }
+html.theme-light-sabia .br-periodo.suspenso { border-color: rgba(231,76,60,0.4) !important; }
+html.theme-light-sabia .bp-txt { color: #333 !important; }
+html.theme-light-sabia .bp-txt strong { color: #111 !important; }
+
+html.theme-light-sabia .marca-card { background: #fff !important; border-color: #e0e0e0 !important; }
+html.theme-light-sabia .marca-card .mc-nome { color: #111111 !important; }
+html.theme-light-sabia .marca-card .mc-ano { color: #FF8C00 !important; }
+html.theme-light-sabia .marca-card .mc-desc { color: #444444 !important; }
+
+html.theme-light-sabia .controversia-item { background: #fff !important; border-color: #e0e0e0 !important; }
+html.theme-light-sabia .controversia-item.contestado { border-color: rgba(231,76,60,0.4) !important; }
+html.theme-light-sabia .controversia-item.oficial { border-color: rgba(39,174,96,0.4) !important; }
+html.theme-light-sabia .ci-txt { color: #333 !important; }
+html.theme-light-sabia .ci-txt strong { color: #111 !important; }
+
+
+/* ────────────────────────────────────────────────────────────
+   3. TEMA ESCURO — html.theme-dark-sabia
+   Mantém os valores já usados nos artigos atuais, garantindo
+   que o padrão seja o mesmo independentemente do artigo.
+   ──────────────────────────────────────────────────────────── */
+html.theme-dark-sabia .artigo-indice { background: rgba(255,255,255,0.03); }
+html.theme-dark-sabia .artigo-indice ol li { color: #bbb; }
+html.theme-dark-sabia .artigo-indice ol li a { color: inherit; }
+
+html.theme-dark-sabia .dado-destaque { background: rgba(255,140,0,0.06); }
+html.theme-dark-sabia .dado-destaque-txt { color: #ddd; }
+html.theme-dark-sabia .dado-destaque-txt strong { color: #fff; }
+
+html.theme-dark-sabia .timeline-content p { color: #ffffff !important; }
+html.theme-dark-sabia .timeline-content p strong { color: #ffffff !important; }
+
+html.theme-dark-sabia .civ-card { background: rgba(255,255,255,0.03); border-color: rgba(255,140,0,0.15); }
+html.theme-dark-sabia .civ-card h4 { color: #fff; }
+html.theme-dark-sabia .civ-card p { color: #ccc; }
+
+html.theme-dark-sabia .curiosidade-visual { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.08); }
+html.theme-dark-sabia .curiosidade-visual .cv-txt { color: #ddd; }
+html.theme-dark-sabia .curiosidade-visual .cv-txt strong { color: #fff; }
+
+html.theme-dark-sabia .faq-item { border-color: rgba(255,255,255,0.08); }
+html.theme-dark-sabia .faq-pergunta { background: rgba(255,255,255,0.03); color: #fff; }
+html.theme-dark-sabia .faq-resposta { background: rgba(255,255,255,0.03); color: #ccc; }
+
+html.theme-dark-sabia .referencias { background: rgba(255,255,255,0.02); border-color: rgba(255,255,255,0.08); }
+html.theme-dark-sabia .referencias h4 { color: #FF8C00; }
+html.theme-dark-sabia .referencias ul li { color: #aaa; }
+html.theme-dark-sabia .referencias ul li a { color: #FF8C00; }
+
+html.theme-dark-sabia .artigo-nav a { background: rgba(255,255,255,0.03); color: #fff; border-color: rgba(255,140,0,0.2); }
+html.theme-dark-sabia .artigo-nav a span { color: #aaa; }
+
+html.theme-dark-sabia .bloco-alerta-txt { color: #ddd; }
+html.theme-dark-sabia .bloco-alerta-txt strong { color: #fff; }
+
+html.theme-dark-sabia .marca-card { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.1); }
+html.theme-dark-sabia .marca-card .mc-nome { color: #fff !important; }
+html.theme-dark-sabia .marca-card .mc-ano { color: #FF8C00 !important; }
+html.theme-dark-sabia .marca-card .mc-desc { color: #ccc !important; }
+
+html.theme-dark-sabia .controversia-item { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.1); }
+html.theme-dark-sabia .controversia-item.contestado { border-color: rgba(231,76,60,0.4); }
+html.theme-dark-sabia .controversia-item.oficial { border-color: rgba(39,174,96,0.4); }
+html.theme-dark-sabia .ci-txt { color: #ddd; }
+html.theme-dark-sabia .ci-txt strong { color: #fff; }
+
+/* ── artigo-horario-verao: dado-destaque, timeline-content, pais-card, bloco-alerta, br-periodo ── */
+html.theme-dark-sabia .dado-destaque { background: rgba(255,140,0,0.06); border-color: rgba(255,140,0,0.25); }
+html.theme-dark-sabia .dado-destaque-txt { color: #ddd; }
+html.theme-dark-sabia .dado-destaque-txt strong { color: #fff; }
+
+html.theme-dark-sabia .timeline-content { background: rgba(255,255,255,0.04); }
+html.theme-dark-sabia .timeline-content p { color: #ddd !important; }
+html.theme-dark-sabia .timeline-content p strong { color: #fff !important; }
+
+html.theme-dark-sabia .pais-card { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); }
+html.theme-dark-sabia .pais-card.usa-sim { border-color: rgba(39,174,96,0.4); }
+html.theme-dark-sabia .pais-card.usa-nao { border-color: rgba(231,76,60,0.35); }
+html.theme-dark-sabia .pais-card .pc-nome { color: #fff; }
+html.theme-dark-sabia .pais-card .pc-status { color: #aaa; }
+
+html.theme-dark-sabia .br-periodo { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); }
+html.theme-dark-sabia .br-periodo.ativo { border-color: rgba(39,174,96,0.4); }
+html.theme-dark-sabia .br-periodo.suspenso { border-color: rgba(231,76,60,0.35); }
+html.theme-dark-sabia .bp-txt { color: #ddd; }
+html.theme-dark-sabia .bp-txt strong { color: #fff; }

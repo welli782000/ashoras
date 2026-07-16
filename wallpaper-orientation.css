@@ -1,0 +1,24 @@
+/* ============================================================
+   wallpaper-orientation.css
+   Força o protetor de tela (papel de parede) a aparecer na
+   horizontal em celulares, mesmo quando o aparelho está
+   sendo segurado na vertical.
+
+   Só entra em ação quando o JS (wallpaper-orientation.js)
+   detecta que:
+   1) o dispositivo é mobile (touch + tela estreita), e
+   2) o navegador NÃO suporta travar a orientação via API
+      (ex: Safari no iPhone), então usamos rotação por CSS
+      como alternativa.
+   Não altera nada do comportamento em desktop.
+   ============================================================ */
+
+#flip-clock-screensaver.force-landscape-rotate {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 100vh !important;
+    height: 100vw !important;
+    transform: translate(-50%, -50%) rotate(90deg) !important;
+    transform-origin: center center !important;
+}

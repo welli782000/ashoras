@@ -15,33 +15,75 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3173930318511411" crossorigin="anonymous"></script>
     
     <style>
-        .logo-img {
-            height: 40px; /* Ajuste esta altura conforme necessário para seu header */
-            width: auto;
-            display: block;
+        .logo-img { height: 40px; width: auto; display: block; }
+        .logo { display: flex; align-items: center; }
+
+        /* Nav */
+        .main-nav a { transition: color 0.2s; }
+        .main-nav a:hover { color: #FF8C00; }
+        .main-nav a.active { color: #FF8C00; font-weight: 700; border-bottom: 2px solid #FF8C00; padding-bottom: 2px; }
+
+        /* ── Introdução ── */
+        .intro-sabia {
+            background: linear-gradient(135deg, rgba(255,140,0,0.08) 0%, rgba(255,140,0,0.02) 100%);
+            border-left: none;
+            border-radius: 0 12px 12px 0;
+            padding: 28px 32px;
+            margin: 0 0 32px 0;
         }
-        .logo {
+        .intro-sabia-content h2 { font-size: 1.3em; font-weight: 700; color: var(--cor-texto-principal); margin-bottom: 14px; }
+        .intro-sabia-content p { font-size: 0.97em; line-height: 1.8; color: var(--cor-texto-secundario); margin-bottom: 12px; }
+        .intro-sabia-stats { display: flex; gap: 24px; margin-top: 20px; flex-wrap: wrap; }
+        .stat-item { display: flex; flex-direction: column; align-items: center; background: var(--cor-superficie); border: 1px solid rgba(255,140,0,0.3); border-radius: 10px; padding: 12px 20px; min-width: 80px; }
+        .stat-numero { font-size: 1.6em; font-weight: 800; color: #FF8C00; }
+        .stat-label { font-size: 0.78em; color: var(--cor-texto-secundario); text-align: center; margin-top: 4px; }
+
+        /* ── Tema claro ── */
+        html.theme-light-sabia .intro-sabia-content h2 { color: #212529; }
+        html.theme-light-sabia .intro-sabia-content p { color: #495057; }
+        html.theme-light-sabia .stat-label { color: #495057; }
+        html.theme-light-sabia .stat-item { background: #ffffff; border-color: rgba(255,140,0,0.4); }
+
+        /* ── Busca estilizada ── */
+        .search-wrapper {
             display: flex;
             align-items: center;
+            gap: 12px;
+            background: var(--cor-superficie);
+            border: 2px solid rgba(255,140,0,0.3);
+            border-radius: 50px;
+            padding: 10px 20px;
+            margin-bottom: 24px;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
+        .search-wrapper:focus-within {
+            border-color: #FF8C00;
+            box-shadow: 0 0 0 3px rgba(255,140,0,0.15);
+        }
+        .search-wrapper .search-icon { font-size: 1.1em; color: #FF8C00; flex-shrink: 0; }
+        .search-wrapper input {
+            border: none; outline: none; background: transparent;
+            font-size: 0.97em; color: var(--cor-texto-principal);
+            width: 100%; font-family: inherit;
+        }
+        .search-wrapper input::placeholder { color: var(--cor-texto-secundario); opacity: 0.7; }
 
-        /* Nav — hover e active laranja */
-        .main-nav a {
-            transition: color 0.2s;
-        }
-        .main-nav a:hover {
-            color: #FF8C00;
-        }
-        .main-nav a.active {
-            color: #FF8C00;
-            font-weight: 700;
-            border-bottom: 2px solid #FF8C00;
-            padding-bottom: 2px;
-        }
+        /* tema claro busca */
+        html.theme-light-sabia .search-wrapper { background: #ffffff; border-color: rgba(255,140,0,0.3); }
+        html.theme-light-sabia .search-wrapper input { color: #212529; }
+        html.theme-light-sabia .search-wrapper input::placeholder { color: #6c757d; }
+
+        /* ── Título entre busca e cards ── */
+        .secao-artigos-titulo { margin: 0 0 20px 0; padding: 0 4px; }
+        .secao-artigos-titulo h2 { font-size: 1.15em; font-weight: 700; color: var(--cor-texto-principal); display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+        .secao-artigos-titulo h2 i { color: #FF8C00; }
+        .secao-artigos-titulo p { font-size: 0.88em; color: var(--cor-texto-secundario); margin: 0; }
+        html.theme-light-sabia .secao-artigos-titulo h2 { color: #212529; }
+        html.theme-light-sabia .secao-artigos-titulo p  { color: #6c757d; }
     </style>
     <script>
-  document.documentElement.className = localStorage.getItem('sabiaTheme') || 'theme-light-sabia';
-</script>
+        document.documentElement.className = localStorage.getItem('sabiaTheme') || 'theme-light-sabia';
+    </script>
 </head>
 <body>
     <header class="site-header">
@@ -58,19 +100,64 @@
             </nav>
         </div>
     </header>
-<div class="theme-switcher-sabia">
-<span id="light-theme-btn" class="theme-icon active" title="Tema Claro"><i class="fas fa-sun"></i></span>
-<span id="dark-theme-btn" class="theme-icon" title="Tema Escuro"><i class="fas fa-moon"></i></span>
-</div>
+    <div class="theme-switcher-sabia">
+        <span id="light-theme-btn" class="theme-icon active" title="Tema Claro"><i class="fas fa-sun"></i></span>
+        <span id="dark-theme-btn" class="theme-icon" title="Tema Escuro"><i class="fas fa-moon"></i></span>
+    </div>
 
     <main class="main-application-area">
         <div class="container-sabia">
             <h1>Você Sabia? Curiosidades do Tempo <i class="fas fa-clock"></i></h1>
 
-            <div class="search-container">
+            <!-- ✅ INTRODUÇÃO TEXTUAL -->
+            <section class="intro-sabia">
+                <div class="intro-sabia-content">
+                    <h2>O Tempo é um dos maiores mistérios da humanidade</h2>
+                    <p>
+                        Desde os primórdios da civilização, o ser humano busca entender, medir e dominar o tempo. 
+                        Foram os egípcios que dividiram o dia em 24 horas, os babilônios que criaram os 60 minutos 
+                        e os 60 segundos, e os gregos que desenvolveram os primeiros calendários precisos. 
+                        Hoje, relógios atômicos guiam satélites, GPS e toda a tecnologia moderna com uma precisão 
+                        de bilionésimos de segundo.
+                    </p>
+                    <p>
+                        Nesta seção você vai encontrar curiosidades fascinantes sobre o tempo: como ele é medido, 
+                        por que os meses têm tamanhos diferentes, o que são fusos horários, como funciona o 
+                        horário de verão e muito mais. Tudo explicado de forma simples, divertida e educativa!
+                    </p>
+                    <div class="intro-sabia-stats">
+                        <div class="stat-item">
+                            <span class="stat-numero">24</span>
+                            <span class="stat-label">horas por dia</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-numero">60</span>
+                            <span class="stat-label">minutos por hora</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-numero">24</span>
+                            <span class="stat-label">fusos horários</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-numero">4.000</span>
+                            <span class="stat-label">anos de história</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ✅ BUSCA ESTILIZADA -->
+            <div class="search-wrapper">
+                <i class="fas fa-search search-icon"></i>
                 <input type="text" id="searchInput" placeholder="Buscar curiosidades sobre o tempo..." onkeyup="buscarArtigos()">
             </div>
             <div class="search-results" id="searchResults"></div>
+
+            <!-- ✅ TÍTULO ENTRE BUSCA E CARDS -->
+            <div class="secao-artigos-titulo">
+                <h2><i class="fas fa-compass"></i> Explore as Curiosidades</h2>
+                <p>Selecione um tema e mergulhe na história e na ciência por trás do tempo</p>
+            </div>
 
             <div class="carousel-container">
                 <div class="carousel-track" id="carousel-track">
@@ -104,12 +191,46 @@
                         <h3>Por que fevereiro tem menos dias?</h3>
                         <p>Descubra a razão histórica por trás do mês mais curto do ano.</p>
                     </a>
-                     </div>
-    <button id="carousel-prev" class="carousel-arrow">❮</button>
-    <button id="carousel-next" class="carousel-arrow">❯</button>
-    </div>
+                </div>
+                <button id="carousel-prev" class="carousel-arrow">❮</button>
+                <button id="carousel-next" class="carousel-arrow">❯</button>
+            </div>
+
+            <!-- ✅ CARDS PEQUENOS: TIPOS DE RELÓGIO -->
+            <section class="produtos-destaque">
+                <div class="produtos-destaque-titulo">
+                    <h2><i class="fas fa-list"></i> Tipos de Relógio</h2>
+                    <p>Do mecânico centenário ao smartwatch conectado — conheça cada tipo em detalhes</p>
+                </div>
+                <div class="produtos-grid">
+                    <a href="produtos/relogio-smartwatch.html" class="produto-card" style="--produto-cor:#2f6fed;">
+                        <div class="produto-card-icon produto-card-icon-foto"><img src="img_produtos/relogio-smartwatch-card.jpg" alt="Smartwatch" loading="lazy"></div>
+                        <h3>Smartwatch</h3>
+                        <p>O relógio conectado que virou assistente de saúde no seu pulso.</p>
+                        <span class="produto-card-saiba">Saiba mais <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="produtos/relogio-mecanico.html" class="produto-card" style="--produto-cor:#b8860b;">
+                        <div class="produto-card-icon produto-card-icon-foto"><img src="img_produtos/relogio-mecanico-card.jpg" alt="Mecânico" loading="lazy"></div>
+                        <h3>Mecânico</h3>
+                        <p>Engrenagens, molas e séculos de precisão sem usar nenhuma bateria.</p>
+                        <span class="produto-card-saiba">Saiba mais <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="produtos/relogio-quartzo.html" class="produto-card" style="--produto-cor:#8e44ad;">
+                        <div class="produto-card-icon produto-card-icon-foto"><img src="img_produtos/relogio-quartzo-card.jpg" alt="Quartzo" loading="lazy"></div>
+                        <h3>Quartzo</h3>
+                        <p>O cristal que vibra 32.768 vezes por segundo e revolucionou a relojoaria.</p>
+                        <span class="produto-card-saiba">Saiba mais <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="produtos/relogio-digital.html" class="produto-card" style="--produto-cor:#16a085;">
+                        <div class="produto-card-icon produto-card-icon-foto"><img src="img_produtos/relogio-digital-card.jpg" alt="Digital" loading="lazy"></div>
+                        <h3>Digital</h3>
+                        <p>Visor numérico, robustez e aquele clássico charme retrô dos anos 80.</p>
+                        <span class="produto-card-saiba">Saiba mais <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                </div>
+            </section>
                   
-                <div class="news-section">
+            <div class="news-section">
                 <h2><i class="fas fa-bolt"></i> Notícia Rápida</h2>
                 <div class="news-box">
                     <strong>Recorde de Precisão:</strong> Novos relógios atômicos de ítrio perdem apenas um segundo a cada 300 bilhões de anos, redefinindo a medição do tempo.
@@ -122,11 +243,11 @@
         <div class="footer-content-wrapper">
             <p>&copy; 2025 AsHoras. Todos os direitos reservados.</p>
             <a href="sobre.html" style="color:var(--cor-primaria);text-decoration:none;">Sobre</a> |
-                <a href="privacidade.html" style="color:var(--cor-primaria);text-decoration:none;">Privacidade</a>
+            <a href="privacidade.html" style="color:var(--cor-primaria);text-decoration:none;">Privacidade</a>
         </div>
     </footer>
     
     <script src="vocesabia.js"></script>
-<script src="sabia-theme-loader.js"></script> 
+    <script src="sabia-theme-loader.js"></script> 
 </body>
 </html>

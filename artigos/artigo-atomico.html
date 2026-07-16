@@ -4,26 +4,251 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Como funcionam os relógios atômicos? — AsHoras</title>
-<meta name="description" content="Entenda como os relógios atômicos funcionam e por que são precisos a um segundo em milhões de anos. A ciência do tempo explicada!">
-<meta name="keywords" content="relógio atômico, como funciona relógio atômico, césio 133, GPS relógio atômico, tempo preciso">
+    <meta name="description" content="Entenda como os relógios atômicos funcionam, por que são precisos a um segundo em bilhões de anos, e como guiam o GPS e a internet. A ciência do tempo explicada!">
+    <meta name="keywords" content="relógio atômico, como funciona relógio atômico, césio 133, GPS relógio atômico, tempo preciso, relógio de estrôncio, padrão internacional de tempo">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../artigo.css"> 
+    <link rel="stylesheet" href="../artigo.css">
+    <link rel="stylesheet" href="../artigo-theme.css">
+    <link rel="stylesheet" href="../vocesabia-theme-light.css" id="theme-light-sabia">
+    <link rel="stylesheet" href="../vocesabia-theme-dark.css" id="theme-dark-sabia" disabled>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3173930318511411" crossorigin="anonymous"></script>
-    
+
     <style>
-        .logo-img {
-            height: 40px; /* Ajuste esta altura conforme necessário para seu header */
-            width: auto;
-            display: block;
-        }
-        .logo {
+        .logo-img { height: 40px; width: auto; display: block; }
+        .logo { display: flex; align-items: center; }
+
+        /* ── Meta info do artigo ── */
+        .artigo-meta {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 0 0 28px 0;
+            padding: 12px 16px;
+            background: rgba(255,140,0,0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255,140,0,0.15);
+        }
+        .artigo-meta span {
+            font-size: 0.82em;
+            color: var(--cor-texto-secundario, #888);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .artigo-meta i { color: #FF8C00; }
+
+        /* ── Índice / Sumário ── */
+        .artigo-indice {
+            background: var(--cor-superficie, #1e1e2e);
+            border: 1px solid rgba(255,140,0,0.2);
+            border-left: 4px solid #FF8C00;
+            border-radius: 0 10px 10px 0;
+            padding: 18px 22px;
+            margin: 0 0 32px 0;
+        }
+        .artigo-indice h4 {
+            font-size: 0.88em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #FF8C00;
+            margin-bottom: 10px;
+        }
+        .artigo-indice ol {
+            padding-left: 18px;
+            margin: 0;
+        }
+        .artigo-indice ol li {
+            font-size: 0.88em;
+            color: var(--cor-texto-secundario, #aaa);
+            margin-bottom: 5px;
+            line-height: 1.5;
+        }
+        .artigo-indice ol li a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+        .artigo-indice ol li a:hover { color: #FF8C00; }
+
+        /* ── Caixa de dados / estatística ── */
+        .dado-destaque {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: rgba(255,140,0,0.06);
+            border: 1px solid rgba(255,140,0,0.2);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin: 20px 0;
+        }
+        .dado-destaque-num {
+            font-size: 2em;
+            font-weight: 800;
+            color: #FF8C00;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        .dado-destaque-txt { font-size: 0.9em; color: var(--cor-texto-secundario, #aaa); line-height: 1.6; }
+        .dado-destaque-txt strong { color: var(--cor-texto-principal, #fff); }
+
+        /* ── Comparativo ── */
+        .comparativo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .comparativo-item {
+            background: var(--cor-superficie, #1e1e2e);
+            border: 1px solid var(--cor-borda-geral, #333);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+        }
+        .comparativo-item .comp-icon { font-size: 1.8em; margin-bottom: 8px; }
+        .comparativo-item h4 { font-size: 0.85em; font-weight: 700; color: #111; margin-bottom: 6px; }
+        .comparativo-item p { font-size: 0.78em; color: #222; line-height: 1.5; margin: 0; }
+        .comparativo-item.destaque { border-color: rgba(255,140,0,0.4); background: rgba(255,140,0,0.06); }
+
+        /* ── Timeline ── */
+        .timeline { margin: 20px 0; display: flex; flex-direction: column; gap: 0; }
+        .timeline-item {
+            display: flex;
+            gap: 16px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 40px; }
+        .timeline-dot {
+            width: 36px;
+            height: 36px;
+            background: #FF8C00;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.8em;
+            font-weight: 700;
+            flex-shrink: 0;
+            z-index: 1;
+        }
+        .timeline-linha {
+            width: 2px;
+            flex: 1;
+            background: rgba(255,140,0,0.2);
+            margin-top: 4px;
+        }
+        .timeline-item:last-child .timeline-linha { display: none; }
+        .timeline-content { padding-top: 6px; }
+        .timeline-ano { font-size: 0.75em; font-weight: 700; color: #FF8C00; margin-bottom: 2px; }
+        .timeline-content p { font-size: 0.88em; color: #ffffff !important; line-height: 1.5; margin: 0; }
+        .timeline-content p strong { color: #ffffff !important; }
+
+        /* ── Usos práticos ── */
+        .usos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .uso-card {
+            background: var(--cor-superficie, #1e1e2e);
+            border: 1px solid var(--cor-borda-geral, #333);
+            border-radius: 10px;
+            padding: 16px 12px;
+            text-align: center;
+            transition: border-color 0.15s, transform 0.15s;
+        }
+        .uso-card:hover { border-color: rgba(255,140,0,0.4); transform: translateY(-2px); }
+        .uso-card i { font-size: 1.5em; color: #FF8C00; margin-bottom: 8px; display: block; }
+        .uso-card h4 { font-size: 0.82em; font-weight: 700; color: var(--cor-texto-principal, #fff); margin-bottom: 4px; }
+        .uso-card p { font-size: 0.75em; color: var(--cor-texto-secundario, #aaa); margin: 0; line-height: 1.4; }
+
+        /* ── FAQ ── */
+        .faq-item {
+            border: 1px solid var(--cor-borda-geral, #333);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        .faq-pergunta {
+            padding: 14px 18px;
+            font-size: 0.9em;
+            font-weight: 600;
+            color: var(--cor-texto-principal, #fff);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--cor-superficie, #1e1e2e);
+            user-select: none;
+        }
+        .faq-pergunta:hover { background: rgba(255,140,0,0.06); }
+        .faq-pergunta i { color: #FF8C00; font-size: 0.85em; transition: transform 0.2s; }
+        .faq-resposta {
+            display: none;
+            padding: 0 18px 14px;
+            font-size: 0.87em;
+            color: var(--cor-texto-secundario, #aaa);
+            line-height: 1.6;
+            background: var(--cor-superficie, #1e1e2e);
+        }
+        .faq-resposta.aberta { display: block; }
+        .faq-item.aberto .faq-pergunta i { transform: rotate(180deg); }
+
+        /* ── Referências ── */
+        .referencias {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin-top: 28px;
+        }
+        .referencias h4 { font-size: 0.85em; font-weight: 700; color: #FF8C00; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+        .referencias ul { padding-left: 18px; margin: 0; }
+        .referencias ul li { font-size: 0.8em; color: #aaa; margin-bottom: 6px; line-height: 1.5; }
+        .referencias ul li a { color: #FF8C00; text-decoration: none; }
+        .referencias ul li a:hover { text-decoration: underline; }
+
+        /* ── Navegação entre artigos ── */
+        .artigo-nav {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+        .artigo-nav a {
+            flex: 1;
+            min-width: 200px;
+            background: var(--cor-superficie, #1e1e2e);
+            border: 1px solid rgba(255,140,0,0.2);
+            border-radius: 10px;
+            padding: 14px 18px;
+            text-decoration: none;
+            color: var(--cor-texto-principal, #fff);
+            font-size: 0.87em;
+            transition: border-color 0.15s, background 0.15s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .artigo-nav a:hover { border-color: #FF8C00; background: rgba(255,140,0,0.06); }
+        .artigo-nav a i { color: #FF8C00; font-size: 1.1em; flex-shrink: 0; }
+        .artigo-nav a span { font-size: 0.78em; color: var(--cor-texto-secundario, #aaa); display: block; }
+
+        /* Tema claro/escuro deste artigo agora vem do artigo-theme.css (compartilhado) */
+
+        @media (max-width: 540px) {
+            .comparativo-grid { grid-template-columns: 1fr; }
+            .usos-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
-
 
     <script>
       (function() {
@@ -42,9 +267,9 @@
     <header class="site-header">
         <div class="header-content-wrapper">
             <div class="logo">
-            <a href="../index.html">
-            <img src="../ashoras-removebg-preview.png" alt="ashoras logo" class="logo-img">
-            </a>
+                <a href="../index.html">
+                    <img src="../ashoras-removebg-preview.png" alt="AsHoras logo" class="logo-img">
+                </a>
             </div>
             <nav class="main-nav">
                 <a href="../vocesabia.html" class="active">Você Sabia?</a>
@@ -53,61 +278,272 @@
             </nav>
         </div>
     </header>
+    <div class="theme-switcher-sabia">
+        <span id="light-theme-btn" class="theme-icon active" title="Tema Claro"><i class="fas fa-sun"></i></span>
+        <span id="dark-theme-btn" class="theme-icon" title="Tema Escuro"><i class="fas fa-moon"></i></span>
+    </div>
 
     <main class="main-application-area">
         <article class="artigo-container">
-            <h1>⚛️ Como funcionam os relógios atômicos?</h1>
+
+            <h1>Como funcionam os relógios atômicos?</h1>
+
+            <!-- Meta info -->
+            <div class="artigo-meta">
+                <span><i class="fas fa-clock"></i> Leitura: 5 minutos</span>
+                <span><i class="fas fa-tag"></i> Categoria: Tecnologia & Ciência</span>
+                <span><i class="fas fa-calendar-alt"></i> Atualizado em 2025</span>
+                <span><i class="fas fa-graduation-cap"></i> Nível: Iniciante</span>
+            </div>
+
             <p class="intro">
-                Você sabia que existem relógios tão precisos que podem funcionar por milhões de anos sem atrasar nem um segundo? Pois é! São os incríveis <strong>relógios atômicos</strong>, e hoje você vai entender como eles conseguem essa façanha.
+                Você sabia que existem relógios tão precisos que levariam <strong>bilhões de anos</strong> para atrasar um único segundo? São os <strong>relógios atômicos</strong> — a base de toda a medição moderna do tempo — e hoje você vai entender exatamente como eles funcionam, onde são usados e por que são tão indispensáveis para a tecnologia que usamos no dia a dia.
             </p>
 
-            <section class="artigo-secao">
-                <h2>🔬 1. O que é um relógio atômico?</h2>
+            <!-- Índice -->
+            <div class="artigo-indice">
+                <h4><i class="fas fa-list"></i> &nbsp;Neste artigo</h4>
+                <ol>
+                    <li><a href="#o-que-e">O que é um relógio atômico?</a></li>
+                    <li><a href="#como-funciona">Como ele mede o tempo com tanta precisão?</a></li>
+                    <li><a href="#comparativo">Relógio comum vs. relógio atômico</a></li>
+                    <li><a href="#historia">Breve história: do laboratório ao satélite</a></li>
+                    <li><a href="#usos">Onde são usados no dia a dia?</a></li>
+                    <li><a href="#recordes">Recordes de precisão</a></li>
+                    <li><a href="#faq">Perguntas frequentes</a></li>
+                </ol>
+            </div>
+
+            <!-- 1. O que é -->
+            <section class="artigo-secao" id="o-que-e">
+                <h2>1. O que é um relógio atômico?</h2>
                 <div class="imagem-container anim-float">
                     <img src="../img_artigos/artigo-atomico/atomico1.png" alt="Relógio atômico em laboratório" class="artigo-imagem">
                 </div>
                 <p>
-                    Diferente dos relógios comuns, que contam o tempo com base em engrenagens ou quartzo, o relógio atômico mede o tempo usando os <strong>átomos</strong>! Sim, as menores partículas da matéria. O tipo mais usado é o <strong>césio-133</strong>, porque seus átomos vibram num ritmo extremamente constante.
+                    Diferente dos relógios comuns — que contam o tempo com base em engrenagens mecânicas ou cristais de quartzo — o relógio atômico usa o comportamento de <strong>átomos individuais</strong> como referência. É uma aplicação direta da física quântica: os átomos vibram em frequências extremamente constantes, e esse ritmo serve como o mais preciso "tique-taque" já descoberto pela humanidade.
                 </p>
-                <p class="destaque">👉 Cada segundo é definido oficialmente pela vibração do átomo de césio: 9.192.631.770 oscilações!</p>
+                <p>
+                    O elemento mais usado é o <strong>césio-133</strong>, escolhido justamente porque sua frequência de vibração é extraordinariamente estável e pode ser medida com grande confiabilidade em laboratório.
+                </p>
+
+                <div class="dado-destaque">
+                    <div class="dado-destaque-num">9,19<br><span style="font-size:0.5em">bilhões</span></div>
+                    <div class="dado-destaque-txt">
+                        <strong>O segundo é definido oficialmente pela ONU</strong> como o tempo correspondente a exatamente <strong>9.192.631.770 oscilações</strong> do átomo de césio-133. Essa definição está em vigor desde 1967 e é o padrão internacional do tempo.
+                    </div>
+                </div>
             </section>
 
-            <section class="artigo-secao">
-                <h2>⚙️ 2. Como ele mede o tempo com tanta precisão?</h2>
+            <!-- 2. Como funciona -->
+            <section class="artigo-secao" id="como-funciona">
+                <h2>2. Como ele mede o tempo com tanta precisão?</h2>
                 <div class="imagem-container anim-fade-in">
                     <img src="../img_artigos/artigo-atomico/precisao.png" alt="Representação da vibração dos átomos de césio" class="artigo-imagem">
                 </div>
                 <p>
-                    O funcionamento é baseado na física quântica. Dentro do relógio, os átomos de césio são aquecidos e atravessam um campo de micro-ondas. Quando essas ondas atingem a frequência exata que faz os átomos vibrarem, o relógio “conta” um segundo. 
+                    O processo envolve física quântica, mas o princípio é mais simples do que parece. Dentro do relógio, os átomos de césio são <strong>aquecidos a altas temperaturas</strong> até se transformarem em gás. Esses átomos são então expostos a um campo de micro-ondas — ondas eletromagnéticas semelhantes às do forno micro-ondas doméstico.
                 </p>
                 <p>
-                    Esse processo é tão estável que a margem de erro é menor que <strong>um segundo em milhões de anos</strong>! 😱
+                    Quando a frequência dessas micro-ondas atinge <strong>exatamente o valor certo</strong>, os átomos de césio "saltam" para um estado de energia diferente. Um detector eletrônico mede esses saltos e o circuito do relógio ajusta continuamente a frequência para manter a sincronia perfeita. Cada 9.192.631.770 saltos detectados equivale a exatamente <strong>um segundo</strong>.
+                </p>
+                <p class="destaque">
+                    💡 É como afinar um instrumento musical, mas em vez de notas musicais, você afina o próprio tempo — com uma precisão que vai muito além do que o ouvido humano consegue perceber.
                 </p>
             </section>
 
-            <section class="artigo-secao">
-                <h2>🌍 3. Onde eles são usados?</h2>
-                <div class="imagem-container anim-twinkle">
-                    <img src="../img_artigos/artigo-atomico/satelite.png" alt="Satélite e sincronização de relógios atômicos" class="artigo-imagem">
+            <!-- 3. Comparativo -->
+            <section class="artigo-secao" id="comparativo">
+                <h2>3. Relógio comum vs. relógio atômico</h2>
+                <p>Para entender o salto de precisão, compare as diferentes tecnologias:</p>
+
+                <div class="comparativo-grid">
+                    <div class="comparativo-item">
+                        <div class="comp-icon">🕰️</div>
+                        <h4>Relógio mecânico</h4>
+                        <p>Pode perder ou ganhar até 1 segundo por dia. Depende de molas e engrenagens sujeitas ao desgaste.</p>
+                    </div>
+                    <div class="comparativo-item">
+                        <div class="comp-icon">⌚</div>
+                        <h4>Relógio de quartzo</h4>
+                        <p>Erro de cerca de 1 segundo por mês. Usa a vibração do cristal de quartzo, mais estável que engrenagens.</p>
+                    </div>
+                    <div class="comparativo-item">
+                        <div class="comp-icon">⚛️</div>
+                        <h4>Relógio atômico de césio</h4>
+                        <p>Erra apenas 1 segundo a cada 300 milhões de anos. É o padrão internacional desde 1967.</p>
+                    </div>
+                    <div class="comparativo-item destaque">
+                        <div class="comp-icon">🔬</div>
+                        <h4>Relógio de rede óptica</h4>
+                        <p>Nova geração: erro de 1 segundo a cada 15 bilhões de anos — mais velho que o universo!</p>
+                    </div>
                 </div>
-                <p>
-                    Relógios atômicos estão em estações de tempo e dentro dos satélites do sistema <strong>GPS</strong>. Sem eles, os sinais de localização não seriam precisos, e os mapas do seu celular poderiam errar quilômetros! Eles também são essenciais para telecomunicações, pesquisas científicas e redes financeiras globais.
-                </p>
             </section>
 
-            <section class="artigo-secao curiosidade">
-                <h3>🚀 Curiosidade Extra:</h3>
-                <p>
-                    O relógio atômico mais preciso do mundo foi criado em 2022 e usou átomos de <strong>estrôncio</strong>. Ele é tão exato que só atrasaria um segundo a cada 15 bilhões de anos!
-                </p>
+            <!-- 4. História -->
+            <section class="artigo-secao" id="historia">
+                <h2>4. Breve história: do laboratório ao satélite</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">1</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">1955</div>
+                            <p>O físico Louis Essen constrói o primeiro relógio atômico de césio no Laboratório Nacional de Física do Reino Unido. Era do tamanho de um armário.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">2</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">1967</div>
+                            <p>A Conferência Internacional de Pesos e Medidas redefine oficialmente o segundo com base nas oscilações do césio-133, substituindo a definição astronômica.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">3</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">1983</div>
+                            <p>Os Estados Unidos lançam os primeiros satélites do sistema GPS equipados com relógios atômicos. Cada satélite carrega até 4 relógios atômicos de rubídio e césio.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">4</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">2022</div>
+                            <p>Pesquisadores apresentam relógios de rede óptica com estrôncio e ítrio, capazes de medir variações gravitacionais milímétricas — possibilitando novos estudos sobre a relatividade de Einstein.</p>
+                        </div>
+                    </div>
+                </div>
             </section>
 
+            <!-- 5. Usos -->
+            <section class="artigo-secao" id="usos">
+                <h2>5. Onde são usados no dia a dia?</h2>
+                <div class="imagem-container anim-twinkle">
+                    <img src="../img_artigos/artigo-atomico/satelite.png" alt="Satélite GPS e sincronização de relógios atômicos" class="artigo-imagem">
+                </div>
+                <p>Os relógios atômicos estão muito mais presentes no seu dia a dia do que você imagina. Sempre que você usa qualquer uma dessas tecnologias, um relógio atômico está trabalhando nos bastidores:</p>
+
+                <div class="usos-grid">
+                    <div class="uso-card">
+                        <i class="fas fa-satellite"></i>
+                        <h4>GPS e Navegação</h4>
+                        <p>Cada satélite GPS carrega relógios atômicos. Sem eles, a localização erraria quilômetros.</p>
+                    </div>
+                    <div class="uso-card">
+                        <i class="fas fa-wifi"></i>
+                        <h4>Internet</h4>
+                        <p>Roteadores e servidores sincronizam pacotes de dados usando o tempo atômico.</p>
+                    </div>
+                    <div class="uso-card">
+                        <i class="fas fa-broadcast-tower"></i>
+                        <h4>Telecomunicações</h4>
+                        <p>Redes de celular 4G e 5G dependem de sincronização de nanossegundos.</p>
+                    </div>
+                    <div class="uso-card">
+                        <i class="fas fa-university"></i>
+                        <h4>Mercado Financeiro</h4>
+                        <p>Transações de alta frequência exigem carimbos de tempo atômico para evitar fraudes.</p>
+                    </div>
+                    <div class="uso-card">
+                        <i class="fas fa-flask"></i>
+                        <h4>Ciência</h4>
+                        <p>Experimentos de física de partículas e radioastronomia exigem sincronização atômica.</p>
+                    </div>
+                    <div class="uso-card">
+                        <i class="fas fa-bolt"></i>
+                        <h4>Energia Elétrica</h4>
+                        <p>Redes de energia sincronizam frequência e fase com relógios atômicos para evitar apagões.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Recordes -->
+            <section class="artigo-secao curiosidade" id="recordes">
+                <h3>6. Recordes de precisão</h3>
+                <p>
+                    O relógio atômico mais preciso da atualidade usa átomos de <strong>ítio</strong> resfriados a temperaturas próximas do zero absoluto (−273°C). Ele atrasaria apenas <strong>um segundo a cada 300 bilhões de anos</strong> — mais de 20 vezes a idade do universo. Esses relógios de nova geração já são usados para testar a <strong>teoria da relatividade geral de Einstein</strong>, confirmando que o tempo passa mais devagar perto de superfícies mais pesadas.
+                </p>
+                <div class="dado-destaque" style="margin-top:16px">
+                    <div class="dado-destaque-num" style="font-size:1.4em">13,8<br><span style="font-size:0.55em">bilhões</span></div>
+                    <div class="dado-destaque-txt">
+                        <strong>Anos de idade do universo.</strong> Os relógios atômicos mais avançados só errariam 1 segundo após <strong>mais de 20 vezes</strong> esse período — demonstrando uma precisão que ultrapassa qualquer referência astronômica conhecida.
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. FAQ -->
+            <section class="artigo-secao conclusao" id="faq">
+                <h3>7. Perguntas frequentes ❓</h3>
+
+                <div class="faq-item">
+                    <div class="faq-pergunta">Por que usar o césio e não outro elemento? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">O césio-133 foi escolhido porque sua frequência de transição hiperfina é extremamente estável, reproduzível em qualquer laboratório do mundo e pode ser medida com altíssima precisão por micro-ondas. Outros elementos como o rubídio e o hidrogênio também são usados em relógios atômicos portáteis, mas com precisão um pouco menor.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta">O relógio atômico pode parar ou quebrar? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">Sim, como qualquer equipamento eletrônico, ele pode apresentar falhas. Por isso, sistemas críticos como o GPS usam múltiplos relógios atômicos redundantes em cada satélite — geralmente 4 — e redes terrestres de backup sincronizam os dados constantemente.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta">Posso ter um relógio atômico em casa? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">Relógios atômicos profissionais custam dezenas de milhares de dólares. Mas existem versões compactas de rubídio para uso em laboratórios menores que custam algumas centenas. Na prática, seu celular já usa o tempo atômico — ele sincroniza automaticamente com servidores NTP (Network Time Protocol) que consultam relógios atômicos globais.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta">O que aconteceria se os relógios atômicos parassem? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">Seria um caos tecnológico global. O GPS perderia precisão em minutos. Redes de internet e telecomunicações começariam a apresentar falhas em horas. Transações financeiras e redes elétricas seriam comprometidas em dias. Os relógios atômicos são, silenciosamente, uma infraestrutura crítica da civilização moderna.</div>
+                </div>
+            </section>
+
+            <!-- Conclusão -->
             <section class="artigo-secao conclusao">
-                <h3>🎉 Conclusão:</h3>
+                <h3>Conclusão</h3>
                 <p>
-                    Os relógios atômicos são a base de toda a medição moderna do tempo. Graças a eles, nossos GPS, redes de internet e até satélites funcionam em perfeita sincronia. É a ciência mostrando que medir o tempo pode ser uma arte de precisão!
+                    Os relógios atômicos são muito mais do que curiosidades científicas: são a espinha dorsal invisível da tecnologia moderna. Cada vez que você usa o GPS, acessa a internet, faz uma compra online ou liga o celular, um relógio atômico está garantindo que tudo funcione em perfeita sincronia. A próxima vez que olhar as horas no celular, lembre-se: por trás desse número simples, bilhões de átomos de césio estão oscilando em perfeita cadência — definindo, com precisão imbatível, o que chamamos de tempo.
                 </p>
             </section>
+
+            <!-- Referências -->
+            <div class="referencias">
+                <h4><i class="fas fa-book"></i> Fontes e referências</h4>
+                <ul>
+                    <li>Jones, Tony. <em>Splitting the Second: The Story of Atomic Time</em>. Institute of Physics Publishing, 2000.</li>
+                    <li><a href="https://www.nist.gov/atomic-clocks/brief-history-atomic-time" target="_blank" rel="noopener noreferrer">NIST — A Brief History of Atomic Time</a></li>
+                    <li><a href="https://www.nist.gov/atomic-clocks/beams-atoms-first-atomic-clocks" target="_blank" rel="noopener noreferrer">NIST — Beams of Atoms: The First Atomic Clocks</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Caesium_standard" target="_blank" rel="noopener noreferrer">BIPM / Wikipedia — Caesium Standard (definição oficial do segundo)</a></li>
+                    <li><a href="https://science.nasa.gov/mission/gps/" target="_blank" rel="noopener noreferrer">NASA — Como o GPS usa relógios atômicos</a></li>
+                    <li><a href="https://www.scientificamerican.com/article/how-does-one-arrive-at-th/" target="_blank" rel="noopener noreferrer">Scientific American — Como se chegou ao número exato de ciclos do césio-133</a></li>
+                </ul>
+            </div>
+
+            <!-- Navegação entre artigos -->
+            <div class="artigo-nav">
+                <a href="artigo-relogio-pulso.html">
+                    <i class="fas fa-arrow-left"></i>
+                    <div>
+                        <span>Artigo anterior</span>
+                        Quem inventou o relógio de pulso?
+                    </div>
+                </a>
+                <a href="artigo-horario-verao.html">
+                    <div style="text-align:right;flex:1">
+                        <span>Próximo artigo</span>
+                        O que é o horário de verão?
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
 
         </article>
     </main>
@@ -116,8 +552,28 @@
         <div class="footer-content-wrapper">
             <p>&copy; 2025 AsHoras. Todos os direitos reservados.</p>
             <a href="../sobre.html" style="color:var(--cor-primaria);text-decoration:none;">Sobre</a> |
-             <a href="../privacidade.html" style="color:var(--cor-primaria);text-decoration:none;">Privacidade</a>
+            <a href="../privacidade.html" style="color:var(--cor-primaria);text-decoration:none;">Privacidade</a>
         </div>
     </footer>
+
+    <script>
+    /* FAQ toggle */
+    document.querySelectorAll('.faq-pergunta').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var item = btn.closest('.faq-item');
+            var resp = item.querySelector('.faq-resposta');
+            var aberto = item.classList.contains('aberto');
+            document.querySelectorAll('.faq-item').forEach(function(i) {
+                i.classList.remove('aberto');
+                i.querySelector('.faq-resposta').classList.remove('aberta');
+            });
+            if (!aberto) {
+                item.classList.add('aberto');
+                resp.classList.add('aberta');
+            }
+        });
+    });
+    </script>
+    <script src="../sabia-theme-loader.js"></script>
 </body>
 </html>

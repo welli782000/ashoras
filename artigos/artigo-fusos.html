@@ -4,31 +4,229 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qual o país com mais fusos horários? — AsHoras</title>
-<meta name="description" content="A resposta vai te surpreender! Descubra qual país tem mais fusos horários no mundo e por quê a França vence a Rússia e os EUA.">
-<meta name="keywords" content="país com mais fusos horários, fusos horários do mundo, França fusos, UTC, fuso horário">
+    <meta name="description" content="A resposta vai te surpreender! Descubra qual país tem mais fusos horários no mundo, como funciona o UTC, e por que a China tem apenas um fuso para todo o país.">
+    <meta name="keywords" content="país com mais fusos horários, fusos horários do mundo, França fusos, UTC, fuso horário, Greenwich, China fuso único, Rússia fusos">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../artigo.css">
+    <link rel="stylesheet" href="../artigo-theme.css">
+    <link rel="stylesheet" href="../vocesabia-theme-light.css" id="theme-light-sabia">
+    <link rel="stylesheet" href="../vocesabia-theme-dark.css" id="theme-dark-sabia" disabled>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3173930318511411" crossorigin="anonymous"></script>
- 
-   <style>
-        .logo-img {
-            height: 40px; /* Ajuste esta altura conforme necessário para seu header */
-            width: auto;
-            display: block;
-        }
-        .logo {
+
+    <style>
+        .logo-img { height: 40px; width: auto; display: block; }
+        .logo { display: flex; align-items: center; }
+
+        /* ── Meta info ── */
+        .artigo-meta {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 0 0 28px 0;
+            padding: 12px 16px;
+            background: rgba(255,140,0,0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255,140,0,0.15);
+        }
+        .artigo-meta span { font-size: 0.82em; color: #aaa; display: flex; align-items: center; gap: 5px; }
+        .artigo-meta i { color: #FF8C00; }
+
+        /* ── Índice ── */
+        .artigo-indice {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,140,0,0.2);
+            border-left: 4px solid #FF8C00;
+            border-radius: 0 10px 10px 0;
+            padding: 18px 22px;
+            margin: 0 0 32px 0;
+        }
+        .artigo-indice h4 { font-size: 0.88em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #FF8C00; margin-bottom: 10px; }
+        .artigo-indice ol { padding-left: 18px; margin: 0; }
+        .artigo-indice ol li { font-size: 0.88em; color: #bbb; margin-bottom: 5px; line-height: 1.5; }
+        .artigo-indice ol li a { color: inherit; text-decoration: none; transition: color 0.15s; }
+        .artigo-indice ol li a:hover { color: #FF8C00; }
+
+        /* ── Dado destaque ── */
+        .dado-destaque {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: rgba(255,140,0,0.06);
+            border: 1px solid rgba(255,140,0,0.2);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin: 20px 0;
+        }
+        .dado-destaque-num { font-size: 2.2em; font-weight: 800; color: #FF8C00; line-height: 1; flex-shrink: 0; }
+        .dado-destaque-txt { font-size: 0.9em; color: #ddd; line-height: 1.6; }
+        .dado-destaque-txt strong { color: #fff; }
+
+        /* ── Ranking de países ── */
+        .ranking-lista { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
+        .ranking-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 14px 16px;
+            transition: border-color 0.15s;
+        }
+        .ranking-item:hover { border-color: rgba(255,140,0,0.3); }
+        .ranking-item.primeiro { border-color: rgba(255,215,0,0.4); background: rgba(255,215,0,0.04); }
+        .ranking-item.segundo { border-color: rgba(192,192,192,0.3); background: rgba(192,192,192,0.03); }
+        .ranking-pos {
+            font-size: 1.4em;
+            font-weight: 800;
+            width: 36px;
+            text-align: center;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+        .ranking-item.primeiro .ranking-pos { color: #FFD700; }
+        .ranking-item.segundo .ranking-pos { color: #C0C0C0; }
+        .ranking-pos-other { color: #FF8C00; }
+        .ranking-bandeira { font-size: 1.8em; flex-shrink: 0; }
+        .ranking-info { flex: 1; }
+        .ranking-info h4 { font-size: 0.9em; font-weight: 700; color: #fff; margin-bottom: 3px; }
+        .ranking-info p { font-size: 0.78em; color: #bbb; margin: 0; line-height: 1.4; }
+        .ranking-fusos {
+            font-size: 1.1em;
+            font-weight: 800;
+            color: #FF8C00;
+            text-align: right;
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+        .ranking-fusos span { font-size: 0.6em; font-weight: 400; color: #aaa; display: block; }
+
+        /* ── Barra de progresso dos fusos ── */
+        .fuso-barra-wrap { margin: 4px 0 0 0; }
+        .fuso-barra {
+            height: 5px;
+            border-radius: 3px;
+            background: rgba(255,140,0,0.15);
+            overflow: hidden;
+            margin-top: 4px;
+        }
+        .fuso-barra-fill { height: 100%; border-radius: 3px; background: #FF8C00; }
+
+        /* ── Grid de territórios da França ── */
+        .territorios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .territorio-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            padding: 12px 14px;
+            transition: border-color 0.15s;
+        }
+        .territorio-card:hover { border-color: rgba(255,140,0,0.3); }
+        .territorio-card .tc-nome { font-size: 0.83em; font-weight: 700; color: #fff; margin-bottom: 3px; }
+        .territorio-card .tc-loc { font-size: 0.74em; color: #aaa; margin-bottom: 4px; }
+        .territorio-card .tc-utc { font-size: 0.74em; color: #FF8C00; font-weight: 600; }
+
+        /* ── Bloco de alerta / caso curioso ── */
+        .bloco-alerta {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            background: rgba(41,128,185,0.08);
+            border: 1px solid rgba(41,128,185,0.25);
+            border-left: 4px solid #2980b9;
+            border-radius: 0 10px 10px 0;
+            padding: 16px 18px;
+            margin: 20px 0;
+        }
+        .bloco-alerta i { color: #2980b9; font-size: 1.3em; flex-shrink: 0; margin-top: 2px; }
+        .bloco-alerta-txt { font-size: 0.88em; color: #ddd; line-height: 1.6; }
+        .bloco-alerta-txt strong { color: #fff; }
+
+        /* ── Curiosidade visual ── */
+        .curiosidade-visual {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin: 20px 0;
+        }
+        .curiosidade-visual .cv-emoji { font-size: 2.5em; flex-shrink: 0; }
+        .curiosidade-visual .cv-txt { font-size: 0.88em; color: #ddd; line-height: 1.6; }
+        .curiosidade-visual .cv-txt strong { color: #fff; }
+
+        /* ── Fusos quebrados (meia hora) ── */
+        .fusos-quebrados-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .fq-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            padding: 12px 14px;
+            text-align: center;
+        }
+        .fq-card .fq-bandeira { font-size: 1.6em; margin-bottom: 4px; }
+        .fq-card .fq-pais { font-size: 0.8em; font-weight: 700; color: #fff; margin-bottom: 2px; }
+        .fq-card .fq-utc { font-size: 0.78em; color: #FF8C00; font-weight: 600; }
+        .fq-card .fq-detalhe { font-size: 0.72em; color: #aaa; margin-top: 2px; line-height: 1.4; }
+
+        /* ── FAQ ── */
+        .faq-item { border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+        .faq-pergunta { padding: 14px 18px; font-size: 0.9em; font-weight: 600; color: #fff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); user-select: none; }
+        .faq-pergunta:hover { background: rgba(255,140,0,0.06); }
+        .faq-pergunta i { color: #FF8C00; font-size: 0.85em; transition: transform 0.2s; }
+        .faq-resposta { display: none; padding: 0 18px 14px; font-size: 0.87em; color: #ccc; line-height: 1.6; background: rgba(255,255,255,0.03); }
+        .faq-resposta.aberta { display: block; }
+        .faq-item.aberto .faq-pergunta i { transform: rotate(180deg); }
+
+        /* ── Referências ── */
+        .referencias {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin-top: 28px;
+        }
+        .referencias h4 { font-size: 0.85em; font-weight: 700; color: #FF8C00; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+        .referencias ul { padding-left: 18px; margin: 0; }
+        .referencias ul li { font-size: 0.8em; color: #aaa; margin-bottom: 6px; line-height: 1.5; }
+        .referencias ul li a { color: #FF8C00; text-decoration: none; }
+        .referencias ul li a:hover { text-decoration: underline; }
+
+        /* ── Navegação ── */
+        .artigo-nav { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+        .artigo-nav a { flex: 1; min-width: 200px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,140,0,0.2); border-radius: 10px; padding: 14px 18px; text-decoration: none; color: #fff; font-size: 0.87em; transition: border-color 0.15s, background 0.15s; display: flex; align-items: center; gap: 10px; }
+        .artigo-nav a:hover { border-color: #FF8C00; background: rgba(255,140,0,0.06); }
+        .artigo-nav a i { color: #FF8C00; font-size: 1.1em; flex-shrink: 0; }
+        .artigo-nav a span { font-size: 0.78em; color: #aaa; display: block; }
+
+        /* Tema claro/escuro deste artigo agora vem do artigo-theme.css (compartilhado) */
+
+        @media (max-width: 540px) {
+            .territorios-grid { grid-template-columns: 1fr 1fr; }
+            .fusos-quebrados-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
+
     <script>
       (function() {
         try {
           var theme = localStorage.getItem('sabiaTheme') || 'theme-light-sabia';
           document.documentElement.className = theme;
-          // Ajusta qual folha de estilo está ativa no carregamento
           document.addEventListener('DOMContentLoaded', () => {
               document.getElementById('theme-light-sabia').disabled = (theme !== 'theme-light-sabia');
               document.getElementById('theme-dark-sabia').disabled = (theme !== 'theme-dark-sabia');
@@ -41,9 +239,9 @@
     <header class="site-header">
         <div class="header-content-wrapper">
             <div class="logo">
-            <a href="../index.html">
-            <img src="../ashoras-removebg-preview.png" alt="ashoras logo" class="logo-img">
-            </a>
+                <a href="../index.html">
+                    <img src="../ashoras-removebg-preview.png" alt="AsHoras logo" class="logo-img">
+                </a>
             </div>
             <nav class="main-nav">
                 <a href="../vocesabia.html" class="active">Você Sabia?</a>
@@ -52,68 +250,420 @@
             </nav>
         </div>
     </header>
+    <div class="theme-switcher-sabia">
+        <span id="light-theme-btn" class="theme-icon active" title="Tema Claro"><i class="fas fa-sun"></i></span>
+        <span id="dark-theme-btn" class="theme-icon" title="Tema Escuro"><i class="fas fa-moon"></i></span>
+    </div>
 
     <main class="main-application-area">
         <article class="artigo-container">
-            <h1>🌍🕰️ Qual o país com mais fusos horários?</h1>
+
+            <h1>Qual o país com mais fusos horários?</h1>
+
+            <!-- Meta info -->
+            <div class="artigo-meta">
+                <span><i class="fas fa-clock"></i> Leitura: 6 minutos</span>
+                <span><i class="fas fa-tag"></i> Categoria: Geografia & Ciência</span>
+                <span><i class="fas fa-calendar-alt"></i> Atualizado em 2025</span>
+                <span><i class="fas fa-graduation-cap"></i> Nível: Iniciante</span>
+            </div>
+
             <p class="intro">
-                Pode parecer óbvio pensar que o maior país do mundo teria mais fusos horários, mas a resposta é um pouco mais surpreendente do que você imagina!
+                Quando pensamos no país com mais fusos horários, a maioria aposta na <strong>Rússia</strong> — o maior país do mundo em área. Outros apostam nos <strong>Estados Unidos</strong>. Mas a resposta surpreende: é a <strong>França</strong>. Como um país de tamanho médio na Europa pode superar gigantes geográficos? A resposta está na história, nos oceanos e em territórios espalhados pelos quatro cantos do planeta.
             </p>
 
-            <section class="artigo-secao">
-                <h2>🇫🇷 1. O campeão é... a França?!</h2>
+            <!-- Índice -->
+            <div class="artigo-indice">
+                <h4><i class="fas fa-list"></i> &nbsp;Neste artigo</h4>
+                <ol>
+                    <li><a href="#o-que-e-fuso">O que são fusos horários?</a></li>
+                    <li><a href="#ranking">Ranking mundial de fusos por país</a></li>
+                    <li><a href="#franca">Por que a França lidera?</a></li>
+                    <li><a href="#china">O curioso caso da China</a></li>
+                    <li><a href="#quebrados">Fusos "quebrados": meias e quartas de hora</a></li>
+                    <li><a href="#brasil">E o Brasil, quantos fusos tem?</a></li>
+                    <li><a href="#faq">Perguntas frequentes</a></li>
+                </ol>
+            </div>
+
+            <!-- 1. O que são fusos -->
+            <section class="artigo-secao" id="o-que-e-fuso">
+                <h2>1. O que são fusos horários?</h2>
                 <div class="imagem-container anim-float">
-                    <img src="../img_artigos/artigos-fusos/frança-fusos.jpg" alt="Mapa com territórios franceses pelo mundo" class="artigo-imagem">
-                </div>
-                <p>
-                    Apesar da Rússia se estender por um vasto território, o recorde mundial pertence à <strong>França</strong>, que soma incríveis <strong>12 fusos horários</strong> (ou 13, se incluirmos sua reivindicação na Antártida). Isso acontece porque, além da França metropolitana (na Europa), o país possui diversos territórios ultramarinos espalhados pelo globo, como a Guiana Francesa (América do Sul), Polinésia Francesa (Pacífico) e Ilha da Reunião (Índico).
-                </p>
-                <p class="destaque">👉 Ou seja, o “poder” de ter territórios em quase todos os cantos do planeta garante à França o título!</p>
-            </section>
-
-            <section class="artigo-secao">
-                <h2>🥈 2. E quem vem logo atrás?</h2>
-                <div class="imagem-container anim-fade-in">
-                     <img src="../img_artigos/artigos-fusos/russia-fusos.jpg" alt="Mapa da Rússia e EUA com seus fusos" class="artigo-imagem">
-                </div>
-                <p>
-                    Empatados em segundo lugar, temos a <strong>Rússia</strong> e os <strong>Estados Unidos</strong>, cada um com <strong>11 fusos horários</strong>. A Rússia os abrange de forma contínua em seu gigantesco território continental. Já os EUA, assim como a França, devem seus fusos aos seus territórios e estados distantes, como o Havaí, o Alasca e ilhas no Pacífico como Guam e Samoa Americana.
-                </p>
-            </section>
-
-            <section class="artigo-secao">
-                <h2>🗺️ 3. A lógica por trás dos fusos</h2>
-                <div class="imagem-container anim-twinkle">
                     <img src="../img_artigos/artigos-fusos/mapa_mundi_fuso.png" alt="Mapa-múndi com as linhas de fuso horário" class="artigo-imagem">
                 </div>
                 <p>
-                   A ideia dos fusos horários foi criada para padronizar o tempo ao redor do mundo. A Terra foi dividida em 24 "fatias" verticais, e cada uma representa uma hora do dia. O ponto de partida é o <strong>Tempo Universal Coordenado (UTC)</strong>, que passa pelo meridiano de Greenwich, em Londres. Todos os outros fusos são definidos como uma diferença em relação ao UTC (por exemplo, o horário de Brasília é UTC-3). Essa organização garante que o meio-dia corresponda, aproximadamente, ao momento em que o sol está mais alto no céu em qualquer lugar do mundo.
+                    A Terra é uma esfera que gira 360° em aproximadamente 24 horas — o que significa que ela gira <strong>15° por hora</strong>. Com base nisso, em 1884 a <strong>Conferência Internacional do Meridiano</strong>, realizada em Washington, dividiu o globo em <strong>24 fusos horários</strong> de 15° cada, todos referenciados a partir do <strong>Meridiano de Greenwich</strong>, em Londres, que passou a ser o UTC (Tempo Universal Coordenado) — o "zero" do tempo mundial.
                 </p>
+                <p>
+                    Na prática, cada fuso horário representa uma diferença de <strong>uma hora</strong> em relação ao UTC. Países a leste de Greenwich têm fusos positivos (UTC+1, UTC+2...) e países a oeste têm fusos negativos (UTC-1, UTC-2...). Mas como veremos, nem todos os países seguem essa divisão limpa de hora em hora.
+                </p>
+
+                <div class="dado-destaque">
+                    <div class="dado-destaque-num">24</div>
+                    <div class="dado-destaque-txt">
+                        <strong>Fusos horários "oficiais"</strong> dividem o globo — mas na prática existem mais de <strong>38 zonas de tempo diferentes</strong> no mundo, pois muitos países adotam meias horas, quartos de hora ou fusos políticos que não seguem a divisão geográfica exata.
+                    </div>
+                </div>
             </section>
-            
-            <section class="artigo-secao">
-                <h2>🇨🇳 4. O curioso caso da China</h2>
-                <div class="imagem-container">
+
+            <!-- 2. Ranking -->
+            <section class="artigo-secao" id="ranking">
+                <h2>2. Ranking mundial de fusos por país</h2>
+                <p>Veja os países com mais fusos horários no mundo e entenda o que coloca cada um nessa lista:</p>
+
+                <div class="ranking-lista">
+                    <div class="ranking-item primeiro">
+                        <div class="ranking-pos">1º</div>
+                        <div class="ranking-bandeira">🇫🇷</div>
+                        <div class="ranking-info">
+                            <h4>França</h4>
+                            <p>Territórios ultramarinos na América, Oceania, África e Antártida garantem o 1º lugar.</p>
+                            <div class="fuso-barra-wrap">
+                                <div class="fuso-barra"><div class="fuso-barra-fill" style="width:100%"></div></div>
+                            </div>
+                        </div>
+                        <div class="ranking-fusos">12<span>fusos</span></div>
+                    </div>
+
+                    <div class="ranking-item segundo">
+                        <div class="ranking-pos">2º</div>
+                        <div class="ranking-bandeira">🇷🇺</div>
+                        <div class="ranking-info">
+                            <h4>Rússia</h4>
+                            <p>O maior país do mundo em área continental possui 11 fusos de forma contínua no território.</p>
+                            <div class="fuso-barra-wrap">
+                                <div class="fuso-barra"><div class="fuso-barra-fill" style="width:91%"></div></div>
+                            </div>
+                        </div>
+                        <div class="ranking-fusos">11<span>fusos</span></div>
+                    </div>
+
+                    <div class="ranking-item terceiro">
+                        <div class="ranking-pos">3º</div>
+                        <div class="ranking-bandeira">🇺🇸</div>
+                        <div class="ranking-info">
+                            <h4>Estados Unidos</h4>
+                            <p>Inclui territórios como Havaí, Alasca, Guam e Samoa Americana no Pacífico.</p>
+                            <div class="fuso-barra-wrap">
+                                <div class="fuso-barra"><div class="fuso-barra-fill" style="width:91%"></div></div>
+                            </div>
+                        </div>
+                        <div class="ranking-fusos">11<span>fusos</span></div>
+                    </div>
+
+                       <div class="ranking-item quarto">
+                        <div class="ranking-pos ranking-pos-other" style="font-size:0.95em">4º</div>
+                        <div class="ranking-bandeira">🇬🇧</div>
+                        <div class="ranking-info">
+                            <h4>Reino Unido</h4>
+                            <p>Com territórios ultramarinos como Gibraltar, Bermuda e Ilhas Falkland, chega a 9 fusos.</p>
+                            <div class="fuso-barra-wrap">
+                                <div class="fuso-barra"><div class="fuso-barra-fill" style="width:75%"></div></div>
+                            </div>
+                        </div>
+                        <div class="ranking-fusos">9<span>fusos</span></div>
+                    </div>
+                    <div class="ranking-item quinto">
+                        <div class="ranking-pos ranking-pos-other" style="font-size:0.95em">5º</div>
+                        <div class="ranking-bandeira">🇦🇺</div>
+                        <div class="ranking-info">
+                            <h4>Austrália</h4>
+                            <p>Com estados como South Australia usando UTC+9:30, o país tem 8 zonas de tempo distintas.</p>
+                            <div class="fuso-barra-wrap">
+                                <div class="fuso-barra"><div class="fuso-barra-fill" style="width:66%"></div></div>
+                            </div>
+                        </div>
+                        <div class="ranking-fusos">8<span>fusos</span></div>
+                    </div>
+
+<div class="ranking-item sexto">
+                        <div class="ranking-pos ranking-pos-other" style="font-size:0.95em">6º</div>
+                        <div class="ranking-bandeira">DK</div>
+                        <div class="ranking-info">
+                            <h4>Dinamarca</h4>
+                            <p>7 fusos horários quando são considerados seu território continental, as Ilhas Faroé e a vasta Groenlândia, que se estende por cinco fusos diferentes.</p>
+                            <div class="fuso-barra-wrap">
+                                <div class="fuso-barra"><div class="fuso-barra-fill" style="width:55%"></div></div>
+                            </div>
+                        </div>
+                        <div class="ranking-fusos">7<span>fusos</span></div>
+                    </div>
+
+
+                </div>
+            </section>
+
+            <!-- 3. França -->
+            <section class="artigo-secao" id="franca">
+                <h2>3. Por que a França lidera?</h2>
+                <div class="imagem-container anim-fade-in">
+                    <img src="../img_artigos/artigos-fusos/frança-fusos.jpg" alt="Mapa com territórios franceses pelo mundo" class="artigo-imagem">
+                </div>
+                <p>
+                    A França metropolitana — aquela que fica na Europa — ocupa um fuso único (UTC+1 no inverno, UTC+2 no verão). O segredo do seu recorde mundial está nos seus <strong>territórios ultramarinos</strong>: heranças do período colonial francês que se espalharam pelos oceanos Atlântico, Índico e Pacífico. Cada território em uma localização geográfica diferente representa um fuso horário a mais.
+                </p>
+                <p>
+                    Veja os principais territórios franceses e seus fusos:</p>
+
+                <div class="territorios-grid">
+                    <div class="territorio-card">
+                        <div class="tc-nome">🇫🇷 França (Europa)</div>
+                        <div class="tc-loc">Europa Ocidental</div>
+                        <div class="tc-utc">UTC+1 / UTC+2</div>
+                    </div>
+                    <div class="territorio-card">
+                        <div class="tc-nome">🇬🇵 Guadalupe</div>
+                        <div class="tc-loc">Caribe</div>
+                        <div class="tc-utc">UTC-4</div>
+                    </div>
+                    <div class="territorio-card">
+                        <div class="tc-nome">🇲🇶 Martinica</div>
+                        <div class="tc-loc">Caribe</div>
+                        <div class="tc-utc">UTC-4</div>
+                    </div>
+                    <div class="territorio-card">
+                        <div class="tc-nome">🇬🇫 Guiana Francesa</div>
+                        <div class="tc-loc">América do Sul</div>
+                        <div class="tc-utc">UTC-3</div>
+                    </div>
+                    <div class="territorio-card">
+                        <div class="tc-nome">🇷🇪 Ilha da Reunião</div>
+                        <div class="tc-loc">Oceano Índico</div>
+                        <div class="tc-utc">UTC+4</div>
+                    </div>
+                    <div class="territorio-card">
+                        <div class="tc-nome">🇾🇹 Mayotte</div>
+                        <div class="tc-loc">Oceano Índico</div>
+                        <div class="tc-utc">UTC+3</div>
+                    </div>
+                    <div class="territorio-card">
+                        <div class="tc-nome">🇳🇨 Nova Caledônia</div>
+                        <div class="tc-loc">Oceano Pacífico</div>
+                        <div class="tc-utc">UTC+11</div>
+                    </div>
+                    <div class="territorio-card">
+                        <div class="tc-nome">🇵🇫 Polinésia Francesa</div>
+                        <div class="tc-loc">Oceano Pacífico</div>
+                        <div class="tc-utc">UTC-10 / UTC-9:30</div>
+                    </div>
+                    <div class="territorio-card">
+                        <div class="tc-nome">🇼🇫 Wallis e Futuna</div>
+                        <div class="tc-loc">Oceano Pacífico</div>
+                        <div class="tc-utc">UTC+12</div>
+                    </div>
+                    <div class="territorio-card">
+                        <div class="tc-nome">🇵🇲 Saint-Pierre e Miquelon</div>
+                        <div class="tc-loc">América do Norte</div>
+                        <div class="tc-utc">UTC-3 / UTC-2</div>
+                    </div>
+                </div>
+
+                <div class="dado-destaque" style="margin-top:8px">
+                    <div class="dado-destaque-num">26h</div>
+                    <div class="dado-destaque-txt">
+                        <strong>É a diferença de tempo entre os territórios mais distantes da França.</strong> Enquanto é meia-noite na Polinésia Francesa (UTC-10), já é às 2h da tarde do dia seguinte em Wallis e Futuna (UTC+12) — ambos sob a mesma bandeira tricolor.
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. China -->
+            <section class="artigo-secao" id="china">
+                <h2>4. O curioso caso da China</h2>
+                <div class="imagem-container anim-twinkle">
                     <img src="../img_artigos/artigos-fusos/china-fuso.png" alt="Relógio sobreposto a um mapa da China" class="artigo-imagem">
                 </div>
                 <p>
-                    Embora a China seja geograficamente larga o suficiente para abranger 5 fusos horários, o país inteiro opera oficialmente em um único horário: o Horário Padrão de Pequim (UTC+8). Essa decisão política, tomada em 1949 para promover a unidade nacional, gera situações bizarras. Em cidades no extremo oeste do país, o sol pode nascer somente às 10 da manhã!
+                    A China é geograficamente grande o suficiente para abranger <strong>5 fusos horários naturais</strong> — de UTC+5 a UTC+9. No entanto, desde 1949, quando Mao Tsé-Tung unificou o país, o governo adotou uma política de <strong>fuso único nacional</strong>: o Horário Padrão da China (CST, UTC+8), o horário de Pequim.
+                </p>
+                <p>
+                    A decisão foi deliberadamente política: um país, um horário, para reforçar a unidade nacional e simplificar a comunicação entre as províncias. O custo disso, porém, é que as regiões do extremo oeste — como Xinjiang, a quase 5.000 km de Pequim — vivem situações absurdas.
+                </p>
+
+                <div class="bloco-alerta">
+                    <i class="fas fa-sun"></i>
+                    <div class="bloco-alerta-txt">
+                        <strong>Em Kashgar, no extremo oeste da China</strong>, o sol nasce por volta das 10h da manhã (horário oficial) e se põe perto das 22h. Para contornar isso, a população local uigur mantém informalmente o "Horário de Xinjiang" — UTC+6 — que é 2 horas adiantado em relação ao horário oficial de Pequim, criando uma dualidade de tempo não reconhecida oficialmente.
+                    </div>
+                </div>
+
+                <p>
+                    O caso da China é o oposto da França: enquanto a França acumula fusos por ter território espalhado pelo mundo, a China <em>comprime</em> toda a sua extensão geográfica em um único fuso por decisão política.
                 </p>
             </section>
 
+            <!-- 5. Fusos quebrados -->
+            <section class="artigo-secao" id="quebrados">
+                <h2>5. Fusos "quebrados": meias e quartas de hora</h2>
+                <p>
+                    Nem todos os países seguem a divisão limpa de hora em hora. Alguns adotam fusos com <strong>meias horas ou até quartos de hora</strong> de diferença, por razões geográficas, políticas ou históricas. São os chamados fusos fracionários:
+                </p>
+
+                <div class="fusos-quebrados-grid">
+                    <div class="fq-card">
+                        <div class="fq-bandeira">🇮🇳</div>
+                        <div class="fq-pais">Índia</div>
+                        <div class="fq-utc">UTC+5:30</div>
+                        <div class="fq-detalhe">Escolha histórica para centralizar o fuso num país de grande extensão.</div>
+                    </div>
+                    <div class="fq-card">
+                        <div class="fq-bandeira">🇳🇵</div>
+                        <div class="fq-pais">Nepal</div>
+                        <div class="fq-utc">UTC+5:45</div>
+                        <div class="fq-detalhe">O único país do mundo com fuso de 45 minutos. Difere 15 min da Índia vizinha.</div>
+                    </div>
+                    <div class="fq-card">
+                        <div class="fq-bandeira">🇮🇷</div>
+                        <div class="fq-pais">Irã</div>
+                        <div class="fq-utc">UTC+3:30</div>
+                        <div class="fq-detalhe">Adota meia hora para se diferenciar dos países vizinhos da região.</div>
+                    </div>
+                    <div class="fq-card">
+                        <div class="fq-bandeira">🇦🇺</div>
+                        <div class="fq-pais">Austrália Central</div>
+                        <div class="fq-utc">UTC+9:30</div>
+                        <div class="fq-detalhe">South Australia e Northern Territory usam meia hora para equilibrar com as regiões vizinhas.</div>
+                    </div>
+                    <div class="fq-card">
+                        <div class="fq-bandeira">🇦🇫</div>
+                        <div class="fq-pais">Afeganistão</div>
+                        <div class="fq-utc">UTC+4:30</div>
+                        <div class="fq-detalhe">Mantém meia hora por tradição histórica e para se distanciar dos vizinhos.</div>
+                    </div>
+                    <div class="fq-card">
+                        <div class="fq-bandeira">🇲🇲</div>
+                        <div class="fq-pais">Myanmar</div>
+                        <div class="fq-utc">UTC+6:30</div>
+                        <div class="fq-detalhe">Fuso de meia hora que data do período colonial britânico, mantido após a independência.</div>
+                    </div>
+                </div>
+
+                <div class="curiosidade-visual">
+                    <div class="cv-emoji">🏔️</div>
+                    <div class="cv-txt">
+                        <strong>O Nepal (UTC+5:45) é o único país do mundo com fuso de 45 minutos.</strong> A escolha foi deliberada: o governo nepalês queria distinguir o país da Índia vizinha (UTC+5:30), mas sem adotar UTC+6, que seria o mesmo que Bangladesh e partes da China. O resultado é um fuso único no planeta.
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Brasil -->
+            <section class="artigo-secao" id="brasil">
+                <h2>6. E o Brasil, quantos fusos tem?</h2>
+                <p>
+                    O Brasil é o <strong>5º maior país do mundo</strong> em extensão territorial e, por isso, possui <strong>4 fusos horários oficiais</strong>:
+                </p>
+
+                <div class="ranking-lista">
+                    <div class="ranking-item">
+                        <div class="ranking-bandeira">🕓</div>
+                        <div class="ranking-info">
+                            <h4>UTC-2 — Fernando de Noronha</h4>
+                            <p>Arquipélago no Atlântico. Apenas o estado de Fernando de Noronha usa este fuso.</p>
+                        </div>
+                        <div class="ranking-fusos" style="font-size:0.85em">UTC-2</div>
+                    </div>
+                    <div class="ranking-item">
+                        <div class="ranking-bandeira">🕒</div>
+                        <div class="ranking-info">
+                            <h4>UTC-3 — Brasília (horário oficial)</h4>
+                            <p>A maior parte do país: Sudeste, Sul, Nordeste, Norte e Centro-Oeste (exceto estados do Mato Grosso e Amazonas).</p>
+                        </div>
+                        <div class="ranking-fusos" style="font-size:0.85em">UTC-3</div>
+                    </div>
+                    <div class="ranking-item">
+                        <div class="ranking-bandeira">🕑</div>
+                        <div class="ranking-info">
+                            <h4>UTC-4 — Amazonas e Mato Grosso</h4>
+                            <p>Estados do Amazonas, Rondônia, Roraima, Mato Grosso e Mato Grosso do Sul.</p>
+                        </div>
+                        <div class="ranking-fusos" style="font-size:0.85em">UTC-4</div>
+                    </div>
+                    <div class="ranking-item">
+                        <div class="ranking-bandeira">🕐</div>
+                        <div class="ranking-info">
+                            <h4>UTC-5 — Acre e parte do Amazonas</h4>
+                            <p>Estado do Acre e a parte mais ocidental do Amazonas, próxima ao Peru e Colômbia.</p>
+                        </div>
+                        <div class="ranking-fusos" style="font-size:0.85em">UTC-5</div>
+                    </div>
+                </div>
+
+                <div class="bloco-alerta" style="margin-top:16px">
+                    <i class="fas fa-info-circle"></i>
+                    <div class="bloco-alerta-txt">
+                        <strong>O Brasil aboliu o horário de verão em 2019.</strong> Desde então, os fusos são fixos durante o ano todo. Antes disso, estados das regiões Sul, Sudeste e Centro-Oeste adiantavam os relógios em 1 hora durante os meses de verão (outubro a fevereiro), criando temporariamente uma variação adicional nos fusos.
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. FAQ -->
+            <section class="artigo-secao" id="faq">
+                <h3>7. Perguntas frequentes ❓</h3>
+
+                <div class="faq-item">
+                    <div class="faq-pergunta">O que é exatamente o UTC e por que não se chama GMT? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">GMT (Greenwich Mean Time) é o horário solar médio do Meridiano de Greenwich, em Londres — definido astronomicamente. UTC (Tempo Universal Coordenado) é seu sucessor científico, definido por relógios atômicos de césio e ajustado periodicamente com "segundos bissextos" para se manter sincronizado com a rotação terrestre. Na prática cotidiana, a diferença entre GMT e UTC é inferior a 1 segundo, e os dois termos são usados como sinônimos no dia a dia.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta">A Antártida tem fuso horário oficial? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">Não tem um fuso único oficial. O continente é dividido entre reivindicações de 7 países, mas nenhuma dessas reivindicações é universalmente reconhecida. Na prática, cada estação de pesquisa usa o fuso horário do país que a mantém. A estação brasileira Comandante Ferraz, por exemplo, usa UTC-3 (horário de Brasília). A Estação McMurdo dos EUA usa UTC+13 (horário da Nova Zelândia, país de suporte logístico mais próximo).</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta">Por que a linha de data internacional tem "ziguezague"? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">A Linha Internacional de Data (IDL) fica aproximadamente no meridiano 180°, mas não é uma linha reta — ela desvia para não cortar países e ilhas ao meio. Kiribati, por exemplo, fez a linha desviar ao leste em 1994 para que todas as suas ilhas ficassem no mesmo dia do calendário. Samoa fez o desvio oposto em 2011, "pulando" um dia inteiro para se alinhar comercialmente com Austrália e Nova Zelândia.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta">Existe um lugar onde você pode estar em dois dias ao mesmo tempo? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">Sim! Na Linha Internacional de Data, na região do Oceano Pacífico, dois pontos extremamente próximos podem estar em dias diferentes. As Ilhas Diomede, no Estreito de Bering, são um exemplo famoso: a Ilha Grande Diomede (Rússia) e a Ilha Pequena Diomede (EUA) ficam a apenas 3,8 km de distância, mas têm uma diferença de 21 horas — e frequentemente estão em dias do calendário diferentes.</div>
+                </div>
+            </section>
+
+            <!-- Curiosidade extra -->
             <section class="artigo-secao curiosidade">
-                <h3>🚀 Curiosidade Extra:</h3>
+                <h3>🚀 Curiosidade Extra</h3>
                 <p>
-                    Você sabia que existem fusos "quebrados"? A Índia, por exemplo, usa o UTC+5:30, e o Nepal usa o UTC+5:45. 😲 Além disso, a Antártida não tem fusos oficiais; as estações de pesquisa simplesmente usam o fuso horário do país que as mantém.
+                    Em 2011, <strong>Samoa</strong> pulou literalmente um dia inteiro — o dia 30 de dezembro de 2011 nunca existiu no país. O governo decidiu mover Samoa para o lado oeste da Linha Internacional de Data para se alinhar com seus parceiros comerciais Austrália e Nova Zelândia. Um salmão que estava sendo pescado no dia 29 em Samoa já era do dia 31 quando chegou ao mercado neozelandês — no mesmo dia em que saiu das águas samoanas.
                 </p>
             </section>
 
+            <!-- Conclusão -->
             <section class="artigo-secao conclusao">
-                <h3>🎉 Conclusão:</h3>
+                <h3>Conclusão</h3>
                 <p>
-                    A campeã de fusos horários é a França, graças à sua herança histórica e territórios espalhados pelo mundo. Mais do que uma simples curiosidade geográfica, a forma como contamos as horas revela a influência da história, da política e da ciência na organização do nosso dia a dia global.
+                    Os fusos horários são muito mais do que uma divisão técnica do tempo — são reflexos de história, política, geografia e cultura. A França lidera o ranking graças ao legado colonial que espalhou seu território pelos oceanos. A China comprove cinco fusos em um só por decisão política. O Nepal adota um fuso único no planeta por questão de identidade. E o Brasil, com suas dimensões continentais, equilibra quatro fusos para conectar um país de proporções gigantescas. Cada vez que você ajusta o relógio ao viajar, está tocando numa herança de 4.000 anos de civilização humana tentando organizar o tempo.
                 </p>
             </section>
+
+            <!-- Referências -->
+            <div class="referencias">
+                <h4><i class="fas fa-book"></i> Fontes e referências</h4>
+                <ul>
+                    <li>Bartky, Ian R. <em>Selling the True Time: Nineteenth-Century Timekeeping in America</em>. Stanford University Press, 2000.</li>
+                    <li>Zerubavel, Eviatar. <em>The Seven Day Circle: The History and Meaning of the Week</em>. University of Chicago Press, 1989.</li>
+                    <li><a href="https://www.timeanddate.com/time/map/" target="_blank" rel="noopener noreferrer">TimeAndDate.com — Interactive Time Zone Map</a></li>
+                    <li><a href="https://www.britannica.com/science/time-zone" target="_blank" rel="noopener noreferrer">Encyclopaedia Britannica — "Time Zone"</a></li>
+                    <li><a href="https://www.bbc.com/future/article/20111227-the-day-that-samoa-lost" target="_blank" rel="noopener noreferrer">BBC Future — The day Samoa lost (sobre o pulo de dia em Samoa)</a></li>
+                    <li><a href="https://www.ibge.gov.br/explica/fusos-horarios.php" target="_blank" rel="noopener noreferrer">IBGE — Fusos Horários do Brasil</a></li>
+                </ul>
+            </div>
+
+            <!-- Navegação -->
+            <div class="artigo-nav">
+                <a href="artigo-dia-24h.html">
+                    <i class="fas fa-arrow-left"></i>
+                    <div>
+                        <span>Artigo anterior</span>
+                        Por que o dia tem 24 horas?
+                    </div>
+                </a>
+                <a href="artigo-relogio-pulso.html">
+                    <div style="text-align:right;flex:1">
+                        <span>Próximo artigo</span>
+                        Quem inventou o relógio de pulso?
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
 
         </article>
     </main>
@@ -122,8 +672,27 @@
         <div class="footer-content-wrapper">
             <p>&copy; 2025 AsHoras. Todos os direitos reservados.</p>
             <a href="../sobre.html" style="color:var(--cor-primaria);text-decoration:none;">Sobre</a> |
-                <a href="../privacidade.html" style="color:var(--cor-primaria);text-decoration:none;">Privacidade</a>
+            <a href="../privacidade.html" style="color:var(--cor-primaria);text-decoration:none;">Privacidade</a>
         </div>
     </footer>
+
+    <script>
+    document.querySelectorAll('.faq-pergunta').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var item = btn.closest('.faq-item');
+            var resp = item.querySelector('.faq-resposta');
+            var aberto = item.classList.contains('aberto');
+            document.querySelectorAll('.faq-item').forEach(function(i) {
+                i.classList.remove('aberto');
+                i.querySelector('.faq-resposta').classList.remove('aberta');
+            });
+            if (!aberto) {
+                item.classList.add('aberto');
+                resp.classList.add('aberta');
+            }
+        });
+    });
+    </script>
+    <script src="../sabia-theme-loader.js"></script>
 </body>
 </html>
