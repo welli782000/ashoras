@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -519,3 +520,526 @@
     <script src="../sabia-theme-loader.js"></script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Por que o dia tem 24 horas? — AsHoras</title>
+    <meta name="description" content="Descubra por que o dia tem exatamente 24 horas. Uma herança de 4.000 anos dos egípcios e babilônios que usamos até hoje. História, ciência e curiosidades!">
+    <meta name="keywords" content="por que o dia tem 24 horas, história do tempo, egípcios, babilônios, divisão do dia, sistema sexagesimal, clepsidra, relógio de sol">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../artigo.css">
+    <link rel="stylesheet" href="../artigo-theme.css">
+    <link rel="stylesheet" href="../vocesabia-theme-light.css" id="theme-light-sabia">
+    <link rel="stylesheet" href="../vocesabia-theme-dark.css" id="theme-dark-sabia" disabled>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3173930318511411" crossorigin="anonymous"></script>
+
+    <style>
+        .logo-img { height: 40px; width: auto; display: block; }
+        .logo { display: flex; align-items: center; }
+
+        /* ── Meta info ── */
+        .artigo-meta {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 0 0 28px 0;
+            padding: 12px 16px;
+            background: rgba(255,140,0,0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255,140,0,0.15);
+        }
+        .artigo-meta span { font-size: 0.82em; color: #aaa; display: flex; align-items: center; gap: 5px; }
+        .artigo-meta i { color: #FF8C00; }
+
+        /* ── Índice ── */
+        .artigo-indice {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,140,0,0.2);
+            border-left: 4px solid #FF8C00;
+            border-radius: 0 10px 10px 0;
+            padding: 18px 22px;
+            margin: 0 0 32px 0;
+        }
+        .artigo-indice h4 { font-size: 0.88em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #FF8C00; margin-bottom: 10px; }
+        .artigo-indice ol { padding-left: 18px; margin: 0; }
+        .artigo-indice ol li { font-size: 0.88em; color: #bbb; margin-bottom: 5px; line-height: 1.5; }
+        .artigo-indice ol li a { color: inherit; text-decoration: none; transition: color 0.15s; }
+        .artigo-indice ol li a:hover { color: #FF8C00; }
+
+        /* ── Caixa de dado destaque ── */
+        .dado-destaque {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: rgba(255,140,0,0.06);
+            border: 1px solid rgba(255,140,0,0.2);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin: 20px 0;
+        }
+        .dado-destaque-num { font-size: 2.2em; font-weight: 800; color: #FF8C00; line-height: 1; flex-shrink: 0; }
+        .dado-destaque-txt { font-size: 0.9em; color: #ddd; line-height: 1.6; }
+        .dado-destaque-txt strong { color: #fff; }
+
+        /* ── Linha do tempo ── */
+        .timeline { margin: 20px 0; display: flex; flex-direction: column; }
+        .timeline-item { display: flex; gap: 16px; position: relative; padding-bottom: 22px; }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 40px; }
+        .timeline-dot { width: 36px; height: 36px; background: #FF8C00; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.8em; font-weight: 700; flex-shrink: 0; z-index: 1; }
+        .timeline-linha { width: 2px; flex: 1; background: rgba(255,140,0,0.2); margin-top: 4px; }
+        .timeline-item:last-child .timeline-linha { display: none; }
+        .timeline-content { padding-top: 6px; }
+        .timeline-ano { font-size: 0.75em; font-weight: 700; color: #FF8C00; margin-bottom: 3px; }
+        .timeline-content p { font-size: 0.88em; color: #ffffff !important; line-height: 1.6; margin: 0; }
+        .timeline-content p strong { color: #ffffff !important; }
+
+        /* ── Grid de comparação civilizações ── */
+        .civ-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin: 20px 0;
+        }
+        .civ-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,140,0,0.15);
+            border-radius: 10px;
+            padding: 18px 14px;
+            text-align: center;
+            transition: border-color 0.15s, transform 0.15s;
+        }
+        .civ-card:hover { border-color: rgba(255,140,0,0.4); transform: translateY(-2px); }
+        .civ-card .civ-emoji { font-size: 2em; margin-bottom: 8px; display: block; }
+        .civ-card h4 { font-size: 0.85em; font-weight: 700; color: #fff; margin-bottom: 6px; }
+        .civ-card p { font-size: 0.78em; color: #ccc; line-height: 1.5; margin: 0; }
+        .civ-card .civ-tag { display: inline-block; margin-top: 8px; background: rgba(255,140,0,0.12); color: #FF8C00; border: 1px solid rgba(255,140,0,0.25); border-radius: 20px; font-size: 0.72em; padding: 2px 10px; }
+
+        /* ── Bloco de curiosidade visual ── */
+        .curiosidade-visual {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin: 20px 0;
+        }
+        .curiosidade-visual .cv-num { font-size: 3em; font-weight: 800; color: #FF8C00; line-height: 1; flex-shrink: 0; }
+        .curiosidade-visual .cv-txt { font-size: 0.88em; color: #ddd; line-height: 1.6; }
+        .curiosidade-visual .cv-txt strong { color: #fff; }
+
+        /* ── FAQ ── */
+        .faq-item { border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+        .faq-pergunta { padding: 14px 18px; font-size: 0.9em; font-weight: 600; color: #fff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); user-select: none; }
+        .faq-pergunta:hover { background: rgba(255,140,0,0.06); }
+        .faq-pergunta i { color: #FF8C00; font-size: 0.85em; transition: transform 0.2s; }
+        .faq-resposta { display: none; padding: 0 18px 14px; font-size: 0.87em; color: #ccc; line-height: 1.6; background: rgba(255,255,255,0.03); }
+        .faq-resposta.aberta { display: block; }
+        .faq-item.aberto .faq-pergunta i { transform: rotate(180deg); }
+
+        /* ── Referências ── */
+        .referencias {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin-top: 28px;
+        }
+        .referencias h4 { font-size: 0.85em; font-weight: 700; color: #FF8C00; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+        .referencias ul { padding-left: 18px; margin: 0; }
+        .referencias ul li { font-size: 0.8em; color: #aaa; margin-bottom: 6px; line-height: 1.5; }
+        .referencias ul li a { color: #FF8C00; text-decoration: none; }
+        .referencias ul li a:hover { text-decoration: underline; }
+
+        /* ── Navegação entre artigos ── */
+        .artigo-nav { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+        .artigo-nav a { flex: 1; min-width: 200px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,140,0,0.2); border-radius: 10px; padding: 14px 18px; text-decoration: none; color: #fff; font-size: 0.87em; transition: border-color 0.15s, background 0.15s; display: flex; align-items: center; gap: 10px; }
+        .artigo-nav a:hover { border-color: #FF8C00; background: rgba(255,140,0,0.06); }
+        .artigo-nav a i { color: #FF8C00; font-size: 1.1em; flex-shrink: 0; }
+        .artigo-nav a span { font-size: 0.78em; color: #aaa; display: block; }
+
+        /* Tema claro/escuro deste artigo agora vem do artigo-theme.css (compartilhado) */
+
+        @media (max-width: 540px) {
+            .civ-grid { grid-template-columns: 1fr 1fr; }
+            .curiosidade-visual { flex-direction: column; text-align: center; }
+        }
+    </style>
+
+    <script>
+      (function() {
+        try {
+          var theme = localStorage.getItem('sabiaTheme') || 'theme-light-sabia';
+          document.documentElement.className = theme;
+        } catch(e) {}
+      })();
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content-wrapper">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../ashoras-removebg-preview.png" alt="AsHoras logo" class="logo-img">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <a href="../vocesabia.html" class="active">Você Sabia?</a>
+                <a href="../sobre.html">Sobre</a>
+                <a href="../privacidade.html">Privacidade</a>
+            </nav>
+        </div>
+    </header>
+    <div class="theme-switcher-sabia">
+        <span id="light-theme-btn" class="theme-icon active" title="Tema Claro"><i class="fas fa-sun"></i></span>
+        <span id="dark-theme-btn" class="theme-icon" title="Tema Escuro"><i class="fas fa-moon"></i></span>
+    </div>
+
+    <main class="main-application-area">
+        <article class="artigo-container">
+
+            <h1>Por que o dia tem 24 horas?</h1>
+
+            <!-- Meta info -->
+            <div class="artigo-meta">
+                <span><i class="fas fa-clock"></i> Leitura: 6 minutos</span>
+                <span><i class="fas fa-tag"></i> Categoria: História & Ciência</span>
+                <span><i class="fas fa-calendar-alt"></i> Atualizado em 2025</span>
+                <span><i class="fas fa-graduation-cap"></i> Nível: Iniciante</span>
+            </div>
+
+            <p class="intro">
+                Já parou para pensar por que o dia tem exatamente 24 horas — e não 10, 20 ou 100? Essa escolha não foi aleatória. Ela é o resultado de milhares de anos de observação astronômica, matemática e cultura, herdada de civilizações que floresceram às margens do Nilo e entre os rios Tigre e Eufrates. Vamos descobrir essa fascinante história juntos.
+            </p>
+
+            <!-- Índice -->
+            <div class="artigo-indice">
+                <h4><i class="fas fa-list"></i> &nbsp;Neste artigo</h4>
+                <ol>
+                    <li><a href="#egito">Os egípcios e a divisão do dia</a></li>
+                    <li><a href="#numero12">Por que o número 12?</a></li>
+                    <li><a href="#babilonios">A contribuição dos babilônios</a></li>
+                    <li><a href="#civilizacoes">Como outras civilizações mediam o tempo</a></li>
+                    <li><a href="#linha-do-tempo">Linha do tempo: do Egito ao relógio moderno</a></li>
+                    <li><a href="#hoje">Por que mantemos 24 horas até hoje?</a></li>
+                    <li><a href="#faq">Perguntas frequentes</a></li>
+                </ol>
+            </div>
+
+            <!-- 1. Egito -->
+            <section class="artigo-secao" id="egito">
+                <h2>1. Os egípcios e a divisão do dia</h2>
+                <div class="imagem-container anim-float">
+                    <img src="../img_artigos/egito.jpg" alt="Egípcio observando o céu" class="artigo-imagem">
+                </div>
+                <p>
+                    Há mais de <strong>4.000 anos</strong>, os egípcios do Antigo Egito eram mestres em observar o céu. Para organizar sua vida agrícola, religiosa e administrativa, eles precisavam de um sistema de medição do tempo confiável. A solução foi dividir o período de luz solar em <strong>12 partes iguais</strong>, usando instrumentos chamados <strong>relógios de sol</strong> (ou gnômons) — hastes verticais que mediam o tempo pela posição da sombra projetada pelo sol.
+                </p>
+                <p>
+                    Para as noites, usavam a posição das estrelas no céu. Identificaram um conjunto de <strong>36 grupos de estrelas</strong> chamados <em>decanos</em> — constelações que surgiam no horizonte a cada 10 dias. Nas noites de 12 horas, 12 desses decanos se sucediam, marcando as 12 horas noturnas. Assim surgiu a divisão natural do dia completo em <strong>24 partes</strong>.
+                </p>
+                <p>
+                    Além dos relógios de sol, os egípcios desenvolveram a <strong>clepsidra</strong> — um relógio d'água que media o tempo pelo escoamento de líquido de um recipiente para outro. Esse instrumento era essencial nos dias nublados ou durante a noite, quando o sol e as estrelas não podiam ser observados.
+                </p>
+
+                <div class="dado-destaque">
+                    <div class="dado-destaque-num">4.000</div>
+                    <div class="dado-destaque-txt">
+                        <strong>Anos atrás</strong>, os egípcios já dividiam o dia em 12 horas de luz e 12 horas de escuridão. Essa herança atravessou milênios e chegou até o seu celular, relógio e todos os sistemas de tempo modernos.
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Número 12 -->
+            <section class="artigo-secao" id="numero12">
+                <h2>2. Por que o número 12?</h2>
+                <div class="imagem-container anim-fade-in">
+                    <img src="../img_artigos/dedos.jpg" alt="Mãos contando as falanges dos dedos" class="artigo-imagem">
+                </div>
+                <p>
+                    A escolha do 12 não foi por acaso — ela tem uma explicação prática e engenhosa. Os egípcios usavam o <strong>polegar da mão</strong> para contar as falanges (as juntas) dos outros quatro dedos. Cada dedo tem 3 falanges, e com 4 dedos, o total é exatamente <strong>12</strong>. Isso permitia contar até 12 em uma só mão, sem usar papel ou outro instrumento.
+                </p>
+
+                <div class="curiosidade-visual">
+                    <div class="cv-num">3×4</div>
+                    <div class="cv-txt">
+                        <strong>3 falanges por dedo × 4 dedos = 12</strong><br>
+                        Esse método de contagem com o polegar era tão prático e eficiente que influenciou toda a matemática do Antigo Egito — e, por consequência, nossa divisão do tempo até hoje.
+                    </div>
+                </div>
+
+                <p>
+                    Além disso, o número 12 tem uma propriedade matemática especial: ele pode ser dividido exatamente por 1, 2, 3, 4, 6 e 12 — <strong>seis divisores</strong> diferentes. Isso o torna muito mais flexível para cálculos do que o número 10, que só tem quatro divisores (1, 2, 5 e 10). Por esse motivo, o 12 era considerado um número sagrado e muito prático pelas civilizações antigas.
+                </p>
+            </section>
+
+            <!-- 3. Babilônios -->
+            <section class="artigo-secao" id="babilonios">
+                <h2>3. A contribuição dos babilônios</h2>
+                <div class="imagem-container anim-twinkle">
+                    <img src="../img_artigos/babilonia.jpg" alt="Céu estrelado com constelações babilônicas" class="artigo-imagem">
+                </div>
+                <p>
+                    Enquanto os egípcios definiam as horas, os <strong>babilônios</strong> — civilização que floresceu entre os rios Tigre e Eufrates, na atual região do Iraque — contribuíram com outro ingrediente fundamental: o <strong>sistema sexagesimal</strong>, baseado no número 60.
+                </p>
+                <p>
+                    Eles perceberam que 60 é divisível por 1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30 e 60 — incríveis <strong>12 divisores</strong>. Isso tornava as divisões e cálculos muito mais simples. Aplicaram esse sistema à astronomia, à geometria (daí os 360 graus do círculo, que é 6 × 60) e ao tempo. É por isso que uma hora tem <strong>60 minutos</strong> e um minuto tem <strong>60 segundos</strong>.
+                </p>
+
+                <div class="dado-destaque">
+                    <div class="dado-destaque-num">60</div>
+                    <div class="dado-destaque-txt">
+                        <strong>Divisores do número 60:</strong> 1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30 e 60. São 12 divisores no total — muito mais versátil que o sistema decimal para fracionar o tempo em partes iguais e precisas.
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Civilizações -->
+            <section class="artigo-secao" id="civilizacoes">
+                <h2>4. Como outras civilizações mediam o tempo</h2>
+                <p>Os egípcios e babilônios não foram os únicos. Veja como outras grandes civilizações organizavam o tempo:</p>
+
+                <div class="civ-grid">
+                    <div class="civ-card">
+                        <span class="civ-emoji">🏛️</span>
+                        <h4>Egípcios</h4>
+                        <p>Dividiram o dia em 12 horas de luz e 12 de escuridão usando relógios de sol e estrelas.</p>
+                        <span class="civ-tag">~2.000 a.C.</span>
+                    </div>
+                    <div class="civ-card">
+                        <span class="civ-emoji">⭐</span>
+                        <h4>Babilônios</h4>
+                        <p>Criaram o sistema de 60 minutos e 60 segundos. Inventores do sistema sexagesimal.</p>
+                        <span class="civ-tag">~1.800 a.C.</span>
+                    </div>
+                    <div class="civ-card">
+                        <span class="civ-emoji">🏺</span>
+                        <h4>Gregos</h4>
+                        <p>Refinaram os calendários e introduziram horas de tamanho fixo, independente da estação do ano.</p>
+                        <span class="civ-tag">~300 a.C.</span>
+                    </div>
+                    <div class="civ-card">
+                        <span class="civ-emoji">🦅</span>
+                        <h4>Romanos</h4>
+                        <p>Adotaram o sistema egípcio-grego e o espalharam por toda a Europa através do Império Romano.</p>
+                        <span class="civ-tag">~100 d.C.</span>
+                    </div>
+                    <div class="civ-card">
+                        <span class="civ-emoji">☯️</span>
+                        <h4>Chineses</h4>
+                        <p>Usavam 12 períodos de 2 horas cada (chamados "shi"), baseados nos 12 ramos terrestres.</p>
+                        <span class="civ-tag">~1.000 a.C.</span>
+                    </div>
+                    <div class="civ-card">
+                        <span class="civ-emoji">🌙</span>
+                        <h4>Árabes</h4>
+                        <p>Preservaram e refinaram o conhecimento astronômico durante a Idade Média, transmitindo-o à Europa.</p>
+                        <span class="civ-tag">~800 d.C.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Linha do tempo -->
+            <section class="artigo-secao" id="linha-do-tempo">
+                <h2>5. Linha do tempo: do Egito ao relógio moderno</h2>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">1</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">~2.000 a.C.</div>
+                            <p>Egípcios dividem o dia em <strong>12 horas de luz</strong> e <strong>12 horas de escuridão</strong> usando gnômons (relógios de sol) e a posição dos decanos no céu noturno.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">2</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">~1.800 a.C.</div>
+                            <p>Babilônios desenvolvem o <strong>sistema sexagesimal</strong> (base 60) e aplicam à astronomia e à medição do tempo, criando os 60 minutos e 60 segundos.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">3</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">~127 d.C.</div>
+                            <p>O astrônomo grego <strong>Ptolomeu</strong> formaliza o sistema de 24 horas fixas por dia em sua obra <em>Almagesto</em>, padronizando a medição do tempo no mundo mediterrâneo.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">4</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">Século XIV</div>
+                            <p>Os primeiros <strong>relógios mecânicos</strong> com mostrador de 24 horas aparecem nas torres das cidades europeias, tornando o sistema de 24 horas visível e acessível à população.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">5</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">1884</div>
+                            <p>A <strong>Conferência Internacional do Meridiano</strong> em Washington padroniza o sistema de 24 fusos horários ao redor do globo, consolidando definitivamente as 24 horas como padrão mundial.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="timeline-dot">6</div>
+                            <div class="timeline-linha"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-ano">Hoje</div>
+                            <p>Relógios atômicos de césio definem o segundo com precisão de bilionésimos, mas o dia continua dividido em <strong>24 horas</strong> — exatamente como os egípcios definiram há 4.000 anos.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Por que mantemos -->
+            <section class="artigo-secao" id="hoje">
+                <h2>6. Por que mantemos 24 horas até hoje?</h2>
+                <p>
+                    Com todo o avanço tecnológico, por que nunca mudamos para um sistema decimal — como 10 ou 100 horas por dia? A resposta envolve <strong>praticidade, compatibilidade e custo</strong>.
+                </p>
+
+                <div class="curiosidade-visual">
+                    <div class="cv-num">🇫🇷</div>
+                    <div class="cv-txt">
+                        <strong>A França tentou mudar em 1793!</strong> Durante a Revolução Francesa, o governo criou o <em>Tempo Decimal Republicano</em>: dias com 10 horas, cada hora com 100 minutos e cada minuto com 100 segundos. O experimento durou apenas 17 meses — a população simplesmente não conseguiu se adaptar e o sistema foi abandonado em 1795.
+                    </div>
+                </div>
+
+                <p>
+                    O sistema de 24 horas está profundamente integrado a toda a infraestrutura global: <strong>fusos horários</strong>, <strong>satélites GPS</strong>, <strong>sistemas bancários</strong>, <strong>aviação</strong>, <strong>medicina</strong> e qualquer tecnologia que dependa de horários. Mudar seria exigir a reprogramação de bilhões de dispositivos e a reeducação de toda a humanidade — um custo impraticável para qualquer benefício que um novo sistema pudesse trazer.
+                </p>
+
+                <div class="dado-destaque">
+                    <div class="dado-destaque-num">24</div>
+                    <div class="dado-destaque-txt">
+                        <strong>Horas é o número perfeito.</strong> Ele é divisível por 1, 2, 3, 4, 6, 8, 12 e 24 — oito divisores. Isso permite dividir o dia facilmente em meio dia (12h), terços (8h), quartos (6h) e sextos (4h), tornando o planejamento do tempo extremamente prático.
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. FAQ -->
+            <section class="artigo-secao" id="faq">
+                <h3>7. Perguntas frequentes ❓</h3>
+
+                <div class="faq-item">
+                    <div class="faq-pergunta">O dia sempre teve exatamente 24 horas? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">Não! Há 1,4 bilhão de anos, um dia na Terra durava apenas 18 horas. A rotação do planeta está desacelerando gradualmente por causa da força gravitacional da Lua. Daqui a milhões de anos, o dia poderá ter 25 ou 26 horas. Por isso, a definição científica do segundo foi desacoplada da rotação terrestre e passou a ser baseada nas vibrações do átomo de césio.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta">Por que usamos AM e PM se temos 24 horas? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">O formato de 12 horas com AM (Ante Meridiem — antes do meio-dia) e PM (Post Meridiem — após o meio-dia) foi herdado diretamente da divisão egípcia original: 12 horas de dia e 12 de noite. O formato de 24 horas (como 13:00 em vez de 1 PM) é mais usado em contextos militares, aviação, medicina e países europeus para evitar ambiguidade.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta">Outros planetas também têm "24 horas"? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">Não. O "dia" em outros planetas varia muito. Marte tem um dia de aproximadamente 24 horas e 37 minutos — próximo ao da Terra. Já Vênus tem um dia de 243 dias terrestres (e gira no sentido inverso!). Júpiter tem o dia mais curto do sistema solar: apenas 10 horas. O conceito de "24 horas" é exclusivo da Terra.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-pergunta">A hora sempre teve o mesmo tamanho ao longo da história? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-resposta">Não! Durante séculos, as horas eram "sazonais" — variavam de tamanho dependendo da estação. No verão, as horas do dia eram mais longas e as da noite mais curtas. As horas de tamanho fixo (como usamos hoje) só se tornaram padrão com a invenção dos relógios mecânicos no século XIV, que não conseguiam ajustar automaticamente o tamanho das horas conforme as estações.</div>
+                </div>
+            </section>
+
+            <!-- Curiosidade extra -->
+            <section class="artigo-secao curiosidade">
+                <h3>🌟 Curiosidade Extra</h3>
+                <p>
+                    Sabia que a NASA usa um sistema especial para Marte? Como o dia marciano dura 24h 37min, os cientistas que controlam os rovers usam o <strong>"Sol"</strong> como unidade — um Sol marciano. Os funcionários da NASA chegam a ajustar seus relógios e rotinas de vida para o tempo de Marte durante as missões, deslocando seu sono e alimentação cerca de 37 minutos a cada dia.
+                </p>
+            </section>
+
+            <!-- Conclusão -->
+            <section class="artigo-secao conclusao">
+                <h3>Conclusão</h3>
+                <p>
+                    O nosso dia tem 24 horas graças a uma cadeia de descobertas e heranças que atravessou milênios: os egípcios que contavam estrelas e falanges dos dedos, os babilônios que amavam o número 60, os gregos que formalizaram o sistema e os romanos que o espalharam pelo mundo. Cada vez que você olha para o relógio, está usando uma tecnologia com mais de 4.000 anos de história — e que, apesar de toda a evolução tecnológica, permanece exatamente como foi concebida às margens do Nilo.
+                </p>
+            </section>
+
+            <!-- Referências -->
+            <div class="referencias">
+                <h4><i class="fas fa-book"></i> Fontes e referências</h4>
+                <ul>
+                    <li>Barnett, Jo Ellen. <em>Time's Pendulum: The Quest to Capture Time</em>. Plenum Press, 1998.</li>
+                    <li>Duncan, David Ewing. <em>Calendar: Humanity's Epic Struggle to Determine a True and Accurate Year</em>. Avon Books, 1998.</li>
+                    <li><a href="https://www.britannica.com/science/time" target="_blank" rel="noopener noreferrer">Encyclopaedia Britannica — "Time"</a></li>
+                    <li><a href="https://www.timeanddate.com/time/earth-rotation.html" target="_blank" rel="noopener noreferrer">History.com — Why Are There 24 Hours in a Day?</a></li>
+                    <li><a href="https://science.nasa.gov/mars/facts/" target="_blank" rel="noopener noreferrer">NASA — Mars Facts (dia marciano)</a></li>
+                    <li>Stephenson, F.R. <em>Historical Eclipses and Earth's Rotation</em>. Cambridge University Press, 1997.</li>
+                </ul>
+            </div>
+
+            <!-- Navegação -->
+            <div class="artigo-nav">
+                <a href="artigo-relogio-pulso.html">
+                    <i class="fas fa-arrow-right"></i>
+                    <div>
+                        <span>Próximo artigo</span>
+                        Quem inventou o relógio de pulso?
+                    </div>
+                </a>
+                <a href="artigo-atomico.html">
+                    <div style="text-align:right;flex:1">
+                        <span>Leia também</span>
+                        Como funcionam os relógios atômicos?
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content-wrapper">
+            <p>&copy; 2025 AsHoras. Todos os direitos reservados.</p>
+            <a href="../sobre.html" style="color:var(--cor-primaria);text-decoration:none;">Sobre</a> |
+            <a href="../privacidade.html" style="color:var(--cor-primaria);text-decoration:none;">Privacidade</a>
+        </div>
+    </footer>
+
+    <script>
+    /* FAQ toggle */
+    document.querySelectorAll('.faq-pergunta').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var item = btn.closest('.faq-item');
+            var resp = item.querySelector('.faq-resposta');
+            var aberto = item.classList.contains('aberto');
+            document.querySelectorAll('.faq-item').forEach(function(i) {
+                i.classList.remove('aberto');
+                i.querySelector('.faq-resposta').classList.remove('aberta');
+            });
+            if (!aberto) {
+                item.classList.add('aberto');
+                resp.classList.add('aberta');
+            }
+        });
+    });
+    </script>
+    <script src="../sabia-theme-loader.js"></script>
+</body>
+</html>
+>>>>>>> 0ea1e78a81a6a87b11198b882a4b54c672ff756b
