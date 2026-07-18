@@ -1,0 +1,116 @@
+/* ============================================================
+   sabia-teaser.css — AsHoras
+   Carrossel fininho na home, puxando os cards do "Você Sabia?"
+   pra dar vida à página e sinalizar que essa seção existe.
+   ============================================================ */
+
+.sabia-teaser {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin: 0 0 26px;
+}
+
+.sabia-teaser-seta {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--cor-superficie, #fff);
+    border: 1px solid var(--cor-borda-geral, #e2e4e8);
+    color: var(--cor-texto-secundario);
+    font-size: 0.85em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transicao-padrao, 0.2s);
+}
+.sabia-teaser-seta:hover {
+    border-color: var(--cor-primaria, #FF8C00);
+    color: var(--cor-primaria, #FF8C00);
+}
+
+.sabia-teaser-conteudo {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+    background: var(--cor-superficie, #fff);
+    border: 1px solid var(--cor-borda-geral, #e2e4e8);
+    border-radius: 12px;
+    padding: 12px 18px 12px 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s, transform 0.2s;
+    animation: sabiaTeaserFade 0.4s ease;
+}
+.sabia-teaser-conteudo:hover {
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    transform: translateY(-1px);
+}
+
+@keyframes sabiaTeaserFade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.sabia-teaser-img {
+    width: 96px;
+    height: 64px;
+    border-radius: 10px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.sabia-teaser-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+    flex: 1;
+}
+
+.sabia-teaser-tag {
+    font-size: 0.75em;
+    font-weight: 700;
+    color: var(--cor-primaria, #FF8C00);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.sabia-teaser-titulo {
+    font-size: 0.98em;
+    font-weight: 600;
+    color: var(--cor-texto-principal);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sabia-teaser-saiba {
+    flex-shrink: 0;
+    font-size: 0.85em;
+    font-weight: 700;
+    color: var(--cor-primaria, #FF8C00);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+.sabia-teaser-conteudo:hover .sabia-teaser-saiba i { transform: translateX(2px); }
+.sabia-teaser-saiba i { transition: transform 0.2s; }
+
+@media (max-width: 560px) {
+    .sabia-teaser-saiba span { display: none; }
+    .sabia-teaser-tag { display: none; }
+    .sabia-teaser-img { width: 76px; height: 52px; }
+}
+
+@media (max-width: 420px) {
+    .sabia-teaser-titulo { font-size: 0.86em; }
+    .sabia-teaser-img { width: 64px; height: 46px; }
+}

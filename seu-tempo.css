@@ -97,7 +97,7 @@
 .st-campo { display: flex; flex-direction: column; gap: 6px; }
 .st-campo label { font-size: .85em; color: var(--cor-texto-secundario); font-weight: 600; }
 .st-campo input, .st-campo select {
-    background: var(--cor-fundo, #f5f5f7);
+    background: var(--cor-input-fundo, #f5f5f7);
     border: 1px solid var(--cor-borda-geral);
     border-radius: var(--radius-padrao-menor, 6px);
     padding: 10px 12px;
@@ -134,7 +134,7 @@
 .st-atividade-input { display: flex; flex-direction: column; gap: 4px; }
 .st-atividade-input label { font-size: .8em; color: var(--cor-texto-secundario); display: flex; align-items: center; gap: 5px; }
 .st-atividade-input input {
-    background: var(--cor-fundo, #f5f5f7);
+    background: var(--cor-input-fundo, #f5f5f7);
     border: 1px solid var(--cor-borda-geral);
     border-radius: var(--radius-padrao-menor, 6px);
     padding: 8px 10px;
@@ -155,7 +155,7 @@
     margin-top: 2px;
 }
 .st-atividade-anos-input {
-    background: var(--cor-fundo, #f5f5f7);
+    background: var(--cor-input-fundo, #f5f5f7);
     border: 1px dashed var(--cor-borda-geral);
     border-radius: var(--radius-padrao-menor, 6px);
     padding: 7px 10px;
@@ -319,7 +319,7 @@
 .st-status-linha {
     display: flex; align-items: center; gap: 12px;
     padding: 10px 14px;
-    background: var(--cor-fundo, #f5f5f7);
+    background: var(--cor-input-fundo, #f5f5f7);
     border-radius: var(--radius-padrao-menor, 6px);
     flex-wrap: wrap;
 }

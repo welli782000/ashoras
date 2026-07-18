@@ -490,6 +490,9 @@ label { margin-bottom: 5px; display: inline-block; color: var(--cor-texto-secund
 .calendar-dates-grid .event-holiday { background-color: var(--cor-secundaria); color: var(--cor-texto-botao); font-weight: 600; }
 .calendar-dates-grid .today.event-holiday { background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria)); box-shadow: 0 0 0 3px rgba(var(--cor-primaria-rgb),0.35); }
 .calendar-dates-grid .event-important { border: 2px solid var(--cor-destaque-vermelho); color: var(--cor-destaque-vermelho); }
+.calendar-dates-grid .event-comemorativa { position: relative; }
+.calendar-dates-grid .event-comemorativa::after { content: ""; position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); width: 5px; height: 5px; border-radius: 50%; background-color: var(--cor-primaria); opacity: 0.7; }
+.calendar-dates-grid .today.event-comemorativa::after { background-color: var(--cor-texto-botao); }
 .calendar-event-tooltip { position: fixed; background-color: var(--cor-header-footer-bg); color: var(--cor-texto-principal); padding: 6px 12px; border-radius: 6px; font-size: 0.85em; z-index: 9999; pointer-events: none; white-space: nowrap; box-shadow: 0 4px 16px rgba(0,0,0,0.3); border: 1px solid rgba(var(--cor-primaria-rgb),0.2); }
 
 /* Legenda */
@@ -498,6 +501,7 @@ label { margin-bottom: 5px; display: inline-block; color: var(--cor-texto-secund
 .legend-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
 .legend-today   { background-color: var(--cor-primaria); }
 .legend-holiday { background-color: var(--cor-secundaria); }
+.legend-comemorativa { width: 6px; height: 6px; background-color: var(--cor-primaria); opacity: 0.7; }
 
 /* =========================================
    CALENDÁRIO — Modo Tela Cheia
