@@ -107,9 +107,21 @@
 .sabia-teaser-saiba i { transition: transform 0.2s; }
 
 @media (max-width: 560px) {
-    .sabia-teaser-saiba span { display: none; }
+    .sabia-teaser {
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 10px;
+    }
+    .sabia-teaser-conteudo {
+        order: 1;
+        flex-basis: 100%;
+        width: 100%;
+        gap: 12px;
+    }
+    .sabia-teaser-seta--prev { order: 2; }
+    .sabia-teaser-seta--next { order: 3; }
+    .sabia-teaser-saiba i { display: none; }
     .sabia-teaser-tag { display: none; }
-    .sabia-teaser-conteudo { gap: 12px; }
     .sabia-teaser-img { width: 110px; height: 76px; }
 }
 
