@@ -1121,3 +1121,18 @@ body.theme-dark #calendar-fullscreen-overlay {
     margin-bottom: 0;
     text-align: center;
 }
+
+/* ── Profundidade dos campos de cidade no tema claro (mobile) ──
+   No tema claro, em telas de celular, os campos de texto do
+   Conversor de Fuso Horário e da busca de "Horas pelo Mundo"
+   ficavam quase brancos em cima do fundo branco, sem contraste.
+   Só nesses dois campos, só no tema claro, só no mobile: fundo e
+   borda um pouco mais escuros, pra dar profundidade visual. */
+@media (max-width: 768px) {
+    body.theme-google-pro .input-box input,
+    body.theme-google-pro #city-search-input {
+        background-color: #E1E4E8;
+        border-color: #B0B6BC;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+}

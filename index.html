@@ -714,11 +714,11 @@
                                 <span class="pip-icon">📋</span>
                                 <strong class="pip-title">Como funciona a Agenda Diária</strong>
                             </div>
-                            <p class="pip-text">A Agenda Diária salva suas tarefas diretamente na <strong>memória do navegador</strong>. Tudo fica guardado no seu dispositivo.</p>
+                            <p class="pip-text">A Agenda Diária salva suas tarefas na sua <strong>conta Google</strong>, disponíveis em qualquer navegador ou dispositivo.</p>
                             <div class="pip-steps">
                                 <div class="pip-step"><span class="pip-step-num">📌</span><span>As tarefas <strong>persistem a semana toda</strong> — feche e abra o navegador à vontade</span></div>
                                 <div class="pip-step"><span class="pip-step-num">📌</span><span>Toda <strong>segunda-feira</strong> a agenda é limpa automaticamente para a nova semana e uma mensagem de confirmação vai ativar. Se desejar importar as mensagens em abertas da sexta - feira<strong>, se sim essas mensagem serão importadas para segunda - se não começa a semana com tudo zerado, importe as tarefas abertas do dia anterior para o dia atual </strong></span></div>
-                                <div class="pip-step"><span class="pip-step-num">📌</span><span>Entre com sua conta <strong>Google</strong> (botão logo abaixo) para sincronizar suas tarefas entre navegadores e dispositivos diferentes</span></div>
+                                <div class="pip-step"><span class="pip-step-num">📌</span><span>Entre com sua conta <strong>Google</strong> para usar a Agenda Diária — assim tudo fica sincronizado entre seus dispositivos</span></div>
                                 </div>
                             <div class="pip-who">
                                 <span class="pip-who-tag"><i class="fas fa-user-graduate"></i> Estudantes</span>
@@ -728,20 +728,24 @@
                             <p class="pip-benefit">💡 Use junto com o <strong>Pomodoro</strong> para organizar suas tarefas e controlar o tempo de cada uma.</p>
                         </div>
 
-                        <!-- Sincronização com Google (opcional) -->
-                        <div id="ag-sync-bar" class="ag-sync-bar">
-                            <span id="ag-sync-info" class="ag-sync-info">
-                                <i class="fas fa-cloud"></i> Sincronize suas tarefas entre dispositivos
-                            </span>
-                            <button id="ag-btn-sync-google" class="ag-btn-sync-google" type="button">
+                        <!-- Login obrigatório com Google -->
+                        <div id="ag-login-wrap" class="lb-login-wrap">
+                            <div class="lb-login-icon"><i class="fas fa-clipboard-list"></i></div>
+                            <p>Entre com sua conta Google para criar e acessar sua Agenda Diária em qualquer dispositivo.</p>
+                            <button id="ag-btn-google" class="lb-btn-google" type="button">
                                 <img src="https://www.google.com/favicon.ico" alt=""> Entrar com Google
                             </button>
-                            <span id="ag-sync-logado" class="ag-sync-logado" style="display:none;">
-                                <img id="ag-sync-foto" src="" alt="">
-                                <span id="ag-sync-nome">—</span>
-                                <button id="ag-btn-sync-logout" class="ag-btn-sync-logout" type="button">Sair</button>
-                            </span>
                         </div>
+
+                        <div id="ag-app-wrap" style="display:none;">
+                            <div class="lb-user-bar">
+                                <div class="lb-user-info">
+                                    <img id="ag-user-foto" src="" alt="">
+                                    <span id="ag-user-nome">—</span>
+                                </div>
+                                <button id="ag-btn-logout" class="lb-btn-logout" type="button">Sair</button>
+                            </div>
+
 
                         <!-- Navegação dos dias -->
                         <div class="agenda-dias-nav">
@@ -805,6 +809,8 @@
                             <span class="agenda-reset-info">
                                 <i class="fas fa-sync-alt"></i> limpa na segunda
                             </span>
+                        </div>
+
                         </div>
 
                     </div>
@@ -1096,7 +1102,7 @@
                 <span id="fcs-m1" class="digit">0</span><span id="fcs-m2" class="digit">0</span>
             </div>
         </div>
-        <div class="screensaver-exit-message">Mova o mouse, toque na tela ou pressione uma tecla para sair</div>
+        <div class="screensaver-exit-message">Mova o mouse, toque duas vezes na tela ou pressione uma tecla para sair</div>
         <div id="screensaver-date" class="screensaver-date"></div>
     </div>
 
