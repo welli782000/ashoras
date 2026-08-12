@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relógio de Sol: a primeira máquina do tempo da humanidade | AsHoras</title>
+    <meta name="description" content="Como o relógio de sol nasceu no Egito Antigo, como funciona o gnômon e por que essa invenção de milhares de anos ainda fascina hoje.">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../vocesabia-theme-light.css" id="theme-light-sabia">
+    <link rel="stylesheet" href="../vocesabia-theme-dark.css" id="theme-dark-sabia" disabled>
+    <link rel="stylesheet" href="../vocesabia.css">
+    <link rel="stylesheet" href="../produtos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        .logo-img { height: 40px; width: auto; display: block; }
+        .logo { display: flex; align-items: center; }
+        .main-nav a { transition: color 0.2s; }
+        .main-nav a:hover { color: #FF8C00; }
+        .theme-switcher-sabia {
+            position: fixed; top: 90px; right: 20px;
+            display: flex; gap: 10px; z-index: 1001;
+            background-color: var(--sabia-superficie); padding: 8px;
+            border-radius: 20px; box-shadow: var(--sabia-sombra);
+        }
+        .theme-icon { font-size: 1.3em; cursor: pointer; color: var(--sabia-texto-secundario); transition: color 0.3s ease, transform 0.3s ease; }
+        .theme-icon:hover { color: var(--sabia-primaria); transform: scale(1.1); }
+        .theme-icon.active { color: var(--sabia-primaria); }
+
+        /* Banner: foto ocupando a lateral inteira, sem borda ao redor do card */
+        .produto-hero {
+            position: relative;
+            display: flex;
+            align-items: stretch;
+            flex-wrap: wrap;
+            border-radius: 18px;
+            overflow: hidden;
+            border: none;
+            padding: 0;
+            background: linear-gradient(135deg, color-mix(in srgb, var(--produto-cor) 16%, transparent) 0%, color-mix(in srgb, var(--produto-cor) 4%, transparent) 100%);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+        }
+        .produto-hero-foto {
+            width: 300px;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .produto-hero-foto img {
+            width: 100%;
+            height: 100%;
+            min-height: 220px;
+            object-fit: cover;
+            object-position: 90% 38%;
+            display: block;
+        }
+        /* Tooltip customizado ao passar o mouse na foto */
+        .produto-hero-foto::after {
+            content: attr(data-legenda);
+            position: absolute;
+            left: 50%;
+            bottom: 14px;
+            transform: translateX(-50%);
+            background: rgba(33, 37, 41, 0.85);
+            color: #fff;
+            font-size: 0.75em;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 6px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+        .produto-hero-foto:hover::after {
+            opacity: 1;
+        }
+        .produto-hero-texto {
+            flex: 1;
+            min-width: 260px;
+            padding: 36px 40px;
+            border-left: 4px solid var(--produto-cor);
+        }
+        @media (max-width: 700px) {
+            .produto-hero-foto {
+                width: 100%;
+                height: 200px;
+            }
+            .produto-hero-texto {
+                border-left: none;
+                border-top: 4px solid var(--produto-cor);
+                padding: 24px 22px;
+            }
+        }
+    </style>
+    <script>
+        document.documentElement.className = localStorage.getItem('sabiaTheme') || 'theme-light-sabia';
+    </script>
+</head>
+<body class="produto-page" style="--produto-cor:#e0a52c;">
+    <header class="site-header">
+        <div class="header-content-wrapper">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../ashoras-removebg-preview.png" alt="ashoras logo" class="logo-img">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <a href="../vocesabia.html" class="active">Você Sabia?</a>
+                <a href="../sobre.html">Sobre</a>
+                <a href="../privacidade.html">Privacidade</a>
+            </nav>
+        </div>
+    </header>
+    <div class="theme-switcher-sabia">
+        <span id="light-theme-btn" class="theme-icon active" title="Tema Claro"><i class="fas fa-sun"></i></span>
+        <span id="dark-theme-btn" class="theme-icon" title="Tema Escuro"><i class="fas fa-moon"></i></span>
+    </div>
+
+    <main class="main-application-area">
+        <div class="produto-container">
+            <a href="../vocesabia.html" class="produto-voltar"><i class="fas fa-arrow-left"></i> Voltar para Você Sabia?</a>
+
+            <section class="produto-hero">
+                <div class="produto-hero-foto" data-legenda="Relógio de Sol">
+                    <img src="../img_curiosidades/relogio-sol-card.png" alt="Relógio de Sol" title="Relógio de Sol" loading="lazy">
+                </div>
+                <div class="produto-hero-texto">
+                    <span class="produto-badge">História da Cronometragem</span>
+                    <h1>Relógio de Sol: a primeira máquina do tempo da humanidade</h1>
+                    <p>Milênios antes de qualquer engrenagem ou circuito, bastava um bastão fincado no chão e a luz do sol para dividir o dia em partes. O relógio de sol foi o primeiro instrumento que transformou o movimento do céu em algo que podia ser lido, discutido e compartilhado.</p>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-circle-info"></i> O que é e como funciona</h2>
+                <p class="produto-lead">
+                    Um <strong>relógio de sol</strong> mede o tempo pela posição da sombra projetada por uma haste — chamada
+                    <strong>gnômon</strong> — sobre uma superfície marcada com linhas de hora. Conforme o Sol se move no céu
+                    ao longo do dia, a sombra gira e avança sobre essas marcações, indicando aproximadamente que horas são.
+                    É um princípio simples, mas que exige entender a inclinação do eixo da Terra e a latitude do local para
+                    ser realmente preciso.
+                </p>
+                <div class="produto-features">
+                    <div class="produto-feature">
+                        <i class="fas fa-arrows-up-down"></i>
+                        <div><strong>Gnômon</strong><span>A haste ou aresta que projeta a sombra; sua inclinação costuma seguir a latitude do local.</span></div>
+                    </div>
+                    <div class="produto-feature">
+                        <i class="fas fa-ruler-combined"></i>
+                        <div><strong>Mostrador marcado</strong><span>Superfície plana ou curva com linhas que representam cada hora do dia.</span></div>
+                    </div>
+                    <div class="produto-feature">
+                        <i class="fas fa-earth-americas"></i>
+                        <div><strong>Dependência da latitude</strong><span>Um relógio de sol construído para uma cidade não funciona corretamente em outra.</span></div>
+                    </div>
+                    <div class="produto-feature">
+                        <i class="fas fa-cloud-sun"></i>
+                        <div><strong>Só funciona de dia</strong><span>Sem sol direto — à noite ou em dias nublados — o instrumento simplesmente não informa a hora.</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-layer-group"></i> Tipos de relógio de sol</h2>
+                <p class="produto-lead">Ao longo dos séculos, diferentes civilizações adaptaram o conceito básico a diferentes formatos e usos.</p>
+                <div class="produto-mini-grid">
+                    <div class="produto-mini-card">
+                        <i class="fas fa-table-cells"></i>
+                        <strong>Horizontal</strong>
+                        <span>O mais comum em jardins: mostrador plano no chão, com o gnômon inclinado apontando para o polo.</span>
+                    </div>
+                    <div class="produto-mini-card">
+                        <i class="fas fa-building"></i>
+                        <strong>Vertical</strong>
+                        <span>Fixado em paredes e fachadas de igrejas e prédios históricos, voltado para o sul ou para o norte.</span>
+                    </div>
+                    <div class="produto-mini-card">
+                        <i class="fas fa-globe"></i>
+                        <strong>Esfera armilar</strong>
+                        <span>Formado por anéis que representam círculos celestes, usado também para observação astronômica.</span>
+                    </div>
+                    <div class="produto-mini-card">
+                        <i class="fas fa-person-walking"></i>
+                        <strong>Portátil</strong>
+                        <span>Versões pequenas, de bolso, usadas por viajantes e mercadores na Roma Antiga.</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-timeline"></i> Linha do tempo do relógio de sol</h2>
+                <div class="infografico infografico-timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-ano">~3500 a.C.</div>
+                        <h4>Primeiros gnômons</h4>
+                        <p>Obeliscos e bastões egípcios já eram usados para observar a sombra e marcar a passagem do dia.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-ano">~1500 a.C.</div>
+                        <h4>Relógio de sombra egípcio</h4>
+                        <p>Um dos exemplares mais antigos já encontrados, descoberto no Vale dos Reis, dividia o dia em partes.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-ano">~430 a.C.</div>
+                        <h4>Aperfeiçoamento grego</h4>
+                        <p>Astrônomos gregos, como Anaximandro, refinaram os cálculos e ajustaram os mostradores por estação.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-ano">Idade Média</div>
+                        <h4>Relógios em igrejas</h4>
+                        <p>Mostradores verticais em fachadas de igrejas ajudavam a marcar horários de orações e rotinas do dia.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-ano">Séc. XIX</div>
+                        <h4>Aposentadoria gradual</h4>
+                        <p>Com relógios mecânicos mais confiáveis, o relógio de sol perde a função prática e vira peça decorativa.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-scale-balanced"></i> Prós e contras</h2>
+                <div class="produto-proscontras">
+                    <div class="proscontras-col pros">
+                        <h4><i class="fas fa-circle-check"></i> Vantagens</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Não depende de bateria, corda ou eletricidade</li>
+                            <li><i class="fas fa-check"></i> Funciona por séculos sem manutenção</li>
+                            <li><i class="fas fa-check"></i> Ensina de forma visual a relação entre Terra e Sol</li>
+                        </ul>
+                    </div>
+                    <div class="proscontras-col contras">
+                        <h4><i class="fas fa-circle-xmark"></i> Desvantagens</h4>
+                        <ul>
+                            <li><i class="fas fa-xmark"></i> Inútil à noite ou em dias nublados</li>
+                            <li><i class="fas fa-xmark"></i> Precisa ser recalculado para cada latitude</li>
+                            <li><i class="fas fa-xmark"></i> Não indica minutos ou segundos com exatidão</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <div class="produto-curiosidade">
+                    <i class="fas fa-lightbulb"></i>
+                    <div>
+                        <strong>Você sabia?</strong>
+                        <p>Antes da chegada das ferrovias, no século XIX, cada cidade seguia seu próprio horário local baseado no relógio de sol — e os relógios mecânicos precisavam ser ajustados regularmente por ele, já que eram menos confiáveis. Só com a padronização dos fusos horários, criada justamente para organizar os trens, o relógio de sol perdeu de vez seu papel prático no dia a dia.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-circle-question"></i> Perguntas frequentes</h2>
+                <div class="produto-faq">
+                    <div class="produto-faq-item">
+                        <h4><i class="fas fa-circle-question"></i> Um relógio de sol é preciso?</h4>
+                        <p>Pode chegar perto de poucos minutos de diferença quando bem construído para o local, mas não tem a precisão de segundos de um relógio mecânico ou digital.</p>
+                    </div>
+                    <div class="produto-faq-item">
+                        <h4><i class="fas fa-circle-question"></i> Funciona igual em qualquer lugar do mundo?</h4>
+                        <p>Não. A inclinação do gnômon e as linhas do mostrador precisam ser calculadas para a latitude específica de onde ele será instalado.</p>
+                    </div>
+                    <div class="produto-faq-item">
+                        <h4><i class="fas fa-circle-question"></i> Por que ainda existem relógios de sol hoje?</h4>
+                        <p>Principalmente como peças decorativas em jardins e prédios históricos, ou como ferramenta educativa para ensinar astronomia básica.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-book"></i> Referências e leituras complementares</h2>
+                <p class="produto-lead">Este conteúdo foi baseado em fontes públicas sobre a história dos relógios de sol. Para se aprofundar, vale a leitura:</p>
+                <div class="produto-referencias">
+                    <a href="https://en.wikipedia.org/wiki/History_of_sundials" target="_blank" rel="noopener noreferrer" class="produto-referencia-item">
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                        <div>
+                            <strong>History of sundials</strong>
+                            <span>Panorama sobre o uso dos relógios de sol desde a Antiguidade até virarem objetos de interesse acadêmico.</span>
+                            <small>en.wikipedia.org</small>
+                        </div>
+                    </a>
+                    <a href="https://electronics.howstuffworks.com/gadgets/clocks-watches/ancient-civilizations-use-sundials.htm" target="_blank" rel="noopener noreferrer" class="produto-referencia-item">
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                        <div>
+                            <strong>How did ancient civilizations use sundials to tell time?</strong>
+                            <span>Explica a origem egípcia do relógio de sombra e sua popularização a partir de 1500 a.C.</span>
+                            <small>howstuffworks.com</small>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-shapes"></i> Mais curiosidades sobre cronometragem</h2>
+                <div class="produto-relacionados-grid">
+                    <a href="ampulheta.html" class="produto-card" style="--produto-cor:#c1703c;">
+                        <div class="produto-card-icon produto-card-icon-foto"><img src="../img_curiosidades/ampulheta-card.png" alt="Ampulheta" loading="lazy"></div>
+                        <div class="produto-card-body">
+                            <h3>Ampulheta</h3>
+                            <p>Como a areia caindo em silêncio guiou navegadores por séculos.</p>
+                            <span class="produto-card-saiba">Saiba mais <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                    <a href="relogio-atomico.html" class="produto-card" style="--produto-cor:#1e88c9;">
+                        <div class="produto-card-icon produto-card-icon-foto"><img src="../img_curiosidades/relogio-atomico-card.png" alt="Relógio Atômico" loading="lazy"></div>
+                        <div class="produto-card-body">
+                            <h3>Relógio Atômico</h3>
+                            <p>A precisão de bilionésimos de segundo que guia satélites e GPS.</p>
+                            <span class="produto-card-saiba">Saiba mais <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                    <a href="../produtos/relogio-pendulo.html" class="produto-card" style="--produto-cor:#7b5231;">
+                        <div class="produto-card-icon produto-card-icon-foto"><img src="../img_produtos/relogio-pendulo-card.jpg" alt="Relógio de Pêndulo" loading="lazy"></div>
+                        <div class="produto-card-body">
+                            <h3>Relógio de Pêndulo</h3>
+                            <p>O mecanismo que dominou a precisão por quase 300 anos.</p>
+                            <span class="produto-card-saiba">Saiba mais <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content-wrapper">
+            <p>&copy; 2025 AsHoras. Todos os direitos reservados.</p>
+            <a href="../sobre.html" style="color:var(--cor-primaria);text-decoration:none;">Sobre</a> |
+            <a href="../privacidade.html" style="color:var(--cor-primaria);text-decoration:none;">Privacidade</a>
+        </div>
+    </footer>
+
+    <script src="../sabia-theme-loader.js"></script>
+</body>
+</html>

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relógio de Pêndulo: o mecanismo que dominou a precisão por 300 anos | AsHoras</title>
+    <meta name="description" content="Entenda como funciona o relógio de pêndulo, do escapamento ao trem de engrenagens, os tipos mais famosos como o relógio de carrilhão e o de cuco, e a história de Huygens.">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../vocesabia-theme-light.css" id="theme-light-sabia">
+    <link rel="stylesheet" href="../vocesabia-theme-dark.css" id="theme-dark-sabia" disabled>
+    <link rel="stylesheet" href="../vocesabia.css">
+    <link rel="stylesheet" href="../produtos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        .logo-img { height: 40px; width: auto; display: block; }
+        .logo { display: flex; align-items: center; }
+        .main-nav a { transition: color 0.2s; }
+        .main-nav a:hover { color: #FF8C00; }
+        .theme-switcher-sabia {
+            position: fixed; top: 90px; right: 20px;
+            display: flex; gap: 10px; z-index: 1001;
+            background-color: var(--sabia-superficie); padding: 8px;
+            border-radius: 20px; box-shadow: var(--sabia-sombra);
+        }
+        .theme-icon { font-size: 1.3em; cursor: pointer; color: var(--sabia-texto-secundario); transition: color 0.3s ease, transform 0.3s ease; }
+        .theme-icon:hover { color: var(--sabia-primaria); transform: scale(1.1); }
+        .theme-icon.active { color: var(--sabia-primaria); }
+
+        /* Banner: foto ocupando a lateral inteira, sem borda ao redor do card */
+        .produto-hero {
+            position: relative;
+            display: flex;
+            align-items: stretch;
+            flex-wrap: wrap;
+            border-radius: 18px;
+            overflow: hidden;
+            border: none;
+            padding: 0;
+            min-height: 0 !important;
+            height: auto !important;
+            background: linear-gradient(135deg, color-mix(in srgb, var(--produto-cor) 16%, transparent) 0%, color-mix(in srgb, var(--produto-cor) 4%, transparent) 100%);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+        }
+        .produto-hero-foto {
+            width: 300px;
+            aspect-ratio: 1 / 1;
+            flex-shrink: 0;
+            position: relative;
+            min-height: 0 !important;
+        }
+        .produto-hero-foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+            display: block;
+        }
+        /* Tooltip customizado ao passar o mouse na foto */
+        .produto-hero-foto::after {
+            content: attr(data-legenda);
+            position: absolute;
+            left: 50%;
+            bottom: 14px;
+            transform: translateX(-50%);
+            background: rgba(33, 37, 41, 0.85);
+            color: #fff;
+            font-size: 0.75em;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 6px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+        .produto-hero-foto:hover::after {
+            opacity: 1;
+        }
+        .produto-hero-texto {
+            flex: 1;
+            min-width: 260px;
+            min-height: 0 !important;
+            padding: 36px 40px;
+            border-left: 4px solid #1f9d55;
+        }
+        @media (max-width: 700px) {
+            .produto-hero-foto {
+                width: 100%;
+                height: 200px;
+            }
+            .produto-hero-texto {
+                border-left: none;
+                border-top: 4px solid #1f9d55;
+                padding: 24px 22px;
+            }
+        }
+    </style>
+    <script>
+        document.documentElement.className = localStorage.getItem('sabiaTheme') || 'theme-light-sabia';
+    </script>
+</head>
+<body class="produto-page" style="--produto-cor:#7b5231;">
+    <header class="site-header">
+        <div class="header-content-wrapper">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../ashoras-removebg-preview.png" alt="ashoras logo" class="logo-img">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <a href="../vocesabia.html" class="active">Você Sabia?</a>
+                <a href="../sobre.html">Sobre</a>
+                <a href="../privacidade.html">Privacidade</a>
+            </nav>
+        </div>
+    </header>
+    <div class="theme-switcher-sabia">
+        <span id="light-theme-btn" class="theme-icon active" title="Tema Claro"><i class="fas fa-sun"></i></span>
+        <span id="dark-theme-btn" class="theme-icon" title="Tema Escuro"><i class="fas fa-moon"></i></span>
+    </div>
+
+    <main class="main-application-area">
+        <div class="produto-container">
+            <a href="../vocesabia.html" class="produto-voltar"><i class="fas fa-arrow-left"></i> Voltar para Você Sabia?</a>
+
+            <section class="produto-hero">
+                <div class="produto-hero-foto" data-legenda="Relógio de Pêndulo">
+                    <img src="../img_produtos/relogio-pendulo-card.jpg" alt="Relógio de Pêndulo" title="Relógio de Pêndulo" loading="lazy">
+                </div>
+                <div class="produto-hero-texto">
+                    <span class="produto-badge">Tipo de Relógio</span>
+                    <h1>Relógio de Pêndulo: o mecanismo mais preciso por 300 anos</h1>
+                    <p>Antes dos cristais de quartzo e dos átomos de césio, um simples peso balançando no ar ensinou a humanidade a medir o tempo com precisão. Do escritório de Huygens às salas de estar do mundo todo, o relógio de pêndulo reinou como o instrumento mais exato por quase três séculos.</p>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-circle-info"></i> O que é um relógio de pêndulo?</h2>
+                <p class="produto-lead">
+                    Um <strong>relógio de pêndulo</strong> é um relógio mecânico que usa o balanço regular de um peso
+                    suspenso — o pêndulo — para regular a velocidade com que suas engrenagens giram. Cada oscilação
+                    do pêndulo libera um dente do mecanismo de escapamento, transformando um movimento contínuo em
+                    "tiques" perfeitamente espaçados. Essa ideia simples, baseada no isocronismo descoberto por
+                    Galileu, tornou os relógios de pêndulo até então incomparavelmente mais precisos que qualquer
+                    relógio mecânico anterior.
+                </p>
+                <div class="produto-features">
+                    <div class="produto-feature">
+                        <i class="fas fa-arrows-left-right"></i>
+                        <div><strong>Pêndulo regulador</strong><span>Oscila em intervalos praticamente iguais, servindo como o "coração" que marca o ritmo do relógio.</span></div>
+                    </div>
+                    <div class="produto-feature">
+                        <i class="fas fa-gears"></i>
+                        <div><strong>Escapamento</strong><span>Mecanismo que trava e libera as engrenagens a cada oscilação, convertendo o balanço em segundos contados.</span></div>
+                    </div>
+                    <div class="produto-feature">
+                        <i class="fas fa-weight-hanging"></i>
+                        <div><strong>Peso ou mola</strong><span>Fornece a energia que mantém o mecanismo em movimento entre uma corda e outra.</span></div>
+                    </div>
+                    <div class="produto-feature">
+                        <i class="fas fa-cogs"></i>
+                        <div><strong>Trem de engrenagens</strong><span>Conjunto de rodas dentadas que transmite e reduz a energia até os ponteiros.</span></div>
+                    </div>
+                    <div class="produto-feature">
+                        <i class="fas fa-box-archive"></i>
+                        <div><strong>Caixa</strong><span>Protege o mecanismo da poeira e, em modelos grandes, amplifica o som do tique-taque e das badaladas.</span></div>
+                    </div>
+                    <div class="produto-feature">
+                        <i class="fas fa-clock"></i>
+                        <div><strong>Mostrador e ponteiros</strong><span>Traduzem visualmente as voltas do trem de engrenagens em horas, minutos e, às vezes, segundos.</span></div>
+                    </div>
+                    <div class="produto-feature">
+                        <i class="fas fa-key"></i>
+                        <div><strong>Corda manual</strong><span>Feita com chave ou corrente, costuma durar de 1 a 8 dias dependendo do modelo.</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-layer-group"></i> Tipos de relógio de pêndulo</h2>
+                <p class="produto-lead">O mesmo princípio do pêndulo deu origem a formatos muito diferentes, cada um pensado para um ambiente e uma função específica.</p>
+                <div class="produto-mini-grid">
+                    <div class="produto-mini-card">
+                        <i class="fas fa-door-closed"></i>
+                        <strong>Carrilhão (Longcase)</strong>
+                        <span>O clássico "relógio de vovô", de caixa alta em pé, com pêndulo longo e badaladas marcantes.</span>
+                    </div>
+                    <div class="produto-mini-card">
+                        <i class="fas fa-table-cells"></i>
+                        <strong>Parede / Regulador</strong>
+                        <span>Fixado na parede, priorizava a máxima precisão e era usado como referência em oficinas e observatórios.</span>
+                    </div>
+                    <div class="produto-mini-card">
+                        <i class="fas fa-dove"></i>
+                        <strong>Cuco</strong>
+                        <span>Tradição da região da Floresta Negra, na Alemanha, com um passarinho mecânico que anuncia as horas.</span>
+                    </div>
+                    <div class="produto-mini-card">
+                        <i class="fas fa-chess-board"></i>
+                        <strong>Console / Mesa</strong>
+                        <span>Versão compacta, decorativa, feita para repousar sobre móveis em vez de ficar em pé no chão.</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-chart-simple"></i> Como funciona o mecanismo</h2>
+                <div class="infografico infografico-radial">
+                    <div class="radial-hub"><i class="fas fa-gear"></i> Mecanismo do relógio de pêndulo</div>
+                    <div class="radial-item">
+                        <i class="fas fa-arrows-left-right"></i>
+                        <strong>Pêndulo</strong>
+                        <span>Balança em intervalos regulares graças à gravidade e ao seu próprio comprimento.</span>
+                    </div>
+                    <div class="radial-item">
+                        <i class="fas fa-anchor"></i>
+                        <strong>Escapamento de âncora</strong>
+                        <span>Trava e solta a roda de escape a cada oscilação, produzindo o tique-taque.</span>
+                    </div>
+                    <div class="radial-item">
+                        <i class="fas fa-weight-hanging"></i>
+                        <strong>Peso motriz</strong>
+                        <span>Desce lentamente puxado pela gravidade, fornecendo a energia para todo o sistema.</span>
+                    </div>
+                    <div class="radial-item">
+                        <i class="fas fa-cogs"></i>
+                        <strong>Trem de engrenagens</strong>
+                        <span>Reduz a velocidade da energia liberada até um ritmo de segundos, minutos e horas.</span>
+                    </div>
+                    <div class="radial-item">
+                        <i class="fas fa-clock"></i>
+                        <strong>Ponteiros</strong>
+                        <span>Últimos da cadeia, giram na velocidade exata definida pelo pêndulo.</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-screwdriver-wrench"></i> Cuidados e manutenção</h2>
+                <div class="produto-checklist">
+                    <div class="produto-checklist-item">
+                        <i class="fas fa-ruler-combined"></i>
+                        <div><strong>Nivelamento</strong><span>O relógio precisa estar perfeitamente nivelado; um leve desalinho já atrasa ou adianta o pêndulo.</span></div>
+                    </div>
+                    <div class="produto-checklist-item">
+                        <i class="fas fa-oil-can"></i>
+                        <div><strong>Lubrificação periódica</strong><span>As engrenagens e o escapamento precisam de óleo específico a cada poucos anos para não desgastar.</span></div>
+                    </div>
+                    <div class="produto-checklist-item">
+                        <i class="fas fa-key"></i>
+                        <div><strong>Corda regular</strong><span>Dar corda no dia certo evita que o peso ou a mola cheguem ao fim do curso e o relógio pare.</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-list-check"></i> Como escolher um relógio de pêndulo</h2>
+                <div class="produto-checklist">
+                    <div class="produto-checklist-item">
+                        <i class="fas fa-ruler-vertical"></i>
+                        <div><strong>Espaço disponível</strong><span>Modelos de carrilhão exigem pé-direito alto; regulares de parede e de console cabem em espaços menores.</span></div>
+                    </div>
+                    <div class="produto-checklist-item">
+                        <i class="fas fa-volume-high"></i>
+                        <div><strong>Som das badaladas</strong><span>Alguns modelos badalam a cada hora e meia-hora; vale confirmar se o som combina com o ambiente.</span></div>
+                    </div>
+                    <div class="produto-checklist-item">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <div><strong>Manutenção disponível</strong><span>Verifique se há relojoeiros na sua região capazes de fazer a manutenção do mecanismo mecânico.</span></div>
+                    </div>
+                    <div class="produto-checklist-item">
+                        <i class="fas fa-tree"></i>
+                        <div><strong>Material da caixa</strong><span>Madeiras nobres envelhecem melhor e ajudam a amplificar o som do pêndulo e das badaladas.</span></div>
+                    </div>
+                    <div class="produto-checklist-item">
+                        <i class="fas fa-certificate"></i>
+                        <div><strong>Procedência</strong><span>Peças antigas de valor de coleção merecem avaliação de um especialista antes da compra.</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-scale-balanced"></i> Prós e contras</h2>
+                <div class="produto-proscontras">
+                    <div class="proscontras-col pros">
+                        <h4><i class="fas fa-circle-check"></i> Vantagens</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Não depende de baterias nem de energia elétrica para funcionar</li>
+                            <li><i class="fas fa-check"></i> Peça decorativa e muitas vezes de valor histórico ou de coleção</li>
+                            <li><i class="fas fa-check"></i> Mecanismo durável, capaz de funcionar por gerações com manutenção</li>
+                        </ul>
+                    </div>
+                    <div class="proscontras-col contras">
+                        <h4><i class="fas fa-circle-xmark"></i> Desvantagens</h4>
+                        <ul>
+                            <li><i class="fas fa-xmark"></i> Exige nivelamento perfeito e superfície estável para funcionar bem</li>
+                            <li><i class="fas fa-xmark"></i> Precisa de corda manual regular e manutenção especializada</li>
+                            <li><i class="fas fa-xmark"></i> Bem menos preciso que relógios de quartzo ou atômicos modernos</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <div class="produto-curiosidade">
+                    <i class="fas fa-lightbulb"></i>
+                    <div>
+                        <strong>Você sabia?</strong>
+                        <p>Em 1665, doente e de repouso, Christiaan Huygens percebeu algo curioso: dois relógios de pêndulo pendurados na mesma parede do seu quarto acabavam sincronizando seus balanços com o tempo, mesmo tendo sido ligados em momentos diferentes. Ele havia observado, sem querer, um dos primeiros registros do fenômeno físico hoje chamado de sincronização por acoplamento fraco.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-cube"></i> Anatomia de um relógio de pêndulo</h2>
+                <div class="infografico-imagem">
+                    <img src="../img_produtos/relogio-pendulo-3d.jpg" alt="Infográfico mostrando os componentes internos de um relógio de pêndulo: pêndulo, escapamento de âncora, peso motriz, trem de engrenagens, mostrador e caixa de madeira" loading="lazy">
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-timeline"></i> Evolução do relógio de pêndulo</h2>
+                <div class="infografico infografico-timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-ano">1656</div>
+                        <h4>Huygens</h4>
+                        <p>Constrói o primeiro relógio de pêndulo funcional, baseado nos estudos de isocronismo de Galileu.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-ano">~1670</div>
+                        <h4>Escapamento de âncora</h4>
+                        <p>Robert Hooke desenvolve o escapamento de âncora, reduzindo bastante o balanço do pêndulo.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-ano">1680</div>
+                        <h4>Tall case clocks</h4>
+                        <p>William Clement aperfeiçoa a âncora e populariza os relógios de caixa alta, futuros "relógios de vovô".</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-ano">1721</div>
+                        <h4>Pêndulo compensado</h4>
+                        <p>George Graham cria o pêndulo de mercúrio, que corrige variações de precisão causadas pela temperatura.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-ano">Hoje</div>
+                        <h4>Peça de coleção</h4>
+                        <p>Superado em precisão pelo quartzo, o relógio de pêndulo sobrevive como objeto decorativo e de herança familiar.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-battery-three-quarters"></i> Precisão por tipo de escapamento</h2>
+                <div class="infografico infografico-comparativo">
+                    <div class="comp-linha">
+                        <div class="comp-label"><span>Escapamento de coroa (verge)</span><span>Precisão menor</span></div>
+                        <div class="comp-track"><div class="comp-fill cor-alt" style="width:35%"></div></div>
+                    </div>
+                    <div class="comp-linha">
+                        <div class="comp-label"><span>Escapamento de âncora</span><span>Precisão média-alta</span></div>
+                        <div class="comp-track"><div class="comp-fill cor-produto" style="width:75%"></div></div>
+                    </div>
+                    <div class="comp-linha">
+                        <div class="comp-label"><span>Pêndulo compensado (Graham)</span><span>Precisão máxima da era mecânica</span></div>
+                        <div class="comp-track"><div class="comp-fill cor-produto" style="width:96%"></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-circle-question"></i> Perguntas frequentes</h2>
+                <div class="produto-faq">
+                    <div class="produto-faq-item">
+                        <h4><i class="fas fa-circle-question"></i> Por que o relógio de pêndulo precisa ficar nivelado?</h4>
+                        <p>Porque o balanço do pêndulo depende da gravidade agindo de forma uniforme; qualquer inclinação altera o tempo de cada oscilação e faz o relógio atrasar ou adiantar.</p>
+                    </div>
+                    <div class="produto-faq-item">
+                        <h4><i class="fas fa-circle-question"></i> Todo relógio de pêndulo precisa de corda manual?</h4>
+                        <p>A grande maioria dos modelos tradicionais sim, com intervalos que variam de 1 a 8 dias, embora existam réplicas modernas com motor elétrico que apenas imitam o movimento do pêndulo.</p>
+                    </div>
+                    <div class="produto-faq-item">
+                        <h4><i class="fas fa-circle-question"></i> Por que ele ainda é considerado preciso mesmo sendo antigo?</h4>
+                        <p>Porque o isocronismo do pêndulo é um princípio físico sólido; com boa manutenção e nivelamento, um relógio de pêndulo de qualidade pode manter a hora com poucos segundos de erro por dia.</p>
+                    </div>
+                    <div class="produto-faq-item">
+                        <h4><i class="fas fa-circle-question"></i> Vale a pena comprar um relógio de pêndulo hoje?</h4>
+                        <p>Para quem busca precisão no dia a dia, não é a opção mais prática; mas como peça decorativa, de coleção ou herança de família, ele carrega um valor que nenhum relógio digital reproduz.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-book"></i> Referências e leituras complementares</h2>
+                <p class="produto-lead">Este conteúdo foi baseado em fontes públicas sobre a história e o funcionamento dos relógios de pêndulo. Para se aprofundar, vale a leitura:</p>
+                <div class="produto-referencias">
+                    <a href="https://clocks-blog.theclockdepot.com/history-of-the-pendulum-clock/" target="_blank" rel="noopener noreferrer" class="produto-referencia-item">
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                        <div>
+                            <strong>History of the Pendulum Clock</strong>
+                            <span>Traça a origem do escapamento de âncora e o surgimento dos tall case clocks que viraram os "relógios de vovô".</span>
+                            <small>theclockdepot.com</small>
+                        </div>
+                    </a>
+                    <a href="https://museum.seiko.co.jp/en/knowledge/MechanicalTimepieces03/" target="_blank" rel="noopener noreferrer" class="produto-referencia-item">
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                        <div>
+                            <strong>The Invention of the Pendulum Clock</strong>
+                            <span>Explica em detalhes a diferença entre os escapamentos de coroa e de âncora desenvolvidos após Huygens.</span>
+                            <small>museum.seiko.co.jp</small>
+                        </div>
+                    </a>
+                    <a href="https://www.aps.org/publications/apsnews/201706/history.cfm" target="_blank" rel="noopener noreferrer" class="produto-referencia-item">
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                        <div>
+                            <strong>June 16, 1657: Christiaan Huygens Patents the First Pendulum Clock</strong>
+                            <span>Conta a trajetória de Huygens, incluindo a descoberta da sincronização entre dois relógios em seu próprio quarto.</span>
+                            <small>aps.org</small>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ✅ BANNER FINO: LEIA TAMBÉM (AMPULHETA) -->
+            <a href="../curiosidades/ampulheta.html" class="banner-artigo-fino banner-artigo-fino-foto banner-ampulheta">
+                <span class="banner-artigo-fino-texto">
+                    <span class="banner-artigo-fino-titulo"><strong>Leia também:</strong> Ampulheta</span>
+                    <span class="banner-artigo-fino-desc">A areia que guiou navegadores por séculos</span>
+                </span>
+                <span class="banner-artigo-fino-seta"><i class="fas fa-arrow-right"></i></span>
+            </a>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-shapes"></i> Outros tipos de relógio</h2>
+                <div class="produto-relacionados-grid">
+                    <a href="relogio-smartwatch.html" class="produto-card" style="--produto-cor:#2f6fed;">
+                        <div class="produto-card-icon produto-card-icon-foto"><img src="../img_produtos/relogio-smartwatch-card.jpg" alt="Smartwatch" loading="lazy"></div>
+                        <div class="produto-card-body">
+                            <h3>Smartwatch</h3>
+                            <p>O relógio conectado que virou assistente de saúde no seu pulso.</p>
+                            <span class="produto-card-saiba">Saiba mais <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                    <a href="relogio-mecanico.html" class="produto-card" style="--produto-cor:#b8860b;">
+                        <div class="produto-card-icon produto-card-icon-foto"><img src="../img_produtos/relogio-mecanico-card.jpg" alt="Mecânico" loading="lazy"></div>
+                        <div class="produto-card-body">
+                            <h3>Mecânico</h3>
+                            <p>Engrenagens, molas e séculos de precisão sem usar nenhuma bateria.</p>
+                            <span class="produto-card-saiba">Saiba mais <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                    <a href="relogio-quartzo.html" class="produto-card" style="--produto-cor:#8e44ad;">
+                        <div class="produto-card-icon produto-card-icon-foto"><img src="../img_produtos/relogio-quartzo-card.jpg" alt="Quartzo" loading="lazy"></div>
+                        <div class="produto-card-body">
+                            <h3>Quartzo</h3>
+                            <p>O cristal que vibra 32.768 vezes por segundo e revolucionou a relojoaria.</p>
+                            <span class="produto-card-saiba">Saiba mais <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content-wrapper">
+            <p>&copy; 2025 AsHoras. Todos os direitos reservados.</p>
+            <a href="../sobre.html" style="color:var(--cor-primaria);text-decoration:none;">Sobre</a> |
+            <a href="../privacidade.html" style="color:var(--cor-primaria);text-decoration:none;">Privacidade</a>
+        </div>
+    </footer>
+
+    <style>
+        .infografico-imagem img { cursor: zoom-in; }
+        .img-lightbox-overlay {
+            display: none;
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 3000;
+            padding: 30px;
+            overflow: auto;
+        }
+        .img-lightbox-overlay.aberto { display: flex; }
+        .img-lightbox-overlay::before,
+        .img-lightbox-overlay::after {
+            content: '';
+            margin: auto;
+        }
+        .img-lightbox-overlay img {
+            max-width: 95vw;
+            max-height: 88vh;
+            cursor: zoom-in;
+            transition: max-width .25s ease, max-height .25s ease, width .25s ease;
+            border-radius: 8px;
+            display: block;
+            margin: auto;
+        }
+        .img-lightbox-overlay img.zoom {
+            max-width: none;
+            max-height: none;
+            width: 220%;
+            cursor: zoom-out;
+        }
+        .img-lightbox-fechar {
+            position: fixed; top: 18px; right: 20px;
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            color: #fff; font-size: 1.3em;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 3001;
+            border: none;
+        }
+        .img-lightbox-fechar:hover { background: rgba(255,255,255,0.28); }
+        .img-lightbox-dica {
+            position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+            color: #fff; font-size: 0.85em; opacity: 0.75;
+            z-index: 3001; text-align: center;
+            background: rgba(0,0,0,0.4); padding: 6px 16px; border-radius: 20px;
+        }
+    </style>
+
+    <div class="img-lightbox-overlay" id="imgLightbox">
+        <button class="img-lightbox-fechar" id="imgLightboxFechar" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
+        <img src="" alt="" id="imgLightboxImg">
+        <div class="img-lightbox-dica">Toque na imagem para ampliar ainda mais</div>
+    </div>
+
+    <script>
+        (function() {
+            var overlay = document.getElementById('imgLightbox');
+            var overlayImg = document.getElementById('imgLightboxImg');
+            var fechar = document.getElementById('imgLightboxFechar');
+            document.querySelectorAll('.infografico-imagem img').forEach(function(img) {
+                img.addEventListener('click', function() {
+                    overlayImg.src = img.currentSrc || img.src;
+                    overlayImg.alt = img.alt;
+                    overlayImg.classList.remove('zoom');
+                    overlay.classList.add('aberto');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            overlayImg.addEventListener('click', function() {
+                overlayImg.classList.toggle('zoom');
+                if (overlayImg.classList.contains('zoom')) {
+                    requestAnimationFrame(function() {
+                        overlay.scrollLeft = (overlay.scrollWidth - overlay.clientWidth) / 2;
+                        overlay.scrollTop = (overlay.scrollHeight - overlay.clientHeight) / 2;
+                    });
+                }
+            });
+            function fecharLightbox() {
+                overlay.classList.remove('aberto');
+                overlayImg.classList.remove('zoom');
+                document.body.style.overflow = '';
+            }
+            fechar.addEventListener('click', fecharLightbox);
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) fecharLightbox();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') fecharLightbox();
+            });
+        })();
+    </script>
+
+    <script src="../sabia-theme-loader.js"></script>
+</body>
+</html>

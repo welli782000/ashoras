@@ -1,0 +1,160 @@
+/* ==========================================================================
+   Pomodoro Foco — estilos isolados
+   Não reaproveita nem sobrescreve classes de agenda.css ou style.css.
+   ========================================================================== */
+
+.pf-foco-wrap {
+    margin: 14px 0 18px;
+}
+
+.pf-input-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.pf-led-painel {
+    width: 100%;
+    box-sizing: border-box;
+    display: none;
+    position: relative;
+    background: repeating-linear-gradient(
+        to bottom,
+        var(--cor-superficie) 0px,
+        var(--cor-superficie) 27px,
+        rgba(120, 120, 120, 0.18) 28px
+    );
+    border: 1px solid var(--cor-borda-geral);
+    border-left: 4px solid #e0736b;
+    border-radius: 8px;
+    padding: 14px 16px 14px 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.pf-led-painel.pf-visivel {
+    display: block;
+}
+
+.pf-led-tela {
+    overflow: visible;
+    white-space: normal;
+}
+
+.pf-led-texto {
+    display: block;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.98em;
+    letter-spacing: normal;
+    color: var(--cor-texto-principal);
+    text-shadow: none;
+    padding-left: 0;
+    animation: none;
+    line-height: 28px;
+}
+
+.pf-led-texto::before {
+    content: "⏰ ";
+}
+
+.pf-btn-agenda {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #2f6fed;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 11px 22px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(47, 111, 237, 0.35);
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    white-space: nowrap;
+}
+
+.pf-btn-agenda:hover {
+    background: #2559c4;
+    box-shadow: 0 4px 10px rgba(47, 111, 237, 0.4);
+    transform: translateY(-1px);
+}
+
+.pf-btn-agenda:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(47, 111, 237, 0.35);
+}
+
+/* Modal de seleção de tarefa */
+.pf-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.pf-modal {
+    background: var(--cor-superficie);
+    border-radius: var(--radius-padrao, 8px);
+    padding: 18px 20px;
+    max-width: 420px;
+    width: 100%;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.pf-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.pf-modal-header h4 {
+    margin: 0;
+    color: var(--cor-texto-principal);
+    font-size: 1.05em;
+}
+
+.pf-modal-fechar {
+    background: none;
+    border: none;
+    font-size: 1.4em;
+    color: var(--cor-texto-secundario);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.pf-modal-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pf-modal-item {
+    text-align: left;
+    background: rgba(255, 107, 0, 0.06);
+    border: 1px solid var(--cor-borda-geral);
+    border-radius: var(--radius-padrao-menor, 6px);
+    padding: 10px 12px;
+    font-size: 0.9em;
+    color: var(--cor-texto-principal);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.pf-modal-item:hover {
+    background: rgba(255, 107, 0, 0.12);
+}
+
+.pf-modal-vazio {
+    font-size: 0.88em;
+    color: var(--cor-texto-secundario);
+    line-height: 1.5;
+}

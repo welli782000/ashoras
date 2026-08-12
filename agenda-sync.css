@@ -1,83 +1,11 @@
 /* ============================================================
    agenda-sync.css — AsHoras
-   Barra de sincronização com Google na Agenda Diária.
-   Usa as mesmas variáveis de tema do restante do site.
+   A Agenda Diária agora usa login obrigatório com Google, e
+   reaproveita as mesmas classes visuais dos Lembretes para a
+   tela de login e a barra do usuário logado (.lb-login-wrap,
+   .lb-btn-google, .lb-user-bar, .lb-btn-logout — definidas em
+   lembretes.css), então não precisa de estilos próprios aqui.
+   Este arquivo continua referenciado no index.html apenas por
+   segurança, caso algum ajuste específico da Agenda Diária seja
+   necessário no futuro.
    ============================================================ */
-
-.ag-sync-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-    background: var(--cor-superficie, #f7f8fa);
-    border: 1px solid var(--cor-borda-geral, #e2e4e8);
-    border-radius: var(--radius-padrao, 8px);
-    padding: 10px 14px;
-    margin: 0 0 16px;
-    font-size: 0.88em;
-}
-
-.ag-sync-info {
-    color: var(--cor-texto-secundario);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-.ag-sync-info i {
-    color: var(--cor-primaria);
-}
-
-.ag-btn-sync-google {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #fff;
-    color: #3c4043;
-    border: 1px solid #dadce0;
-    border-radius: var(--radius-padrao-menor, 6px);
-    padding: 6px 14px;
-    font-size: 0.95em;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transicao-padrao);
-}
-.ag-btn-sync-google:hover {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-}
-.ag-btn-sync-google img {
-    width: 16px;
-    height: 16px;
-}
-
-.ag-sync-logado {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--cor-texto-secundario);
-}
-.ag-sync-logado img {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-}
-
-.ag-btn-sync-logout {
-    background: none;
-    border: 1px solid var(--cor-borda-geral);
-    color: var(--cor-texto-secundario);
-    border-radius: var(--radius-padrao-menor, 6px);
-    padding: 4px 10px;
-    font-size: 0.85em;
-    cursor: pointer;
-    transition: var(--transicao-padrao);
-}
-.ag-btn-sync-logout:hover {
-    border-color: var(--cor-destaque-vermelho);
-    color: var(--cor-destaque-vermelho);
-}
-
-@media (max-width: 480px) {
-    .ag-sync-bar { flex-direction: column; align-items: stretch; }
-    .ag-btn-sync-google, .ag-sync-logado { justify-content: center; }
-}

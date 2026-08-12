@@ -409,6 +409,74 @@
     color: var(--cor-destaque-vermelho);
 }
 
+.lb-card .lb-card-editar {
+    position: absolute;
+    top: 10px;
+    right: 36px;
+    background: none;
+    border: none;
+    color: var(--cor-texto-secundario);
+    cursor: pointer;
+    font-size: 0.9em;
+    opacity: 0.6;
+    transition: var(--transicao-padrao);
+}
+.lb-card .lb-card-editar:hover {
+    opacity: 1;
+    color: var(--cor-primaria);
+}
+
+/* ---------- Modo de edição inline do card ---------- */
+.lb-card.lb-card-editando {
+    border-left-color: var(--cor-primaria);
+}
+.lb-edit-input {
+    width: 100%;
+    background: var(--cor-input-fundo);
+    border: 1px solid var(--cor-input-borda);
+    color: var(--cor-texto-principal);
+    border-radius: var(--radius-padrao-menor, 6px);
+    padding: 8px 10px;
+    font-size: 0.9em;
+    font-family: inherit;
+}
+.lb-edit-input:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+}
+.lb-edit-botoes {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+}
+.lb-edit-botoes button {
+    flex: 1;
+    border-radius: var(--radius-padrao-menor, 6px);
+    padding: 8px 10px;
+    font-size: 0.85em;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: var(--transicao-padrao);
+    border: none;
+}
+.lb-edit-salvar {
+    background: var(--cor-primaria);
+    color: var(--cor-texto-botao);
+}
+.lb-edit-salvar:hover {
+    background: var(--cor-primaria-hover);
+}
+.lb-edit-cancelar {
+    background: transparent;
+    color: var(--cor-texto-secundario);
+    border: 1px solid var(--cor-borda-geral) !important;
+}
+.lb-edit-cancelar:hover {
+    border-color: var(--cor-texto-secundario) !important;
+    color: var(--cor-texto-principal);
+}
+
 /* Paleta rotativa — 6 cores, uma por lembrete */
 .lb-card[data-cor="0"], .lb-alerta-card[data-cor="0"] { --lb-cor-card: #FF8C00; }
 .lb-card[data-cor="1"], .lb-alerta-card[data-cor="1"] { --lb-cor-card: #00A99D; }

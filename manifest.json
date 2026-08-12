@@ -1,7 +1,7 @@
 {
-  "name": "AsHoras — Relógio, Agenda e Ferramentas de Tempo",
+  "name": "AsHoras - Relógio, Agenda, Lembretes, artigos e Ferramentas de Tempo",
   "short_name": "AsHoras",
-  "description": "Relógio online, cronômetro, temporizador, calendário, agenda semanal, screensavers e curiosidades sobre o tempo — tudo em um só lugar.",
+  "description": "Relógio online, cronômetro, temporizador, calendário, agenda semanal, Lembretes, artigos, screensavers e curiosidades sobre o tempo — tudo em um só lugar.",
   "start_url": "/index.html",
   "scope": "/",
   "id": "/index.html",

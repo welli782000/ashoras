@@ -72,6 +72,27 @@ body.theme-google-pro {
     --cor-botao-config-hover: #F1F3F4;
 }
 
+/* Menu lateral com degradê escuro, exclusivo do tema claro (Google Pro) */
+body.theme-google-pro .sidebar {
+    background: linear-gradient(160deg, #dcdcf0 0%, #e9e8f5 50%, #f3f2f9 100%);
+    box-shadow: var(--sombra-padrao);
+}
+body.theme-google-pro .sidebar h2 {
+    color: #3C4043;
+    border-bottom-color: rgba(60, 64, 67, 0.12);
+}
+body.theme-google-pro .sidebar ul li a {
+    color: #5F6368;
+}
+body.theme-google-pro .sidebar ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    color: var(--cor-primaria);
+}
+body.theme-google-pro .sidebar ul li.active a {
+    background-color: var(--cor-primaria);
+    color: #FFFFFF;
+}
+
 /* Ajustes extras de fluidez para o tema Google Pro */
 body.theme-google-pro .config-panel {
     border-radius: 8px;
@@ -1120,4 +1141,19 @@ body.theme-dark #calendar-fullscreen-overlay {
     padding-top: 10px;
     margin-bottom: 0;
     text-align: center;
+}
+
+/* ── Profundidade dos campos de cidade no tema claro (mobile) ──
+   No tema claro, em telas de celular, os campos de texto do
+   Conversor de Fuso Horário e da busca de "Horas pelo Mundo"
+   ficavam quase brancos em cima do fundo branco, sem contraste.
+   Só nesses dois campos, só no tema claro, só no mobile: fundo e
+   borda um pouco mais escuros, pra dar profundidade visual. */
+@media (max-width: 768px) {
+    body.theme-google-pro .input-box input,
+    body.theme-google-pro #city-search-input {
+        background-color: #E1E4E8;
+        border-color: #B0B6BC;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
 }

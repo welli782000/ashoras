@@ -12,15 +12,14 @@
     <link rel="stylesheet" href="weather-widget.css">
     <link rel="stylesheet" href="agenda.css">
     <link rel="stylesheet" href="seu-tempo.css">
-<<<<<<< HEAD
     <link rel="stylesheet" href="lembretes.css">
     <link rel="stylesheet" href="agenda-sync.css">
     <link rel="stylesheet" href="sabia-teaser.css">
-=======
->>>>>>> 0ea1e78a81a6a87b11198b882a4b54c672ff756b
+    <link rel="stylesheet" href="pomodoro-foco.css">
+    <link rel="stylesheet" href="curiosidades-showcase.css">
     <link rel="stylesheet" href="semana-do-ano.css">
     <link rel="stylesheet" href="wallpaper-orientation.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=schedule" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="alternate icon" type="image/png" sizes="32x32" href="favicon.svg">
@@ -201,6 +200,23 @@
             padding: 10px 4px;
             border-bottom: 1px solid var(--cor-borda-geral);
         }
+
+        /* Variante do card de curiosidade com foto real em vez de ícone */
+        .cs-card-icon-foto {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 3 / 2;
+            border-radius: 0;
+            overflow: hidden;
+            background: none;
+            margin: 0;
+        }
+        .cs-card-icon-foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
     </style>
 
 </head>
@@ -282,18 +298,15 @@
 
                 <ul>
                     <li data-target="relogio" class="active"><a href="index.html"><i class="fa-solid fa-house"></i> Início</a></li>
-                    <li data-target="despertador"><a href="#"><i class="fa-regular fa-bell"></i> Despertador</a></li>
-                    <li data-target="cronometro"><a href="#"><i class="fa-solid fa-hourglass-start"></i> Cronômetro</a></li>
+                    <li data-target="despertador"><a href="#"><i class="fa-regular fa-alarm-clock"></i> Despertador</a></li>
+                    <li data-target="cronometro"><a href="#"><i class="fa-solid fa-stopwatch"></i> Cronômetro</a></li>
                     <li data-target="temporizador"><a href="#"><i class="fa-solid fa-clock-rotate-left"></i> Temporizador</a></li>
                     <li data-target="calendario"><a href="#"><i class="far fa-calendar"></i> Calendário</a></li>
                     <li data-target="semana-do-ano"><a href="#"><i class="fa-solid fa-calendar-week"></i> Semana do Ano</a></li>
                     <li data-target="pomodoro-timer"><a href="#"><i class="fa-solid fa-stopwatch-20"></i> Pomodoro</a></li>
                     <li data-target="agenda-diaria"><a href="#"><i class="fa-solid fa-book-open" style="color:var(--ag-branco,#27ae60);"></i> Agenda Diária</a></li>
+                    <li data-target="lembretes"><a href="#"><span class="lb-icon-stack"><i class="far fa-calendar lb-icon-base" style="color:var(--ag-branco,#27ae60);"></i><i class="fas fa-pen lb-icon-pen" style="color:var(--ag-branco,#27ae60);"></i></span> Lembretes</a></li>
                     <li data-target="seu-tempo"><a href="#"><i class="fa-solid fa-hourglass-half" style="color:currentColor;"></i> Seu Tempo</a></li>
-<<<<<<< HEAD
-                    <li data-target="lembretes"><a href="#"><span class="lb-icon-stack"><i class="far fa-calendar lb-icon-base"></i><i class="fas fa-pen lb-icon-pen"></i></span> Lembretes</a></li>
-=======
->>>>>>> 0ea1e78a81a6a87b11198b882a4b54c672ff756b
                     <li><a href="vocesabia.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-question-circle"></i> Você Sabia?</a></li>
                     </ul>
             </nav>
@@ -311,8 +324,8 @@
                         <p class="pip-text">O <strong>AsHoras</strong> é um conjunto de ferramentas de tempo gratuitas, diretas e sem complicação. Tudo o que você precisa para gerenciar seu dia — relógio, alarme, cronômetro, calendário e sua agenda diária para toda semana e muito mais — reunido em um só lugar, acessível de qualquer dispositivo, sem precisar instalar nada.</p>
                         <div class="pip-who">
                             <span class="pip-who-tag"><i class="fas fa-globe"></i> Fusos Horários</span>
-                            <span class="pip-who-tag"><i class="fa-regular fa-bell"></i> Despertador</span>
-                            <span class="pip-who-tag"><i class="fa-solid fa-hourglass-start"></i> Cronômetro</span>
+                            <span class="pip-who-tag"><i class="fa-regular fa-alarm-clock"></i> Despertador</span>
+                            <span class="pip-who-tag"><i class="fa-solid fa-stopwatch"></i> Cronômetro</span>
                             <span class="pip-who-tag"><i class="fa-solid fa-clock-rotate-left"></i> Temporizador</span>
                             <span class="pip-who-tag"><i class="far fa-calendar"></i> Calendário</span>
                             <span class="pip-who-tag"><i class="fa-solid fa-stopwatch-20"></i> Pomodoro</span>
@@ -397,11 +410,61 @@
                             <div id="searched-city-result" class="world-clock-item"></div>
                         </div>
                     </div>
+
+                    <div class="cs-vitrine">
+                        <div class="cs-vitrine-titulo">
+                            <h3><i class="fas fa-timeline"></i> História da Cronometragem</h3>
+                            <p>Do bastão fincado no chão ao átomo de césio — a jornada da humanidade para dominar o tempo</p>
+                        </div>
+                        <style>
+                            .cs-grid-4 { grid-template-columns: repeat(4, 1fr) !important; gap: 14px !important; }
+                            @media (max-width: 900px) {
+                                .cs-grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+                            }
+                            @media (max-width: 480px) {
+                                .cs-grid-4 { grid-template-columns: 1fr !important; }
+                            }
+                        </style>
+                        <div class="cs-grid cs-grid-4">
+                            <a href="curiosidades/relogio-sol.html" class="cs-card" style="--cs-cor:#e0a52c;">
+                                <div class="cs-card-icon cs-card-icon-foto"><img src="img_curiosidades/relogio-sol-card.png" alt="Relógio de Sol" loading="lazy"></div>
+                                <div class="cs-card-body">
+                                    <h4>Relógio de Sol</h4>
+                                    <p>A primeira máquina do tempo, movida só pela luz do dia.</p>
+                                    <span class="cs-card-saiba">Saiba mais <i class="fas fa-arrow-right"></i></span>
+                                </div>
+                            </a>
+                            <a href="curiosidades/ampulheta.html" class="cs-card" style="--cs-cor:#c1703c;">
+                                <div class="cs-card-icon cs-card-icon-foto"><img src="img_curiosidades/ampulheta-card.png" alt="Ampulheta" loading="lazy"></div>
+                                <div class="cs-card-body">
+                                    <h4>Ampulheta</h4>
+                                    <p>Como a areia caindo em silêncio guiou navegadores por séculos.</p>
+                                    <span class="cs-card-saiba">Saiba mais <i class="fas fa-arrow-right"></i></span>
+                                </div>
+                            </a>
+                            <a href="curiosidades/relogio-atomico.html" class="cs-card" style="--cs-cor:#1e88c9;">
+                                <div class="cs-card-icon cs-card-icon-foto"><img src="img_curiosidades/relogio-atomico-card.png" alt="Relógio Atômico" loading="lazy"></div>
+                                <div class="cs-card-body">
+                                    <h4>Relógio Atômico</h4>
+                                    <p>A precisão de bilionésimos de segundo que guia satélites e GPS.</p>
+                                    <span class="cs-card-saiba">Saiba mais <i class="fas fa-arrow-right"></i></span>
+                                </div>
+                            </a>
+                            <a href="produtos/relogio-pendulo.html" class="cs-card" style="--cs-cor:#7b5231;">
+                                <div class="cs-card-icon cs-card-icon-foto"><img src="img_produtos/relogio-pendulo-card.jpg" alt="Relógio de Pêndulo" loading="lazy"></div>
+                                <div class="cs-card-body">
+                                    <h4>Relógio de Pêndulo</h4>
+                                    <p>O mecanismo que dominou a precisão por quase 300 anos.</p>
+                                    <span class="cs-card-saiba">Saiba mais <i class="fas fa-arrow-right"></i></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </section>
                 
                 <section id="despertador" class="tab-content">
                     <div class="secao-info-bar">
-                        <span class="secao-info-titulo"><i class="fa-regular fa-bell"></i> Despertador Online</span>
+                        <span class="secao-info-titulo"><i class="fa-regular fa-alarm-clock"></i> Despertador Online</span>
                         <button class="secao-info-btn" data-painel="info-despertador" aria-label="Como usar o despertador" title="Como usar o Despertador">?</button>
                     </div>
                     <div id="info-despertador" class="pomodoro-info-panel" style="display:none;">
@@ -468,7 +531,7 @@
                 </section>
                 <section id="cronometro" class="tab-content">
                     <div class="secao-info-bar">
-                        <span class="secao-info-titulo"><i class="fa-solid fa-hourglass-start"></i> Cronômetro Online</span>
+                        <span class="secao-info-titulo"><i class="fa-solid fa-stopwatch"></i> Cronômetro Online</span>
                         <button class="secao-info-btn" data-painel="info-cronometro" aria-label="Como usar o cronômetro" title="Como usar o Cronômetro">?</button>
                     </div>
                     <div id="info-cronometro" class="pomodoro-info-panel" style="display:none;">
@@ -557,21 +620,13 @@
                             <span class="pip-icon">📅</span>
                             <strong class="pip-title">Calendário com Feriados Nacionais</strong>
                         </div>
-<<<<<<< HEAD
                         <p class="pip-text">Consulte o calendário mensal com marcação automática dos <strong>feriados nacionais brasileiros</strong> e das principais <strong>datas comemorativas e comerciais</strong> do ano. Navegue entre os meses, veja a data de hoje em destaque e confira quando é o próximo feriado sem precisar pesquisar em outro lugar.</p>
-=======
-                        <p class="pip-text">Consulte o calendário mensal com marcação automática dos <strong>feriados nacionais brasileiros</strong>. Navegue entre os meses, veja a data de hoje em destaque e confira quando é o próximo feriado sem precisar pesquisar em outro lugar.</p>
->>>>>>> 0ea1e78a81a6a87b11198b882a4b54c672ff756b
                         <div class="pip-who">
                             <span class="pip-who-tag"><i class="fas fa-briefcase"></i> Planejamento profissional</span>
                             <span class="pip-who-tag"><i class="fas fa-plane"></i> Viagens e folgas</span>
                             <span class="pip-who-tag"><i class="fas fa-graduation-cap"></i> Calendário escolar</span>
                         </div>
-<<<<<<< HEAD
                         <p class="pip-benefit">💡 Passe o mouse sobre qualquer dia marcado no calendário para ver o nome do feriado ou da data comemorativa.</p>
-=======
-                        <p class="pip-benefit">💡 Clique em qualquer feriado marcado no calendário para ver o nome do feriado.</p>
->>>>>>> 0ea1e78a81a6a87b11198b882a4b54c672ff756b
                     </div>
                     <!-- Painel de Informações do Calendário -->
                     <div id="calendar-info-panel" class="calendar-info-panel">
@@ -691,6 +746,31 @@
                             </div>
                             <p class="pip-benefit">Comprovado para <strong>reduzir a procrastinação</strong>, melhorar o foco e evitar o esgotamento mental.</p>
                         </div>
+
+                        <div id="pf-foco-wrap" class="pf-foco-wrap">
+                            <div class="pf-input-row">
+                                <div id="pf-led-painel" class="pf-led-painel">
+                                    <div class="pf-led-tela">
+                                        <span id="pf-led-texto" class="pf-led-texto"></span>
+                                    </div>
+                                </div>
+                                <button type="button" id="pf-btn-agenda" class="pf-btn-agenda">
+                                    <i class="fas fa-link"></i> Conectar sua Agenda para focar ou use normalmente off-line
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="pf-modal-overlay" class="pf-modal-overlay" style="display:none;">
+                            <div class="pf-modal">
+                                <div class="pf-modal-header">
+                                    <h4>Escolha uma tarefa de hoje</h4>
+                                    <button type="button" id="pf-modal-fechar" class="pf-modal-fechar" aria-label="Fechar">&times;</button>
+                                </div>
+                                <div id="pf-modal-lista" class="pf-modal-lista"></div>
+                                <p id="pf-modal-vazio" class="pf-modal-vazio" style="display:none;">Conecte-se com o Google na Agenda Diária ou nos Lembretes para ver suas tarefas aqui.</p>
+                            </div>
+                        </div>
+
                         <div id="pomodoro-status-display" class="pomodoro-status">Pronto para começar!</div>
                         <div id="pomodoro-time-display" class="pomodoro-timer-display">25:00</div>
                         <div class="pomodoro-controls">
@@ -728,15 +808,11 @@
                                 <span class="pip-icon">📋</span>
                                 <strong class="pip-title">Como funciona a Agenda Diária</strong>
                             </div>
-                            <p class="pip-text">A Agenda Diária salva suas tarefas diretamente na <strong>memória do navegador</strong>. Tudo fica guardado no seu dispositivo.</p>
+                            <p class="pip-text">A Agenda Diária salva suas tarefas na sua <strong>conta Google</strong>, disponíveis em qualquer navegador ou dispositivo.</p>
                             <div class="pip-steps">
                                 <div class="pip-step"><span class="pip-step-num">📌</span><span>As tarefas <strong>persistem a semana toda</strong> — feche e abra o navegador à vontade</span></div>
                                 <div class="pip-step"><span class="pip-step-num">📌</span><span>Toda <strong>segunda-feira</strong> a agenda é limpa automaticamente para a nova semana e uma mensagem de confirmação vai ativar. Se desejar importar as mensagens em abertas da sexta - feira<strong>, se sim essas mensagem serão importadas para segunda - se não começa a semana com tudo zerado, importe as tarefas abertas do dia anterior para o dia atual </strong></span></div>
-<<<<<<< HEAD
-                                <div class="pip-step"><span class="pip-step-num">📌</span><span>Entre com sua conta <strong>Google</strong> (botão logo abaixo) para sincronizar suas tarefas entre navegadores e dispositivos diferentes</span></div>
-=======
-                                <div class="pip-step"><span class="pip-step-num">📌</span><span>Se trocar de <strong>navegador ou dispositivo</strong>, as tarefas não acompanham — ficam salvas apenas aqui,</span></div>
->>>>>>> 0ea1e78a81a6a87b11198b882a4b54c672ff756b
+                                <div class="pip-step"><span class="pip-step-num">📌</span><span>Entre com sua conta <strong>Google</strong> para usar a Agenda Diária — assim tudo fica sincronizado entre seus dispositivos</span></div>
                                 </div>
                             <div class="pip-who">
                                 <span class="pip-who-tag"><i class="fas fa-user-graduate"></i> Estudantes</span>
@@ -746,24 +822,25 @@
                             <p class="pip-benefit">💡 Use junto com o <strong>Pomodoro</strong> para organizar suas tarefas e controlar o tempo de cada uma.</p>
                         </div>
 
-<<<<<<< HEAD
-                        <!-- Sincronização com Google (opcional) -->
-                        <div id="ag-sync-bar" class="ag-sync-bar">
-                            <span id="ag-sync-info" class="ag-sync-info">
-                                <i class="fas fa-cloud"></i> Sincronize suas tarefas entre dispositivos
-                            </span>
-                            <button id="ag-btn-sync-google" class="ag-btn-sync-google" type="button">
+                        <!-- Login obrigatório com Google -->
+                        <div id="ag-login-wrap" class="lb-login-wrap">
+                            <div class="lb-login-icon"><i class="fas fa-clipboard-list"></i></div>
+                            <p>Entre com sua conta Google para criar e acessar sua Agenda Diária em qualquer dispositivo.</p>
+                            <button id="ag-btn-google" class="lb-btn-google" type="button">
                                 <img src="https://www.google.com/favicon.ico" alt=""> Entrar com Google
                             </button>
-                            <span id="ag-sync-logado" class="ag-sync-logado" style="display:none;">
-                                <img id="ag-sync-foto" src="" alt="">
-                                <span id="ag-sync-nome">—</span>
-                                <button id="ag-btn-sync-logout" class="ag-btn-sync-logout" type="button">Sair</button>
-                            </span>
                         </div>
 
-=======
->>>>>>> 0ea1e78a81a6a87b11198b882a4b54c672ff756b
+                        <div id="ag-app-wrap" style="display:none;">
+                            <div class="lb-user-bar">
+                                <div class="lb-user-info">
+                                    <img id="ag-user-foto" src="" alt="">
+                                    <span id="ag-user-nome">—</span>
+                                </div>
+                                <button id="ag-btn-logout" class="lb-btn-logout" type="button">Sair</button>
+                            </div>
+
+
                         <!-- Navegação dos dias -->
                         <div class="agenda-dias-nav">
                             <div class="agenda-dia-btn" data-dia="seg">
@@ -826,6 +903,8 @@
                             <span class="agenda-reset-info">
                                 <i class="fas fa-sync-alt"></i> limpa na segunda
                             </span>
+                        </div>
+
                         </div>
 
                     </div>
@@ -1010,7 +1089,6 @@
                     </div>
                 </section>
 
-<<<<<<< HEAD
                 <section id="lembretes" class="tab-content">
                     <div class="secao-info-bar">
                         <span class="secao-info-titulo"><span class="lb-icon-stack"><i class="far fa-calendar lb-icon-base"></i><i class="fas fa-pen lb-icon-pen"></i></span> Lembretes</span>
@@ -1092,8 +1170,6 @@
                     </div>
                 </section>
 
-=======
->>>>>>> 0ea1e78a81a6a87b11198b882a4b54c672ff756b
             </main>
         </div>
     </main>
@@ -1120,7 +1196,7 @@
                 <span id="fcs-m1" class="digit">0</span><span id="fcs-m2" class="digit">0</span>
             </div>
         </div>
-        <div class="screensaver-exit-message">Mova o mouse ou pressione uma tecla para sair</div>
+        <div class="screensaver-exit-message">Mova o mouse, toque duas vezes na tela ou pressione uma tecla para sair</div>
         <div id="screensaver-date" class="screensaver-date"></div>
     </div>
 
@@ -1130,7 +1206,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
     <script src="script.js"></script>
     <script src="wallpaper-orientation.js"></script>
-<<<<<<< HEAD
 
     <!-- Firebase (Auth Google + Firestore) — compartilhado entre Lembretes e Agenda Diária -->
     <script src="firebase-config.js"></script>
@@ -1139,9 +1214,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
     <script src="agenda-sync.js"></script>
-=======
-    <script src="agenda.js"></script>
->>>>>>> 0ea1e78a81a6a87b11198b882a4b54c672ff756b
+    <script src="pomodoro-foco.js"></script>
     <script src="seu-tempo.js"></script>
     <script src="semana-do-ano.js"></script>
 
@@ -1161,13 +1234,10 @@
     <script src="agen.local.js"></script>
     <script src="weather-widget.js"></script>
     <script src="toggle.js"></script>
-<<<<<<< HEAD
 
     <!-- Lembretes -->
     <script src="lembretes.js"></script>
     <script src="sabia-teaser.js"></script>
-=======
->>>>>>> 0ea1e78a81a6a87b11198b882a4b54c672ff756b
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {

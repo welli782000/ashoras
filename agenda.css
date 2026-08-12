@@ -281,6 +281,38 @@
     line-height: 1.4;
 }
 
+/* ── Prioridade: círculos seletores + marcação de cor no card ── */
+.agenda-prioridade-grupo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+}
+.agenda-prioridade-btn {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    transition: transform 0.15s, background 0.15s;
+}
+.agenda-prioridade-btn:hover { transform: scale(1.15); }
+
+.agenda-prioridade-btn.prioridade-alta   { border: 1.5px solid #f5a623; }
+.agenda-prioridade-btn.prioridade-media  { border: 1.5px solid #e74c3c; }
+.agenda-prioridade-btn.prioridade-normal { border: 1.5px solid #27ae60; }
+
+.agenda-prioridade-btn.prioridade-alta.ativa   { background: #f5a623; }
+.agenda-prioridade-btn.prioridade-media.ativa  { background: #e74c3c; }
+.agenda-prioridade-btn.prioridade-normal.ativa { background: #27ae60; }
+
+/* Marca a lateral do card com a cor da prioridade escolhida */
+.agenda-tarefa.prioridade-alta   { border-left: 4px solid #f5a623; }
+.agenda-tarefa.prioridade-media  { border-left: 4px solid #e74c3c; }
+.agenda-tarefa.prioridade-normal { border-left: 4px solid #27ae60; }
+
 .agenda-tarefa-del {
     background: none;
     border: none;

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ampulheta: a areia que guiou navegadores por seculos | AsHoras</title>
+    <meta name="description" content="A historia da ampulheta, por que ela foi essencial para a navegacao maritima e como o cair da areia mediu o tempo antes dos relogios mecanicos.">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../vocesabia-theme-light.css" id="theme-light-sabia">
+    <link rel="stylesheet" href="../vocesabia-theme-dark.css" id="theme-dark-sabia" disabled>
+    <link rel="stylesheet" href="../vocesabia.css">
+    <link rel="stylesheet" href="../produtos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        .logo-img { height: 40px; width: auto; display: block; }
+        .logo { display: flex; align-items: center; }
+        .main-nav a { transition: color 0.2s; }
+        .main-nav a:hover { color: #FF8C00; }
+        .theme-switcher-sabia {
+            position: fixed; top: 90px; right: 20px;
+            display: flex; gap: 10px; z-index: 1001;
+            background-color: var(--sabia-superficie); padding: 8px;
+            border-radius: 20px; box-shadow: var(--sabia-sombra);
+        }
+        .theme-icon { font-size: 1.3em; cursor: pointer; color: var(--sabia-texto-secundario); transition: color 0.3s ease, transform 0.3s ease; }
+        .theme-icon:hover { color: var(--sabia-primaria); transform: scale(1.1); }
+        .theme-icon.active { color: var(--sabia-primaria); }
+
+        /* Banner: foto ocupando a lateral inteira, sem borda ao redor do card */
+        .produto-hero {
+            position: relative;
+            display: flex;
+            align-items: stretch;
+            flex-wrap: wrap;
+            border-radius: 18px;
+            overflow: hidden;
+            border: none;
+            padding: 0;
+            background: linear-gradient(135deg, color-mix(in srgb, var(--produto-cor) 16%, transparent) 0%, color-mix(in srgb, var(--produto-cor) 4%, transparent) 100%);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+        }
+        .produto-hero-foto {
+            width: 300px;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .produto-hero-foto img {
+            width: 100%;
+            height: 100%;
+            min-height: 220px;
+            object-fit: cover;
+            object-position: center 38%;
+            display: block;
+        }
+        /* Tooltip customizado ao passar o mouse na foto */
+        .produto-hero-foto::after {
+            content: attr(data-legenda);
+            position: absolute;
+            left: 50%;
+            bottom: 14px;
+            transform: translateX(-50%);
+            background: rgba(33, 37, 41, 0.85);
+            color: #fff;
+            font-size: 0.75em;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 6px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+        .produto-hero-foto:hover::after {
+            opacity: 1;
+        }
+        .produto-hero-texto {
+            flex: 1;
+            min-width: 260px;
+            padding: 36px 40px;
+            border-left: 4px solid #8b3ce0;
+        }
+        @media (max-width: 700px) {
+            .produto-hero-foto {
+                width: 100%;
+                height: 200px;
+            }
+            .produto-hero-texto {
+                border-left: none;
+                border-top: 4px solid #8b3ce0;
+                padding: 24px 22px;
+            }
+        }
+    </style>
+    <script>
+        document.documentElement.className = localStorage.getItem('sabiaTheme') || 'theme-light-sabia';
+    </script>
+</head>
+<body class="produto-page" style="--produto-cor:#c1703c;">
+    <header class="site-header">
+        <div class="header-content-wrapper">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../ashoras-removebg-preview.png" alt="ashoras logo" class="logo-img">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <a href="../vocesabia.html" class="active">Você Sabia?</a>
+                <a href="../sobre.html">Sobre</a>
+                <a href="../privacidade.html">Privacidade</a>
+            </nav>
+        </div>
+    </header>
+    <div class="theme-switcher-sabia">
+        <span id="light-theme-btn" class="theme-icon active" title="Tema Claro"><i class="fas fa-sun"></i></span>
+        <span id="dark-theme-btn" class="theme-icon" title="Tema Escuro"><i class="fas fa-moon"></i></span>
+    </div>
+
+    <main class="main-application-area">
+        <div class="produto-container">
+            <a href="../vocesabia.html" class="produto-voltar"><i class="fas fa-arrow-left"></i> Voltar para Você Sabia?</a>
+
+            <section class="produto-hero">
+                <div class="produto-hero-foto" data-legenda="Ampulheta">
+                    <img src="../img_curiosidades/ampulheta-card.png" alt="Ampulheta" title="Ampulheta" loading="lazy">
+                </div>
+                <div class="produto-hero-texto">
+                    <span class="produto-badge">História da Cronometragem</span>
+                    <h1>Ampulheta: a areia que guiou navegadores por séculos</h1>
+                    <p>Sem engrenagens, sem sol, sem eletricidade — só areia caindo por gravidade entre dois bulbos de vidro. A ampulheta foi, por muito tempo, o instrumento mais confiável para medir intervalos de tempo em alto-mar, onde nenhum outro relógio antigo funcionava direito.</p>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-circle-info"></i> O que é e como funciona</h2>
+                <p class="produto-lead">
+                    A <strong>ampulheta</strong> (ou relógio de areia) é formada por dois bulbos de vidro conectados por
+                    uma passagem estreita, com uma quantidade calibrada de areia fina que escoa de um lado para o outro
+                    em um tempo fixo. Diferente do relógio de sol, ela não depende de luz nem de posição geográfica —
+                    funciona igual de dia ou de noite, em terra ou em alto-mar, o que a tornou indispensável para quem
+                    navegava sem outra forma de contar o tempo.
+                </p>
+                <div class="produto-features">
+                    <div class="produto-feature">
+                        <i class="fas fa-weight-hanging"></i>
+                        <div><strong>Gravidade constante</strong><span>A queda da areia depende apenas da gravidade, não de luz ou clima.</span></div>
+                    </div>
+                    <div class="produto-feature">
+                        <i class="fas fa-ship"></i>
+                        <div><strong>Uso naval</strong><span>Marinheiros a usavam para medir turnos de vigia e calcular a velocidade do navio.</span></div>
+                    </div>
+                    <div class="produto-feature">
+                        <i class="fas fa-arrows-rotate"></i>
+                        <div><strong>Precisa ser virada</strong><span>Ao esvaziar um lado, alguém precisa virar o instrumento para reiniciar a contagem.</span></div>
+                    </div>
+                    <div class="produto-feature">
+                        <i class="fas fa-temperature-half"></i>
+                        <div><strong>Resistente a variações</strong><span>Ao contrário da água, a areia não sofre com mudanças de temperatura ou condensação.</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-layer-group"></i> Como era usada no dia a dia</h2>
+                <p class="produto-lead">A ampulheta não servia só para "ver a hora" — ela media intervalos específicos, cada um com uma função prática diferente.</p>
+                <div class="produto-mini-grid">
+                    <div class="produto-mini-card">
+                        <i class="fas fa-compass"></i>
+                        <strong>Navegação</strong>
+                        <span>Usada junto com uma corda com nós (o "chip log") para calcular a velocidade do navio em nós.</span>
+                    </div>
+                    <div class="produto-mini-card">
+                        <i class="fas fa-bell-concierge"></i>
+                        <strong>Turnos de vigia</strong>
+                        <span>Marcava o tempo de cada turno da tripulação, geralmente em intervalos de 30 minutos.</span>
+                    </div>
+                    <div class="produto-mini-card">
+                        <i class="fas fa-church"></i>
+                        <strong>Sermões e reuniões</strong>
+                        <span>Igrejas e tribunais a usavam para limitar a duração de discursos e sermões.</span>
+                    </div>
+                    <div class="produto-mini-card">
+                        <i class="fas fa-flask"></i>
+                        <strong>Cozinha e ciência</strong>
+                        <span>Versões pequenas cronometravam receitas e experimentos simples.</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-timeline"></i> Linha do tempo da ampulheta</h2>
+                <div class="infografico infografico-timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-ano">Séc. VIII</div>
+                        <h4>Origem incerta</h4>
+                        <p>Uma lenda atribui a invenção a um monge francês, mas não há provas concretas dessa origem.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-ano">1338</div>
+                        <h4>Primeiro registro visual</h4>
+                        <p>Um afresco de Ambrogio Lorenzetti, em Siena, traz uma das primeiras representações conhecidas do objeto.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-ano">1345</div>
+                        <h4>Uso naval documentado</h4>
+                        <p>Registros de navios ingleses mostram encomendas de várias ampulhetas para uso a bordo.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-ano">Séc. XVI</div>
+                        <h4>Auge do uso marítimo</h4>
+                        <p>Torna-se item padrão em embarcações europeias, essencial para navegação e cálculo de velocidade.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div class="timeline-ano">Séc. XIX</div>
+                        <h4>Substituição gradual</h4>
+                        <p>Cronômetros marítimos mecânicos, mais precisos, assumem o posto de instrumento oficial de bordo.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-scale-balanced"></i> Prós e contras</h2>
+                <div class="produto-proscontras">
+                    <div class="proscontras-col pros">
+                        <h4><i class="fas fa-circle-check"></i> Vantagens</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Funciona de dia, de noite e em qualquer clima</li>
+                            <li><i class="fas fa-check"></i> Não sofre com temperatura como os relógios de água</li>
+                            <li><i class="fas fa-check"></i> Simples, sem partes mecânicas para quebrar</li>
+                        </ul>
+                    </div>
+                    <div class="proscontras-col contras">
+                        <h4><i class="fas fa-circle-xmark"></i> Desvantagens</h4>
+                        <ul>
+                            <li><i class="fas fa-xmark"></i> Alguém precisa virá-la manualmente sem falhar</li>
+                            <li><i class="fas fa-xmark"></i> Mede apenas um intervalo fixo, não a hora do dia</li>
+                            <li><i class="fas fa-xmark"></i> Movimento do navio ou desgaste da areia afetam a precisão</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <div class="produto-curiosidade">
+                    <i class="fas fa-lightbulb"></i>
+                    <div>
+                        <strong>Você sabia?</strong>
+                        <p>Nos navios, virar a ampulheta era responsabilidade de um grumete — e quem quisesse terminar o turno mais cedo tinha um truque conhecido: "engolir a areia", ou seja, virar o instrumento antes da hora certa para encurtar a própria vigia às escondidas.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-circle-question"></i> Perguntas frequentes</h2>
+                <div class="produto-faq">
+                    <div class="produto-faq-item">
+                        <h4><i class="fas fa-circle-question"></i> A ampulheta mede a hora do dia?</h4>
+                        <p>Não. Ela mede apenas um intervalo de tempo fixo e repetível, como 30 minutos — não indica se são 9h ou 15h.</p>
+                    </div>
+                    <div class="produto-faq-item">
+                        <h4><i class="fas fa-circle-question"></i> Por que usavam areia e não água?</h4>
+                        <p>A areia não evapora, não congela e não sofre condensação como a água, o que a tornava mais confiável, especialmente no mar.</p>
+                    </div>
+                    <div class="produto-faq-item">
+                        <h4><i class="fas fa-circle-question"></i> A ampulheta ainda é usada hoje?</h4>
+                        <p>Principalmente como objeto decorativo ou cronômetro simples para tarefas curtas, como escovar os dentes ou jogos de tabuleiro.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-book"></i> Referências e leituras complementares</h2>
+                <p class="produto-lead">Este conteúdo foi baseado em fontes públicas sobre a história das ampulhetas. Para se aprofundar, vale a leitura:</p>
+                <div class="produto-referencias">
+                    <a href="https://en.wikipedia.org/wiki/Marine_sandglass" target="_blank" rel="noopener noreferrer" class="produto-referencia-item">
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                        <div>
+                            <strong>Marine sandglass</strong>
+                            <span>Explica o uso naval da ampulheta, sua confiabilidade em comparação aos relógios de água e seu papel na navegação.</span>
+                            <small>en.wikipedia.org</small>
+                        </div>
+                    </a>
+                    <a href="https://www.guinnessworldrecords.com/world-records/first-hourglass" target="_blank" rel="noopener noreferrer" class="produto-referencia-item">
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                        <div>
+                            <strong>First hourglass</strong>
+                            <span>Analisa a origem incerta da ampulheta e o primeiro registro visual conhecido, de 1338.</span>
+                            <small>guinnessworldrecords.com</small>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section class="produto-secao">
+                <h2 class="produto-secao-titulo"><i class="fas fa-shapes"></i> Mais curiosidades sobre cronometragem</h2>
+                <div class="produto-relacionados-grid">
+                    <a href="relogio-sol.html" class="produto-card" style="--produto-cor:#e0a52c;">
+                        <div class="produto-card-icon produto-card-icon-foto"><img src="../img_curiosidades/relogio-sol-card.png" alt="Relógio de Sol" loading="lazy"></div>
+                        <div class="produto-card-body">
+                            <h3>Relógio de Sol</h3>
+                            <p>A primeira máquina do tempo, movida só pela luz do dia.</p>
+                            <span class="produto-card-saiba">Saiba mais <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                    <a href="relogio-atomico.html" class="produto-card" style="--produto-cor:#1e88c9;">
+                        <div class="produto-card-icon produto-card-icon-foto"><img src="../img_curiosidades/relogio-atomico-card.png" alt="Relógio Atômico" loading="lazy"></div>
+                        <div class="produto-card-body">
+                            <h3>Relógio Atômico</h3>
+                            <p>A precisão de bilionésimos de segundo que guia satélites e GPS.</p>
+                            <span class="produto-card-saiba">Saiba mais <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                    <a href="../produtos/relogio-pendulo.html" class="produto-card" style="--produto-cor:#7b5231;">
+                        <div class="produto-card-icon produto-card-icon-foto"><img src="../img_produtos/relogio-pendulo-card.jpg" alt="Relógio de Pêndulo" loading="lazy"></div>
+                        <div class="produto-card-body">
+                            <h3>Relógio de Pêndulo</h3>
+                            <p>O mecanismo que dominou a precisão por quase 300 anos.</p>
+                            <span class="produto-card-saiba">Saiba mais <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content-wrapper">
+            <p>&copy; 2025 AsHoras. Todos os direitos reservados.</p>
+            <a href="../sobre.html" style="color:var(--cor-primaria);text-decoration:none;">Sobre</a> |
+            <a href="../privacidade.html" style="color:var(--cor-primaria);text-decoration:none;">Privacidade</a>
+        </div>
+    </footer>
+
+    <script src="../sabia-theme-loader.js"></script>
+</body>
+</html>

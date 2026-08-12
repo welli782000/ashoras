@@ -48,5 +48,20 @@
     "titulo": "Relógio Digital",
     "descricao": "Visor numérico, robustez e aquele clássico charme retrô dos anos 80.",
     "link": "produtos/relogio-digital.html"
+  },
+  {
+    "titulo": "Relógio de Sol",
+    "descricao": "Milênios antes de qualquer engrenagem ou circuito, bastava um bastão fincado no chão e a luz do sol",
+    "link": "curiosidades/relogio-sol.html"
+  },
+  {
+    "titulo": "Ampulheta",
+    "descricao": "Sem engrenagens, sem sol, sem eletricidade — só areia caindo por gravidade entre dois bulbos de vidro",
+    "link": "curiosidades/ampulheta.html"
+  },
+  {
+    "titulo": "Relógio Atômico",
+    "descricao": "Do bastão que projeta sombra ao átomo de césio vibrando bilhões de vezes por segundo",
+    "link": "curiosidades/relogio-atomico.html"
   }
-]
+  ]

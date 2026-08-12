@@ -318,9 +318,9 @@ body.produto-page { background-color: var(--sabia-fundo); }
 
 /* ── Relacionados: reaproveita .produto-card de vocesabia.css ── */
 .produto-relacionados-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 /* ═══════════════════════════════════════════
@@ -528,10 +528,10 @@ text.iso-label {
 @media (max-width: 700px) {
     .produto-hero { flex-direction: column; text-align: center; padding: 28px 22px; }
     .produto-proscontras { grid-template-columns: 1fr; }
-    .produto-relacionados-grid { grid-template-columns: repeat(2, 1fr); }
+    .produto-relacionados-grid { gap: 8px; }
 }
 @media (max-width: 480px) {
-    .produto-relacionados-grid { grid-template-columns: 1fr; }
+    .produto-relacionados-grid .produto-card { flex: 1 1 100%; max-width: none; }
     .produto-hero-icone { width: 78px; height: 78px; font-size: 2em; border-radius: 20px; }
     .produto-hero-icone-foto { width: 108px; height: 108px; border-radius: 22px; }
     .produto-hero-texto h1 { font-size: 1.4em; }
