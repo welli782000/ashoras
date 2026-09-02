@@ -383,10 +383,69 @@
     <footer class="site-footer">
         <div class="footer-content-wrapper">
             <p>&copy; 2025 AsHoras. Todos os direitos reservados.</p>
-            <a href="../sobre.html" style="color:var(--cor-primaria);text-decoration:none;">Sobre</a> |
-            <a href="../privacidade.html" style="color:var(--cor-primaria);text-decoration:none;">Privacidade</a>
+            <a href="../vocesabia.html" style="color:var(--cor-primaria);text-decoration:none;">Você Sabia?</a> |
+                <a href="../sobre.html" style="color:var(--cor-primaria);text-decoration:none;">Sobre</a> |
+                <a href="../privacidade.html" style="color:var(--cor-primaria);text-decoration:none;">Privacidade</a>
+
+            <div class="footer-menus">
+                <div class="footer-menu-col">
+                    <h4>Artigos</h4>
+                    <a href="../artigos/artigo-dia-24h.html">Por que o dia tem 24h?</a>
+                    <a href="../produtos/relogio-smartwatch.html">Smartwatch</a>
+                    <a href="../curiosidades/relogio-sol.html">Relógio de Sol</a>
+                    <a href="../curiosidades/ampulheta.html">Ampulheta</a>
+                </div>
+                <div class="footer-menu-col">
+                    <h4>Tempo e Foco</h4>
+                    <a href="../index.html#calendario">Calendário</a>
+                    <a href="../index.html#semana-do-ano">Semana do Ano</a>
+                    <a href="../index.html#agenda-diaria">Agenda Diária</a>
+                    <a href="../index.html#lembretes">Lembretes</a>
+                    <a href="../index.html#pomodoro-timer">Pomodoro</a>
+                </div>
+                <div class="footer-menu-col">
+                    <h4>Ferramentas</h4>
+                    <a href="../index.html#despertador">Despertador</a>
+                    <a href="../index.html#cronometro">Cronômetro</a>
+                    <a href="../index.html#temporizador">Temporizador</a>
+                    <a href="../index.html#seu-tempo">Seu Tempo</a>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <style>
+        .footer-menus {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            max-width: 780px;
+            margin: 22px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid var(--cor-borda-geral, rgba(255,255,255,0.12));
+            text-align: left;
+        }
+        .footer-menu-col h4 {
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--cor-texto-secundario);
+            margin: 0 0 10px;
+            font-weight: 700;
+        }
+        .footer-menu-col a {
+            display: block;
+            font-size: 0.85em;
+            color: var(--cor-texto-secundario);
+            text-decoration: none;
+            padding: 3px 0;
+            transition: color 0.15s;
+        }
+        .footer-menu-col a:hover { color: var(--cor-primaria); }
+        @media (max-width: 700px) {
+            .footer-menus { grid-template-columns: 1fr; text-align: center; gap: 20px; }
+        }
+    </style>
 
     <style>
         .infografico-imagem img { cursor: zoom-in; }
